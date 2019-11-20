@@ -62,9 +62,18 @@
       color : white;
    }
    .aa{
-        position : fixed;
-        right : 20px;
-        bottom : 20px;
+	position : fixed;
+    right : 20px;
+	bottom : 20px;
+   }
+   .bodystyle{
+	padding : 10px;
+   }
+   .add_folio{
+    width : 100px;
+    height : 150px;
+    border : 0.5px dashed;
+    background : none;
    }
    
    </style>
@@ -93,8 +102,15 @@
 </div>
 </header>
 
+<div class="bodystyle">
+	<button class="add_folio">┼</button>
+</div>
+
 <div>
-   <p style="height: auto; width: 30px; border: 0.5px dashed">와</p>
+	<form action="uploadIMG">
+		<input type="file" value="사진찾기" name="upload"/>
+		<input type="submit" value="전송"/>
+	</form>
 </div>
 
 <div>
