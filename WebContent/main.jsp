@@ -29,19 +29,19 @@
       display : flex!important;
    }
    .logout{
-        display: block;
-        margin: 20px auto;
-        padding : 10px 10px;
-        background : none;
-        border : 0px;
-        border-radius : 5px;
-        font-family : Hanna;
-        font-size : 15px;
-        color : white;
+   	  display: block;
+   	  margin: 20px auto;
+   	  padding : 10px 10px;
+   	  background : none;
+   	  border : 0px;
+   	  border-radius : 5px;
+   	  font-family : Hanna;
+   	  font-size : 15px;
+   	  color : white;
    }
    .logout:hover{
-        background : #636363;
-        border : 0px;
+   	  background : #636363;
+   	  border : 0px;
    }
    .menuLink{
       text-decoration : none;
@@ -62,9 +62,18 @@
       color : white;
    }
    .aa{
-        position : fixed;
-        right : 20px;
-        bottom : 20px;
+   	  position : fixed;
+   	  right : 20px;
+   	  bottom : 20px;
+   }
+   .bodystyle{
+   	padding : 10px
+   }
+   .add_folio{
+   	width :100px; 
+   	height : 150px; 
+   	border : 0.5px dashed; 
+   	background : none;
    }
    
    </style>
@@ -77,14 +86,14 @@
 <div class="navbar container">
    <a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
    <div class="navbar_item">
-      <ul>
-      <li><a class="menuLink" href="personal.jsp">인적</a></li>
-         <li><a class="menuLink" href="education.jsp">학력</a></li>
-         <li><a class="menuLink" href="#">경력</a></li>
-         <li><a class="menuLink" href="#">대외활동</a></li>
-         <li><a class="menuLink" href="#">수상경력</a></li>
-         <li><a class="menuLink" href="#">자격증</a></li>
-         </ul>
+		<ul>
+		<li><a class="menuLink" href="personal.jsp">인적</a></li>
+      	<li><a class="menuLink" href="education.jsp">학력</a></li>
+      	<li><a class="menuLink" href="#">경력</a></li>
+      	<li><a class="menuLink" href="#">대외활동</a></li>
+      	<li><a class="menuLink" href="#">수상경력</a></li>
+      	<li><a class="menuLink" href="#">자격증</a></li>
+   		</ul>
    </div>
  
    <div class="navbar_item">
@@ -93,15 +102,26 @@
 </div>
 </header>
 
-<div>
-   <p style="height: auto; width: 30px; border: 0.5px dashed">와</p>
+
+
+<div class="bodystyle">
+	<button class="add_folio">┼</button>
+	<!--   <table>
+		<c:forEach items='${list} "var="i'>
+			<tr>
+				<td>${i.img}</td>
+				<td>${i.title}</td>
+			</tr>
+		</c:forEach>
+	</table> -->
+
 </div>
 
 <div>
-   <a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
-         <svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-         <path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
-      </a>
+	<a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
+   		<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   		<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
+   	</a>
 </div>
 
 </body>
