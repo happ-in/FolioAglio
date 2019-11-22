@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-   <style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" initial-scale ="1">
+<link rel="stylesheet" href="css/bootstrap.css">
+ <style>
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
    
@@ -49,15 +51,6 @@
       display : block;
       color : white;
    }
-   .menu {
-      text-decoration : none;
-      display : block;
-      color : black;
-   }
-   .menu:hover {
-      color : #636363;
-      font-wieght : bold;
-   }
    .menuLink:hover {
       color : #636363;
       font-wieght : bold;
@@ -71,37 +64,21 @@
       font-weight : bold;
       color : white;
    }
-   .fil0 {
-       fill: black;
-       fill-rule: nonzero;
-   }
-   .box {
-      display : block;
-      border : 0.5px solid;
-      width : 150px;
-   }
    .aa{
    	  position : fixed;
    	  right : 20px;
    	  bottom : 20px;
    }
-   .item{
-   	  display : inline-block;
-   	  vertical-align : top;
-   	  padding : 10px;
-   	  margin-bottom : 2rem;
-   	  width : 95%;
+   .bodystyle{
+   	padding : 10px
    }
-   .dashboard{
-   	  border-radius : 0.75rem;
-   	  border : 0.06rem solid #636363;
-   	  margin : 10px;
+   .add_folio{
+    width : 100px;
+    height : 150px;
+    border : 0.5px dashed;
+    background : none;
    }
-   .info ul li{
-	  font-size : 15px;
-	  margin-bottom : 5px;
-	  list-style : none;
-   }
+   
    .field{
    	border : 1px solid;
    	margin-top : 10px;
@@ -112,10 +89,11 @@
    }
    
    </style>
-<meta charset="EUC-KR">
-<title>인적정보</title>
+<meta charset="utf-8">
+<title>Insert title here</title>
 </head>
 <body>
+
 	<header>
 		<div class="navbar container">
    			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
@@ -136,37 +114,24 @@
 		</div>
 	</header>
 
-	<div style="padding: 10px"></div>
 
 	<fieldset class="field">
-		<legend>인적사항</legend>
-		<table class="bodystyle">
+		<legend>경력</legend>
+		<table>
 			<tr style = "cursor:pointer;" onClick = "location.href='#'">
-				<td>00고등학교</td>
-				<td>재학기간</td>
-				<td>졸업여부</td>
-			</tr>
-			<tr style = "cursor:pointer;" onClick = "location.href='#'">
-				<td>00대학교</td>
-				<td>000학과</td>
-				<td>재학기간</td>
-				<td>졸업여부</td>
-			</tr>
-			<tr style = "cursor:pointer;" onClick = "location.href='#'">
-				<td>00대학원</td>
-				<td>000학과</td>
-				<td>재학기간</td>
-				<td>졸업여부</td>
+				<td>회사명</td>
+				<td>직급</td>
+				<td>재직기간</td>
 			</tr>
 		</table>
 	</fieldset>
-
-
+	
 	<div>
 		<a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
-	   		<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	   		<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
-	   	</a>
+   			<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   			<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
+   		</a>
 	</div>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,49 +70,112 @@
    .bodystyle{
 	padding : 10px;
    }
-   .add_folio{
-    width : 100px;
-    height : 150px;
-    border : 0.5px dashed;
-    background : none;
+   .idpic{
+   	width :105px; 
+   	height : 135px; 
+   	border : 1px solid;
+   	margin-right : 10px; 
    }
-   
+   .field{
+   	border : 1px solid;
+   	margin-top : 10px;
+   }
+   .field legend{
+   	font-family : Hanna;
+   	font-size : 26px;
+   }
    </style>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
 
-<header>
-<div class="navbar container">
-   <a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
-   <div class="navbar_item">
-      <ul>
-      <li><a class="menuLink" href="personal.jsp">ÀÎÀû</a></li>
-         <li><a class="menuLink" href="education.jsp">ÇĞ·Â</a></li>
-         <li><a class="menuLink" href="#">°æ·Â</a></li>
-         <li><a class="menuLink" href="#">´ë¿ÜÈ°µ¿</a></li>
-         <li><a class="menuLink" href="#">¼ö»ó°æ·Â</a></li>
-         <li><a class="menuLink" href="#">ÀÚ°İÁõ</a></li>
-         </ul>
-   </div>
+	<header>
+		<div class="navbar container">
+   			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<div class="navbar_item">
+      		<ul>
+	      		<li><a class="menuLink" href="personal.jsp">ì¸ì </a></li>
+         		<li><a class="menuLink" href="education.jsp">í•™ë ¥</a></li>
+         		<li><a class="menuLink" href="career.jsp">ê²½ë ¥</a></li>
+         		<li><a class="menuLink" href="external_activity.jsp">ëŒ€ì™¸í™œë™</a></li>
+         		<li><a class="menuLink" href="awards.jsp">ìˆ˜ìƒê²½ë ¥</a></li>
+         		<li><a class="menuLink" href="certification.jsp">ìê²©ì¦</a></li>
+         		</ul>
+   			</div>
  
-   <div class="navbar_item">
-   <button class="logout">·Î±×¾Æ¿ô</button>
-   </div>
-</div>
-</header>
-
-<div class="bodystyle">
-	<button class="add_folio">¦«</button>
-</div>
-
-<div>
-	<form action="uploadIMG">
-		<input type="file" value="»çÁøÃ£±â" name="upload"/>
-		<input type="submit" value="Àü¼Û"/>
-	</form>
-</div>
+   			<div class="navbar_item">
+	   			<button class="logout">ë¡œê·¸ì•„ì›ƒ</button>
+	   		</div>
+		</div>
+	</header>
+	
+	<%
+	String id_pic="";
+	try {
+		String url = "jdbc:mysql://localhost:3306/FILE?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String id = "root";
+		String pw = "";
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection(url, id, pw);
+		
+		String sql = "select fileRealName from file where id='root';";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		
+		if(rs.next()) {
+			id_pic = rs.getString(1);
+		}
+	
+	%>
+	<fieldset class="field">
+		<legend>ì¸ì ì‚¬í•­</legend>
+		<table class="bodystyle">
+	<%
+		if("".equals(id_pic)){
+	%>
+			<tr>
+				<td rowspan="5" colspan="2" align="center">
+				<button class="idpic" style="background: none;";>No Image</button></td>
+			</tr>
+	<%
+		} else {
+	%>
+			<tr>
+				<td rowspan="5" colspan="2" align="center"><img class="idpic" src="upload/<%=id_pic %>"></td>
+			</tr>
+	<%
+		} 
+	rs.close();
+	conn.close();
+	stmt.close();
+	}catch(SQLException e) {
+		// e.printStackTrace();
+		out.println(e.toString());
+	}
+	%>
+			<tr>
+				<td>ì´ë¦„</td>
+				<td> : </td>
+				<td>ì‹¬ìŠ¨</td>
+			</tr>
+			<tr>
+				<td>ìƒë…„ì›”ì¼ </td>
+				<td> : </td>
+				<td>2002ë…„ 2ì›” 2ì¼</td>
+			</tr>
+			<tr>
+				<td>ì „í™”ë²ˆí˜¸ </td>
+				<td> : </td>
+				<td>010-0000-0000</td>
+			</tr>
+			<tr>
+				<td>ì´ë©”ì¼ </td>
+				<td> : </td>
+				<td>simpson@simpson.com</td>
+			</tr>
+		</table>
+	</fieldset>
 
 <div>
    <a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">

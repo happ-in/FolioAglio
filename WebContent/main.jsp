@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" initial-scale ="1">
+<link rel="stylesheet" href="css/bootstrap.css">
  <style>
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
@@ -70,59 +73,49 @@
    	padding : 10px
    }
    .add_folio{
-   	width :100px; 
-   	height : 150px; 
-   	border : 0.5px dashed; 
-   	background : none;
+    width : 100px;
+    height : 150px;
+    border : 0.5px dashed;
+    background : none;
    }
    
    </style>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-<header>
-<div class="navbar container">
-   <a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
-   <div class="navbar_item">
-		<ul>
-		<li><a class="menuLink" href="personal.jsp">ÀÎÀû</a></li>
-      	<li><a class="menuLink" href="education.jsp">ÇĞ·Â</a></li>
-      	<li><a class="menuLink" href="#">°æ·Â</a></li>
-      	<li><a class="menuLink" href="#">´ë¿ÜÈ°µ¿</a></li>
-      	<li><a class="menuLink" href="#">¼ö»ó°æ·Â</a></li>
-      	<li><a class="menuLink" href="#">ÀÚ°İÁõ</a></li>
-   		</ul>
-   </div>
+	<header>
+		<div class="navbar container">
+   			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<div class="navbar_item">
+      		<ul>
+	      		<li><a class="menuLink" href="personal.jsp">ì¸ì </a></li>
+         		<li><a class="menuLink" href="education.jsp">í•™ë ¥</a></li>
+         		<li><a class="menuLink" href="career.jsp">ê²½ë ¥</a></li>
+         		<li><a class="menuLink" href="external_activity.jsp">ëŒ€ì™¸í™œë™</a></li>
+         		<li><a class="menuLink" href="awards.jsp">ìˆ˜ìƒê²½ë ¥</a></li>
+         		<li><a class="menuLink" href="certification.jsp">ìê²©ì¦</a></li>
+         		</ul>
+   			</div>
  
-   <div class="navbar_item">
-   <button class="logout">·Î±×¾Æ¿ô</button>
-   </div>
-</div>
-</header>
+   			<div class="navbar_item">
+	   			<button class="logout">ë¡œê·¸ì•„ì›ƒ</button>
+	   		</div>
+		</div>
+	</header>
 
 
-
-<div class="bodystyle">
-	<button class="add_folio">¦«</button>
-	<!--   <table>
-		<c:forEach items='${list} "var="i'>
-			<tr>
-				<td>${i.img}</td>
-				<td>${i.title}</td>
-			</tr>
-		</c:forEach>
-	</table> -->
-
-</div>
-
-<div>
-	<a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
-   		<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-   		<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
-   	</a>
-</div>
+	<div class="bodystyle">
+		<button class="add_folio">â”¼</button>
+	</div>
+	
+	<div>
+		<a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
+   			<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   			<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
+   		</a>
+	</div>
 
 </body>
 </html>
