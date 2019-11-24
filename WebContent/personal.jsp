@@ -119,7 +119,7 @@
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(url, id, pw);
 		
-		String sql = "select fileRealName from file where id='root';";
+		String sql = "select fileRealName from file where id='kkk';";
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		
@@ -158,6 +158,7 @@
 				<td>이름</td>
 				<td> : </td>
 				<td>심슨</td>
+				<td><button>수정</button></td>
 			</tr>
 			<tr>
 				<td>생년월일 </td>

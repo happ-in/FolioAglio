@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +79,7 @@
     border : 0.5px dashed;
     background : none;
    }
+   div{ display : block; }
    
    </style>
 <meta charset="utf-8">
@@ -104,10 +106,65 @@
 	   		</div>
 		</div>
 	</header>
-
+	
 
 	<div class="bodystyle">
 		<button class="add_folio">┼</button>
+	</div>
+	
+	<%
+	String memo="";
+	try {
+		String url = "jdbc:mysql://localhost:3306/FILE?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String id = "root";
+		String pw = "";
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection(url, id, pw);
+		
+		String sql = "select memo from schedule where id='kkk';";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+	%>
+	<div style="border: 0.35px solid #636363; border-radius: 20px 20px 20px 20px; text-align:center;">
+		<div>
+			<h3 style="display: inline-block; padding: 0 0.5rem; border-bottom: 0.0625rem solid #E9ECF3;">주요사항</h3>
+		</div>
+	
+	<%
+	
+		if(rs.next()){
+			memo = rs.getString(1);
+		}
+			
+		if("".equals(memo)){
+	%>
+	
+		
+		<div>
+			<h5>등록된 일정이 없습니다.</h5>
+			<br>
+			<h5>일정 등록하기</h5>
+		</div>
+		
+	<%
+		} else{
+			while(rs.next()){
+			
+	%>
+	
+		<div><a><%=rs.getString("memo") %></a></div>	
+		
+	<%
+			}
+		}
+		rs.close();
+		conn.close();
+		stmt.close();
+	}catch(Exception e) {
+		// e.printStackTrace();
+		out.println(e.toString());
+	}
+	%>
 	</div>
 	
 	<div>
