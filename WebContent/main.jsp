@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,6 +85,14 @@
    </style>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+	function popup_scheduler(){
+		var url = "scheduler.jsp";
+		var name = "Scheduler";
+		var option = "width = 500, height = 400, top = 100, left = 200, location = no";
+		window.open(url, name, option);
+	}
+</script>
 </head>
 <body>
 
@@ -92,12 +101,12 @@
    			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
-	      		<li><a class="menuLink" href="personal.jsp">인적</a></li>
-         		<li><a class="menuLink" href="education.jsp">학력</a></li>
-         		<li><a class="menuLink" href="career.jsp">경력</a></li>
-         		<li><a class="menuLink" href="external_activity.jsp">대외활동</a></li>
+	      		<li><a class="menuLink" href="personal/personal.jsp">인적</a></li>
+         		<li><a class="menuLink" href="education/education.jsp">학력</a></li>
+         		<li><a class="menuLink" href="career/career.jsp">경력</a></li>
+         		<li><a class="menuLink" href="external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="awards.jsp">수상경력</a></li>
-         		<li><a class="menuLink" href="certification.jsp">자격증</a></li>
+         		<li><a class="menuLink" href="certification/certification.jsp">자격증</a></li>
          		</ul>
    			</div>
  
@@ -112,59 +121,33 @@
 		<button class="add_folio">┼</button>
 	</div>
 	
-	<%
-	String memo="";
-	try {
-		String url = "jdbc:mysql://localhost:3306/FILE?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String id = "root";
-		String pw = "";
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(url, id, pw);
-		
-		String sql = "select memo from schedule where id='kkk';";
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
-	%>
+	
 	<div style="border: 0.35px solid #636363; border-radius: 20px 20px 20px 20px; text-align:center;">
 		<div>
 			<h3 style="display: inline-block; padding: 0 0.5rem; border-bottom: 0.0625rem solid #E9ECF3;">주요사항</h3>
 		</div>
 	
 	<%
+	Connection conn = DBUtil.getConn();
 	
-		if(rs.next()){
-			memo = rs.getString(1);
-		}
-			
-		if("".equals(memo)){
+	String sql = "select * from scheduler;";
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery(sql);
+	
+	while(rs.next()){
+	
 	%>
-	
-		
-		<div>
-			<h5>등록된 일정이 없습니다.</h5>
-			<br>
-			<h5>일정 등록하기</h5>
-		</div>
+		<div><a style="display: inline-block; margin-bottom : 10px;"><%=rs.getString("sch_memo") %></a></div>
 		
 	<%
-		} else{
-			while(rs.next()){
-			
-	%>
-	
-		<div><a><%=rs.getString("memo") %></a></div>	
-		
-	<%
-			}
-		}
-		rs.close();
-		conn.close();
-		stmt.close();
-	}catch(Exception e) {
-		// e.printStackTrace();
-		out.println(e.toString());
 	}
+	rs.close();
+	conn.close();
+	stmt.close();
 	%>
+	<div>
+		<h5 style="cursor: pointer;" role="button" onClick="popup_scheduler()">일정 등록하기</h5>
+	</div>
 	</div>
 	
 	<div>
