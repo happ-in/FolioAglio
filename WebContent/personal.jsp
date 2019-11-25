@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -86,7 +87,7 @@
    }
    </style>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>personal</title>
 </head>
 <body>
 
@@ -112,19 +113,24 @@
 	
 	<%
 	String id_pic="";
+	String name = "";
+	String birth = "";
+	String phone = "";
+	String email = "";
+	
 	try {
-		String url = "jdbc:mysql://localhost:3306/FILE?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String id = "root";
-		String pw = "";
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(url, id, pw);
+		Connection conn = DBUtil.getConn();
 		
-		String sql = "select fileRealName from file where id='kkk';";
+		String sql = "select fileRealName, name, birth, phone, email from file where id='kkk';";
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		
-		if(rs.next()) {
-			id_pic = rs.getString(1);
+		while(rs.next()) {
+			id_pic = rs.getString("fileRealName");
+			name = rs.getString("name");
+			birth = rs.getString("birth");
+			phone = rs.getString("phone");
+			email = rs.getString("email");
 		}
 	
 	%>
@@ -144,6 +150,30 @@
 			<tr>
 				<td rowspan="5" colspan="2" align="center"><img class="idpic" src="upload/<%=id_pic %>"></td>
 			</tr>
+
+			<tr>
+				<td>이름</td>
+				<td> : </td>
+				<td><%=name %></td>
+				<td><button>수정</button></td>
+			</tr>
+			<tr>
+				<td>생년월일 </td>
+				<td> : </td>
+				<td><%=birth %></td>
+			</tr>
+			<tr>
+				<td>전화번호 </td>
+				<td> : </td>
+				<td><%=phone %></td>
+			</tr>
+			<tr>
+				<td>이메일 </td>
+				<td> : </td>
+				<td><%=email %></td>
+			</tr>
+		</table>
+	</fieldset>
 	<%
 		} 
 	rs.close();
@@ -154,29 +184,6 @@
 		out.println(e.toString());
 	}
 	%>
-			<tr>
-				<td>이름</td>
-				<td> : </td>
-				<td>심슨</td>
-				<td><button>수정</button></td>
-			</tr>
-			<tr>
-				<td>생년월일 </td>
-				<td> : </td>
-				<td>2002년 2월 2일</td>
-			</tr>
-			<tr>
-				<td>전화번호 </td>
-				<td> : </td>
-				<td>010-0000-0000</td>
-			</tr>
-			<tr>
-				<td>이메일 </td>
-				<td> : </td>
-				<td>simpson@simpson.com</td>
-			</tr>
-		</table>
-	</fieldset>
 
 <div>
    <a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">

@@ -21,20 +21,6 @@ public class FileDAO {
 		}
 	}
 	
-	public int upload(String fileName, String fileRealName) {
-		String sql = "insert into file values (?, ?)";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, fileName);
-			pstmt.setString(2, fileRealName);
-			
-			return pstmt.executeUpdate();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-	}
-	
 	public String getIMG(String id) {
 		String sql = "select fileRealName from table where id=?";
 		try {
