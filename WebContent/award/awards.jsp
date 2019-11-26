@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,17 +82,29 @@
    }
    
    .field{
-   	border : 1px solid;
-   	margin-top : 10px;
+   	padding : 10px;
    }
-   .field legend{
+   .field input{
+   	display : inline-block;
    	font-family : Hanna;
-   	font-size : 26px;
+   	padding : 10px;
+   	text-align : center;
+   	background : none;
+   	border : 1px solid;
+   	width : 30%;
    }
    
    </style>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>수상경력</title>
+<script>
+	function popup_abroad(){
+		var url = "award_information.jsp";
+		var name = "Abroad";
+		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
+		window.open(url, name, option);
+	}
+</script>
 </head>
 <body>
 
@@ -102,6 +116,7 @@
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
          		<li><a class="menuLink" href="../education/education.jsp">학력</a></li>
          		<li><a class="menuLink" href="../career/career.jsp">경력</a></li>
+         		<li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
          		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
@@ -114,14 +129,33 @@
 		</div>
 	</header>
 
-
-	<fieldset class="field">
-		<legend>수상경력</legend>
+		<div style="padding: 10px"></div>
+	
+	<%
+	Connection conn = DBUtil.getConn();
+	String s_type = "";
+	
+	String sql = "select * from award";
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery(sql);
+	
+	while(rs.next()) {
+	
+	%>
+	
+	<div class="field"><form><input type="button" value="<%=rs.getString("awd_name") %>"></form></div>
+	
+	<%
 		
-	</fieldset>
+	}
+	
+	rs.close();
+	conn.close();
+	stmt.close();
+	%>
 	
 	<div>
-		<a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
+		<a class="aa" aria-expanded="true" role="button" onClick="popup_award()" tabindex="0">
    			<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
    			<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
    		</a>

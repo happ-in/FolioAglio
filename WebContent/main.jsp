@@ -84,7 +84,7 @@
    
    </style>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Folio Aglio</title>
 <script>
 	function popup_scheduler(){
 		var url = "scheduler.jsp";
@@ -104,6 +104,7 @@
 	      		<li><a class="menuLink" href="personal/personal.jsp">인적</a></li>
          		<li><a class="menuLink" href="education/education.jsp">학력</a></li>
          		<li><a class="menuLink" href="career/career.jsp">경력</a></li>
+         		<li><a class="menuLink" href="abroad/abroad.jsp">해외경험</a></li>
          		<li><a class="menuLink" href="external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="awards.jsp">수상경력</a></li>
          		<li><a class="menuLink" href="certification/certification.jsp">자격증</a></li>
