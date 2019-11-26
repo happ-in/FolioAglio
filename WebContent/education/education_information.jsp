@@ -28,6 +28,7 @@
 		var confirm = document.querySelector('#confirm');
 		
 		confirm.addEventListener('click', function() {
+
 			var radio = document.querySelectorAll('.radio'); //구분
 			var name = document.querySelector('#name'); //학교명
 			var location = document.querySelector('#location'); // 학교 소재지
@@ -67,6 +68,7 @@
 			}else {
 				self.close();
 			}
+
 		});
 	});
 </script>

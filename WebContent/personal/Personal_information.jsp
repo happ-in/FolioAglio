@@ -12,6 +12,7 @@
 		var confirm = document.querySelector('#confirm');
 		
 		confirm.addEventListener('click', function() {
+
 			var country = document.querySelector('#country');
 			var picture = document.querySelector('#picture');
 			var birth = document.querySelector('#birth');
@@ -25,6 +26,7 @@
 			var memo = document.querySelector('#memo');
 			
 			//성별 검사
+
 			var genderVal = false;
 			for (var i = 0; i < gender.length; i++) {
 				//성별을 검사하면서 한개라도 체크가되어있다면
@@ -71,6 +73,7 @@
 				//저장하는거 구현해야함
 				self.close();
 			}
+
 		});
 	});
 </script>

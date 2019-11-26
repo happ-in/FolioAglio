@@ -12,6 +12,7 @@
 		var confirm = document.querySelector('#confirm');
 		
 		confirm.addEventListener('click', function() {
+
 			var name = document.querySelector('#name');
 			var position = document.querySelector('#position');
 			var work = document.querySelector('#work');
@@ -53,6 +54,7 @@
 				//저장하는거 구현해야함
 				self.close();
 			}
+
 		});
 	});
 </script>

@@ -131,7 +131,7 @@
 <body>
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<a class="header_name" role="button" href="../main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>

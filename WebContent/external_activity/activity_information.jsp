@@ -12,6 +12,7 @@
 		var confirm = document.querySelector('#confirm');
 		
 		confirm.addEventListener('click', function() {
+
 			var radio = document.querySelector('#radio');
 			var name = document.querySelector('#name');
 			var s_period = document.querySelector("#s_period");
@@ -41,6 +42,7 @@
 				//저장하는거 구현해야함
 				self.close();
 			}
+
 		});
 	});
 </script>

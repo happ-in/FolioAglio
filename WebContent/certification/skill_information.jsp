@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>어학/자격증</title>
 <script>
+
 	function Rradio_OnOff(id){
 		if(id == "Radio_On"){
 			document.all["Radio_On"].style.display = '';
@@ -22,6 +23,7 @@
 		var confirm = document.querySelector('#confirm');
 		
 		confirm.addEventListener('click', function() {
+
 			var radio = document.querySelectorAll('.radio');
 			var language_name = document.querySelector('#language_name');
 			var kind = document.querySelector('#kind');
@@ -31,18 +33,19 @@
 			var score_name = document.querySelector('#score_name');
 			
 			self.close();
+
 		});
 		
 		var confirm1 = document.querySelector('#confirm1');
 				
 				confirm1.addEventListener('click', function() {
 					var classfication_name = document.querySelector('#classfication_name');
-					var classfication_num = document.querySelector('#classfication_num');
 					var issue_org = document.querySelector('#issue_org');
 					var issue_date = document.querySelector('#issue_date');
 					
 					self.close();
 			
+
 		});
 		
 	});
@@ -94,10 +97,6 @@
 				<tr>
 					<td>자격증명</td>
 					<td><input type="text" id="classfication_name" name="classfication_name"></td>
-				</tr>
-				<tr>
-					<td>자격증번호</td>
-					<td><input type="text" id="classfication_num" name="classfication_num"></td>
 				</tr>
 				<tr>
 					<td>발급기관</td>
