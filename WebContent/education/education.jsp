@@ -126,19 +126,32 @@
 		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
+	function popup_highschool(){
+		var url = "highschool.jsp";
+		var name = "h_fom";
+		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
+		window.open("", name, option);
+		
+		var h_data = document.h_fom;
+		h_data.target = name;
+		h_data.action = url;
+		h_data.method = "post";
+		h_data.submit();
+	}
+	
 </script>
 </head>
 <body>
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<a class="header_name" role="button" href="../main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
          		<li><a class="menuLink" href="../education/education.jsp">학력</a></li>
          		<li><a class="menuLink" href="../career/career.jsp">경력</a></li>
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
-         		<li><a class="menuLink" href="../awards.jsp">수상경력</a></li>
+         		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
          		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
          		</ul>
          	</div>
@@ -165,14 +178,18 @@
 		if (s_type.equals("1")){
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("school_name") %>"></form></div>
+	<div class="field">
+		<form onClick="popup_highschool()" id="h_fom" name="h_fom">
+			<input type="button" id="highschool" name="highschool" value="<%=rs.getString("school_name") %>">
+		</form>
+	</div>
 	
 	<%		
 		}
 		else if (s_type.equals("2")){
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("school_name") %>"></form></div>
+	<div class="field"><form><input type="submit" value="<%=rs.getString("school_name") %>"></form></div>
 	
 	<%
 		}

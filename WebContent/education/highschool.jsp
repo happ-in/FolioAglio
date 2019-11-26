@@ -1,19 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>학력</title>
 <script>
-	
+	window.onload = function(){
+		document.getElementById("name").value = opener.document.getElementById("highschool").value;
+	}
 </script>
 </head>
 <body>
+	<%
+	
+	%>
 	<form name=fom>
 		<fieldset>
 			<legend>고등학교</legend>
-			<table  id="high" style="display:'';">
+			<table style="display: block;">
 				<tr>
 					<td>학교명</td>
 					<td><input type="text" id="name" name="name"></td>
@@ -32,7 +39,7 @@
 							<option>서울특별시</option>
 							<option>세종특별자치시</option>
 							<option>울산광역시</option>
-							<option>인천광역시</option>
+							<option selected>인천광역시</option>
 							<option>전라남도</option>
 							<option>전라북도</option>
 							<option>제주특별자치시도</option>
@@ -78,7 +85,7 @@
 				
 				<tr>
 					<td colspan="2"><input type="button" id="confirm"
-						value="확인">
+						value="수정">
 					</td>
 				</tr>
 			</table>

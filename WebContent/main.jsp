@@ -149,13 +149,5 @@
 		<h5 style="cursor: pointer;" role="button" onClick="popup_scheduler()">일정 등록하기</h5>
 	</div>
 	</div>
-	
-	<div>
-		<a class="aa" aria-expanded="true" role="button" href="#" tabindex="0">
-   			<svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-   			<path d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M24,18h-6v6h-4v-6H8v-4h6   V8h4v6h6V18z" style="fill:#636363;"/></svg>
-   		</a>
-	</div>
-
 </body>
 </html>

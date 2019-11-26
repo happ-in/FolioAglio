@@ -5,7 +5,7 @@
 <head>
 	<style>
 	.container{
-		width : 200px;
+		width : 270px;
 		margin : 0 auto;
 		text-align : center;
 	}
@@ -15,18 +15,25 @@
 	form {
 		margin-bottom : 8px;
 	}
-	.form-control{
+	div {
 		display : block;
+	}
+	.form-control{
+		display : inline-block;
 		vertical-align : middle;
 		margin-bottom : 5px;
-		border : 2px solid #B2CCFF;
+		border : 0.5px solid;
 		border-radius : 3px;
 		font-size : 16px;
 		color : #636363;
-		width : 100%;
+		width : 99%;
+		heigh : 55px;
 	}
 	.signin{
 		text-algin : center;
+		width : 100%;
+		display : block;
+		margin-bottom : 5px;
 	}
 	</style>
 <meta charset="utf-8">
@@ -40,7 +47,7 @@
 			<input class="form-control" name="userID" type="text" placeholder="ID">
 			<input class="form-control" name="userPW" type="text" placeholder="PassWord">
 			<input type="submit" value="Sign in" class="signin">
-			<Button type="Button" onclick="location.href='signup.jsp'">Sign up</Button> 
+			<Button type="Button" onclick="location.href='signup.jsp'" class="signin">Sign up</Button> 
 		</form>
 		
 	</div>
