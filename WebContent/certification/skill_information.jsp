@@ -35,27 +35,40 @@
 			var score = document.querySelector('#score');
 			var score_name = document.querySelector('#score_name');
 			
-			self.close();
-
+			if (language_name.value == '') {
+				alert('회사명을 입력하세요.');
+				language_name.focus();
+				// 직위가 입력되지 않았을시
+			} else{
+				document.getElementById('form1').submit();
+				self.close();
+			}
+			
 		});
 		
 		var confirm1 = document.querySelector('#confirm1');
 				
-				confirm1.addEventListener('click', function() {
-					var classfication_name = document.querySelector('#classfication_name');
-					var issue_org = document.querySelector('#issue_org');
-					var issue_date = document.querySelector('#issue_date');
-					
+			confirm1.addEventListener('click', function() {
+				var classfication_name = document.querySelector('#classfication_name');
+				var issue_org = document.querySelector('#issue_org');
+				var issue_date = document.querySelector('#issue_date');
+				
+				if (classfication_name.value == '') {
+					alert('회사명을 입력하세요.');
+					classfication_name.focus();
+					// 직위가 입력되지 않았을시
+				} else{
+					document.getElementById('form1').submit();
 					self.close();
+				}
 			
-
 		});
 		
 	});
 </script>
 </head>
 <body>
-	<form name=fom>
+	<form action="certificationAction.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>어학/자격증</legend>
 			<table>

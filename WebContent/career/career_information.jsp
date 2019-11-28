@@ -55,6 +55,7 @@
 				e_period.focus();
 			}else {
 				//저장하는거 구현해야함
+				document.getElementById('form1').submit();
 				self.close();
 			}
 
@@ -63,7 +64,7 @@
 </script>
 </head>
 <body>
-	<form name=fom>
+	<form action="careerAction.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>경력</legend>
 			<table>

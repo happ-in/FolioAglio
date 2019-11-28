@@ -28,6 +28,7 @@
 				name.focus();
 			}else {
 				//저장하는거 구현해야함
+				document.getElementById('form1').submit();
 				self.close();
 			}
 
@@ -36,7 +37,7 @@
 </script>
 </head>
 <body>
-	<form name=fom>
+	<form action="awardAction.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>수상내용</legend>
 			<table>

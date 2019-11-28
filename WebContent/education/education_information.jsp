@@ -69,6 +69,99 @@
 				alert('졸업여부를 입력하세요 ')
 				g_state.focus();
 			}else {
+				document.getElementById('form1').submit();
+				self.close();
+			}
+
+		});
+		
+		var confirm1 = document.querySelector('#confirm1');
+		confirm1.addEventListener('click', function() {
+
+			var radio = document.querySelectorAll('.radio'); //구분
+			var name = document.querySelector('#name'); //학교명
+			var location = document.querySelector('#location'); // 학교 소재지
+			var division = document.querySelector('#division'); //계열			
+			var e_state = document.querySelector('#e_state'); // 입학구분
+			var e_date = document.querySelector("#e_date"); //입학일자
+			var g_date = document.querySelector('#g_date'); // 졸업일자
+			var g_state = document.querySelector('#g_state'); //졸업여부
+			var major = document.querySelector('#major'); //전공
+			var grade = document.querySelector('#grade'); //학점
+			var classes = document.querySelector('#classes'); //이수학점
+			var total_grade = document.querySelector('#total_grade');//전체학점
+			var major_grade = document.querySelector('#major_grade');//전공학점
+			var transfer = document.querySelector('#transfer'); //복수전공, 부전공
+			var memo = document.querySelector('#memo');
+			
+			
+			// 전체 검사
+			if (name.value == '') {
+				alert('학교명을 입력하세요.');
+				name.focus();
+			} else if (location.value == '') {
+				alert('학교 소재지를 입력하세요.');
+				location.focus();
+			} else if (division == '') {
+				alert("계열을 입력하세요");
+				division.focus();
+			} else if (e_date.value == '') {
+				alert('입학일자를 입력하세요 ')
+				e_date.focus();
+			} else if (g_date.value == '') {
+				alert('졸업일자를 입력하세요 ')
+				g_date.focus();
+			} else if (g_state.value == '') {
+				alert('졸업여부를 입력하세요 ')
+				g_state.focus();
+			}else {
+				document.getElementById('form1').submit();
+				self.close();
+			}
+
+		});
+		
+		var confirm2 = document.querySelector('#confirm2');
+		confirm2.addEventListener('click', function() {
+
+			var radio = document.querySelectorAll('.radio'); //구분
+			var name = document.querySelector('#name'); //학교명
+			var location = document.querySelector('#location'); // 학교 소재지
+			var division = document.querySelector('#division'); //계열			
+			var e_state = document.querySelector('#e_state'); // 입학구분
+			var e_date = document.querySelector("#e_date"); //입학일자
+			var g_date = document.querySelector('#g_date'); // 졸업일자
+			var g_state = document.querySelector('#g_state'); //졸업여부
+			var major = document.querySelector('#major'); //전공
+			var grade = document.querySelector('#grade'); //학점
+			var classes = document.querySelector('#classes'); //이수학점
+			var total_grade = document.querySelector('#total_grade');//전체학점
+			var major_grade = document.querySelector('#major_grade');//전공학점
+			var transfer = document.querySelector('#transfer'); //복수전공, 부전공
+			var memo = document.querySelector('#memo');
+			
+			
+			// 전체 검사
+			if (name.value == '') {
+				alert('학교명을 입력하세요.');
+				name.focus();
+			} else if (location.value == '') {
+				alert('학교 소재지를 입력하세요.');
+				location.focus();
+			} else if (division == '') {
+				alert("계열을 입력하세요");
+				division.focus();
+			} else if (e_date.value == '') {
+				alert('입학일자를 입력하세요 ')
+				e_date.focus();
+			} else if (g_date.value == '') {
+				alert('졸업일자를 입력하세요 ')
+				g_date.focus();
+			} else if (g_state.value == '') {
+				alert('졸업여부를 입력하세요 ')
+				g_state.focus();
+			}else {
+				document.getElementById('form1').submit();
 				self.close();
 			}
 
@@ -77,7 +170,7 @@
 </script>
 </head>
 <body>
-	<form name=fom>
+	<form action="educationAction.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>학력</legend>
 			<table>
@@ -281,7 +374,7 @@
 					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+					<td colspan="2"><input type="button" id="confirm1"
 						value="확인">
 					</td>
 				</tr>
@@ -375,7 +468,7 @@
 					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+					<td colspan="2"><input type="button" id="confirm2"
 						value="확인">
 					</td>
 				</tr>

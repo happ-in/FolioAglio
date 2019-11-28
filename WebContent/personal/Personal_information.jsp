@@ -74,6 +74,7 @@
 				address.focus();
 			}else {
 				//저장하는거 구현해야함
+				document.getElementById('form1').submit();
 				self.close();
 			}
 
@@ -82,7 +83,7 @@
 </script>
 </head>
 <body>
-	<form name=fom>
+	<form action="personalAction.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>인적사항</legend>
 			<table>
