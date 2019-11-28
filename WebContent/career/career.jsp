@@ -142,7 +142,9 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("company_name") %>"></form></div>
+	<div class="field">
+		<form></form><input type="button" value="<%=rs.getString("company_name") %>"></form>
+	</div>
 	
 	<%
 		

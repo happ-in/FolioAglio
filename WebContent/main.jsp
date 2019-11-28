@@ -86,11 +86,16 @@
 <meta charset="utf-8">
 <title>Folio Aglio</title>
 <script>
+	var name = "Scheduler";
+	var option = "width = 500, height = 400, top = 100, left = 200, location = no";
+	
 	function popup_scheduler(){
 		var url = "scheduler.jsp";
-		var name = "Scheduler";
-		var option = "width = 500, height = 400, top = 100, left = 200, location = no";
 		window.open(url, name, option);
+	}
+	
+	function send(val){
+		window.open('schedulerForm.jsp', name, option);
 	}
 </script>
 </head>
@@ -129,6 +134,7 @@
 		</div>
 	
 	<%
+	int i = 0;
 	Connection conn = DBUtil.getConn();
 	
 	String sql = "select sch_memo from scheduler;";
@@ -138,9 +144,10 @@
 	while(rs.next()){
 	
 	%>
-		<div><a style="display: inline-block; margin-bottom : 10px;"><%=rs.getString("sch_memo") %></a></div>
-		
+		<input type="button" name="sch_memo" onclick="send(this.val)" value="<%=rs.getString("sch_memo") %>"
+		 style="background-color:transparent; background-image: none; border: none; display: inline-block; margin-bottom : 10px;"><br>
 	<%
+		i++;
 	}
 	rs.close();
 	conn.close();
