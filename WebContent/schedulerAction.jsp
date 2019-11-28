@@ -23,8 +23,6 @@
 	String sql = "insert into scheduler(sch_name, sch_date, sch_time, sch_memo) values (?,?,?,?);";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	
-	System.out.println(sch_name);
-	
 	pstmt.setString(1, sch_name);
 	pstmt.setString(2, sch_date);
 	pstmt.setString(3, sch_time);
@@ -32,8 +30,7 @@
 	pstmt.executeUpdate();
 	
 	DBUtil.close(pstmt);
-	DBUtil.close(conn);	
-	
+	DBUtil.close(conn);
 	%>
 	
 </body>

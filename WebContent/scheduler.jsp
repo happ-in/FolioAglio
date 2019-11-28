@@ -14,35 +14,37 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>일정 추가</title>
 <script>
-	window.addEventListener('load', function() {
-		var confirm = document.querySelector('#confirm');
-		
-		confirm.addEventListener('click', function() {
+   window.addEventListener('load', function() {
+      var confirm = document.querySelector('#confirm');
+      
+      confirm.addEventListener('click', function() {
 
-			var name = document.querySelector('#name');
-			var date = document.querySelector('#date');
-			var time = document.querySelector('#time');
-			var memo = document.querySelector("#memo");
-		
-			// 전체 검사
-			// 체류국가가 입력되지 않았을시
-			if (name.value == '') {
-				alert('일정명을 입력하세요.');
-				name.focus();
-				// 체류형태가 입력되지 않았을시
-			} else if (date.value == '') {
-				alert('날짜를 입력하세요.');
-				date.focus();
-				// 구사언어가 입력되지 않았을시
-			}else {
-				//저장하는거 구현해야함
-				self.close();
-			}
+         var name = document.querySelector('#name');
+         var date = document.querySelector('#date');
+         var time = document.querySelector('#time');
+         var memo = document.querySelector("#memo");
+      
+         // 전체 검사
+         // 체류국가가 입력되지 않았을시
+         if (name.value == '') {
+            alert('일정명을 입력하세요.');
+            name.focus();
+            // 체류형태가 입력되지 않았을시
+         } else if (date.value == '') {
+            alert('날짜를 입력하세요.');
+            date.focus();
+            // 구사언어가 입력되지 않았을시
+         }else {
+            //저장하는거 구현해야함
+            document.getElementById('form1').submit();
+            self.close();
+            
+         }
 
-		});
-	});
-	
-	function inputTimeColon(time) {
+      });
+   });
+   
+   function inputTimeColon(time) {
 
         // 먼저 기존에 들어가 있을 수 있는 콜론(:)기호를 제거한다.
         var replaceTime = time.value.replace(/\:/g, "");
@@ -73,43 +75,44 @@
             // 콜론을 넣어 시간을 완성하고 반환한다.
             time.value = hours + ":" + minute;
         }
-	}
+   }
 
 </script>
 </head>
 <body>
-	<form action-"schedulerAction.jsp" method="post">
-		<fieldset>
-			<legend>일정 추가</legend>
-			<table>
-				<tr>
-					<td>일정명</td>
-					<td><input type="text" id="name" name="name"></td>
-				</tr>
-				<tr>
-					<td>날짜</td>
-					<td><input type="text" id="date" name="date" placeholder="날짜넣기">
+   <form action="schedulerAction.jsp" method="post" id = "form1">
+      <fieldset>
+         <legend>일정 추가</legend>
+         <table>
+            <tr>
+               <td>일정명</td>
+               <td><input type="text" id="name" name="name"></td>
+            </tr>
+            <tr>
+               <td>날짜</td>
+               <td><input type="text" id="date" name="date" placeholder="날짜넣기">
                <script>
                   $(function(){
                      $("#date").datepicker({ dateFormat:'yy-mm-dd'});
                   });
                </script></td>
-				</tr>
-				<tr>
-					<td>시간</td>
-					<td><input type="text" id="time" name="time" value="00:00" onKeyup="inputTimeColon(this);"></td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td><textarea name="memo" rows="10" cols="50"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="button" id="confirm"
-						value="확인">
-					</td>
-				</tr>
-			</table>
-		</fieldset>
-	</form>
+            </tr>
+            <tr>
+               <td>시간</td>
+               <td><input type="text" id="time" name="time" value="00:00" onKeyup="inputTimeColon(this);"></td>
+            </tr>
+            <tr>
+               <td>내용</td>
+               <td><textarea name="memo" rows="10" cols="50"></textarea></td>
+            </tr>
+            <tr>
+               <td colspan="2"><input type="button" id="confirm"
+                  value="확인">
+               </td>
+            </tr>
+         </table>
+      </fieldset>
+   </form>
+   
 </body>
 </html>
