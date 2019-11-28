@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR" />
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
  <style>
@@ -101,37 +101,37 @@
    			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
-	      		<li><a class="menuLink" href="personal/personal.jsp">ì¸ì </a></li>
-         		<li><a class="menuLink" href="education/education.jsp">í•™ë ¥</a></li>
-         		<li><a class="menuLink" href="career/career.jsp">ê²½ë ¥</a></li>
-         		<li><a class="menuLink" href="abroad/abroad.jsp">í•´ì™¸ê²½í—˜</a></li>
-         		<li><a class="menuLink" href="external_activity/external_activity.jsp">ëŒ€ì™¸í™œë™</a></li>
-         		<li><a class="menuLink" href="awards.jsp">ìˆ˜ìƒê²½ë ¥</a></li>
-         		<li><a class="menuLink" href="certification/certification.jsp">ìžê²©ì¦</a></li>
+	      		<li><a class="menuLink" href="personal/personal.jsp">ÀÎÀû</a></li>
+         		<li><a class="menuLink" href="education/education.jsp">ÇÐ·Â</a></li>
+         		<li><a class="menuLink" href="career/career.jsp">°æ·Â</a></li>
+         		<li><a class="menuLink" href="abroad/abroad.jsp">ÇØ¿Ü°æÇè</a></li>
+         		<li><a class="menuLink" href="external_activity/external_activity.jsp">´ë¿ÜÈ°µ¿</a></li>
+         		<li><a class="menuLink" href="awards.jsp">¼ö»ó°æ·Â</a></li>
+         		<li><a class="menuLink" href="certification/certification.jsp">ÀÚ°ÝÁõ</a></li>
          		</ul>
    			</div>
  
    			<div class="navbar_item">
-	   			<button class="logout">ë¡œê·¸ì•„ì›ƒ</button>
+	   			<button class="logout">·Î±×¾Æ¿ô</button>
 	   		</div>
 		</div>
 	</header>
 	
 
 	<div class="bodystyle">
-		<button class="add_folio">â”¼</button>
+		<button class="add_folio">¦«</button>
 	</div>
 	
 	
 	<div style="border: 0.35px solid #636363; border-radius: 20px 20px 20px 20px; text-align:center;">
 		<div>
-			<h3 style="display: inline-block; padding: 0 0.5rem; border-bottom: 0.0625rem solid #E9ECF3;">ì£¼ìš”ì‚¬í•­</h3>
+			<h3 style="display: inline-block; padding: 0 0.5rem; border-bottom: 0.0625rem solid #E9ECF3;">ÁÖ¿ä»çÇ×</h3>
 		</div>
 	
 	<%
 	Connection conn = DBUtil.getConn();
 	
-	String sql = "select * from scheduler;";
+	String sql = "select sch_memo from scheduler;";
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery(sql);
 	
@@ -147,7 +147,7 @@
 	stmt.close();
 	%>
 	<div>
-		<h5 style="cursor: pointer;" role="button" onClick="popup_scheduler()">ì¼ì • ë“±ë¡í•˜ê¸°</h5>
+		<h5 style="cursor: pointer;" role="button" onClick="popup_scheduler()">ÀÏÁ¤ µî·ÏÇÏ±â</h5>
 	</div>
 	</div>
 </body>

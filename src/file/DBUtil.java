@@ -14,7 +14,7 @@ public class DBUtil {
 			String id = "b74ecdd0458131f4";
 			String pw = "c32ca248cd0ba4a7";
 			
-//			String url = "jdbc:mysql://localhost:3306/file?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+//			String url = "jdbc:mysql://localhost:3306/file?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8";
 //			String id = "root";
 //			String pw = "";
 			Class.forName("com.mysql.cj.jdbc.Driver");

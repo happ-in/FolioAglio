@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="file.DBUtil" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -35,10 +41,44 @@
 
 		});
 	});
+	
+	function inputTimeColon(time) {
+
+        // 먼저 기존에 들어가 있을 수 있는 콜론(:)기호를 제거한다.
+        var replaceTime = time.value.replace(/\:/g, "");
+
+        // 글자수가 4 ~ 5개 사이일때만 동작하게 고정한다.
+        if(replaceTime.length >= 4 && replaceTime.length < 5) {
+
+            // 시간을 추출
+            var hours = replaceTime.substring(0, 2);
+
+            // 분을 추출
+            var minute = replaceTime.substring(2, 4);
+
+            // 시간은 24:00를 넘길 수 없게 세팅
+            if(hours + minute > 2400) {
+                alert("시간은 24시를 넘길 수 없습니다.");
+                time.value = "24:00";
+                return false;
+            }
+
+            // 분은 60분을 넘길 수 없게 세팅
+            if(minute > 60) {
+                alert("분은 60분을 넘길 수 없습니다.");
+                time.value = hours + ":00";
+                return false;
+            }
+
+            // 콜론을 넣어 시간을 완성하고 반환한다.
+            time.value = hours + ":" + minute;
+        }
+	}
+
 </script>
 </head>
 <body>
-	<form name=fom>
+	<form action="schedulerAction.jsp" method="post">
 		<fieldset>
 			<legend>일정 추가</legend>
 			<table>
@@ -48,23 +88,29 @@
 				</tr>
 				<tr>
 					<td>날짜</td>
-					<td><input type="date" id="date" name="date"></td>
+					<td><input type="text" id="datepicker" name="date" placeholder="날짜넣기">
+               <script>
+                  $(function(){
+                     $("#datepicker").datepicker();
+                  });
+               </script></td>
 				</tr>
 				<tr>
 					<td>시간</td>
-					<td><input type="time" id="time" name="time"></td>
+					<td><input type="text" id="time" name="time" value="00:00" onKeyup="inputTimeColon(this);"></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea id="memo" rows="10" cols="50"></textarea></td>
+					<td><textarea name="memo" rows="10" cols="50"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+					<td colspan="2"><input type="submit" id="confirm"
 						value="확인">
 					</td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
+	
 </body>
 </html>
