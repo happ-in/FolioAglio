@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -130,11 +133,21 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="date" id="e_date" name="e_date"></td>
+					<td><input type="text" id="e_date" name="e_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#e_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="date" id="g_date" name="g_date"></td>
+					<td><input type="text" id="g_date" name="g_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#g_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업여부</td>
@@ -203,11 +216,21 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="date" id="e_date" name="e_date"></td>
+					<td><input type="text" id="e_date" name="e_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#e_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="date" id="g_date" name="g_date"></td>
+					<td><input type="text" id="g_date" name="g_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#g_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업여부</td>
@@ -306,11 +329,21 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="date" id="e_date" name="e_date"></td>
+					<td><input type="text" id="e_date" name="e_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#e_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="date" id="g_date" name="g_date"></td>
+					<td><input type="text" id="g_date" name="g_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#g_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업여부</td>

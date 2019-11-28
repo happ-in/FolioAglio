@@ -57,11 +57,6 @@
 					<td><input type="file" id="attachment" name="attachment"></td>
 				</tr>
 				<tr>
-					<td>재직기간</td>
-					<td><input type="date" id="s_period" name="s_period"> ~ 
-					<input type="date" id="e_period" name="e_period"></td>
-				</tr>
-				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
 				</tr>

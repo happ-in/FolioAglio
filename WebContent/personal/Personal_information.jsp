@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -89,7 +92,12 @@
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input type="date" id="birth" name="birth"></td>
+					<td><input type="text" id="birth" name="birth" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#birth").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>이름</td>
