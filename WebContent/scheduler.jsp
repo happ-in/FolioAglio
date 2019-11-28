@@ -91,7 +91,7 @@
 					<td><input type="text" id="datepicker" name="date" placeholder="날짜넣기">
                <script>
                   $(function(){
-                     $("#datepicker").datepicker();
+                     $("#datepicker").datepicker({ dateFormat:'yy-mm-dd'});
                   });
                </script></td>
 				</tr>
@@ -105,7 +105,7 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" id="confirm"
-						value="확인">
+						value="확인" onclick="window.close()">
 					</td>
 				</tr>
 			</table>
