@@ -15,13 +15,15 @@
 	<%
 	Connection conn = DBUtil.getConn();
 	
-	String sch_name = request.getParameter("name");
-	String sch_date = request.getParameter("date");
-	String sch_time = request.getParameter("time");
-	String sch_memo = request.getParameter("memo");
+	String sch_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
+	String sch_date = new String(request.getParameter("date").getBytes("ISO-8859-1"), "UTF-8");
+	String sch_time = new String(request.getParameter("time").getBytes("ISO-8859-1"), "UTF-8");
+	String sch_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
 	
 	String sql = "insert into scheduler(sch_name, sch_date, sch_time, sch_memo) values (?,?,?,?);";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
+	
+	System.out.println(sch_name);
 	
 	pstmt.setString(1, sch_name);
 	pstmt.setString(2, sch_date);

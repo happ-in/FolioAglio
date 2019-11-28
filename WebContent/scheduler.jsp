@@ -78,7 +78,7 @@
 </script>
 </head>
 <body>
-	<form action="schedulerAction.jsp" method="post">
+	<form action-"schedulerAction.jsp" method="post">
 		<fieldset>
 			<legend>일정 추가</legend>
 			<table>
@@ -88,10 +88,10 @@
 				</tr>
 				<tr>
 					<td>날짜</td>
-					<td><input type="text" id="datepicker" name="date" placeholder="날짜넣기">
+					<td><input type="text" id="date" name="date" placeholder="날짜넣기">
                <script>
                   $(function(){
-                     $("#datepicker").datepicker({ dateFormat:'yy-mm-dd'});
+                     $("#date").datepicker({ dateFormat:'yy-mm-dd'});
                   });
                </script></td>
 				</tr>
@@ -104,13 +104,12 @@
 					<td><textarea name="memo" rows="10" cols="50"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" id="confirm"
-						value="확인" onclick="window.close()">
+					<td colspan="2"><input type="button" id="confirm"
+						value="확인">
 					</td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
-	
 </body>
 </html>

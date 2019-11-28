@@ -98,7 +98,7 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="button" id="confirm"
-						value="확인" onclick="window.close()">
+						value="확인">
 					</td>
 				</tr>
 			</table>
