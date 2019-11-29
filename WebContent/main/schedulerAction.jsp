@@ -2,13 +2,11 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Scheduler</title>
 </head>
 <body>
 

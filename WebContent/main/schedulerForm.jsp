@@ -38,7 +38,7 @@
             //저장하는거 구현해야함
             document.getElementById('form1').submit();
             self.close();
-            
+            opener.location.reload();
          }
 
       });
@@ -80,17 +80,31 @@
 </script>
 </head>
 <body>
-   <form action="schedulerAction.jsp" method="post" id = "form1">
+	<%
+	int sch_num = 0;
+	if(request.getParameter("sch_num")!=null){
+		sch_num = Integer.parseInt(request.getParameter("sch_num"));
+		
+	Connection conn = DBUtil.getConn();
+	String sql = "select sch_name, sch_date, sch_time, sch_memo, sch_num from scheduler where sch_num=?";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setInt(1, sch_num);
+	ResultSet rs = pstmt.executeQuery();
+	
+	if(rs.next()){
+	
+	%>
+	<form action="schedulerUpdate.jsp" method="post" id="form1">
       <fieldset>
          <legend>일정 추가</legend>
          <table>
             <tr>
                <td>일정명</td>
-               <td><input type="text" id="name" name="name"></td>
+               <td><input type="text" id="name" name="name" value="<%=rs.getString(1) %>"></td>
             </tr>
             <tr>
                <td>날짜</td>
-               <td><input type="text" id="date" name="date" placeholder="날짜넣기">
+               <td><input type="text" id="date" name="date" placeholder="날짜넣기" value="<%=rs.getString(2) %>">
                <script>
                   $(function(){
                      $("#date").datepicker({ dateFormat:'yy-mm-dd'});
@@ -99,20 +113,30 @@
             </tr>
             <tr>
                <td>시간</td>
-               <td><input type="text" id="time" name="time" value="00:00" onKeyup="inputTimeColon(this);"></td>
+               <td><input type="text" id="time" name="time" value="<%=rs.getString(3) %>" onKeyup="inputTimeColon(this);"></td>
             </tr>
             <tr>
                <td>내용</td>
-               <td><textarea name="memo" rows="10" cols="50"></textarea></td>
+               <td><textarea name="memo" rows="10" cols="50"><%=rs.getString(4) %></textarea></td>
             </tr>
             <tr>
                <td colspan="2"><input type="button" id="confirm"
-                  value="확인">
+                  value="수정">
                </td>
+               <td><input type="hidden" name="sch_num" value="<%=rs.getInt(5) %>"></td>
             </tr>
          </table>
       </fieldset>
    </form>
+   <%
+	}
+	rs.close();
+	conn.close();
+	pstmt.close();
+	}
+	%>
+   
+</body>
    
 </body>
 </html>

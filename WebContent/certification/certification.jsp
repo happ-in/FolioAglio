@@ -109,7 +109,7 @@
 
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="../main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<a class="header_name" role="button" href="../main/main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
@@ -117,7 +117,7 @@
          		<li><a class="menuLink" href="../career/career.jsp">경력</a></li>
          		<li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
-         		<li><a class="menuLink" href="../awards.jsp">수상경력</a></li>
+         		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
          		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
          		</ul>
    			</div>

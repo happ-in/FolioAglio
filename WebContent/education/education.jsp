@@ -126,17 +126,11 @@
 		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
-	function popup_highschool(){
-		var url = "highschool.jsp";
-		var name = "h_fom";
+	function popup_highschool(num){
+		var url = "highschool.jsp?school_num="+num;
+		var name = "HighSchool";
 		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
-		window.open("", name, option);
-		
-		var h_data = document.h_fom;
-		h_data.target = name;
-		h_data.action = url;
-		h_data.method = "post";
-		h_data.submit();
+		window.open(url, name, option);
 	}
 	
 </script>
@@ -144,7 +138,7 @@
 <body>
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="../main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<a class="header_name" role="button" href="../main/main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
@@ -169,7 +163,7 @@
 	Connection conn = DBUtil.getConn();
 	String s_type = "";
 	
-	String sql = "select * from education order by school_radio";
+	String sql = "select school_radio, school_name, school_num from education order by school_radio";
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery(sql);
 	
@@ -180,9 +174,7 @@
 	%>
 	
 	<div class="field">
-		<form onClick="popup_highschool()" id="h_fom" name="h_fom">
-			<input type="button" id="highschool" name="highschool" value="<%=rs.getString("school_name") %>">
-		</form>
+		<input type="button" id="highschool" name="highschool" value="<%=rs.getString("school_name") %>" onClick="popup_highschool(<%=rs.getInt(3) %>)">
 	</div>
 	
 	<%		

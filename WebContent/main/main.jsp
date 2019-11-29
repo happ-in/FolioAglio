@@ -94,25 +94,26 @@
 		window.open(url, name, option);
 	}
 	
-	function send(val){
-		window.open('schedulerForm.jsp', name, option);
+	function get_sch(sch_num){
+		window.open("schedulerForm.jsp?sch_num="+sch_num, name, option);
 	}
+	
 </script>
 </head>
 <body>
 
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="main.jsp" style="text-decoration:none;">Folio Aglio</a>
+   			<a class="header_name" role="button" href="../main/main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
-	      		<li><a class="menuLink" href="personal/personal.jsp">인적</a></li>
-         		<li><a class="menuLink" href="education/education.jsp">학력</a></li>
-         		<li><a class="menuLink" href="career/career.jsp">경력</a></li>
-         		<li><a class="menuLink" href="abroad/abroad.jsp">해외경험</a></li>
-         		<li><a class="menuLink" href="external_activity/external_activity.jsp">대외활동</a></li>
-         		<li><a class="menuLink" href="awards.jsp">수상경력</a></li>
-         		<li><a class="menuLink" href="certification/certification.jsp">자격증</a></li>
+	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
+         		<li><a class="menuLink" href="../education/education.jsp">학력</a></li>
+         		<li><a class="menuLink" href="../career/career.jsp">경력</a></li>
+         		<li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
+         		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
+         		<li><a class="menuLink" href="..//award/awards.jsp">수상경력</a></li>
+         		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
          		</ul>
    			</div>
  
@@ -134,28 +135,30 @@
 		</div>
 	
 	<%
-	int i = 0;
 	Connection conn = DBUtil.getConn();
 	
-	String sql = "select sch_memo from scheduler;";
+	String sql = "select sch_num, sch_name from scheduler;";
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery(sql);
 	
 	while(rs.next()){
 	
 	%>
-		<input type="button" name="sch_memo" onclick="send(this.val)" value="<%=rs.getString("sch_memo") %>"
-		 style="background-color:transparent; background-image: none; border: none; display: inline-block; margin-bottom : 10px;"><br>
+	
+		<div style="margin-bottom: 10px;">
+			<a style="cursor: pointer;" onclick="get_sch(<%=rs.getInt("sch_num") %>)"><%=rs.getString("sch_name") %></a>
+		</div>
+		
 	<%
-		i++;
 	}
 	rs.close();
 	conn.close();
 	stmt.close();
 	%>
-	<div>
-		<h5 style="cursor: pointer;" role="button" onClick="popup_scheduler()">일정 등록하기</h5>
-	</div>
+
+		<div>
+			<h5 style="cursor: pointer;" onClick="popup_scheduler()">일정 등록하기</h5>
+		</div>
 	</div>
 </body>
 </html>
