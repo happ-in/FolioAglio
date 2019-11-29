@@ -85,17 +85,15 @@
    </style>
 <meta charset="utf-8">
 <title>Folio Aglio</title>
-<script>
-	var name = "Scheduler";
+<script type="text/javascript">
 	var option = "width = 500, height = 400, top = 100, left = 200, location = no";
 	
-	function popup_scheduler(){
-		var url = "scheduler.jsp";
-		window.open(url, name, option);
+	function popup_sch(){
+		var obj=window.open("scheduler.jsp", '', option);
 	}
 	
 	function get_sch(sch_num){
-		window.open("schedulerForm.jsp?sch_num="+sch_num, name, option);
+		window.open("schedulerForm.jsp?sch_num="+sch_num, '', option);
 	}
 	
 </script>
@@ -157,7 +155,7 @@
 	%>
 
 		<div>
-			<h5 style="cursor: pointer;" onClick="popup_scheduler()">일정 등록하기</h5>
+			<h5 style="cursor: pointer;" onclick="popup_sch()">일정 등록하기</h5>
 		</div>
 	</div>
 </body>
