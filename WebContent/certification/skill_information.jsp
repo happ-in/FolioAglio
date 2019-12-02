@@ -30,15 +30,23 @@
 			var radio = document.querySelectorAll('.radio');
 			var language_name = document.querySelector('#language_name');
 			var kind = document.querySelector('#kind');
-			var application_num = document.querySelector('#application_num');
+			var application_num = document.querySelector('#application_number');
 			var test_date = document.querySelector('#test_date');
 			var score = document.querySelector('#score');
 			var score_name = document.querySelector('#score_name');
 			
 			if (language_name.value == '') {
-				alert('회사명을 입력하세요.');
+				alert('외국어명을 입력하세요.');
 				language_name.focus();
-				// 직위가 입력되지 않았을시
+			} else if (kind.value == '') {
+				alert('어학 종류를 입력하세요 ')
+				kind.focus();
+			} else if (application_number.value == '') {
+				alert('수험번호를 입력하세요 ')
+				application_number.focus();
+			} else if (test_date.value == '') {
+				alert('응시일자를 입력하세요 ')
+				test_date.focus();
 			} else{
 				document.getElementById('form1').submit();
 				self.close();
@@ -54,9 +62,14 @@
 				var issue_date = document.querySelector('#issue_date');
 				
 				if (classfication_name.value == '') {
-					alert('회사명을 입력하세요.');
+					alert('자격증명을 입력하세요.');
 					classfication_name.focus();
-					// 직위가 입력되지 않았을시
+				} else if (issue_org.value == '') {
+					alert('발급 기관을 입력하세요 ')
+					issue_org.focus();
+				} else if (issue_date.value == '') {
+					alert('취득일자를 입력하세요 ')
+					issue_date.focus();
 				} else{
 					document.getElementById('form1').submit();
 					self.close();
@@ -66,6 +79,33 @@
 		
 	});
 </script>
+<style>
+
+	fieldset{
+		background-color: white;
+		
+	}
+	legend{
+		background-color: white;
+		font-wieght : bold;
+		font-size: x-large;
+	}
+	.button_css{
+		border: 1px solid ;
+		background-color: white;
+		color: black;
+		font-wieght : bold;
+		padding: 5px;
+		border-top-left-radius : 5px;
+		border-bottom-left-radius : 5px;
+		border-top-right-radius : 5px;
+		border-bottom-right-radius: 5px;
+	}
+	.button_css:hover{
+		color: white;
+		background-color: #B2CCFF;
+	}
+</style>
 </head>
 <body>
 	<form action="certificationAction.jsp" method="post" id = "form1">
@@ -108,8 +148,8 @@
 					<td>취득급수</td>
 					<td><input type="text"  id="score_name" name="score_name"></td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+				<tr align = "right">
+					<td colspan="2"><input type="button" id="confirm" class="button_css"
 						value="확인">
 					</td>
 				</tr>
@@ -125,10 +165,15 @@
 				</tr>
 				<tr>
 					<td>취득일자</td>
-					<td><input type="date" id="issue_date" name="issue_date"></td>
+					<td><input type="text" id="issue_date" name="issue_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#issue_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="button" id="confirm1"
+				<tr align = "right">
+					<td colspan="2"><input type="button" id="confirm1" class="button_css"
 						value="확인">
 					</td>
 				</tr>

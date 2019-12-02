@@ -203,6 +203,12 @@
 	function get_sch(sch_num){
 		window.open("schedulerForm.jsp?sch_num="+sch_num, '', option);
 	}
+	function popup_portfolio(){
+		var url = "make_folio.jsp";
+		var name = "make_portfolio";
+		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
+		window.open(url, name, option);
+	}
 	
 </script>
 <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
@@ -290,7 +296,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<button class="add_folio">┼</button>
+			<button onClick="popup_portfolio()" class="add_folio">┼</button>
 		</div>
 	</div>
 	<hr class="container" />

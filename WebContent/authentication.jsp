@@ -18,7 +18,7 @@
     	
     	if(dbPW.equals(pw)){
     		session.setAttribute("signedUser", id); // 인증되었음 세션에 남김
-            redirectUrl = "/main/main.jsp"; // 인증 성공 시 재요청 url
+            redirectUrl = "/FolioAglio/main/main.jsp"; // 인증 성공 시 재요청 url
     	}
     	else{
 

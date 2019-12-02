@@ -42,41 +42,34 @@
 		confirm.addEventListener('click', function() {
 
 			var radio = document.querySelectorAll('.radio'); //구분
-			var name = document.querySelector('#name'); //학교명
-			var location = document.querySelector('#location'); // 학교 소재지
-			var division = document.querySelector('#division'); //계열			
-			var e_state = document.querySelector('#e_state'); // 입학구분
-			var e_date = document.querySelector("#e_date"); //입학일자
-			var g_date = document.querySelector('#g_date'); // 졸업일자
-			var g_state = document.querySelector('#g_state'); //졸업여부
-			var major = document.querySelector('#major'); //전공
-			var grade = document.querySelector('#grade'); //학점
-			var classes = document.querySelector('#classes'); //이수학점
-			var total_grade = document.querySelector('#total_grade');//전체학점
-			var major_grade = document.querySelector('#major_grade');//전공학점
-			var transfer = document.querySelector('#transfer'); //복수전공, 부전공
-			var memo = document.querySelector('#memo');
+			var name = document.querySelector('#high_name'); //학교명
+			var location = document.querySelector('#high_location'); // 학교 소재지
+			var division = document.querySelector('#high_division'); //계열			
+			var e_date = document.querySelector("#high_e_date"); //입학일자
+			var g_date = document.querySelector('#high_g_date'); // 졸업일자
+			var g_state = document.querySelector('#high_g_state'); //졸업여부
+			var memo = document.querySelector('#high_memo'); //메모
 			
 			
 			// 전체 검사
-			if (name.value == '') {
+			if (high_name.value == '') {
 				alert('학교명을 입력하세요.');
-				name.focus();
-			} else if (location.value == '') {
+				high_name.focus();
+			} else if (high_location.value == '') {
 				alert('학교 소재지를 입력하세요.');
-				location.focus();
-			} else if (division == '') {
+				high_location.focus();
+			} else if (high_division == '') {
 				alert("계열을 입력하세요");
-				division.focus();
-			} else if (e_date.value == '') {
+				high_division.focus();
+			} else if (high_e_date.value == '') {
 				alert('입학일자를 입력하세요 ')
-				e_date.focus();
-			} else if (g_date.value == '') {
+				high_e_date.focus();
+			} else if (high_g_date.value == '') {
 				alert('졸업일자를 입력하세요 ')
-				g_date.focus();
-			} else if (g_state.value == '') {
+				high_g_date.focus();
+			} else if (high_g_state.value == '') {
 				alert('졸업여부를 입력하세요 ')
-				g_state.focus();
+				high_g_state.focus();
 			}else {
 				document.getElementById('form1').submit();
 				self.close();
@@ -88,41 +81,59 @@
 		confirm1.addEventListener('click', function() {
 
 			var radio = document.querySelectorAll('.radio'); //구분
-			var name = document.querySelector('#name'); //학교명
-			var location = document.querySelector('#location'); // 학교 소재지
-			var division = document.querySelector('#division'); //계열			
-			var e_state = document.querySelector('#e_state'); // 입학구분
-			var e_date = document.querySelector("#e_date"); //입학일자
-			var g_date = document.querySelector('#g_date'); // 졸업일자
-			var g_state = document.querySelector('#g_state'); //졸업여부
-			var major = document.querySelector('#major'); //전공
-			var grade = document.querySelector('#grade'); //학점
-			var classes = document.querySelector('#classes'); //이수학점
-			var total_grade = document.querySelector('#total_grade');//전체학점
-			var major_grade = document.querySelector('#major_grade');//전공학점
-			var transfer = document.querySelector('#transfer'); //복수전공, 부전공
-			var memo = document.querySelector('#memo');
+			var name = document.querySelector('#collage_name'); //학교명
+			var location = document.querySelector('#collage_location'); // 학교 소재지
+			var division = document.querySelector('#collage_division'); //계열			
+			var e_state = document.querySelector('#collage_e_state'); // 입학구분
+			var e_date = document.querySelector("#collage_e_date"); //입학일자
+			var g_date = document.querySelector('#collage_g_date'); // 졸업일자
+			var g_state = document.querySelector('#collage_g_state'); //졸업여부
+			var major = document.querySelector('#collage_major'); //전공
+			var grade = document.querySelector('#collage_grade'); //학점
+			var classes = document.querySelector('#collage_classes'); //이수학점
+			var total_grade = document.querySelector('#collage_total_grade');//전체학점
+			var major_grade = document.querySelector('#collage_major_grade');//전공학점
+			var transfer = document.querySelector('#collage_submajor'); //복수전공, 부전공
+			var memo = document.querySelector('#collage_memo');
 			
 			
 			// 전체 검사
-			if (name.value == '') {
+			if (collage_name.value == '') {
 				alert('학교명을 입력하세요.');
-				name.focus();
-			} else if (location.value == '') {
+				collage_name.focus();
+			} else if (collage_location.value == '') {
 				alert('학교 소재지를 입력하세요.');
-				location.focus();
-			} else if (division == '') {
+				collage_location.focus();
+			} else if (collage_division == '') {
 				alert("계열을 입력하세요");
-				division.focus();
-			} else if (e_date.value == '') {
+				collage_division.focus();
+			} else if (collage_e_state.value == '') {
+				alert('입학 구분을 입력하세요 ')
+				collage_e_state.focus();
+			} else if (collage_e_date.value == '') {
 				alert('입학일자를 입력하세요 ')
-				e_date.focus();
-			} else if (g_date.value == '') {
+				collage_e_date.focus();
+			} else if (collage_g_date.value == '') {
 				alert('졸업일자를 입력하세요 ')
-				g_date.focus();
-			} else if (g_state.value == '') {
+				collage_g_date.focus();
+			} else if (collage_g_state.value == '') {
 				alert('졸업여부를 입력하세요 ')
-				g_state.focus();
+				collage_g_state.focus();
+			} else if (collage_major.value == '') {
+				alert('전공을 입력하세요 ')
+				collage_major.focus();
+			} else if (collage_grade.value == '') {
+				alert('학점을 입력하세요 ')
+				collage_grade.focus();
+			} else if (collage_major_grade.value == '') {
+				alert('전공 학점을 입력하세요 ')
+				collage_major_grade.focus();
+			} else if (collage_classes.value == '') {
+				alert('이수 학점을 입력하세요 ')
+				collage_classes.focus();
+			} else if (collage_total_grade.value == '') {
+				alert('전체 학점을 입력하세요 ')
+				collage_total_grade.focus();
 			}else {
 				document.getElementById('form1').submit();
 				self.close();
@@ -134,41 +145,55 @@
 		confirm2.addEventListener('click', function() {
 
 			var radio = document.querySelectorAll('.radio'); //구분
-			var name = document.querySelector('#name'); //학교명
-			var location = document.querySelector('#location'); // 학교 소재지
-			var division = document.querySelector('#division'); //계열			
-			var e_state = document.querySelector('#e_state'); // 입학구분
-			var e_date = document.querySelector("#e_date"); //입학일자
-			var g_date = document.querySelector('#g_date'); // 졸업일자
-			var g_state = document.querySelector('#g_state'); //졸업여부
-			var major = document.querySelector('#major'); //전공
-			var grade = document.querySelector('#grade'); //학점
-			var classes = document.querySelector('#classes'); //이수학점
-			var total_grade = document.querySelector('#total_grade');//전체학점
-			var major_grade = document.querySelector('#major_grade');//전공학점
-			var transfer = document.querySelector('#transfer'); //복수전공, 부전공
-			var memo = document.querySelector('#memo');
+			var name = document.querySelector('#graduated_name'); //학교명
+			var location = document.querySelector('#graduated_location'); // 학교 소재지
+			var division = document.querySelector('#graduated_division'); //계열			
+			var e_date = document.querySelector("#graduated_e_date"); //입학일자
+			var g_date = document.querySelector('#graduated_g_date'); // 졸업일자
+			var g_state = document.querySelector('#graduated_g_state'); //졸업여부
+			var major = document.querySelector('#graduated_major'); //전공
+			var grade = document.querySelector('#graduated_grade'); //학점
+			var total_grade = document.querySelector('#graduated_total_grade');//전체학점
+			var memo = document.querySelector('#graduated_memo');
 			
 			
 			// 전체 검사
-			if (name.value == '') {
+			if (collage_name.value == '') {
 				alert('학교명을 입력하세요.');
-				name.focus();
-			} else if (location.value == '') {
+				collage_name.focus();
+			} else if (collage_location.value == '') {
 				alert('학교 소재지를 입력하세요.');
-				location.focus();
-			} else if (division == '') {
+				collage_location.focus();
+			} else if (collage_division == '') {
 				alert("계열을 입력하세요");
-				division.focus();
-			} else if (e_date.value == '') {
+				collage_division.focus();
+			} else if (collage_e_state.value == '') {
+				alert('입학 구분을 입력하세요 ')
+				collage_e_state.focus();
+			} else if (collage_e_date.value == '') {
 				alert('입학일자를 입력하세요 ')
-				e_date.focus();
-			} else if (g_date.value == '') {
+				collage_e_date.focus();
+			} else if (collage_g_date.value == '') {
 				alert('졸업일자를 입력하세요 ')
-				g_date.focus();
-			} else if (g_state.value == '') {
+				collage_g_date.focus();
+			} else if (collage_g_state.value == '') {
 				alert('졸업여부를 입력하세요 ')
-				g_state.focus();
+				collage_g_state.focus();
+			} else if (collage_major.value == '') {
+				alert('전공을 입력하세요 ')
+				collage_major.focus();
+			} else if (collage_grade.value == '') {
+				alert('학점을 입력하세요 ')
+				collage_grade.focus();
+			} else if (collage_classes.value == '') {
+				alert('이수 학점을 입력하세요 ')
+				collage_classes.focus();
+			} else if (collage_total_grade.value == '') {
+				alert('전체 학점을 입력하세요 ')
+				collage_total_grade.focus();
+			} else if (collage_major_grade.value == '') {
+				alert('전공 학점을 입력하세요 ')
+				collage_major_grade.focus();
 			}else {
 				document.getElementById('form1').submit();
 				self.close();
@@ -177,6 +202,33 @@
 		});
 	});
 </script>
+<style>
+
+	fieldset{
+		background-color: white;
+		
+	}
+	legend{
+		background-color: white;
+		font-wieght : bold;
+		font-size: x-large;
+	}
+	.button_css{
+		border: 1px solid ;
+		background-color: white;
+		color: black;
+		font-wieght : bold;
+		padding: 5px;
+		border-top-left-radius : 5px;
+		border-bottom-left-radius : 5px;
+		border-top-right-radius : 5px;
+		border-bottom-right-radius: 5px;
+	}
+	.button_css:hover{
+		color: white;
+		background-color: #B2CCFF;
+	}
+</style>
 </head>
 <body>
 	<form action="educationAction.jsp" method="post" id = "form1">
@@ -193,11 +245,11 @@
 			<table  id="high" style="display:'';">
 				<tr>
 					<td>학교명</td>
-					<td><input type="text" id="name" name="name"></td>
+					<td><input type="text" id="high_name" name="high_name"></td>
 				</tr>
 				<tr>
 					<td>학교 소재지</td>
-					<td><select id="location" name = "location">
+					<td><select id="high_location" name = "high_location">
 							<option>강원도</option>
 							<option>경기도</option>
 							<option>경상남도</option>
@@ -219,7 +271,7 @@
 				</tr>
 				<tr>
 					<td>계열</td>
-					<td><select id="division" name="division">
+					<td><select id="high_division" name="high_division">
 							<option>인문계</option>
 							<option>공업</option>
 							<option>과학</option>
@@ -235,15 +287,25 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="text" id="e_date" name="e_date" placeholder="날짜넣기"></td>
+					<td><input type="text" id="high_e_date" name="high_e_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#high_e_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="text" id="g_date" name="g_date" placeholder="날짜넣기"></td>
+					<td><input type="text" id="high_g_date" name="high_g_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#high_g_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업여부</td>
-					<td><select id="g_state" name = "g_state">
+					<td><select id="high_g_state" name = "high_g_state">
 							<option>졸업</option>
 							<option>졸업예정</option>
 							<option>중퇴</option>
@@ -251,9 +313,12 @@
 							<option>재학</option>
 					</select></td>
 				</tr>
-				
 				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+					<td>메모</td>
+					<td><textarea id="high_memo" rows="3" cols="50"></textarea></td>
+				</tr>
+				<tr align="right">
+					<td colspan="2"><input type="button" id="confirm" class="button_css"
 						value="확인">
 					</td>
 				</tr>
@@ -262,11 +327,11 @@
 			<table  id="collage" style="display:none;">
 			<tr>
 					<td>학교명</td>
-					<td><input type="text" id="name" name="name"></td>
+					<td><input type="text" id="collage_name" name="collage_name"></td>
 				</tr>
 				<tr>
 					<td>학교 소재지</td>
-					<td><select id="location" name = "location">
+					<td><select id="collage_location" name = "collage_location">
 							<option>강원도</option>
 							<option>경기도</option>
 							<option>경상남도</option>
@@ -288,7 +353,7 @@
 				</tr>
 				<tr>
 					<td>계열</td>
-					<td><select id="division" name="division">
+					<td><select id="collage_division" name="collage_division">
 							<option>인문계열</option>
 							<option>사회계열</option>
 							<option>예체능계열</option>
@@ -301,22 +366,32 @@
 				</tr>
 				<tr>
 					<td>입학구분</td>
-					<td><select id="e_state" name = "e_state">
+					<td><select id="collage_e_state" name = "collage_e_state">
 							<option>입학</option>
 							<option>편입</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="text" id="e_date" name="e_date" placeholder="날짜넣기"></td>
+					<td><input type="text" id="collage_e_date" name="collage_e_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#collage_e_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="text" id="g_date" name="g_date" placeholder="날짜넣기"></td>
+					<td><input type="text" id="collage_g_date" name="collage_g_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#collage_g_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업여부</td>
-					<td><select id="g_state" name = "g_state">
+					<td><select id="collage_g_state" name = "collage_g_state">
 							<option>졸업</option>
 							<option>졸업예정</option>
 							<option>중퇴</option>
@@ -326,11 +401,11 @@
 				</tr>
 				<tr>
 					<td>전공</td>
-					<td><input type="text" id="major" name="major"></td>
+					<td><input type="text" id="collage_major" name="collage_major"></td>
 				</tr>
 				<tr>
 					<td>학점</td>
-					<td><input type="text" id="grade" name="grade"> / <select id="total_grade" name = "total_grade">
+					<td><input type="text" id="collage_grade" name="collage_grade"> / <select id="collage_total_grade" name = "collage_total_grade">
 							<option>4.0</option>
 							<option>4.3</option>
 							<option>4.5</option>
@@ -341,7 +416,7 @@
 				</tr>
 				<tr>
 					<td>전공학점</td>
-					<td><input type="text" id="grade" name="grade"> / <select id="total_grade" name = "total_grade">
+					<td><input type="text" id="collage_major_grade" name="collage_major_grade"> / <select id="collage_total_grade" name = "collage_total_grade">
 							<option>4.0</option>
 							<option>4.3</option>
 							<option>4.5</option>
@@ -352,18 +427,18 @@
 				</tr>
 				<tr>
 					<td>이수학점</td>
-					<td><input type="text" id="classes" name="classes"></td>
+					<td><input type="text" id="collage_classes" name="collage_classes"></td>
 				</tr>
 				<tr>
 					<td>부전공/ 복수전공 명</td>
-					<td><input type="text" id="submajor" name="submajor"></td>
+					<td><input type="text" id="collage_submajor" name="collage_submajor"></td>
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="collage_memo" rows="3" cols="50"></textarea></td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="button" id="confirm1"
+				<tr align="right">
+					<td colspan="2"><input type="button" id="confirm1" class="button_css"
 						value="확인">
 					</td>
 				</tr>
@@ -372,11 +447,11 @@
 			<table  id="graduated" style="display:none;">
 				<tr>
 					<td>학교명</td>
-					<td><input type="text" id="name" name="name"></td>
+					<td><input type="text" id="graduated_name" name="graduated_name"></td>
 				</tr>
 				<tr>
 					<td>학교 소재지</td>
-					<td><select id="location" name = "location">
+					<td><select id="graduated_location" name = "graduated_location">
 							<option>강원도</option>
 							<option>경기도</option>
 							<option>경상남도</option>
@@ -398,7 +473,7 @@
 				</tr>
 				<tr>
 					<td>계열</td>
-					<td><select id="division" name="division">
+					<td><select id="graduated_division" name="graduated_division">
 							<option>인문계열</option>
 							<option>사회계열</option>
 							<option>예체능계열</option>
@@ -411,15 +486,25 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="text" id="e_date" name="e_date" placeholder="날짜넣기"></td>
+					<td><input type="text" id="graduated_e_date" name="graduated_e_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#graduated_e_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="text" id="g_date" name="g_date" placeholder="날짜넣기"></td>
+					<td><input type="text" id="graduated_g_date" name="graduated_g_date" placeholder="날짜넣기">
+					<script>
+						$(function(){
+							$("#graduated_g_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
 				</tr>
 				<tr>
 					<td>졸업여부</td>
-					<td><select id="g_state" name = "g_state">
+					<td><select id="graduated_g_state" name = "graduated_g_state">
 							<option>졸업</option>
 							<option>졸업예정</option>
 							<option>중퇴</option>
@@ -429,11 +514,11 @@
 				</tr>
 				<tr>
 					<td>전공</td>
-					<td><input type="text" id="major" name="major"></td>
+					<td><input type="text" id="graduated_major" name="graduated_major"></td>
 				</tr>
 				<tr>
 					<td>학점</td>
-					<td><input type="text" id="grade" name="grade"> / <select id="total_grade" name = "total_grade">
+					<td><input type="text" id="graduated_grade" name="graduated_grade"> / <select id="graduated_total_grade" name = "graduated_total_grade">
 							<option>4.0</option>
 							<option>4.3</option>
 							<option>4.5</option>
@@ -444,10 +529,10 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="graduated_memo" rows="3" cols="50"></textarea></td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="button" id="confirm2"
+				<tr align = "right">
+					<td colspan="2"><input type="button" id="confirm2" class="button_css"
 						value="확인">
 					</td>
 				</tr>

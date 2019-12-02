@@ -62,6 +62,33 @@
 		});
 	});
 </script>
+<style>
+
+	fieldset{
+		background-color: white;
+		
+	}
+	legend{
+		background-color: white;
+		font-wieght : bold;
+		font-size: x-large;
+	}
+	.button_css{
+		border: 1px solid ;
+		background-color: white;
+		color: black;
+		font-wieght : bold;
+		padding: 5px;
+		border-top-left-radius : 5px;
+		border-bottom-left-radius : 5px;
+		border-top-right-radius : 5px;
+		border-bottom-right-radius: 5px;
+	}
+	.button_css:hover{
+		color: white;
+		background-color: #B2CCFF;
+	}
+</style>
 </head>
 <body>
 	<form action="careerAction.jsp" method="post" id = "form1">
@@ -111,8 +138,8 @@
 					<td>메모</td>
 					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+				<tr align = "right">
+					<td colspan="2"><input type="button" id="confirm" class="button_css"
 						value="확인">
 					</td>
 				</tr>
