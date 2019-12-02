@@ -97,11 +97,14 @@
 <meta charset="utf-8">
 <title>대외활동</title>
 <script>
+	var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 	function popup_external_activities(){
 		var url = "activity_information.jsp";
 		var name = "External_Activities";
-		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
+	}
+	function get_activity(num){
+		window.open("externalForm.jsp?activity_num="+num, '', option);
 	}
 </script>
 </head>
@@ -135,7 +138,7 @@
 	Connection conn = DBUtil.getConn();
 	String s_type = "";
 	
-	String sql = "select * from external_activities";
+	String sql = "select group_name, activity_num from external_activities";
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery(sql);
 	
@@ -143,7 +146,7 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("group_name") %>"></form></div>
+	<div class="field"><form><input type="button" value="<%=rs.getString(1) %>" onclick="get_activity(<%=rs.getInt(2) %>)"></form></div>
 	
 	<%
 		
