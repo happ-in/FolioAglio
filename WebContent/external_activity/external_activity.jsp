@@ -83,7 +83,7 @@
    .field{
    	padding : 10px;
    }
-   .field button{
+   .field input{
    	display : inline-block;
    	font-family : Hanna;
    	padding : 10px;
@@ -143,7 +143,7 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("groupname") %>"></form></div>
+	<div class="field"><form><input type="button" value="<%=rs.getString("group_name") %>"></form></div>
 	
 	<%
 		

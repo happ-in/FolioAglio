@@ -97,12 +97,15 @@
 <meta charset="utf-8">
 <title>경력</title>
 <script>
+	var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 	function popup_career(){
 		var url = "career_information.jsp";
-		var name = "Carrier";
-		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
+		var name = "Carrier";	
 		window.open(url, name, option);
-}
+	}
+	function get_carr(num){
+		window.open("careerForm.jsp?carr_num="+num, '', option);
+	}
 </script>
 </head>
 <body>
@@ -134,7 +137,7 @@
 	Connection conn = DBUtil.getConn();
 	String s_type = "";
 	
-	String sql = "select * from carrier";
+	String sql = "select company_name, carrier_num from carrier";
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery(sql);
 	
@@ -143,7 +146,7 @@
 	%>
 	
 	<div class="field">
-		<form></form><input type="button" value="<%=rs.getString("company_name") %>"></form>
+		<input type="button" value="<%=rs.getString(1) %>" onclick="get_carr(<%=rs.getString(2) %>)">
 	</div>
 	
 	<%

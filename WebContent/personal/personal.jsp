@@ -156,7 +156,7 @@
 	%>
 			<tr>
 				<td rowspan="5" colspan="2" align="center">
-				<button class="idpic" style="background: none;";>No Image</button></td>
+				<button type="file" class="idpic" style="background: none;";>No Image</button></td>
 			</tr>
 	<%
 		} else {
