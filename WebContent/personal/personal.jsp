@@ -189,6 +189,13 @@
 				<td> : </td>
 				<td><%=email %></td>
 			</tr>
+			<form method="post" enctype="multipart/form-data" action="upload.jsp">
+
+<input type="file" name="filename">
+
+<input type="submit" value="업로드">
+
+</form>
 		</table>
 	</fieldset>
 	<%
