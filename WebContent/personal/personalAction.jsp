@@ -28,11 +28,9 @@
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
 	
-	System.out.println(session_name);
 	
 	String sql = "update personal_information set country = ?,birth = ?,name = ? , en_name = ?, sex =?,email=?,call_num=?,address=?,git_address=?,personal_memo=? where id=? ;";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
-	
 	pstmt.setString(1, country);
 	pstmt.setString(2, birth);
 	pstmt.setString(3, name);

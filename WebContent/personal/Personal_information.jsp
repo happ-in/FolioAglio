@@ -13,25 +13,23 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>인적사항</title>
 <script>
-
    window.addEventListener('load', function() {
       var confirm = document.querySelector('#confirm');
       
       confirm.addEventListener('click', function() {
-
     	    var country = document.querySelector('#country');
 			var picture = document.querySelector('#picture');
 			var birth = document.querySelector('#birth');
 			var name = document.querySelector('#name');
-			var e_name = document.querySelector('#e_name');
+			var en_name = document.querySelector('#en_name');
 			var gender = document.querySelectorAll(".gender");
 			var email = document.querySelector('#email');
 			var number = document.querySelector('#number');
 			var address = document.querySelector('#address');
 			var git_address = document.querySelector('#git_address');
 			var memo = document.querySelector('#memo');
-
-         var genderVal = false;
+         
+			var genderVal = false;
          for (var i = 0; i < gender.length; i++) {
             //성별을 검사하면서 한개라도 체크가되어있다면
             if (gender[i].checked) {
@@ -54,9 +52,9 @@
             alert('이름을 입력하세요.');
             name.focus();
             // 생년월일이 입력되지 않았을시
-         } else if (e_name.value == '') {
+         } else if (en_name.value == '') {
             alert('영문명을 입력하세요.');
-            e_name.focus();
+            en_name.focus();
             // 성별이 체크가 안되었을시
          } else if (genderVal == false) {
             alert("성별을 입력하세요");
@@ -78,12 +76,10 @@
             document.getElementById('form1').submit();
             self.close();
          }
-
       });
    });
 </script>
 <style>
-
 	fieldset{
 		background-color: white;
 		
@@ -115,7 +111,6 @@
  
    Object session_object=session.getAttribute("signedUser");
    String session_name=(String)session_object;
-
    Connection conn = DBUtil.getConn();
    
    String sql = "select country, birth, name, en_name, sex, email, call_num, address, git_address, personal_memo from personal_information where id=?";
@@ -126,7 +121,7 @@
     if(rs.next()){
    %>
 
-   <form action="personalAction.jsp" method="post" id = "form1" onsubmit="return checkValue()" role="form">
+   <form action="personalAction.jsp" method="post" id = "form1">
       <fieldset>
          <legend>인적사항</legend>
          <table>
@@ -154,8 +149,8 @@
             <tr>
                <td>성별</td>
                <td>
-                    <input type="radio" value="male" name="gender" class="gender" <%if(rs.getString(5)=="남") {out.print("checked");} %>>남 
-                  <input type="radio" value="female"name="gender" class="gender" <%if(rs.getString(5)=="여") {out.print("checked");} %>> 여
+                    <input type="radio" value="남" name="gender" class="gender" <%if(rs.getString(5).equals("남")) {out.print("checked");} %>>남 
+                  <input type="radio" value="여"name="gender" class="gender" <%if(rs.getString(5).equals("여")) {out.print("checked");} %>> 여
                </td>
             </tr>
             <tr>
@@ -179,7 +174,7 @@
                <td><textarea id="memo" name = "memo" rows="3" cols="50"> <%=rs.getString(10)%></textarea></td>
             </tr>
             <tr align = "right">
-               <td colspan="2"><input type="submit" id="confirm" class = "button_css" value="확인">
+               <td colspan="2"><input type="button" id="confirm" class = "button_css" value="확인">
                </td>
             </tr>
          </table>
