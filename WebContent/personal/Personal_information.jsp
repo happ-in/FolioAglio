@@ -66,7 +66,7 @@
             alert('이메일을 입력하세요.');
             email.focus();
             //전화번호가 입력되지 않았을시
-         } else if (number.value == ''|| isNaN(number.value)) {
+         } else if (number.value == '') {
             alert('전화번호를 입력하세요 ')
             number.focus();
             //주소가 입력되지 않았을시
@@ -178,8 +178,8 @@
                <td>메모</td>
                <td><textarea id="memo" name = "memo" rows="3" cols="50"> <%=rs.getString(10)%></textarea></td>
             </tr>
-            <tr>
-               <td colspan="2"><input type="submit" id="confirm" value="확인">
+            <tr align = "right">
+               <td colspan="2"><input type="submit" id="confirm" class = "button_css" value="확인">
                </td>
             </tr>
          </table>
