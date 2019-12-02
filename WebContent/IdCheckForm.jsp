@@ -4,7 +4,9 @@
 <%@ page import="file.DBUtil" %>
 <html>
 <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>아이디 중복 체크</title>
 	
@@ -77,7 +79,7 @@
 				         url:'id_check.jsp',  //가져오고자하는 서버페이지 주소를 넣는다.
 				         type:'post',
 				         data:{
-		                      id: $('#userId').val(),  
+		                      id: document.getElementById("userId").value,  
 		               },
 				  success : function(t){ 
                       if(t==0){
@@ -121,12 +123,12 @@
 	<div id="chk">
 		<form id="checkForm">
 			<input type="text" name="idinput" id="userId">
-			<input type="button" value="중복확인" onclick="idCheck()">
+			<input class="btn btn-light" type="button" value="중복확인" onclick="idCheck()">
 		</form>
-		<div id="msg"></div>
+		<div id="msg" style="height:20;"></div>
 		<br>
-		<input id="cancelBtn" type="button" value="취소" onclick="window.close()"><br>
-		<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
+		<input class="btn btn-light" id="cancelBtn" type="button" value="취소" onclick="window.close()" style="position: relative;top:0"><br>
+		<input class="btn btn-light" id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()" style="position: relative;top:-35">
 	</div>
 </div>	
 </body>

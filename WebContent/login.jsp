@@ -234,7 +234,6 @@ input[type="radio"]:checked ~ label {
         function inputIdChk(){
         	document.userInfo.idDuplication.value="idUncheck";
         }
-        
     </script>
 
 </head>
@@ -242,7 +241,6 @@ input[type="radio"]:checked ~ label {
 <div class="text-center" style="margin-bottom:30px;">
 <h1 class="display-3" style="font-weight: 600;">Folio Aglio</h1>
 </div>
-
 <div class="container">
        <div class="row">
          <div class="col-md-6 col-md-offset-3">
@@ -261,7 +259,7 @@ input[type="radio"]:checked ~ label {
                <div class="panel-body">
                   <div class="row">
                      <div class="col-lg-12">
-                        <form id="login-form" action="authentication.jsp"style="display: block;">
+                        <form id="login-form" action="/FolioAglio/authentication.jsp"style="display: block;">
                            <div class="form-group">
                               <input class="form-control" name="id" type="text" placeholder="ID" tabindex="1" class="form-control">
                            </div>
@@ -289,7 +287,7 @@ input[type="radio"]:checked ~ label {
                               </div>
                            </div>
                         </form>
-                        <form id="register-form" method="post" action="signup.jsp" name="userInfo" onsubmit="return checkValue()" role="form" style="display: none;">
+                        <form id="register-form" method="post" action="/FolioAglio/signup.jsp" name="userInfo" onsubmit="return checkValue()" role="form" style="display: none;">
                            			
                            			<div class="text-center">
 		                          <p class="form__answer"> 
@@ -393,7 +391,7 @@ input[type="radio"]:checked ~ label {
 <script>
 $(function() {
     $('#login-form-link').click(function(e) {
-      $("#login-form").delay(100).fadeIn(100);
+      $("#login-form").delay(100).fadeIn(100);	
        $("#register-form").fadeOut(100);
       $('#register-form-link').removeClass('active');
       $(this).addClass('active');
@@ -406,7 +404,6 @@ $(function() {
       $(this).addClass('active');
       e.preventDefault();
    });
-
 });
 </script>
 </html>

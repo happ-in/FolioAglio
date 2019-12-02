@@ -5,7 +5,6 @@
 <%
     String id = request.getParameter("id");
     Connection conn = DBUtil.getConn();
-
     String sql = "select id from personal_information where id = ?;";
     PreparedStatement pstmt = conn.prepareStatement(sql);
     pstmt.setString(1,id);
