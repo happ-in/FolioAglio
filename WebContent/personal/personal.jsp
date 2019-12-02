@@ -12,6 +12,7 @@
    body {
       font-family: Nanum Gothic;
    }
+   a { text-decoration:none}
    .navbar {
       background-color : #B2CCFF;
       padding : 0.375rem 1rem;
@@ -91,6 +92,11 @@
 		window.open(url, name, option);
 	}
 </script>
+<%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
+    if (session.getAttribute("signedUser") == null) {
+        response.sendRedirect("../logout.jsp");
+    }
+%>
 </head>
 <body>
 
@@ -110,7 +116,7 @@
    			</div>
  
    			<div class="navbar_item">
-	   			<button class="logout">로그아웃</button>
+	   			<a href="../logout.jsp"><button class="logout">로그아웃</button></a>
 	   		</div>
 		</div>
 	</header>
@@ -119,21 +125,25 @@
 	String id_pic="";
 	String name = "";
 	String birth = "";
-	String phone = "";
+	String call_num = "";
 	String email = "";
-	
+	Object session_object=session.getAttribute("signedUser");
+	String session_name=(String)session_object;
+
 	try {
 		Connection conn = DBUtil.getConn();
 		
-		String sql = "select fileRealName, name, birth, phone, email from file where id='kkk';";
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
+		String sql = "select id_image, name, birth, call_num, email from personal_information where id=?;";
+	    PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1,session_name);
+	    ResultSet rs = pstmt.executeQuery();
+
 		
 		while(rs.next()) {
-			id_pic = rs.getString("fileRealName");
+			id_pic = rs.getString("id_image");
 			name = rs.getString("name");
 			birth = rs.getString("birth");
-			phone = rs.getString("phone");
+			call_num = rs.getString("call_num");
 			email = rs.getString("email");
 		}
 	
@@ -172,19 +182,26 @@
 			<tr>
 				<td>전화번호 </td>
 				<td> : </td>
-				<td><%=phone %></td>
+				<td><%=call_num %></td>
 			</tr>
 			<tr>
 				<td>이메일 </td>
 				<td> : </td>
 				<td><%=email %></td>
 			</tr>
+			<form method="post" enctype="multipart/form-data" action="upload.jsp">
+
+<input type="file" name="filename">
+
+<input type="submit" value="업로드">
+
+</form>
 		</table>
 	</fieldset>
 	<%
 	rs.close();
 	conn.close();
-	stmt.close();
+	pstmt.close();
 	}catch(SQLException e) {
 		// e.printStackTrace();
 		out.println(e.toString());
