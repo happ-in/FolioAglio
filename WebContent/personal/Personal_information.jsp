@@ -19,53 +19,17 @@
       
       confirm.addEventListener('click', function() {
 
-			var genderVal = false;
-			for (var i = 0; i < gender.length; i++) {
-				//성별을 검사하면서 한개라도 체크가되어있다면
-				if (gender[i].checked) {
-					//true를 셋팅
-					genderVal = true;
-				}
-			}
-			
-			// 전체 검사
-			// 국적이 입력되지 않았을시
-			if (country.value == '') {
-				alert('국적을 입력하세요.');
-				country.focus();
-				// 생년월일이 입력되지 않았을시
-			} else if (birth.value == '') {
-				alert('생년월일을 입력하세요.');
-				birth.focus();
-				// 이름이 입력되지 않았을시
-			} else if (name.value == '') {
-				alert('이름을 입력하세요.');
-				name.focus();
-				// 생년월일이 입력되지 않았을시
-			} else if (e_name.value == '') {
-				alert('영문명을 입력하세요.');
-				e_name.focus();
-				// 성별이 체크가 안되었을시
-			} else if (genderVal == false) {
-				alert("성별을 입력하세요");
-				gender[0].focus();
-			// 이메일이 입력되지 않았을시
-			} else if (email.value == '') {
-				alert('이메일을 입력하세요.');
-				email.focus();
-				//전화번호가 입력되지 않았을시
-			} else if (number.value == '') {
-				alert('전화번호를 입력하세요 ')
-				number.focus();
-				//주소가 입력되지 않았을시
-			} else if (address.value == '') {
-				alert('전화번호를 입력하세요 ')
-				address.focus();
-			}else {
-				//저장하는거 구현해야함
-				document.getElementById('form1').submit();
-				self.close();
-			}
+    	    var country = document.querySelector('#country');
+			var picture = document.querySelector('#picture');
+			var birth = document.querySelector('#birth');
+			var name = document.querySelector('#name');
+			var e_name = document.querySelector('#e_name');
+			var gender = document.querySelectorAll(".gender");
+			var email = document.querySelector('#email');
+			var number = document.querySelector('#number');
+			var address = document.querySelector('#address');
+			var git_address = document.querySelector('#git_address');
+			var memo = document.querySelector('#memo');
 
          var genderVal = false;
          for (var i = 0; i < gender.length; i++) {
