@@ -10,17 +10,18 @@
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>인적사항</title>
+
 <script>
+
 	window.addEventListener('load', function() {
 		var confirm = document.querySelector('#confirm');
 		
 		confirm.addEventListener('click', function() {
 
 			var country = document.querySelector('#country');
-			var picture = document.querySelector('#picture');
 			var birth = document.querySelector('#birth');
 			var name = document.querySelector('#name');
-			var e_name = document.querySelector('#e_name');
+			var e_name = document.querySelector('#en_name');
 			var gender = document.querySelectorAll(".gender");
 			var email = document.querySelector('#email');
 			var number = document.querySelector('#number');
@@ -73,7 +74,6 @@
 				alert('전화번호를 입력하세요 ')
 				address.focus();
 			}else {
-				//저장하는거 구현해야함
 				document.getElementById('form1').submit();
 				self.close();
 			}
@@ -106,7 +106,7 @@
 				</tr>
 				<tr>
 					<td>영문명</td>
-					<td><input type="text" id="e_name" name="e_name"></td>
+					<td><input type="text" id="en_name" name="en_name"></td>
 				</tr>
 				<tr>
 					<td>성별</td>
@@ -138,11 +138,10 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="memo" name = "memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="button" id="confirm"
-						value="확인"">
+					<td colspan="2"><input type="button" id="confirm" value="확인">
 					</td>
 				</tr>
 			</table>
