@@ -15,6 +15,7 @@
 	<%
 	Connection conn = DBUtil.getConn();
 	
+	String radio = "";
 	String school_radio = new String(request.getParameter("radio").getBytes("ISO-8859-1"), "UTF-8");
 	String school_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
 	String school_location = new String(request.getParameter("location").getBytes("ISO-8859-1"), "UTF-8");
@@ -34,7 +35,18 @@
 	String sql = "insert into education(school_radio, school_name, school_location, division,e_state,e_date,g_date,g_state,major,grade,total_grade,major_grade,classes,submajor,edu_memo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	
-	pstmt.setString(1, school_radio);
+	if (school_radio.equals("고등학교")) { 
+		radio = "1";
+		
+	}
+	else if (school_radio.equals("대학교")) { 
+		radio = "2"; 
+	}
+	else { 
+		radio = "3"; 
+	}
+	
+	pstmt.setString(1, radio);
 	pstmt.setString(2, school_name);
 	pstmt.setString(3, school_location);
 	pstmt.setString(4, division);

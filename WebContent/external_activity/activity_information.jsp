@@ -125,7 +125,7 @@
 					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr align="right">
-					<td colspan="2"><input type="button" id="confirm" class="button_css"
+					<td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
 						value="확인">
 					</td>
 				</tr>

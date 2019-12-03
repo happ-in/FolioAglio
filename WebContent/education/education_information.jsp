@@ -158,42 +158,33 @@
 			
 			
 			// 전체 검사
-			if (collage_name.value == '') {
+			if (graduated_name.value == '') {
 				alert('학교명을 입력하세요.');
-				collage_name.focus();
-			} else if (collage_location.value == '') {
+				graduated_name.focus();
+			} else if (graduated_location.value == '') {
 				alert('학교 소재지를 입력하세요.');
-				collage_location.focus();
-			} else if (collage_division == '') {
+				graduated_location.focus();
+			} else if (graduated_division == '') {
 				alert("계열을 입력하세요");
-				collage_division.focus();
-			} else if (collage_e_state.value == '') {
-				alert('입학 구분을 입력하세요 ')
-				collage_e_state.focus();
-			} else if (collage_e_date.value == '') {
+				graduated_division.focus();
+			} else if (graduated_e_date.value == '') {
 				alert('입학일자를 입력하세요 ')
-				collage_e_date.focus();
-			} else if (collage_g_date.value == '') {
+				graduated_e_date.focus();
+			} else if (graduated_g_date.value == '') {
 				alert('졸업일자를 입력하세요 ')
-				collage_g_date.focus();
-			} else if (collage_g_state.value == '') {
+				graduated_g_date.focus();
+			} else if (graduated_g_state.value == '') {
 				alert('졸업여부를 입력하세요 ')
-				collage_g_state.focus();
-			} else if (collage_major.value == '') {
+				graduated_g_state.focus();
+			} else if (graduated_major.value == '') {
 				alert('전공을 입력하세요 ')
-				collage_major.focus();
-			} else if (collage_grade.value == '') {
-				alert('학점을 입력하세요 ')
-				collage_grade.focus();
-			} else if (collage_classes.value == '') {
-				alert('이수 학점을 입력하세요 ')
-				collage_classes.focus();
-			} else if (collage_total_grade.value == '') {
+				graduated_major.focus();
+			} else if (graduated_total_grade.value == '') {
 				alert('전체 학점을 입력하세요 ')
-				collage_total_grade.focus();
-			} else if (collage_major_grade.value == '') {
-				alert('전공 학점을 입력하세요 ')
-				collage_major_grade.focus();
+				graduated_total_grade.focus();
+			} else if (graduated_grade.value == '') {
+				alert('학점을 입력하세요 ')
+				graduated_grade.focus();
 			}else {
 				document.getElementById('form1').submit();
 				self.close();
