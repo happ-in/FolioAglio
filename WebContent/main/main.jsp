@@ -15,42 +15,47 @@
    body {
       font-family: Nanum Gothic;
    }
+   a { text-decoration:none}
    .navbar {
       background-color : #B2CCFF;
-      padding : 0.375rem 1rem;
+      padding : 0.00075rem 1rem;
       position : relative;
       align-items : center;
       font-family : Hanna;
    }
+   .navbar ul {
+      height:10px; 
+      width:90%; 
+      display: table;
+      table-layout: fixed; 
+   }
    .navbar ul li {
-      float : left;
-      margin-left : 15px;
-      list-style : none ;
+      display: table-cell;
+   	  width: 10%;
+   	  text-align: center;
    }
    .navbar_item{
       align-items : center;
-      margin-right : 16px;
-      padding : 15px;
-      display : flex!important;
+      margin-right : 14px;
+      padding : 10px;
+      
    }
    .logout{
-   	  display: block;
-   	  margin: 20px auto;
-   	  padding : 10px 10px;
-   	  background : none;
-   	  border : 0px;
-   	  border-radius : 5px;
-   	  font-family : Hanna;
-   	  font-size : 15px;
-   	  color : white;
+        display: block;
+        background : none;
+        border : 0px;
+        border-radius : 5px;
+        font-family : Hanna;
+        font-size : 100%;
+        color : #636363;
    }
    .logout:hover{
-   	  background : #636363;
-   	  border : 0px;
+        background : #EAEAEA;
+        border : 0px;
    }
    .menuLink{
       text-decoration : none;
-      display : block;
+      font-size : 120%;
       color : white;
    }
    .menuLink:hover {
@@ -61,8 +66,11 @@
       display : flex;
    }
    .header_name {
+      margin-right : 130px;
+   	  position : relative;
+   	  bottom: 40px;
       font-family : Malgun Gothic;
-      font-size : 20px;
+      font-size : 100%;
       font-weight : bold;
       color : white;
    }
@@ -95,25 +103,21 @@
    position: relative;
    overflow: hidden;
 }
-
 .card:hover, .card.hover {
    -webkit-transform: translateY(-4px);
    transform: translateY(-4px);
    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.3), 0 0 1px 0
       rgba(0, 0, 0, 0.25);
 }
-
 .card:hover .card-content, .card.hover .card-content {
    box-shadow: inset 0 3px 0 0 #ccb65e;
    border-color: #ccb65e;
 }
-
 .card:hover .card-img .overlay, .card.hover .card-img .overlay {
    background-color: rgba(25, 29, 38, 0.85);
    transition: opacity .2s ease;
    opacity: 1;
 }
-
 .card-img {
    position: relative;
    height: 150px;
@@ -124,7 +128,6 @@
    background-repeat: no-repeat;
    background-size: cover;
 }
-
 .card-img .overlay {
    position: absolute;
    left: 0;
@@ -134,14 +137,12 @@
    background-color: #fff;
    opacity: 0;
 }
-
 .card-img .overlay .overlay-content {
    line-height: 154px;
    width: 100%;
    text-align: center;
    color: #fff;
 }
-
 .card-img .overlay .overlay-content a {
    color: #fff;
    padding: 0 2rem;
@@ -153,13 +154,11 @@
    cursor: pointer;
    text-decoration: none;
 }
-
 .card-img .overlay .overlay-content a:hover, .card-img .overlay .overlay-content a.hover
    {
    background: #ccb65e;
    border-color: #ccb65e;
 }
-
 .card-content {
    width: 100%;
    min-height: 104px;
@@ -170,17 +169,14 @@
    padding: 1rem 2rem;
    transition: all .2s ease;
 }
-
 .card-content a {
    text-decoration: none;
    color: #202927;
 }
-
 .card-content h2, .card-content a h2 {
    font-size: 1rem;
    font-weight: 500;
 }
-
 .card-content p, .card-content a p {
    font-size: .8rem;
    font-weight: 400;
@@ -213,15 +209,18 @@
 </script>
 <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
     if (session.getAttribute("signedUser") == null) {
-        response.sendRedirect("../logout.jsp");
+        response.sendRedirect("logout.jsp");
     }
 %>
 </head>
 <body>
-
+	<div align = center>
+	    <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
+		<a role="button" href="../main/main.jsp"><img src="../image/name.png" style="width:340px; height:100px;" ></a>
+		
+	</div>
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="../main/main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
@@ -231,12 +230,9 @@
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
          		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
+         		<li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
          		</ul>
    			</div>
- 
-   			<div class="navbar_item">
-	   			<a href="../logout.jsp"><button class="logout">로그아웃</button></a>
-	   		</div>
 		</div>
 	</header>
 	

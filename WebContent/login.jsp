@@ -94,7 +94,6 @@
    text-decoration: underline;
    color: #666;
 }
-
 .btn-register {
    background-color: #1CB94E;
    outline: none;
@@ -112,8 +111,6 @@
    background-color: #1CA347;
    border-color: #1CA347;
 }
-
-
 .form__answer {
 	display: inline-block;
 	box-sizing: border-box;
@@ -124,7 +121,6 @@
 	font-size: 17px;
 	text-align: center; 
 }
-
 .label123 {
 	border: 1px solid #c9c9c9;
 	box-sizing: border-box;
@@ -139,7 +135,6 @@
 		border: 1px solid #AB321A;
 	}
 }
-
 .form__button {
 	height: 40px;
 	border: none;
@@ -159,22 +154,21 @@
 		outline: none;
 	}
 }
-
 input[type="radio"] {
 	opacity: 0;
 	width: 0;
   height: 0;
 }
-
 input[type="radio"]:active ~ label {
   opacity: 1;
 }
-
 input[type="radio"]:checked ~ label {
   opacity: 1;
 	border: 1px solid #000000;
 }
-
+h1, h2 {
+    display: inline;
+}
    </style>
 <meta charset="utf-8">
 <title>로그인</title>
@@ -239,7 +233,7 @@ input[type="radio"]:checked ~ label {
 </head>
 <body>
 <div class="text-center" style="margin-bottom:30px;">
-<h1 class="display-3" style="font-weight: 600;">Folio Aglio</h1>
+	<img src="image/name.png" width = "450" height="150">
 </div>
 <div class="container">
        <div class="row">
@@ -259,7 +253,7 @@ input[type="radio"]:checked ~ label {
                <div class="panel-body">
                   <div class="row">
                      <div class="col-lg-12">
-                        <form id="login-form" action="/authentication.jsp"style="display: block;">
+                        <form id="login-form" action="authentication.jsp"style="display: block;">
                            <div class="form-group">
                               <input class="form-control" name="id" type="text" placeholder="ID" tabindex="1" class="form-control">
                            </div>

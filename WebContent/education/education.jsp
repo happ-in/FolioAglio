@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
@@ -9,55 +10,55 @@
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
    
+<style>
+   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+   
    body {
       font-family: Nanum Gothic;
    }
+   a { text-decoration:none}
    .navbar {
       background-color : #B2CCFF;
-      padding : 0.375rem 1rem;
+      padding : 0.00075rem 1rem;
       position : relative;
       align-items : center;
       font-family : Hanna;
    }
+   .navbar ul {
+      height:10px; 
+      width:90%; 
+      display: table;
+      table-layout: fixed; 
+   }
    .navbar ul li {
-      float : left;
-      margin-left : 15px;
-      list-style : none ;
+      display: table-cell;
+   	  width: 10%;
+   	  text-align: center;
    }
    .navbar_item{
       align-items : center;
-      margin-right : 16px;
-      padding : 15px;
-      display : flex!important;
+      margin-right : 14px;
+      padding : 10px;
+      
    }
    .logout{
-   	  display: block;
-   	  margin: 20px auto;
-   	  padding : 10px 10px;
-   	  background : none;
-   	  border : 0px;
-   	  border-radius : 5px;
-   	  font-family : Hanna;
-   	  font-size : 15px;
-   	  color : white;
+        display: block;
+        background : none;
+        border : 0px;
+        border-radius : 5px;
+        font-family : Hanna;
+        font-size : 100%;
+        color : #636363;
    }
    .logout:hover{
-   	  background : #636363;
-   	  border : 0px;
+        background : #EAEAEA;
+        border : 0px;
    }
    .menuLink{
       text-decoration : none;
-      display : block;
+      font-size : 120%;
       color : white;
-   }
-   .menu {
-      text-decoration : none;
-      display : block;
-      color : black;
-   }
-   .menu:hover {
-      color : #636363;
-      font-wieght : bold;
    }
    .menuLink:hover {
       color : #636363;
@@ -67,8 +68,11 @@
       display : flex;
    }
    .header_name {
+      margin-right : 130px;
+   	  position : relative;
+   	  bottom: 40px;
       font-family : Malgun Gothic;
-      font-size : 20px;
+      font-size : 100%;
       font-weight : bold;
       color : white;
    }
@@ -136,9 +140,13 @@
 </script>
 </head>
 <body>
+	<div align = center>
+	    <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
+		<a role="button" href="../main/main.jsp"><img src="../image/name.png"  style="width:340px; height:100px;" ></a>
+		
+	</div>
 	<header>
 		<div class="navbar container">
-   			<a class="header_name" role="button" href="../main/main.jsp" style="text-decoration:none;">Folio Aglio</a>
    			<div class="navbar_item">
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
@@ -148,12 +156,9 @@
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
          		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
+         		<li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
          		</ul>
-         	</div>
- 
-   			<div class="navbar_item">
-	   			<button class="logout">로그아웃</button>
-	   		</div>
+   			</div>
 		</div>
 	</header>
 
