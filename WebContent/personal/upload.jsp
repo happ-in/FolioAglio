@@ -25,8 +25,7 @@
     	  }
       }
       MultipartRequest multipartRequest
-      = new MultipartRequest(request, directory, maxSize, encoding,
-            new DefaultFileRenamePolicy());
+      = new MultipartRequest(request, directory, maxSize, encoding);
       
       Enumeration files = multipartRequest.getFileNames();
       String file1 = (String)files.nextElement();
@@ -34,15 +33,15 @@
       String fileName = multipartRequest.getOriginalFileName("filename");
       String fileRealName = multipartRequest.getFilesystemName("filename");
       
-      fileName=directory+"\\"+fileName;
-      fileRealName=directory+"\\"+fileRealName;
-      
       Object session_object=session.getAttribute("signedUser");
       String session_name=(String)session_object;
       
+      fileName=directory+"\\"+session_name;
+      fileRealName=directory+"\\"+session_name;
+      
+      
       new fileDAO().upload(fileName, fileRealName,session_name);
       out.write("파일명 : "+fileName+"<br>");
-      out.write("실제 파일명 : "+fileRealName+"<br>");
    %>
    
 </body>
