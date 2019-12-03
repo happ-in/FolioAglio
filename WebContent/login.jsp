@@ -259,7 +259,7 @@ input[type="radio"]:checked ~ label {
                <div class="panel-body">
                   <div class="row">
                      <div class="col-lg-12">
-                        <form id="login-form" action="/FolioAglio/authentication.jsp"style="display: block;">
+                        <form id="login-form" action="/authentication.jsp"style="display: block;">
                            <div class="form-group">
                               <input class="form-control" name="id" type="text" placeholder="ID" tabindex="1" class="form-control">
                            </div>
@@ -287,7 +287,7 @@ input[type="radio"]:checked ~ label {
                               </div>
                            </div>
                         </form>
-                        <form id="register-form" method="post" action="/FolioAglio/signup.jsp" name="userInfo" onsubmit="return checkValue()" role="form" style="display: none;">
+                        <form id="register-form" method="post" action="signup.jsp" name="userInfo" onsubmit="return checkValue()" role="form" style="display: none;">
                            			
                            			<div class="text-center">
 		                          <p class="form__answer"> 
