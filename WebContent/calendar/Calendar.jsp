@@ -58,6 +58,91 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="calendar.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta name="viewport" content="width=device-width; initial-scale =1">
+ <style>
+   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+   
+   body {
+      font-family: Nanum Gothic;
+   }
+   a { text-decoration:none}
+   .navbar {
+      background-color : #B2CCFF;
+      padding : 0.00075rem 1rem;
+      position : relative;
+      align-items : center;
+      font-family : Hanna;
+   }
+   .navbar ul {
+      height:10px; 
+      width:90%; 
+      display: table;
+      table-layout: fixed; 
+   }
+   .navbar ul li {
+      display: table-cell;
+        width: 10%;
+        text-align: center;
+   }
+   .navbar_item{
+      align-items : center;
+      margin-right : 14px;
+      padding : 10px;
+      
+   }
+   .logout{
+        display: block;
+        background : none;
+        border : 0px;
+        border-radius : 5px;
+        font-family : Hanna;
+        font-size : 100%;
+        color : #636363;
+   }
+   .logout:hover{
+        background : #EAEAEA;
+        border : 0px;
+   }
+   .menuLink{
+      text-decoration : none;
+      font-size : 120%;
+      color : white;
+   }
+   .menuLink:hover {
+      color : #636363;
+      font-wieght : bold;
+   }
+   .container {
+      display : flex;
+   }
+   .header_name {
+      margin-right : 130px;
+        position : relative;
+        bottom: 40px;
+      font-family : Malgun Gothic;
+      font-size : 100%;
+      font-weight : bold;
+      color : white;
+   }
+   .bodystyle{
+   padding : 10px;
+   }
+   .idpic{
+      width :105px; 
+      height : 135px; 
+      border : 1px solid;
+      margin-right : 10px; 
+   }
+   .field{
+      border : 1px solid;
+      margin-top : 10px;
+   }
+   .field legend{
+      font-family : Hanna;
+      font-size : 26px;
+   }
+   </style>
 	<script type="text/javascript">
     
 		var option = "width=500, height=350, resizable=no, scrollbars=no";
@@ -72,10 +157,36 @@
 <title>Calendar</title>
 </head>
 <body>
+	<div align = center>
+       <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
+      <a role="button" href="../main/main.jsp"><img src="image/name.png"  style="width:340px;height:100px;" ></a>
+      
+   </div>
+   <header>
+      <div class="navbar container">
+            <div class="navbar_item">
+            <ul>
+               <li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
+               <li><a class="menuLink" href="../education/education.jsp">학력</a></li>
+               <li><a class="menuLink" href="../career/career.jsp">경력</a></li>
+               <li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
+               <li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
+               <li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
+               <li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
+               <li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
+               </ul>
+            </div>
+      </div>
+   </header>
+
+	<div class="container" style="margin-top: 25px; margin-left: 10%; margin-right:10%;  display: block;">
+	
 	<div class="top">
-	<a href = "Calendar.jsp?year=<%=y-1%>&amp;month=<%=m%>" class="triangle-left"></a>
-	<div class="year"><%=y%>년</div>
-    <a href = "Calendar.jsp?year=<%=y+1%>&amp;month=<%=m%>" class="triangle-right"></a>
+	<div style="margin-left: 30px;">
+		<a href = "Calendar.jsp?year=<%=y-1%>&amp;month=<%=m%>" class="triangle-left"></a>
+		<div class="year"><%=y%>년</div>
+	    <a href = "Calendar.jsp?year=<%=y+1%>&amp;month=<%=m%>" class="triangle-right"></a>
+    </div>
     <div class="months">
     <%
     	for (i = 1; i <= 12; i++) {
@@ -87,13 +198,56 @@
     	}%>
     </div><!-- months -->
 	</div><!-- top -->
-
-	<div class="container">
 	
- 	<div class="calendar-base">
+ 	<div class="calendar-base" style="display:flex">
+ 	<div class="calendar-left">
+	
+	<div class="day"><a href = "Calendar.jsp">오늘은</a></div>
+    <div class="today"><%=d%></div>
+    <div class="day">
+    	<%if (today == 1) {%>일요일 <%}
+    	  else if (today == 2) {%>월요일<%}
+    	  else if (today == 3) {%>화요일<%}
+    	  else if (today == 4) {%>수요일<%}
+    	  else if (today == 5) {%>목요일<%}
+    	  else if (today == 6) {%>금요일<%}
+    	  else if (today == 7) {%>토요일<%}%>
+    </div> <!--day -->
+    
+    <div class="current-events">다가오는 일정
+      <br/>
+      <ul>
+      <% i = 0; j = 0;
+      	while(db[i][1] != null) {
+			if(Integer.parseInt(db[i][1]) >= d){
+				cEvent[j++] = db[i][0];
+			}
+			if(j == 5) break;
+			i++;
+      	}
+      	for(i = 0; i < j; i++) {
+      %>
+        <li><%=cEvent[i]%></li>
+      <%} 
+      	for(i=0;i<5;i++) cEvent[i] = "";%>
+      </ul>
+    </div> <!-- current-events -->
+    
+    <div class="add-event">일정 추가<a onclick="openAdd()"><img src="image/iconmonstr-plus-circle-thin-240.png"></a></div>
+
+	</div> <!-- calendar-left -->
+	
  	<div class="calendar-right">
     
-    <div class="days">일 월 화 수 목 금 토</div>
+    <div class="days">
+    	<div class="oneday">일</div>
+    	<div class="oneday">월</div>
+    	<div class="oneday">화</div>
+    	<div class="oneday">수</div>
+    	<div class="oneday">목</div>
+    	<div class="oneday">금</div>
+    	<div class="oneday">토</div>
+    </div>
     
     <div class="num-dates">
 		<div class="week">
@@ -139,43 +293,8 @@
     </div> <!-- calendar-right -->
     </div> <!-- calendar-base -->
 	
-	<div class="calendar-left">
-	
-	<div class="returnTday"><a href = "Calendar.jsp">오늘은</a></div>
-    <div class="today"><%=d%></div>
-    <div class="day">
-    	<%if (today == 1) {%>일요일 <%}
-    	  else if (today == 2) {%>월요일<%}
-    	  else if (today == 3) {%>화요일<%}
-    	  else if (today == 4) {%>수요일<%}
-    	  else if (today == 5) {%>목요일<%}
-    	  else if (today == 6) {%>금요일<%}
-    	  else if (today == 7) {%>토요일<%}%>
-    </div> <!--day -->
-    
-    <div class="current-events">다가오는 일정
-      <br/>
-      <ul>
-      <% i = 0; j = 0;
-      	while(db[i][1] != null) {
-			if(Integer.parseInt(db[i][1]) >= d){
-				cEvent[j++] = db[i][0];
-			}
-			if(j == 5) break;
-			i++;
-      	}
-      	for(i = 0; i < j; i++) {
-      %>
-        <li><%=cEvent[i]%></li>
-      <%} 
-      	for(i=0;i<5;i++) cEvent[i] = "";%>
-      </ul>
-    </div> <!-- current-events -->
-    
-    <div class="add-event">일정 추가<a onclick="openAdd()"><img src="image/iconmonstr-plus-circle-thin-240.png"></a></div>
 
-	</div> <!-- calendar-left -->
-	
+
 	</div> <!-- container -->
 </body>
 </html>

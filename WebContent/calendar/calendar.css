@@ -1,23 +1,15 @@
 @charset "EUC-KR";
-html {
-	width: 1240px;
-	height: 670px;
-}
 
 body {
-  width: 1200px;
-  height: 630px;
-  margin: 20px;
   background-color: #E8E8E8;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Nanum Gothic;
 }
 
 .top {
-	float: right;
-	width: 1200px;
-	height: 50px;
 	position: relative;
 	z-index: 1;
+	display: flex;
+	margin-bottom:10px;
 }
 
 .year {
@@ -25,7 +17,6 @@ body {
   font-size: 30px;
   float: left;
   position: relative;
-  left: 75px;
   font-weight: bold;
 }
 
@@ -35,8 +26,8 @@ body {
   border-bottom: 5px solid transparent;
   float: left;
   position: relative;
-  left: 60px;
-  top: 15px;
+  margin-top: 15px;
+  margin-right: 10px;
 }
 
 .triangle-right {
@@ -45,8 +36,8 @@ body {
   border-bottom: 5px solid transparent;
   float: left;
   position: relative;
-  left: 90px;
-  top: 15px;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 .triangle-left:hover{
   border-right: 10px solid#B2CCFF;
@@ -63,22 +54,12 @@ body {
 }
 
 .months {
-  position: relative;
-  width: 900px;
-  left: 230px;
+  position: absolute;
+  right: 30px;
   word-spacing: 30px;
 }
 
-.container {
-  position: relative;
-  top:50px;
-  width: 1200px;
-  height: 580px;
-}
-
 .calendar-base {
-  width: 1200px;
-  height: 580px;
   border-radius: 20px;
   background-color: #FFFFFF;
   position: relative;
@@ -87,31 +68,34 @@ body {
 
 .calendar-right {
   float: right;
-  width: 900px;
-  height: 580px;
+  width: 75%;
   position: relative;
-  bottom: 50px;
 }
 
 .days {
   color: #888888;
-  position: relative;
   font-size: 18px;
-  left: 45px;
-  top: 15px;
-  word-spacing: 95px;
+  display:flex;
+  margin: 2% 3%;
   font-weight: 600;
+}
+
+.oneday {
+	width:14%;
+	text-align: center;
 }
 
 .num-dates {
   position: relative;
-  top: 45px;
-  left: 45px;
   z-index: 1;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .week {
-  width:840px;
+  width: 100%;
+  margin-bottom: 13px;
+  text-align: center;
   float:left;
 }
 
@@ -126,67 +110,47 @@ body {
 
 .num-date {
 	float: left;
-	width: 120px;
+	width: 14%;
 	margin-bottom:60px;
-}
-
-.event-space{
-    word-spacing: 50px;
-    margin-bottom: 40px;
 }
 
 .event-name {
   display:block;
+  margin-left: 30%;
   background-color: #B2CCFF;
 }
 
 .calendar-left {
-  width: 300px;
-  height: 580px;
+  width: 25%;
   border-radius: 20px 0px 0px 20px;
   background-color: #B2CCFF;
   position: relative;
-  bottom: 580px;
   color: #FFFFFF;
 }
 
-.returnTday {
-  position: relative;
-  top: 20px;
-  width: 50%;
-  margin: 0px auto;
+.day {
+  text-align: center;
+  margin: 5% auto;
   font-size: 30px;
 }
 
 .today {
   font-size: 120px;
-  width: 50%;
-  margin: 0 auto;
+  text-align: center;
+  margin: 5% auto;
   font-weight: 700;
 }
 
-.day {
-  width: 50%;
-  margin: 0px auto;
-  font-size: 30px;
-  position: relative;
-  top : 2px;
-  bottom: 60px;
-}
 
 .current-events {
   font-size: 18px;
-  position: relative;
   margin-left: 25px;
-  top : 50px;
-  bottom: 30px;
+  margin-top: 10%;
 }
 
 .add-event {
   font-size: 18px;
   margin-left: 25px;
-  position: relative;
-  top: 30px;
 }
 
 img {
@@ -204,7 +168,7 @@ a {
 
 input {
 	border:0px;
-	width:90px;
+	width: 100%;
 	text-overflow:ellipsis;
 	white-space:nowrap;
 	word-wrap:normal;
@@ -213,8 +177,12 @@ input {
 
 input:focus {
 	outline:none;
-	overflow:visble;
-	width: 120px;
+	overflow:hidden;
+	width: 100%;
+	background-color: #ffffb2;
+}
+
+input:hover {
 	background-color: #ffffb2;
 }
 
