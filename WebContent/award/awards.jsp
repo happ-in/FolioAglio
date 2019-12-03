@@ -106,12 +106,13 @@
 <meta charset="utf-8">
 <title>수상경력</title>
 <script>
-	function popup_abroad(){
+	function popup_award(){
 		var url = "award_information.jsp";
-		var name = "Abroad";
+		var name = "award";
 		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
+	
 </script>
 </head>
 <body>
