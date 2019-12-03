@@ -11,12 +11,14 @@ public class DBUtil {
 		Connection conn = null;
 		try {
 //			String url = "jdbc:mysql://10.10.5.15:3306/op_242b1bc8_a6d7_417e_8fcd_77b2d623d514?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-//			String id = "ffb66968260f1bb3";
+//			String id = "1afe79199eb792d8";
 //			String pw = "c32ca248cd0ba4a7";
-			
+//			
 			String url = "jdbc:mysql://localhost:3306/file?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8";
 			String id = "root";
-			String pw = "";
+			String pw = "system";
+			
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
 		} catch(Exception e) {

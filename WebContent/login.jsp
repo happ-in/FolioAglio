@@ -174,7 +174,9 @@ input[type="radio"]:checked ~ label {
   opacity: 1;
 	border: 1px solid #000000;
 }
-
+h1, h2 {
+    display: inline;
+}
    </style>
 <meta charset="utf-8">
 <title>로그인</title>
@@ -239,7 +241,7 @@ input[type="radio"]:checked ~ label {
 </head>
 <body>
 <div class="text-center" style="margin-bottom:30px;">
-<h1 class="display-3" style="font-weight: 600;">Folio Aglio</h1>
+	<img src="image/name.png" width = "450" height="150">
 </div>
 <div class="container">
        <div class="row">

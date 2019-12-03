@@ -115,8 +115,8 @@
    
    String sql = "select country, birth, name, en_name, sex, email, call_num, address, git_address, personal_memo from personal_information where id=?";
    PreparedStatement pstmt = conn.prepareStatement(sql);
-    pstmt.setString(1,session_name);
-    ResultSet rs = pstmt.executeQuery();
+   pstmt.setString(1,session_name);
+   ResultSet rs = pstmt.executeQuery();
     
     if(rs.next()){
    %>
