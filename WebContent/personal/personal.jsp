@@ -163,7 +163,6 @@
 	%>
 			<tr>
 				<td rowspan="5" colspan="2" align="center"><img class="idpic" src="<%=id_pic%>"></td>
-				<%=id_pic%>
 			</tr>
 	<%
 		}
