@@ -142,12 +142,16 @@
 		<div style="padding: 10px"></div>
 	
 	<%
+
+	Object session_object=session.getAttribute("signedUser");
+	String session_name=(String)session_object;
 	Connection conn = DBUtil.getConn();
 	String s_type = "";
 	
-	String sql = "select * from award";
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery(sql);
+	String sql = "select * from award where id = ?";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1,session_name);
+    ResultSet rs = pstmt.executeQuery();
 	
 	while(rs.next()) {
 	
@@ -161,7 +165,7 @@
 	
 	rs.close();
 	conn.close();
-	stmt.close();
+	pstmt.close();
 	%>
 	
 	<div>

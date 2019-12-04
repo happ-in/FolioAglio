@@ -68,7 +68,12 @@
 </style>
 </head>
 <body>
-	<form action="awardAction.jsp" method="post" id = "form1">
+	<%
+	Object session_object=session.getAttribute("signedUser");
+	String session_name=(String)session_object;
+	%>
+
+	<form action="awardsAction.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>수상내용</legend>
 			<table>
@@ -90,12 +95,13 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="memo" rows="3" name="memo" cols="50"></textarea></td>
 				</tr>
 				<tr align = "right">
 					<td colspan="2"><input type="button" id="confirm" class="button_css"
 						value="확인">
 					</td>
+
 				</tr>
 			</table>
 		</fieldset>
