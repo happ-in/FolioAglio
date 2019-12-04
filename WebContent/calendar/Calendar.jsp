@@ -148,7 +148,7 @@
 		var option = "width=500, height=350, resizable=no, scrollbars=no";
         function openAdd() {
             // window.open(path, 자식창 이름, 옵션);
-            window.open("main/scheduler.jsp", "add", option);    
+            window.open("../main/scheduler.jsp", "add", option);    
         }
         function openShow(sch_num) {
 			window.open("schedulerForm.jsp?sch_num="+sch_num, "show", option);
@@ -159,7 +159,7 @@
 <body>
 	<div align = center>
        <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
-      <a role="button" href="../main/main.jsp"><img src="image/name.png"  style="width:340px;height:100px;" ></a>
+      <a role="button" href="../main/main.jsp"><img src="../image/name.png"  style="width:340px;height:100px;" ></a>
       
    </div>
    <header>
