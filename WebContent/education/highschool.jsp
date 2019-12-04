@@ -8,27 +8,72 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width" initial-scale ="1">
+<link rel="stylesheet" href="css/bootstrap.css">
 <meta charset="utf-8">
 <title>고등학교</title>
+<script>
+	window.addEventListener('load', function() {
+		var confirm = document.querySelector('#confirm');
+		
+		confirm.addEventListener('click', function() {
+	
+			var name = document.querySelector('#name'); //학교명
+			var location = document.querySelector('#location'); // 학교 소재지
+			var division = document.querySelector('#division'); //계열			
+			var e_date = document.querySelector("#e_date"); //입학일자
+			var g_date = document.querySelector('#g_date'); // 졸업일자
+			var g_state = document.querySelector('#g_state'); //졸업여부
+			var memo = document.querySelector('#memo'); //메모
+			
+			
+			// 전체 검사
+			if (name.value == '') {
+				alert('학교명을 입력하세요.');
+				name.focus();
+			} else if (location.value == '') {
+				alert('학교 소재지를 입력하세요.');
+				location.focus();
+			} else if (division == '') {
+				alert("계열을 입력하세요");
+				division.focus();
+			} else if (e_date.value == '') {
+				alert('입학일자를 입력하세요 ');
+				e_date.focus();
+			} else if (g_date.value == '') {
+				alert('졸업일자를 입력하세요 ');
+				g_date.focus();
+			} else if (g_state.value == '') {
+				alert('졸업여부를 입력하세요 ');
+				g_state.focus();
+			}else {
+				document.getElementById('form1').submit();
+				self.close();
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<%
 	
-	Connection conn = DBUtil.getConn();
 	int school_num =  Integer.parseInt(request.getParameter("school_num"));
 	
 	try{
-		String sql = "select school_name, school_location, division, e_date, g_date, g_state from education where school_num=?";
+		Connection conn = DBUtil.getConn();
+		String sql = "select school_name, school_location, division, e_date, g_date, g_state, edu_memo from education where school_num=?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, school_num);
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(rs.next()){
 	%>
-	<form name=fom>
+	<form action="highUpdate.jsp" method="post" id="form1">
 		<fieldset>
 			<legend>고등학교</legend>
-			<table style="display: block;">
+			<table>
 				<tr>
 					<td>학교명</td>
 					<td><input type="text" id="name" name="name" value="<%=rs.getString(1) %>"></td>
@@ -99,11 +144,16 @@
 							<option <%if( rs.getString(6).equals("재학"))  { out.print("selected"); }%>>재학</option>
 					</select></td>
 				</tr>
-				
 				<tr>
+					<td>메모</td>
+					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString(7) %></textarea></td>
+				</tr>
+				
+				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm"
 						value="수정">
 					</td>
+					<td><input type="hidden" name="school_num" value="<%=school_num %>"></td>
 				</tr>
 			</table>
 		</fieldset>

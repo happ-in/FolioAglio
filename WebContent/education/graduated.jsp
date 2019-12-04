@@ -1,11 +1,75 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width" initial-scale ="1">
+<link rel="stylesheet" href="css/bootstrap.css">
+<meta charset="utf-8">
+<script>
+	window.addEventListener('load', function(){
+		var confirm2 = document.querySelector('#confirm2');
+		
+		confirm2.addEventListener('click', function() {
+
+			var radio = document.querySelectorAll('.radio'); //êµ¬ë¶„
+			var name = document.querySelector('#graduated_name'); //í•™êµëª…
+			var location = document.querySelector('#graduated_location'); // í•™êµ ì†Œì¬ì§€
+			var division = document.querySelector('#graduated_division'); //ê³„ì—´			
+			var e_date = document.querySelector("#graduated_e_date"); //ì…í•™ì¼ì
+			var g_date = document.querySelector('#graduated_g_date'); // ì¡¸ì—…ì¼ì
+			var g_state = document.querySelector('#graduated_g_state'); //ì¡¸ì—…ì—¬ë¶€
+			var major = document.querySelector('#graduated_major'); //ì „ê³µ
+			var grade = document.querySelector('#graduated_grade'); //í•™ì 
+			var total_grade = document.querySelector('#graduated_total_grade');//ì „ì²´í•™ì 
+			var memo = document.querySelector('#graduated_memo');
+			
+			
+			// ì „ì²´ ê²€ì‚¬
+			if (graduated_name.value == '') {
+				alert('í•™êµëª…ì„ ì…ë ¥í•˜ì„¸ìš”.');
+				graduated_name.focus();
+			} else if (graduated_location.value == '') {
+				alert('í•™êµ ì†Œì¬ì§€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.');
+				graduated_location.focus();
+			} else if (graduated_division == '') {
+				alert("ê³„ì—´ì„ ì…ë ¥í•˜ì„¸ìš”");
+				graduated_division.focus();
+			} else if (graduated_e_date.value == '') {
+				alert('ì…í•™ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
+				graduated_e_date.focus();
+			} else if (graduated_g_date.value == '') {
+				alert('ì¡¸ì—…ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
+				graduated_g_date.focus();
+			} else if (graduated_g_state.value == '') {
+				alert('ì¡¸ì—…ì—¬ë¶€ë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
+				graduated_g_state.focus();
+			} else if (graduated_major.value == '') {
+				alert('ì „ê³µì„ ì…ë ¥í•˜ì„¸ìš” ')
+				graduated_major.focus();
+			} else if (graduated_total_grade.value == '') {
+				alert('ì „ì²´ í•™ì ì„ ì…ë ¥í•˜ì„¸ìš” ')
+				graduated_total_grade.focus();
+			} else if (graduated_grade.value == '') {
+				alert('í•™ì ì„ ì…ë ¥í•˜ì„¸ìš” ')
+				graduated_grade.focus();
+			}else {
+				document.getElementById('form1').submit();
+				self.close();
+			}
+
+		});
+	});
+	
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,114 +86,116 @@
 		pstmt.setString(2, session_name);
 		ResultSet rs = pstmt.executeQuery();
 		
-		
-		
 		if(rs.next()){
 	%>
-	<fieldset>
-		<legend>´ëÇĞ¿ø</legend>
-		<table  id="graduated" style="display:block;">
-				<tr>
-					<td>ÇĞ±³¸í</td>
-					<td><input type="text" id="graduated_name" name="graduated_name" value="<%=rs.getString(1)%>"></td>
-				</tr>
-				<tr>
-					<td>ÇĞ±³ ¼ÒÀçÁö</td>
-					<td><select id="graduated_location" name = "graduated_location">
-							<option <%if( rs.getString(2).equals("°­¿øµµ"))  { out.print("selected"); }%>>°­¿øµµ</option>
-							<option <%if( rs.getString(2).equals("°æ±âµµ"))  { out.print("selected"); }%>>°æ±âµµ</option>
-							<option <%if( rs.getString(2).equals("°æ»ó³²µµ"))  { out.print("selected"); }%>>°æ»ó³²µµ</option>
-							<option <%if( rs.getString(2).equals("°æ»óºÏµµ"))  { out.print("selected"); }%>>°æ»óºÏµµ</option>
-							<option <%if( rs.getString(2).equals("±¤ÁÖ±¤¿ª½Ã"))  { out.print("selected"); }%>ion>±¤ÁÖ±¤¿ª½Ã</option>
-							<option <%if( rs.getString(2).equals("´ë±¸±¤¿ª½Ã"))  { out.print("selected"); }%>>´ë±¸±¤¿ª½Ã</option>
-							<option <%if( rs.getString(2).equals("´ëÀü±¤¿ª½Ã"))  { out.print("selected"); }%>>´ëÀü±¤¿ª½Ã</option>
-							<option <%if( rs.getString(2).equals("ºÎ»ê±¤¿ª½Ã"))  { out.print("selected"); }%>>ºÎ»ê±¤¿ª½Ã</option>
-							<option <%if( rs.getString(2).equals("¼­¿ïÆ¯º°½Ã"))  { out.print("selected"); }%>>¼­¿ïÆ¯º°½Ã</option>
-							<option <%if( rs.getString(2).equals("¼¼Á¾Æ¯º°ÀÚÄ¡½Ã"))  { out.print("selected"); }%>>¼¼Á¾Æ¯º°ÀÚÄ¡½Ã</option>
-							<option <%if( rs.getString(2).equals("¿ï»ê±¤¿ª½Ã"))  { out.print("selected"); }%>>¿ï»ê±¤¿ª½Ã</option>
-							<option <%if( rs.getString(2).equals("ÀÎÃµ±¤¿ª½Ã"))  { out.print("selected"); }%>>ÀÎÃµ±¤¿ª½Ã</option>
-							<option <%if( rs.getString(2).equals("Àü¶ó³²µµ"))  { out.print("selected"); }%>>Àü¶ó³²µµ</option>
-							<option <%if( rs.getString(2).equals("Àü¶óºÏµµ"))  { out.print("selected"); }%>>Àü¶óºÏµµ</option>
-							<option <%if( rs.getString(2).equals("Á¦ÁÖÆ¯º°ÀÚÄ¡½Ãµµ"))  { out.print("selected"); }%>>Á¦ÁÖÆ¯º°ÀÚÄ¡½Ãµµ</option>
-							<option <%if( rs.getString(2).equals("ÃæÃ»³²µµ"))  { out.print("selected"); }%>>ÃæÃ»³²µµ</option>
-							<option <%if( rs.getString(2).equals("ÃæÃ»ºÏµµ"))  { out.print("selected"); }%>>ÃæÃ»ºÏµµ</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td>°è¿­</td>
-					<td><select id="graduated_division" name="graduated_division">
-							<option <%if( rs.getString(3).equals("ÀÎ¹®°è¿­"))  { out.print("selected"); }%>>ÀÎ¹®°è¿­</option>
-							<option <%if( rs.getString(3).equals("»çÈ¸°è¿­"))  { out.print("selected"); }%>>»çÈ¸°è¿­</option>
-							<option <%if( rs.getString(3).equals("¿¹Ã¼´É°è¿­"))  { out.print("selected"); }%>>¿¹Ã¼´É°è¿­</option>
-							<option <%if( rs.getString(3).equals("ÀÚ¿¬°úÇĞ°è¿­"))  { out.print("selected"); }%>>ÀÚ¿¬°úÇĞ°è¿­</option>
-							<option <%if( rs.getString(3).equals("°øÇĞ°è¿­"))  { out.print("selected"); }%>>°øÇĞ°è¿­</option>
-							<option <%if( rs.getString(3).equals("³ó¾÷°è¿­"))  { out.print("selected"); }%>>³ó¾÷°è¿­</option>
-							<option <%if( rs.getString(3).equals("ÀÇÇĞ°è¿­"))  { out.print("selected"); }%>>ÀÇÇĞ°è¿­</option>
-							<option <%if( rs.getString(3).equals("±âÅ¸"))  { out.print("selected"); }%>>±âÅ¸</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td>ÀÔÇĞÀÏÀÚ</td>
-					<td><input type="text" id="graduated_e_date" name="graduated_e_date" placeholder="³¯Â¥³Ö±â" value="<%=rs.getString(4)%>" >
-					<script>
-						$(function(){
-							$("#graduated_e_date").datepicker({dateFormat: "yy-mm-dd"});
-						});
-					</script></td>
-				</tr>
-				<tr>
-					<td>Á¹¾÷ÀÏÀÚ</td>
-					<td><input type="text" id="graduated_g_date" name="graduated_g_date" placeholder="³¯Â¥³Ö±â" value="<%=rs.getString(5)%>" >
-					<script>
-						$(function(){
-							$("#graduated_g_date").datepicker({dateFormat: "yy-mm-dd"});
-						});
-					</script></td>
-				</tr>
-				<tr>
-					<td>Á¹¾÷¿©ºÎ</td>
-					<td><select id="graduated_g_state" name = "graduated_g_state">
-							<option <%if( rs.getString(6).equals("Á¹¾÷"))  { out.print("selected"); }%>>Á¹¾÷</option>
-							<option <%if( rs.getString(6).equals("Á¹¾÷¿¹Á¤"))  { out.print("selected"); }%>>Á¹¾÷¿¹Á¤</option>
-							<option <%if( rs.getString(6).equals("ÁßÅğ"))  { out.print("selected"); }%>>ÁßÅğ</option>
-							<option <%if( rs.getString(6).equals("ÈŞÇĞ"))  { out.print("selected"); }%>>ÈŞÇĞ</option>
-							<option <%if( rs.getString(6).equals("ÀçÇĞ"))  { out.print("selected"); }%>>ÀçÇĞ</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td>Àü°ø</td>
-					<td><input type="text" id="graduated_major" name="graduated_major" value="<%=rs.getString(7) %>"></td>
-				</tr>
-				<tr>
-					<td>ÇĞÁ¡</td>
-					<td><input type="text" id="graduated_grade" name="graduated_grade" value="<%=rs.getString(8) %>"> / <select id="graduated_total_grade" name = "graduated_total_grade">
-							<option <%if( rs.getString(9).equals("4.0"))  { out.print("selected"); }%>>4.0</option>
-							<option <%if( rs.getString(9).equals("4.3"))  { out.print("selected"); }%>>4.3</option>
-							<option <%if( rs.getString(9).equals("4.5"))  { out.print("selected"); }%>>4.5</option>
-							<option <%if( rs.getString(9).equals("5.0"))  { out.print("selected"); }%>>5.0</option>
-							<option <%if( rs.getString(9).equals("7.0"))  { out.print("selected"); }%>>7.0</option>
-							<option <%if( rs.getString(9).equals("100"))  { out.print("selected"); }%>>100</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td>¸Ş¸ğ</td>
-					<td><textarea id="graduated_memo" name="graduated_memo" rows="3" cols="50"><%=rs.getString(10) %></textarea></td>
-				</tr>
-				<tr align = "right">
-					<td colspan="2"><input type="button" id="confirm2" class="button_css"
-						value="È®ÀÎ">
-					</td>
-				</tr>
+	<form action="graduatedUpdate.jsp" method="post" id="form1">
+		<fieldset>
+			<legend>ëŒ€í•™ì›</legend>
+			<table  id="graduated" style="display:block;">
+					<tr>
+						<td>í•™êµëª…</td>
+						<td><input type="text" id="graduated_name" name="graduated_name" value="<%=rs.getString(1)%>"></td>
+					</tr>
+					<tr>
+						<td>í•™êµ ì†Œì¬ì§€</td>
+						<td><select id="graduated_location" name = "graduated_location">
+								<option <%if( rs.getString(2).equals("ê°•ì›ë„"))  { out.print("selected"); }%>>ê°•ì›ë„</option>
+								<option <%if( rs.getString(2).equals("ê²½ê¸°ë„"))  { out.print("selected"); }%>>ê²½ê¸°ë„</option>
+								<option <%if( rs.getString(2).equals("ê²½ìƒë‚¨ë„"))  { out.print("selected"); }%>>ê²½ìƒë‚¨ë„</option>
+								<option <%if( rs.getString(2).equals("ê²½ìƒë¶ë„"))  { out.print("selected"); }%>>ê²½ìƒë¶ë„</option>
+								<option <%if( rs.getString(2).equals("ê´‘ì£¼ê´‘ì—­ì‹œ"))  { out.print("selected"); }%>ion>ê´‘ì£¼ê´‘ì—­ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ëŒ€êµ¬ê´‘ì—­ì‹œ"))  { out.print("selected"); }%>>ëŒ€êµ¬ê´‘ì—­ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ëŒ€ì „ê´‘ì—­ì‹œ"))  { out.print("selected"); }%>>ëŒ€ì „ê´‘ì—­ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ë¶€ì‚°ê´‘ì—­ì‹œ"))  { out.print("selected"); }%>>ë¶€ì‚°ê´‘ì—­ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ì„œìš¸íŠ¹ë³„ì‹œ"))  { out.print("selected"); }%>>ì„œìš¸íŠ¹ë³„ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ì„¸ì¢…íŠ¹ë³„ìì¹˜ì‹œ"))  { out.print("selected"); }%>>ì„¸ì¢…íŠ¹ë³„ìì¹˜ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ìš¸ì‚°ê´‘ì—­ì‹œ"))  { out.print("selected"); }%>>ìš¸ì‚°ê´‘ì—­ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ì¸ì²œê´‘ì—­ì‹œ"))  { out.print("selected"); }%>>ì¸ì²œê´‘ì—­ì‹œ</option>
+								<option <%if( rs.getString(2).equals("ì „ë¼ë‚¨ë„"))  { out.print("selected"); }%>>ì „ë¼ë‚¨ë„</option>
+								<option <%if( rs.getString(2).equals("ì „ë¼ë¶ë„"))  { out.print("selected"); }%>>ì „ë¼ë¶ë„</option>
+								<option <%if( rs.getString(2).equals("ì œì£¼íŠ¹ë³„ìì¹˜ì‹œë„"))  { out.print("selected"); }%>>ì œì£¼íŠ¹ë³„ìì¹˜ì‹œë„</option>
+								<option <%if( rs.getString(2).equals("ì¶©ì²­ë‚¨ë„"))  { out.print("selected"); }%>>ì¶©ì²­ë‚¨ë„</option>
+								<option <%if( rs.getString(2).equals("ì¶©ì²­ë¶ë„"))  { out.print("selected"); }%>>ì¶©ì²­ë¶ë„</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>ê³„ì—´</td>
+						<td><select id="graduated_division" name="graduated_division">
+								<option <%if( rs.getString(3).equals("ì¸ë¬¸ê³„ì—´"))  { out.print("selected"); }%>>ì¸ë¬¸ê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ì‚¬íšŒê³„ì—´"))  { out.print("selected"); }%>>ì‚¬íšŒê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ì˜ˆì²´ëŠ¥ê³„ì—´"))  { out.print("selected"); }%>>ì˜ˆì²´ëŠ¥ê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ìì—°ê³¼í•™ê³„ì—´"))  { out.print("selected"); }%>>ìì—°ê³¼í•™ê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ê³µí•™ê³„ì—´"))  { out.print("selected"); }%>>ê³µí•™ê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ë†ì—…ê³„ì—´"))  { out.print("selected"); }%>>ë†ì—…ê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ì˜í•™ê³„ì—´"))  { out.print("selected"); }%>>ì˜í•™ê³„ì—´</option>
+								<option <%if( rs.getString(3).equals("ê¸°íƒ€"))  { out.print("selected"); }%>>ê¸°íƒ€</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>ì…í•™ì¼ì</td>
+						<td><input type="text" id="graduated_e_date" name="graduated_e_date" placeholder="ë‚ ì§œë„£ê¸°" value="<%=rs.getString(4)%>" >
+						<script>
+							$(function(){
+								$("#graduated_e_date").datepicker({dateFormat: "yy-mm-dd"});
+							});
+						</script></td>
+					</tr>
+					<tr>
+						<td>ì¡¸ì—…ì¼ì</td>
+						<td><input type="text" id="graduated_g_date" name="graduated_g_date" placeholder="ë‚ ì§œë„£ê¸°" value="<%=rs.getString(5)%>" >
+						<script>
+							$(function(){
+								$("#graduated_g_date").datepicker({dateFormat: "yy-mm-dd"});
+							});
+						</script></td>
+					</tr>
+					<tr>
+						<td>ì¡¸ì—…ì—¬ë¶€</td>
+						<td><select id="graduated_g_state" name = "graduated_g_state">
+								<option <%if( rs.getString(6).equals("ì¡¸ì—…"))  { out.print("selected"); }%>>ì¡¸ì—…</option>
+								<option <%if( rs.getString(6).equals("ì¡¸ì—…ì˜ˆì •"))  { out.print("selected"); }%>>ì¡¸ì—…ì˜ˆì •</option>
+								<option <%if( rs.getString(6).equals("ì¤‘í‡´"))  { out.print("selected"); }%>>ì¤‘í‡´</option>
+								<option <%if( rs.getString(6).equals("íœ´í•™"))  { out.print("selected"); }%>>íœ´í•™</option>
+								<option <%if( rs.getString(6).equals("ì¬í•™"))  { out.print("selected"); }%>>ì¬í•™</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>ì „ê³µ</td>
+						<td><input type="text" id="graduated_major" name="graduated_major" value="<%=rs.getString(7) %>"></td>
+					</tr>
+					<tr>
+						<td>í•™ì </td>
+						<td><input type="text" id="graduated_grade" name="graduated_grade" value="<%=rs.getString(8) %>"> / <select id="graduated_total_grade" name = "graduated_total_grade">
+								<option <%if( rs.getString(9).equals("4.0"))  { out.print("selected"); }%>>4.0</option>
+								<option <%if( rs.getString(9).equals("4.3"))  { out.print("selected"); }%>>4.3</option>
+								<option <%if( rs.getString(9).equals("4.5"))  { out.print("selected"); }%>>4.5</option>
+								<option <%if( rs.getString(9).equals("5.0"))  { out.print("selected"); }%>>5.0</option>
+								<option <%if( rs.getString(9).equals("7.0"))  { out.print("selected"); }%>>7.0</option>
+								<option <%if( rs.getString(9).equals("100"))  { out.print("selected"); }%>>100</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>ë©”ëª¨</td>
+						<td><textarea id="graduated_memo" name="graduated_memo" rows="3" cols="50"><%=rs.getString(10) %></textarea></td>
+					</tr>
+					<tr align = "right">
+						<td colspan="2"><input type="button" id="confirm2" class="button_css"
+							value="ìˆ˜ì •">
+						</td>
+						<td><input type="hidden" name="school_num" value="<%=school_num %>"></td>
+					</tr>
 			</table>
-	</fieldset>
+		</fieldset>
+	</form>
 	<%
 		}
 		rs.close();
 		pstmt.close();
 		conn.close();
-	} catch(SQLException e){
+		} catch(SQLException e){
 		System.out.println(e.toString());
 	}
 	%>
+	
 </body>
 </html>

@@ -5,6 +5,73 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+	window.addEventListener('load', function() {
+		var confirm1 = document.querySelector('#confirm1');
+		confirm1.addEventListener('click', function() {
+	
+			var radio = document.querySelectorAll('.radio'); //구분
+			var name = document.querySelector('#collage_name'); //학교명
+			var location = document.querySelector('#collage_location'); // 학교 소재지
+			var division = document.querySelector('#collage_division'); //계열			
+			var e_state = document.querySelector('#collage_e_state'); // 입학구분
+			var e_date = document.querySelector("#collage_e_date"); //입학일자
+			var g_date = document.querySelector('#collage_g_date'); // 졸업일자
+			var g_state = document.querySelector('#collage_g_state'); //졸업여부
+			var major = document.querySelector('#collage_major'); //전공
+			var grade = document.querySelector('#collage_grade'); //학점
+			var classes = document.querySelector('#collage_classes'); //이수학점
+			var total_grade = document.querySelector('#collage_total_grade');//전체학점
+			var major_grade = document.querySelector('#collage_major_grade');//전공학점
+			var transfer = document.querySelector('#collage_submajor'); //복수전공, 부전공
+			var memo = document.querySelector('#collage_memo');
+			
+			
+			// 전체 검사
+			if (collage_name.value == '') {
+				alert('학교명을 입력하세요.');
+				collage_name.focus();
+			} else if (collage_location.value == '') {
+				alert('학교 소재지를 입력하세요.');
+				collage_location.focus();
+			} else if (collage_division == '') {
+				alert("계열을 입력하세요");
+				collage_division.focus();
+			} else if (collage_e_state.value == '') {
+				alert('입학 구분을 입력하세요 ')
+				collage_e_state.focus();
+			} else if (collage_e_date.value == '') {
+				alert('입학일자를 입력하세요 ')
+				collage_e_date.focus();
+			} else if (collage_g_date.value == '') {
+				alert('졸업일자를 입력하세요 ')
+				collage_g_date.focus();
+			} else if (collage_g_state.value == '') {
+				alert('졸업여부를 입력하세요 ')
+				collage_g_state.focus();
+			} else if (collage_major.value == '') {
+				alert('전공을 입력하세요 ')
+				collage_major.focus();
+			} else if (collage_grade.value == '') {
+				alert('학점을 입력하세요 ')
+				collage_grade.focus();
+			} else if (collage_major_grade.value == '') {
+				alert('전공 학점을 입력하세요 ')
+				collage_major_grade.focus();
+			} else if (collage_classes.value == '') {
+				alert('이수 학점을 입력하세요 ')
+				collage_classes.focus();
+			} else if (collage_total_grade.value == '') {
+				alert('전체 학점을 입력하세요 ')
+				collage_total_grade.focus();
+			}else {
+				document.getElementById('form1').submit();
+				self.close();
+			}
+	
+		});
+	});
+</script>
 <meta charset="utf-8">
 <title>대학교</title>
 </head>
@@ -24,7 +91,7 @@
 		
 		if(rs.next()){
 	%>
-	<form action="" method="post" id="form1">
+	<form action="collegeUpdate.jsp" method="post" id="form1">
 		<fieldset>
 			<legend>대학교</legend>
 			<table  id="collage" style="display:block;">
@@ -142,8 +209,9 @@
 				</tr>
 				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm1" class="button_css"
-						value="확인">
+						value="수정">
 					</td>
+					<td><input type="hidden" name="school_num" value="<%=school_num %>"></td>
 				</tr>
 			</table>
 		</fieldset>
