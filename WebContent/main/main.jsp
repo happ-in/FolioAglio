@@ -286,7 +286,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<button href="../make_folio/make_portfolio.jsp" class="add_folio">¦«</button>
+			<button onclick = "location.href='../make_folio/make_portfolio.jsp'" class="add_folio">¦«</button>
 		</div>
 	</div>
 	<hr class="container" />
