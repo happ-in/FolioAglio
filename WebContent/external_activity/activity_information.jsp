@@ -122,7 +122,7 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="memo" name="memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"

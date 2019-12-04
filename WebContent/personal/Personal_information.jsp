@@ -113,12 +113,13 @@
    String session_name=(String)session_object;
    Connection conn = DBUtil.getConn();
    
-   String sql = "select country, birth, name, en_name, sex, email, call_num, address, git_address, personal_memo from personal_information where id=?";
-   PreparedStatement pstmt = conn.prepareStatement(sql);
-    pstmt.setString(1,session_name);
-    ResultSet rs = pstmt.executeQuery();
-    
-    if(rs.next()){
+   try{
+	   String sql = "select country, birth, name, en_name, sex, email, call_num, address, git_address, personal_memo from personal_information where id=?";
+	   PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1,session_name);
+	    ResultSet rs = pstmt.executeQuery();
+	    
+	    if(rs.next()){
    %>
 
    <form action="personalAction.jsp" method="post" id = "form1">
@@ -181,10 +182,13 @@
       </fieldset>
    </form>
    <%
-    }
-    rs.close();
-    pstmt.close();
-    conn.close();
+	    }
+	    rs.close();
+	    pstmt.close();
+	    conn.close();
+   } catch(SQLException e){
+	   System.out.println(e.toString());
+   }
    %>
 </body>
 </html>

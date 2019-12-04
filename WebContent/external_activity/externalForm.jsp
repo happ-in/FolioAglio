@@ -57,11 +57,14 @@
 	<%
 	
 	int activity_num = Integer.parseInt(request.getParameter("activity_num"));
+	Object session_object = session.getAttribute("signedUser");
+	String session_name = (String)session_object;
 	
 	Connection conn = DBUtil.getConn();
-	String sql = "select activity_radio, group_name, activity_s_date, activity_e_date, activity_detail, activity_image, activity_memo from external_activities where activity_num=?";
+	String sql = "select activity_radio, group_name, activity_s_date, activity_e_date, activity_detail, activity_image, activity_memo from external_activities where activity_num=? and where id=?";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1, activity_num);
+	pstmt.setString(1, session_name);
 	ResultSet rs = pstmt.executeQuery();
 	
 	if(rs.next()){

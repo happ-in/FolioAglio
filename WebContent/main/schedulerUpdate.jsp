@@ -18,8 +18,10 @@
 	String sch_time = new String(request.getParameter("time").getBytes("ISO-8859-1"), "UTF-8");
 	String sch_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
 	int sch_num = Integer.parseInt(request.getParameter("sch_num"));
+	Object session_object=session.getAttribute("signedUser");
+	String session_name=(String)session_object;
 	
-	String sql = "update scheduler set sch_name=?, sch_date=?, sch_time=?, sch_memo=? where sch_num=?";
+	String sql = "update scheduler set sch_name=?, sch_date=?, sch_time=?, sch_memo=? where sch_num=? and id=?";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	
 	pstmt.setString(1, sch_name);
@@ -27,6 +29,7 @@
 	pstmt.setString(3, sch_time);
 	pstmt.setString(4, sch_memo);
 	pstmt.setInt(5, sch_num);
+	pstmt.setString(6, session_name);
 	pstmt.executeUpdate();
 	
 	DBUtil.close(pstmt);

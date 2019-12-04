@@ -13,19 +13,17 @@
 </head>
 <body>
 	<%
+	
 	Connection conn = DBUtil.getConn();
 	int school_num =  Integer.parseInt(request.getParameter("school_num"));
 	
-	String sql = "select school_name, school_location, division, e_date, g_date, g_state from education where school_num=?";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setInt(1, school_num);
-	ResultSet rs = pstmt.executeQuery();
-	
-	
-	System.out.println(school_num);
-	
-	
-	if(rs.next()){
+	try{
+		String sql = "select school_name, school_location, division, e_date, g_date, g_state from education where school_num=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, school_num);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()){
 	%>
 	<form name=fom>
 		<fieldset>
@@ -111,10 +109,13 @@
 		</fieldset>
 	</form>
 	<%
+		}
+		rs.close();
+		pstmt.close();
+		conn.close();
+	} catch(SQLException e){
+		System.out.println(e.toString());
 	}
-	rs.close();
-	pstmt.close();
-	conn.close();
 	%>
 </body>
 </html>

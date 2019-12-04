@@ -306,7 +306,7 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="high_memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="high_memo" name="high_memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm" class="button_css"
@@ -426,7 +426,7 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="collage_memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="collage_memo" name="collage_memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm1" class="button_css"
@@ -520,7 +520,7 @@
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="graduated_memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="graduated_memo" name="graduated_memo" rows="3" cols="50"></textarea></td>
 				</tr>
 				<tr align = "right">
 					<td colspan="2"><input type="button" id="confirm2" class="button_css"

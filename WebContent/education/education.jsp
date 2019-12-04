@@ -51,17 +51,23 @@
 <meta charset="EUC-KR">
 <title>학적</title>
 <script>
+	var option = "width = 600, height = 500, top = 100, left = 200, location = no";
+	
 	function popup_education(){
 		var url = "education_information.jsp";
 		var name = "Education";
-		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
 	function popup_highschool(num){
 		var url = "highschool.jsp?school_num="+num;
 		var name = "HighSchool";
-		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
+	}
+	function popup_collage(num){
+		window.open('college.jsp?school_num='+num, '', option);
+	}
+	function popup_graduated(num){
+		window.open('graduated.jsp?school_num='+num, '', option);
 	}
 	
 </script>
@@ -92,45 +98,56 @@
 	<div style="padding: 10px"></div>
 	
 	<%
-	Connection conn = DBUtil.getConn();
 	String s_type = "";
-	
-	String sql = "select school_radio, school_name, school_num from education order by school_radio";
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery(sql);
-	
-	while(rs.next()) {
-		s_type = rs.getString("school_radio");
+	String session_name = (String)session.getAttribute("signedUser");
+
+	try {
+		Connection conn = DBUtil.getConn();
 		
-		if (s_type.equals("1")){
+		String sql = "select school_radio, school_name, school_num from education where id=? order by school_radio ;";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,session_name);
+		ResultSet rs = pstmt.executeQuery();
+	
+		while(rs.next()) {
+			s_type = rs.getString(1);
+			
+			if(s_type.equals("1")){
 	%>
 	
 	<div class="field">
-		<input type="button" id="highschool" name="highschool" value="<%=rs.getString("school_name") %>" onClick="popup_highschool(<%=rs.getInt(3) %>)">
+		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_highschool(<%=rs.getInt(3) %>)">
 	</div>
 	
 	<%		
-		}
-		else if (s_type.equals("2")){
+			}
+			else if (s_type.equals("2")){
 	%>
 	
-	<div class="field"><form><input type="submit" value="<%=rs.getString("school_name") %>"></form></div>
+	<div class="field">
+		<input type="button" value="<%=rs.getString(2) %>"  onClick="popup_collage(<%=rs.getInt(3) %>)">
+	</div>
 	
 	<%
-		}
-		else if (s_type.equals("3")){
+			}
+			else if (s_type.equals("3")){
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("school_name") %>"></form></div>
+	<div class="field">
+		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_graduated(<%=rs.getInt(3) %>)">
+	</div>
 	
 	<%
 		}
 		
 	}
-	
-	rs.close();
-	conn.close();
-	stmt.close();
+		
+		rs.close();
+		conn.close();
+		pstmt.close();
+	} catch(SQLException e){
+		System.out.println(e.toString());
+	}
 	%>
 
 	<div>

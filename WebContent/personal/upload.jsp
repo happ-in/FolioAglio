@@ -13,9 +13,7 @@
 </head>
 <body>
    <%
-      //String directory = "C:\\Users\\najio\\git\\FolioAglio\\Img";
-   	  ServletContext context = getServletContext(); //어플리케이션에 대한 정보를 ServletContext 객체가 갖게 됨. 
-   	  String directory = application.getRealPath("/"); //절대경로를 가져옴
+   	  String directory = application.getRealPath("IMG"); //절대경로를 가져옴
    	  
       int maxSize = 1024 * 1024 * 100;
       String encoding = "UTF-8";
@@ -26,8 +24,6 @@
     		  f.mkdir();
     	  }
       }
-      
-      out.println(directory);
       
       MultipartRequest multipartRequest
       = new MultipartRequest(request, directory, maxSize, encoding);
@@ -45,7 +41,7 @@
       //fileRealName=directory+"\\"+fileRealName;
       
       
-      new fileDAO().upload(fileName, directory+fileRealName,session_name);
+      new fileDAO().upload(fileName, "../IMG/"+fileRealName,session_name);
       out.write("파일명 : "+fileName+"<br>");
    %>
    

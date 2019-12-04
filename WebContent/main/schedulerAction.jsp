@@ -17,14 +17,17 @@
 	String sch_date = new String(request.getParameter("date").getBytes("ISO-8859-1"), "UTF-8");
 	String sch_time = new String(request.getParameter("time").getBytes("ISO-8859-1"), "UTF-8");
 	String sch_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+	Object session_object=session.getAttribute("signedUser");
+	String session_name=(String)session_object;
 	
-	String sql = "insert into scheduler(sch_name, sch_date, sch_time, sch_memo) values (?,?,?,?);";
+	String sql = "insert into scheduler(sch_name, sch_date, sch_time, sch_memo, id) values (?,?,?,?,?);";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	
 	pstmt.setString(1, sch_name);
 	pstmt.setString(2, sch_date);
 	pstmt.setString(3, sch_time);
 	pstmt.setString(4, sch_memo);
+	pstmt.setString(5, session_name);
 	pstmt.executeUpdate();
 	
 	DBUtil.close(pstmt);

@@ -63,10 +63,16 @@
 	<%
 	Connection conn = DBUtil.getConn();
 	String s_type = "";
+
+	Object session_object=session.getAttribute("signedUser");
+	String session_name=(String)session_object;
+
+	String sql = "select group_name, activity_num from external_activities where id=?";
 	
-	String sql = "select group_name, activity_num from external_activities";
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery(sql);
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1,session_name);
+	ResultSet rs = pstmt.executeQuery();
+
 	
 	while(rs.next()) {
 	
@@ -80,7 +86,7 @@
 	
 	rs.close();
 	conn.close();
-	stmt.close();
+	pstmt.close();
 	%>
 	
 	
