@@ -44,6 +44,10 @@
 	pstmt.close();
 	}
 	System.out.println(award_name);
+	System.out.println(award_org);
+	System.out.println(award_result);
+	System.out.println(award_attachment);
+	System.out.println(award_memo);
 	%>
    
 </body>

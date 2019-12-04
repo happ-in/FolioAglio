@@ -6,76 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <style>
-   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+<link rel="stylesheet" type="text/css" href="../maincss.css">
    
 <style>
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-   
-   body {
-      font-family: Nanum Gothic;
-   }
-   a { text-decoration:none}
-   .navbar {
-      background-color : #B2CCFF;
-      padding : 0.00075rem 1rem;
-      position : relative;
-      align-items : center;
-      font-family : Hanna;
-   }
-   .navbar ul {
-      height:10px; 
-      width:90%; 
-      display: table;
-      table-layout: fixed; 
-   }
-   .navbar ul li {
-      display: table-cell;
-   	  width: 10%;
-   	  text-align: center;
-   }
-   .navbar_item{
-      align-items : center;
-      margin-right : 14px;
-      padding : 10px;
-      
-   }
-   .logout{
-        display: block;
-        background : none;
-        border : 0px;
-        border-radius : 5px;
-        font-family : Hanna;
-        font-size : 100%;
-        color : #636363;
-   }
-   .logout:hover{
-        background : #EAEAEA;
-        border : 0px;
-   }
-   .menuLink{
-      text-decoration : none;
-      font-size : 120%;
-      color : white;
-   }
-   .menuLink:hover {
-      color : #636363;
-      font-wieght : bold;
-   }
-   .container {
-      display : flex;
-   }
-   .header_name {
-      margin-right : 130px;
-   	  position : relative;
-   	  bottom: 40px;
-      font-family : Malgun Gothic;
-      font-size : 100%;
-      font-weight : bold;
-      color : white;
-   }
+
    .fil0 {
        fill: black;
        fill-rule: nonzero;
@@ -109,15 +45,6 @@
    }
    .field{
    	padding : 10px;
-   }
-   .field input{
-   	display : inline-block;
-   	font-family : Hanna;
-   	padding : 10px;
-   	text-align : center;
-   	background : none;
-   	border : 1px solid;
-   	width : 30%;
    }
    
    </style>
