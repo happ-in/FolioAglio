@@ -54,6 +54,7 @@ body {
 }
 
 .months {
+  color: #e8e8e8;
   position: absolute;
   right: 30px;
   word-spacing: 30px;
@@ -61,7 +62,7 @@ body {
 
 .calendar-base {
   border-radius: 20px;
-  background-color: #FFFFFF;
+  background-color: #e8e8e8;
   position: relative;
   color: black;
 }

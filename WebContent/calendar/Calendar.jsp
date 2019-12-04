@@ -233,7 +233,7 @@
       </ul>
     </div> <!-- current-events -->
     
-    <div class="add-event">일정 추가<a onclick="openAdd()"><img src="image/iconmonstr-plus-circle-thin-240.png"></a></div>
+    <div class="add-event">일정 추가<a onclick="openAdd()"><img src="../image/iconmonstr-plus-circle-thin-240.png"></a></div>
 
 	</div> <!-- calendar-left -->
 	
