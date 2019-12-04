@@ -58,91 +58,91 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="calendar.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<meta name="viewport" content="width=device-width; initial-scale =1">
- <style>
-   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-   
-   body {
-      font-family: Nanum Gothic;
-   }
-   a { text-decoration:none}
-   .navbar {
-      background-color : #B2CCFF;
-      padding : 0.00075rem 1rem;
-      position : relative;
-      align-items : center;
-      font-family : Hanna;
-   }
-   .navbar ul {
-      height:10px; 
-      width:90%; 
-      display: table;
-      table-layout: fixed; 
-   }
-   .navbar ul li {
-      display: table-cell;
-        width: 10%;
-        text-align: center;
-   }
-   .navbar_item{
-      align-items : center;
-      margin-right : 14px;
-      padding : 10px;
-      
-   }
-   .logout{
-        display: block;
-        background : none;
-        border : 0px;
-        border-radius : 5px;
-        font-family : Hanna;
-        font-size : 100%;
-        color : #636363;
-   }
-   .logout:hover{
-        background : #EAEAEA;
-        border : 0px;
-   }
-   .menuLink{
-      text-decoration : none;
-      font-size : 120%;
-      color : white;
-   }
-   .menuLink:hover {
-      color : #636363;
-      font-wieght : bold;
-   }
-   .container {
-      display : flex;
-   }
-   .header_name {
-      margin-right : 130px;
-        position : relative;
-        bottom: 40px;
-      font-family : Malgun Gothic;
-      font-size : 100%;
-      font-weight : bold;
-      color : white;
-   }
-   .bodystyle{
-   padding : 10px;
-   }
-   .idpic{
-      width :105px; 
-      height : 135px; 
-      border : 1px solid;
-      margin-right : 10px; 
-   }
-   .field{
-      border : 1px solid;
-      margin-top : 10px;
-   }
-   .field legend{
-      font-family : Hanna;
-      font-size : 26px;
-   }
-   </style>
+	<meta name="viewport" content="width=device-width" initial-scale ="1">
+	<style>
+	   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+	   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	   
+	   body {
+	      font-family: Nanum Gothic;
+	   }
+	   a { text-decoration:none}
+	   .navbar {
+	      background-color : #B2CCFF;
+	      padding : 0.00075rem 1rem;
+	      position : relative;
+	      align-items : center;
+	      font-family : Hanna;
+	   }
+	   .navbar ul {
+	      height:10px; 
+	      width:90%; 
+	      display: table;
+	      table-layout: fixed; 
+	   }
+	   .navbar ul li {
+	      display: table-cell;
+	        width: 10%;
+	        text-align: center;
+	   }
+	   .navbar_item{
+	      align-items : center;
+	      margin-right : 14px;
+	      padding : 10px;
+	      
+	   }
+	   .logout{
+	        display: block;
+	        background : none;
+	        border : 0px;
+	        border-radius : 5px;
+	        font-family : Hanna;
+	        font-size : 100%;
+	        color : #636363;
+	   }
+	   .logout:hover{
+	        background : #EAEAEA;
+	        border : 0px;
+	   }
+	   .menuLink{
+	      text-decoration : none;
+	      font-size : 120%;
+	      color : white;
+	   }
+	   .menuLink:hover {
+	      color : #636363;
+	      font-wieght : bold;
+	   }
+	   .container {
+	      display : flex;
+	   }
+	   .header_name {
+	      margin-right : 130px;
+	        position : relative;
+	        bottom: 40px;
+	      font-family : Malgun Gothic;
+	      font-size : 100%;
+	      font-weight : bold;
+	      color : white;
+	   }
+	   .bodystyle{
+	   padding : 10px;
+	   }
+	   .idpic{
+	      width :105px; 
+	      height : 135px; 
+	      border : 1px solid;
+	      margin-right : 10px; 
+	   }
+	   .field{
+	      border : 1px solid;
+	      margin-top : 10px;
+	   }
+	   .field legend{
+	      font-family : Hanna;
+	      font-size : 26px;
+	   }
+	</style>
 	<script type="text/javascript">
     
 		var option = "width=500, height=350, resizable=no, scrollbars=no";
@@ -173,7 +173,7 @@
                <li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
                <li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
                <li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
-               <li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
+               <li><a class="menuLink" href="../calendar/Calendar.jsp" style="color : #636363;">캘린더</a></li>
                </ul>
             </div>
       </div>
