@@ -114,6 +114,9 @@
    function get_carr(num){
       window.open("careerForm.jsp?carr_num="+num, '', option);
    }
+   function checkAward(){
+	   
+   }
 </script>
 </head>
 <body>
@@ -150,22 +153,38 @@
    
    String sql = "select * from award where id = ?";
    PreparedStatement pstmt = conn.prepareStatement(sql);
-    pstmt.setString(1,session_name);
-    ResultSet rs = pstmt.executeQuery();
+   pstmt.setString(1,session_name);
+   ResultSet rs = pstmt.executeQuery();
+   int i=0, j=0;
+   String[][] context = new String[5][4];
    
-   while(rs.next()) {
+   while(rs.next()) { %>
    
-   %>
-   
-   <a href="'awardFolioAction.jsp?award_num='+<%=rs.getString("awd_num")%>"><input type="checkbox" value="<%=rs.getString("awd_name") %>"></a>
-   
-   <%
-      
-   }
+	   <input type="checkbox" id="award" value="<%=++j%>"><%=rs.getString("awd_name")%>
+	   
+	
+	   <% int awd_chk = Integer.parseInt(request.getParameter("award"));
+	   if (awd_chk > 0){   
+		   context[i][0] = rs.getString("awd_org");
+		   context[i][1] = rs.getString("awd_result");
+		   context[i][2] = rs.getString("awd_attachment");
+		   context[i][3] = rs.getString("awd_memo");
+	   } else {
+		   context[i] = new String[4];
+	   } i++;
+	   %>
+	   
+	   <div><%=context[i][0]%></div>
+	   <div><%=context[i][1]%></div>
+	   <div><%=context[i][2]%></div>
+	   <div><%=context[i][3]%></div>
+   <%}
    
    rs.close();
    conn.close();
    pstmt.close();
    %>   
+   
+   
 </body>
 </html>
