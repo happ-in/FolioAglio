@@ -129,7 +129,7 @@
       		<ul>
 	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
          		<li><a class="menuLink" href="../education/education.jsp">학력</a></li>
-         		<li><a class="menuLink" href="../career/career.jsp">경력</a></li>
+         		<li><a class="menuLink" href="../career/career.jsp" style="color : #636363;">경력</a></li>
          		<li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
