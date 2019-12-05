@@ -23,11 +23,10 @@
 		String abroad_s_date = URLDecoder.decode(request.getParameter("s_period"), "UTF-8");
 		String abroad_g_date = URLDecoder.decode(request.getParameter("e_period"), "UTF-8");
 		String abroad_detail = URLDecoder.decode(request.getParameter("detail"), "UTF-8");
-		String abroad_image = URLDecoder.decode(request.getParameter("picture"), "UTF-8");
 		String abroad_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 		int num = Integer.parseInt(request.getParameter("num"));
 		
-		String sql = "update abroad set country_name=?, reason=?, abroad_language=?, abroad_s_date=?, abroad_g_date=?, abroad_detail=?, abroad_image=?, abroad_memo=? where id=? and abroad_num=?;";
+		String sql = "update abroad set country_name=?, reason=?, abroad_language=?, abroad_s_date=?, abroad_g_date=?, abroad_detail=?,abroad_memo=? where id=? and abroad_num=?;";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, country_name);
@@ -36,10 +35,9 @@
 		pstmt.setString(4, abroad_s_date);
 		pstmt.setString(5, abroad_g_date);
 		pstmt.setString(6, abroad_detail);
-		pstmt.setString(7, abroad_image);
-		pstmt.setString(8, abroad_memo);
-		pstmt.setString(9, session_name);
-		pstmt.setInt(10, num);
+		pstmt.setString(7, abroad_memo);
+		pstmt.setString(8, session_name);
+		pstmt.setInt(9, num);
 		pstmt.executeUpdate();
 		
 		DBUtil.close(pstmt);
