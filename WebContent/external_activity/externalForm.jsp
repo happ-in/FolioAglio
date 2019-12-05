@@ -88,7 +88,7 @@
    
    try{
       Connection conn = DBUtil.getConn();
-      String sql = "select activity_radio, group_name, activity_s_date, activity_e_date, activity_detail, activity_image, activity_memo from external_activities where activity_num=? and id=?;";
+      String sql = "select activity_radio, group_name, activity_s_date, activity_e_date, activity_detail, picture, activity_memo from external_activities where activity_num=? and id=?;";
       PreparedStatement pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, activity_num);
       pstmt.setString(2, session_name);
