@@ -26,6 +26,7 @@
          var picture = document.querySelector('#picture');
          var memo = document.querySelector('#memo');
          
+         
          // 전체 검사
          // 구분이 입력되지 않았을시
          if (radio.value == '') {
