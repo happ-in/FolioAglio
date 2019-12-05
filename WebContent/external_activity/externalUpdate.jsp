@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +15,12 @@
 	Connection conn = DBUtil.getConn();
 	
 	int activity_num = Integer.parseInt(request.getParameter("activity_num"));
-	String activity_radio = new String(request.getParameter("radio").getBytes("ISO-8859-1"), "UTF-8");
-	String group_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
-	String activity_s_date = new String(request.getParameter("s_period").getBytes("ISO-8859-1"), "UTF-8");
-	String activity_e_date = new String(request.getParameter("e_period").getBytes("ISO-8859-1"), "UTF-8");
-	String activity_detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
-	String activity_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+	String activity_radio = URLDecoder.decode(request.getParameter("radio"), "UTF-8");
+	String group_name = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+	String activity_s_date = URLDecoder.decode(request.getParameter("s_period"), "UTF-8");
+	String activity_e_date = URLDecoder.decode(request.getParameter("e_period"), "UTF-8");
+	String activity_detail = URLDecoder.decode(request.getParameter("detail"), "UTF-8");
+	String activity_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 	Object session_object = session.getAttribute("signedUser");
 	String session_name = (String)session_object;
 
