@@ -85,8 +85,6 @@
 	        	 self.close();
 	        	 opener.location.reload();
 	         }
-			}
-
 		});
 		
 		var confirm1 = document.querySelector('#confirm1');
@@ -161,7 +159,6 @@
 	        	 self.close();
 	        	 opener.location.reload();
 			}
-
 		});
 		
 		var confirm2 = document.querySelector('#confirm2');
@@ -223,7 +220,6 @@
 	        	 self.close();
 	        	 opener.location.reload();
 			}
-
 		});
 	});
 </script>

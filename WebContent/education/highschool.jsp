@@ -72,12 +72,14 @@
 	<%
 	
 	int school_num =  Integer.parseInt(request.getParameter("school_num"));
+	String session_name = (String)session.getAttribute("signedUser");
 	
 	try{
 		Connection conn = DBUtil.getConn();
-		String sql = "select school_name, school_location, division, e_date, g_date, g_state, edu_memo from education where school_num=?";
+		String sql = "select school_name, school_location, division, e_date, g_date, g_state, edu_memo from education where school_num=? and id=?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, school_num);
+		pstmt.setString(2, session_name);
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(rs.next()){

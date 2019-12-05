@@ -79,7 +79,6 @@
 	        	 self.close();
 	        	 opener.location.reload();
 	         }
-
 		});
 	});
 </script>

@@ -24,8 +24,6 @@
 		String edu_memo = URLDecoder.decode(request.getParameter("high_memo"), "UTF-8");
 		int school_num = Integer.parseInt(request.getParameter("school_num"));
 		
-		System.out.println(school_name);
-		
 		Connection conn = DBUtil.getConn();
 		String sql = "update education set school_name=?, school_location=?, division=?, e_date=?, g_date=?, g_state=?, edu_memo=? where school_radio='1' and id=? and school_num=?;";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
