@@ -8,7 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" initial-scale ="1">
-<link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../maincss.css">
 <style>
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -89,7 +88,7 @@
 	%>
 	
 	<%
-				if(rs.getString("language_name")!=null){
+				if(rs.getString("skill_radio").equals("language")){
 		
 	%>
 	<div class="field">

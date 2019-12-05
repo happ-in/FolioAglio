@@ -49,14 +49,13 @@
 				alert('응시일자를 입력하세요 ')
 				test_date.focus();
 			} else{
+				var formData = $("#form1").serialize();
 	        	 $.ajax({
 	                 cache : false,
 	                 enctype: 'multipart/form-data',
-	                 url : "upload.jsp?com="+name.value, // 요기에
+	                 url : "certificationAction.jsp", // 요기에
 	                 type : 'POST', 
-	                 data : formData2,
-	                 processData: false,
-	                 contentType: false,
+	                 data : formData,
 	                 async: false,	
 	                 success : function(data) {
 						
@@ -85,8 +84,20 @@
 					alert('취득일자를 입력하세요 ')
 					issue_date.focus();
 				} else{
-					document.getElementById('form1').submit();
-					self.close();
+					var formData = $("#form1").serialize();
+		        	 $.ajax({
+		                 cache : false,
+		                 enctype: 'multipart/form-data',
+		                 url : "certificationAction.jsp", // 요기에
+		                 type : 'POST', 
+		                 data : formData,
+		                 async: false,	
+		                 success : function(data) {
+							
+		                 }
+		             });
+		            self.close();
+		            opener.location.reload();
 				}
 			
 		});
