@@ -35,10 +35,19 @@
             date.focus();
             // 구사언어가 입력되지 않았을시
          }else {
-            //저장하는거 구현해야함
-            document.getElementById('form1').submit();
-            self.close();
-            opener.location.reload();
+        	 var formData = $("#form1").serialize();
+        	 $.ajax({
+                 cache : false,
+                 url : "schedulerUpdate.jsp", // 요기에
+                 type : 'POST', 
+                 data : formData,
+                 async: false,
+                 success : function(data) {
+					
+                 }
+             });
+        	 self.close();
+        	 opener.location.reload();
          }
 
       });

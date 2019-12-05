@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,10 @@
 	<%
 	Connection conn = DBUtil.getConn();
 	
-	String sch_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
-	String sch_date = new String(request.getParameter("date").getBytes("ISO-8859-1"), "UTF-8");
-	String sch_time = new String(request.getParameter("time").getBytes("ISO-8859-1"), "UTF-8");
-	String sch_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+	String sch_name = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+	String sch_date = URLDecoder.decode(request.getParameter("date"), "UTF-8");
+	String sch_time = URLDecoder.decode(request.getParameter("time"), "UTF-8");
+	String sch_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 	int sch_num = Integer.parseInt(request.getParameter("sch_num"));
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
