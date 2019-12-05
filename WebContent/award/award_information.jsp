@@ -32,8 +32,35 @@
 				result.focus();
 			}else {
 				//저장하는거 구현해야함
-				document.getElementById('form1').submit();
-				self.close();
+				var formData = $("#form1").serialize();
+        		var form = $('#form2')[0];
+        		var formData2 = new FormData(form);
+        		
+        	 $.ajax({
+                 cache : false,
+                 url : "careerAction.jsp", // 요기에
+                 type : 'POST', 
+                 data : formData,
+                 async: false,
+                 success : function(data) {
+					
+                 }
+             });
+        	 $.ajax({
+                 cache : false,
+                 enctype: 'multipart/form-data',
+                 url : "upload.jsp?com="+name.value, // 요기에
+                 type : 'POST', 
+                 data : formData2,
+                 processData: false,
+                 contentType: false,
+                 async: false,	
+                 success : function(data) {
+					
+                 }
+             });
+            self.close();
+            opener.location.reload();
 			}
 
 		});
@@ -90,21 +117,24 @@
 					<td><input type="text" id="result" name="result"></td>
 				</tr>
 				<tr>
-					<td>첨부자료</td>
-					<td><input type="file" id="attachment" name="attachment"></td>
-				</tr>
-				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" rows="3" name="memo" cols="50"></textarea></td>
-				</tr>
-				<tr align = "right">
-					<td colspan="2"><input type="button" id="confirm" class="button_css"
-						value="확인">
-					</td>
-
 				</tr>
 			</table>
 		</fieldset>
 	</form>
+	
+	<form method="post" id = "form2" enctype="multipart/form-data" action="upload.jsp">
+               <table>
+               <tr>
+               <td><input type="file" value="사진 선택" accept="image/*" id="picture" name="picture"/></td>
+            	</tr>
+            <tr align = "right">
+               <td colspan="2"><input type="button" id="confirm" class="button_css" value="확인">
+               </td>
+            </tr>
+         </table>
+         
+         </form>
 </body>
 </html>

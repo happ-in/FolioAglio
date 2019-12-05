@@ -34,8 +34,19 @@
 				result.focus();
 			}else {
 				//저장하는거 구현해야함
-				document.getElementById('form1').submit();
+				var formData = $("#form1").serialize();
+        	 	$.ajax({
+                 cache : false,
+                 url : "awardUpdate.jsp", // 요기에
+                 type : 'POST', 
+                 data : formData,
+                 async: false,
+                 success : function(data) {
+					
+                 }
+             });
 				self.close();
+				opener.location.reload();
 			}
 
 		});
