@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../maincss.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -79,37 +80,11 @@
 		
 	});
 </script>
-<style>
 
-	fieldset{
-		background-color: white;
-		
-	}
-	legend{
-		background-color: white;
-		font-wieght : bold;
-		font-size: x-large;
-	}
-	.button_css{
-		border: 1px solid ;
-		background-color: white;
-		color: black;
-		font-wieght : bold;
-		padding: 5px;
-		border-top-left-radius : 5px;
-		border-bottom-left-radius : 5px;
-		border-top-right-radius : 5px;
-		border-bottom-right-radius: 5px;
-	}
-	.button_css:hover{
-		color: white;
-		background-color: #B2CCFF;
-	}
-</style>
 </head>
 <body>
 	<form action="certificationAction.jsp" method="post" id = "form1">
-		<fieldset>
+		<fieldset class="field_info">
 			<legend>어학/자격증</legend>
 			<table>
 				<tr>

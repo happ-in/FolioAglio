@@ -5,35 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../maincss.css">
 <meta charset="utf-8">
 <title>Insert title here</title>
-<style>
 
-	fieldset{
-		background-color: white;
-		
-	}
-	legend{
-		background-color: white;
-		font-wieght : bold;
-		font-size: x-large;
-	}
-	.button_css{
-		border: 1px solid ;
-		background-color: white;
-		color: black;
-		font-wieght : bold;
-		padding: 5px;
-		border-top-left-radius : 5px;
-		border-bottom-left-radius : 5px;
-		border-top-right-radius : 5px;
-		border-bottom-right-radius: 5px;
-	}
-	.button_css:hover{
-		color: white;
-		background-color: #B2CCFF;
-	}
-</style>
 <script>
 
 	window.addEventListener('load', function() {
@@ -88,7 +63,7 @@
 		
 	%>
 	<form action="langUpdate.jsp" method="post" id="form1">
-		<fieldset>
+		<fieldset class="field_info">
 			<legend>어학</legend>
 			<table>
 				<tr>

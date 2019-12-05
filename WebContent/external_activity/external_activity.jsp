@@ -37,6 +37,9 @@
 	         document.getElementById(num).style.display='block'; 
 	      }
 	   }
+	function alart_del(){
+		alert("삭제되었습니다.");
+	}
 </script>
 </head>
 <body>
@@ -120,7 +123,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="get_activity(<%=rs.getInt("activity_num") %>)">
-            <a href = "externalDel.jsp?ext_num=<%=rs.getString("activity_num") %>"><input type="button" value="삭제" ></a>
+            <a href = "externalDel.jsp?ext_num=<%=rs.getString("activity_num") %>"><input type="button" value="삭제" onclick="alart_del()"></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("activity_num") %>);">
          </td>
          </tr>

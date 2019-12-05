@@ -29,6 +29,9 @@
 	function abroad(num){
 		window.open('abroadForm.jsp?ab_num='+num, '', option);
 	}
+	function alart_del(){
+		alert("삭제되었습니다.");
+	}
    function showhide(num){
 	      if(document.getElementById(num).style.display=='block'){
 	         document.getElementById(num).style.display='none';
@@ -113,7 +116,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="abroad(<%=rs.getString("abroad_num") %>)">
-            <a href = "abroadDelete.jsp?ab_num=<%=rs.getString("abroad_num") %>"><input type="button" value="삭제"></a>
+            <a href = "abroadDelete.jsp?ab_num=<%=rs.getString("abroad_num") %>"><input type="button" value="삭제" onclick="alart_del()"></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("abroad_num") %>);">
          </td>
          </tr>

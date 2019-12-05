@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../maincss.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -84,33 +85,7 @@
 		});
 	});
 </script>
-<style>
 
-	fieldset{
-		background-color: white;
-		
-	}
-	legend{
-		background-color: white;
-		font-wieght : bold;
-		font-size: x-large;
-	}
-	.button_css{
-		border: 1px solid ;
-		background-color: white;
-		color: black;
-		font-wieght : bold;
-		padding: 6px;
-		border-top-left-radius : 5px;
-		border-bottom-left-radius : 5px;
-		border-top-right-radius : 5px;
-		border-bottom-right-radius: 5px;
-	}
-	.button_css:hover{
-		color: white;
-		background-color: #B2CCFF;
-	}
-</style>
 </head>
 <body>
 	<%
@@ -129,7 +104,7 @@
 		if(rs.next()){
 	%>
 	<form action="abroadUpdate.jsp" method="post" id = "form1">
-		<fieldset>
+		<fieldset class="field_info">
 			<legend>해외경험</legend>
 			<table>
 				<tr>
@@ -168,6 +143,11 @@
 					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString("abroad_memo") %></textarea></td>
 					<td><input type="hidden" name="num" value="<%=num%>"></td>
 				</tr>
+				<tr align="right">
+               <td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
+                  value="확인">
+               </td>
+            </tr>
 			</table>
 		</fieldset>
 	</form>
@@ -175,13 +155,9 @@
 	   <form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
          <table>
             <tr>
-               <td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString(6) %></td>
+               <td><input type="file" value="파일 선택" id="picture" name="picture"/></td>
             </tr>
-            <tr align="right">
-               <td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
-                  value="확인">
-               </td>
-            </tr>
+            
          </table>
       </form>
 	<%

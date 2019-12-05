@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../maincss.css">
 <meta charset="utf-8">
 <title>Insert title here</title>
 <script>
@@ -52,7 +53,7 @@
 	%>
 	
 	<form action="classUpdate.jsp" method="post" id="form1">
-		<fieldset>
+		<fieldset class="field_info">
 			<legend>자격증</legend>
 			<table>
 				<tr>

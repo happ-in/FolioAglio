@@ -25,6 +25,9 @@
 <script>
 	var option = "width = 600, height = 300, top = 100, left = 200, location = no";
 	
+	function alart_del(){
+		alert("삭제되었습니다.");
+	}
 	function popup_skill(){
 		var url = "skill_information.jsp";
 		var name = "Skill";
@@ -128,7 +131,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="language(<%=rs.getInt("issue_num") %>)">
-            <a href = "langDel.jsp?issue_num=<%=rs.getString("issue_num") %>"><input type="button" value="삭제" ></a>
+            <a href = "langDel.jsp?issue_num=<%=rs.getString("issue_num") %>"><input type="button" onclick="alart_del()" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("issue_num") %>);">
          </td>
          </tr>
