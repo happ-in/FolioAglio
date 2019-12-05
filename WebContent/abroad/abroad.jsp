@@ -52,7 +52,7 @@
 		</div>
 	</header>
 	
-		<div style="padding: 10px"></div>
+	
 	
 	<%
 	Connection conn = DBUtil.getConn();
