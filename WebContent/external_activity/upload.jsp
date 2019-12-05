@@ -13,7 +13,7 @@
 </head>
 <body>
    <%
-   	  String directory = application.getRealPath("external_activities/IMG"); //절대경로를 가져옴
+   	  String directory = application.getRealPath("external_activity/IMG"); //절대경로를 가져옴
    	  
       int maxSize = 1024 * 1024 * 100;
       String encoding = "UTF-8";
@@ -37,7 +37,7 @@
       
       String com = new String(request.getParameter("com").getBytes("ISO-8859-1"), "UTF-8");
       
-      new fileDAO().upload("external_activities", "IMG/"+fileRealName, session_name, com);
+      new fileDAO().upload("external_activity", "IMG/"+fileRealName, session_name, com);
    %>
    
    

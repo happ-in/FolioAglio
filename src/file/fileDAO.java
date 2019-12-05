@@ -48,7 +48,7 @@ public class fileDAO {
       }
 
 
-      else if(table.equals("external_activities")) {
+      else if(table.equals("external_activity")) {
          SQL = "update external_activities set picture=? where id=? and group_name=?";
       }
 
