@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
-<title>미리보기</title>
+<title>Folio2PDF</title>
 </head>
 <body>
 	<%
@@ -258,5 +260,38 @@
 		pstmt.close();
 	}i=0;
 	conn.close();%>
+	<script>
+      function fnSaveAsPdf() {
+        html2canvas(document.body).then(function(canvas) {
+          var imgData = canvas.toDataURL('image/png');
+          var imgWidth = 210;
+          var pageHeight = imgWidth * 1.414;
+          var imgHeight = canvas.height * imgWidth / canvas.width;
+          var position = 0;
+          var heightLeft = imgHeight;
+          var doc = new jsPDF({
+             'orientation': 'p',
+             'unit': 'mm',
+             'format': 'a4'
+          });
+          // 첫 페이지 출력
+          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+           
+          // 한 페이지 이상일 경우 루프 돌면서 출력
+          while (heightLeft >= 20) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+          }
+          
+          doc.save('sample_A4.pdf');
+          alert("완료!");
+        });
+      }
+      
+    </script>
+    <button onclick="fnSaveAsPdf();">Save PDF</button>
 </body>
 </html>
