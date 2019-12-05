@@ -77,6 +77,9 @@
 	         
 	      }
 	   }
+	function alart_del(){
+		alert("삭제되었습니다.");
+	}
 	
 </script>
 </head>
@@ -163,7 +166,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onClick="popup_highschool(<%=rs.getInt("school_num") %>)">
-            <a href = "highDel.jsp?edu_num=<%=rs.getString("school_num") %>"><input type="button" value="삭제" ></a>
+            <a href = "highDel.jsp?edu_num=<%=rs.getString("school_num") %>"><input type="button" value="삭제" onclick="alart_del()"></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("school_num") %>);">
          </td>
          </tr>
@@ -241,7 +244,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onClick="popup_collage(<%=rs.getInt("school_num") %>)">
-            <a href = "collegeDel.jsp?edu_num=<%=rs.getString("school_num") %>"><input type="button" value="삭제" ></a>
+            <a href = "collegeDel.jsp?edu_num=<%=rs.getString("school_num") %>"><input type="button" value="삭제" onclick="alart_del()"></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("school_num") %>);">
          </td>
          </tr>
@@ -299,7 +302,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onClick="popup_graduated(<%=rs.getInt("school_num") %>)">
-            <a href = "graduatedDel.jsp?edu_num=<%=rs.getString("school_num") %>"><input type="button" value="삭제" ></a>
+            <a href = "graduatedDel.jsp?edu_num=<%=rs.getString("school_num") %>"><input type="button" value="삭제" onclick="alart_del()" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("school_num") %>);">
          </td>
          </tr>
