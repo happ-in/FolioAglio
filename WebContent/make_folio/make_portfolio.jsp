@@ -155,12 +155,12 @@
    PreparedStatement pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    ResultSet rs = pstmt.executeQuery();
-   int i=0, j=0;
+   int i=0; int j=0;
    String[][] context = new String[5][4];
    
    while(rs.next()) { %>
-   
-	   <input type="checkbox" id="award" value="<%=++j%>"><%=rs.getString("awd_name")%>
+   		j++;
+	   <input type="checkbox" id="award" value="<%=j%>"><%=rs.getString("awd_name")%>
 	   
 	
 	   <% int awd_chk = Integer.parseInt(request.getParameter("award"));
