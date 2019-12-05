@@ -54,7 +54,12 @@
    			</div>
 		</div>
 	</header>
+<<<<<<< HEAD
 
+=======
+	
+	
+>>>>>>> bin_park
 	
 	<%
 	Connection conn = DBUtil.getConn();
