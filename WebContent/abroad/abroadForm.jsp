@@ -1,3 +1,5 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,7 +26,6 @@
 			var detail = document.querySelector('#detail');
 			var picture = document.querySelector('#picture');
 			var memo = document.querySelector('#memo');
-			
 			
 			
 			// 전체 검사
@@ -86,31 +87,45 @@
 </style>
 </head>
 <body>
-	<form action="abroadAction.jsp" method="post" id = "form1">
+	<%
+	String session_name = (String)session.getAttribute("signedUser");
+	int num = Integer.parseInt(request.getParameter("ab_num"));
+	
+	try{
+		Connection conn = DBUtil.getConn();
+		
+		String sql = "select * from abroad where id=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, session_name);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+	%>
+	<form action="abroadUpdate.jsp" method="post" id = "form1">
 		<fieldset>
 			<legend>해외경험</legend>
 			<table>
 				<tr>
 					<td>체류국가</td>
-					<td><input type="text" id="country" name="country"></td>
+					<td><input type="text" id="country" name="country" value="<%=rs.getString("country_name") %>"></td>
 				</tr>
 				<tr>
 					<td>체류형태</td>
-					<td><input type="text" id="reason" name="reason"></td>
+					<td><input type="text" id="reason" name="reason" value="<%=rs.getString("reason") %>"></td>
 				</tr>
 				<tr>
 					<td>구사언어</td>
-					<td><input type="text" id="language" name="language"></td>
+					<td><input type="text" id="language" name="language" value="<%=rs.getString("abroad_language") %>"></td>
 				</tr>
 				<tr>
 					<td>체류기간</td>
-					<td><input type="text" id="s_period" name="s_period" placeholder="날짜넣기">
+					<td><input type="text" id="s_period" name="s_period" placeholder="날짜넣기" value="<%=rs.getString("abroad_s_date") %>">
 					<script>
 						$(function(){
 							$("#s_period").datepicker({dateFormat: "yy-mm-dd"});
 						});
 					</script> ~ 
-					<input type="text" id="e_period" name="e_period" placeholder="날짜넣기">
+					<input type="text" id="e_period" name="e_period" placeholder="날짜넣기"  value="<%=rs.getString("abroad_g_date") %>">
 					<script>
 						$(function(){
 							$("#e_period").datepicker({dateFormat: "yy-mm-dd"});
@@ -119,23 +134,30 @@
 				</tr>
 				<tr>
 					<td>상세설명</td>
-					<td><textarea id="detail" name="detail" rows="10" cols="50"></textarea></td>
+					<td><textarea id="detail" name="detail" rows="10" cols="50"><%=rs.getString("abroad_detail") %></textarea></td>
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" value="파일 선택" id="picture" name="picture"/></td>
+					<td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString("abroad_image") %></td>
 				</tr>
 				<tr>
 					<td>메모</td>
-					<td><textarea id="memo" name="memo" rows="3" cols="50"></textarea></td>
+					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString("abroad_memo") %></textarea></td>
 				</tr>
 				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm" class="button_css"
-						value="확인">
+						value="수정">
 					</td>
+					<td><input type="hidden" name="num" value="<%=rs.getInt("abroad_num") %>"></td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
+	<%
+		}
+	} catch(SQLException e){
+		System.out.println(e.toString());
+	}
+	%>
 </body>
 </html>

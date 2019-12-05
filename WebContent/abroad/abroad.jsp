@@ -20,11 +20,14 @@
 <meta charset="utf-8">
 <title>해외경험</title>
 <script>
+	var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 	function popup_abroad(){
 		var url = "abroad_information.jsp";
 		var name = "Abroad";
-		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
+	}
+	function abroad(num){
+		window.open('abroadForm.jsp?ab_num='+num, '', option);
 	}
 </script>
 </head>
@@ -51,30 +54,36 @@
    			</div>
 		</div>
 	</header>
-	
-		<div style="padding: 10px"></div>
+
 	
 	<%
 	Connection conn = DBUtil.getConn();
-	String s_type = "";
+	String session_name = (String)session.getAttribute("signedUser");
 	
-	String sql = "select * from abroad";
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery(sql);
-	
-	while(rs.next()) {
-	
+	try{
+		String sql = "select * from abroad where id=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, session_name);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+		
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("country_name") %>" class="field_button"></form></div>
+	<div class="field">
+		<input type="button" value="<%=rs.getString("country_name") %>" class="field_button" onclick="abroad(<%=rs.getString("abroad_num") %>)">
+	</div>
 	
 	<%
 		
+		}
+		
+		rs.close();
+		conn.close();
+		pstmt.close();
+	} catch(SQLException e){
+		System.out.println(e.toString());
 	}
-	
-	rs.close();
-	conn.close();
-	stmt.close();
 	%>
 	
 	<div>

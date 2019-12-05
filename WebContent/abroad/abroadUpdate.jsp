@@ -26,8 +26,9 @@
 		String abroad_detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_image = new String(request.getParameter("picture").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+		int num = Integer.parseInt(request.getParameter("num"));
 		
-		String sql = "insert into abroad(country_name, reason, abroad_language, abroad_s_date, abroad_g_date, abroad_detail, abroad_image, abroad_memo, id) values (?,?,?,?,?,?,?,?, ?);";
+		String sql = "update abroad set country_name=?, reason=?, abroad_language=?, abroad_s_date=?, abroad_g_date=?, abroad_detail=?, abroad_image=?, abroad_memo=? where id=? and abroad_num=?;";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, country_name);
@@ -39,6 +40,7 @@
 		pstmt.setString(7, abroad_image);
 		pstmt.setString(8, abroad_memo);
 		pstmt.setString(9, session_name);
+		pstmt.setInt(10, num);
 		pstmt.executeUpdate();
 		
 		DBUtil.close(pstmt);
