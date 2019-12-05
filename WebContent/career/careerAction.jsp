@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +13,14 @@
 
    <%
    Connection conn = DBUtil.getConn();
-   String company_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
-   String position = new String(request.getParameter("position").getBytes("ISO-8859-1"), "UTF-8");
-   String work = new String(request.getParameter("work").getBytes("ISO-8859-1"), "UTF-8");
-   String salary = new String(request.getParameter("salary").getBytes("ISO-8859-1"), "UTF-8");
-   String s_period = new String(request.getParameter("s_period").getBytes("ISO-8859-1"), "UTF-8");
-   String e_period = new String(request.getParameter("e_period").getBytes("ISO-8859-1"), "UTF-8");
-   String detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
-   String carrier_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+   String company_name = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+   String position = URLDecoder.decode(request.getParameter("position"), "UTF-8");
+   String work = URLDecoder.decode(request.getParameter("work"), "UTF-8");
+   String salary = URLDecoder.decode(request.getParameter("salary"), "UTF-8");
+   String s_period = URLDecoder.decode(request.getParameter("s_period"), "UTF-8");
+   String e_period = URLDecoder.decode(request.getParameter("e_period"), "UTF-8");
+   String detail = URLDecoder.decode(request.getParameter("detail"), "UTF-8");
+   String carrier_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
    Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
 
