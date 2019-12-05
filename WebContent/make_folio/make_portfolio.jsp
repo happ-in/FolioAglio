@@ -107,8 +107,7 @@
 <title>경력</title>
 <%
 	Object session_object=session.getAttribute("signedUser");
-	//String session_name=(String)session_object;
-	String session_name="wook0805";
+	String session_name=(String)session_object;
 	Connection conn = DBUtil.getConn();
 %>
 <script>
