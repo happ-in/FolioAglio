@@ -13,7 +13,7 @@ public class fileDAO {
 		try {
 
 			String url = "jdbc:mysql://10.10.5.15:3306/op_242b1bc8_a6d7_417e_8fcd_77b2d623d514?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-			String id = "65f26b2bc34cfcc5";
+			String id = "7d34c38ba9686d5a";
 			String pw = "c32ca248cd0ba4a7";
 			
 //			String url = "jdbc:mysql://localhost:3306/file?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8";
@@ -31,11 +31,10 @@ public class fileDAO {
 
 	}
 
-	
 
 	public int upload(String table, String fileRealName, String session_name, String com) {
+		String SQL = "";
 		
-		String SQL = "update personal_information set picture=? where id=?";
 		if(table.equals("carrier")) {	
 			SQL = "update carrier set picture=? where id=? and company_name=?";
 		}
@@ -61,6 +60,20 @@ public class fileDAO {
 
 		return -1;
 
+	}
+
+	
+	public int p_upload(String table, String fileRealName, String session_name) {
+		String SQL = "update personal_information set picture=? where id=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,  fileRealName);
+			pstmt.setString(2,  session_name);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 }

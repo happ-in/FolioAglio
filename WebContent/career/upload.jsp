@@ -37,7 +37,7 @@
       
       String com = new String(request.getParameter("com").getBytes("ISO-8859-1"), "UTF-8");
       
-      new fileDAO().upload("carrier", "IMG/"+fileRealName,session_name,com);
+      new fileDAO().upload("carrier", "IMG/"+fileRealName, session_name, com);
    %>
    
    

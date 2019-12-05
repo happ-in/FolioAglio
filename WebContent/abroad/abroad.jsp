@@ -54,13 +54,7 @@
    			</div>
 		</div>
 	</header>
-<<<<<<< HEAD
 
-=======
-	
-	
->>>>>>> bin_park
-	
 	<%
 	Connection conn = DBUtil.getConn();
 	String session_name = (String)session.getAttribute("signedUser");
@@ -80,9 +74,7 @@
 	</div>
 	
 	<%
-		
 		}
-		
 		rs.close();
 		conn.close();
 		pstmt.close();

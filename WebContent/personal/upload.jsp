@@ -37,7 +37,7 @@
       Object session_object=session.getAttribute("signedUser");
       String session_name=(String)session_object;
       
-      new fileDAO().upload("personal_information", "IMG/"+fileRealName,session_name);
+      new fileDAO().p_upload("personal_information", "IMG/"+fileRealName,session_name);
       response.sendRedirect("personal.jsp");
    %>
    
