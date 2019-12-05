@@ -50,7 +50,7 @@
       
               $.ajax({
                    cache : false,
-                   url : "external_activityAction.jsp", // 요기에
+                   url : "externalUpdate.jsp", // 요기에
                    type : 'POST', 
                    data : formData,
                    async: false,
