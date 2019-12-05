@@ -144,6 +144,7 @@
    
    
    .type07 {
+
    position : fixed;
       right : 20px;
       bottom : 50px;
@@ -156,12 +157,15 @@
    }
    
    .type07 thead {
+
+	font-size : 18px;
    text-align: center;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
     background: #e7708d;
    }
    .type07 thead th {
+         
    text-align: center;
     padding: 10px;
     font-weight: bold;
@@ -169,6 +173,8 @@
     color: #fff;
    }
    .type07 tbody th {
+
+         font-size : 16px;
    text-align: center;
     width: 100px;
     padding: 10px;
@@ -185,6 +191,24 @@
     vertical-align: top;
     border-bottom: 1px solid #ccc;
    }
+   .type07 input{
+   border: 2px solid #fcf1f4 ;
+		color: #e7708d;
+		background-color: white;
+   font-family : Hanna;
+	font-size : 16px;
+	
+	padding: 5px 10px 5px 10px;
+		border-top-left-radius : 5px;
+		border-bottom-left-radius : 5px;
+		border-top-right-radius : 5px;
+		border-bottom-right-radius: 5px;
+   }
+   .type07 input:hover{
+  border: 2px solid #fcf1f4 ;
+		color : #e7708d;
+		background-color: #fcf1f4;
+	}
 
 	.button_css{
 	font-family : Hanna;

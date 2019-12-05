@@ -17,8 +17,7 @@
 	int num = Integer.parseInt(request.getParameter("ab_num"));
 	try{
 		Connection conn = DBUtil.getConn();
-		
-		
+	
 		String sql = "delete from abroad where id=? and abroad_num=?;";		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 

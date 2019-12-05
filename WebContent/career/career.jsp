@@ -25,6 +25,9 @@
 		var name = "Carrier";	
 		window.open(url, name, option);
 	}
+	function alart_del(){
+		alert("삭제되었습니다.");
+	}
 	function get_carr(num){
 		window.open("careerForm.jsp?carr_num="+num, '', option);
 	}
@@ -118,7 +121,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="get_carr(<%=rs.getString("carrier_num") %>)">
-            <a href = "careerDel.jsp?carr_num=<%=rs.getString("carrier_num") %>"><input type="button" value="삭제" ></a>
+            <a href = "careerDel.jsp?carr_num=<%=rs.getString("carrier_num") %>"><input type="button" onclick="alart_del()" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("carrier_num") %>);">
          </td>
          </tr>
