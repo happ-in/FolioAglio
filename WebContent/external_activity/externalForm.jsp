@@ -44,9 +44,35 @@
 				alert('활동기간을 입력하세요 ')
 				e_period.focus();
 			}else {
-				//저장하는거 구현해야함
-				document.getElementById('form1').submit();
-				self.close();
+				var formData = $("#form1").serialize();
+       	 		var form = $('#form2')[0];
+		    	var formData2 = new FormData(form);
+		
+		    	 $.ajax({
+		             cache : false,
+		             url : "external_activityAction.jsp", // 요기에
+		             type : 'POST', 
+		             data : formData,
+		             async: false,
+		             success : function(data) {
+						
+		             }
+		         });
+		    	 $.ajax({
+		             cache : false,
+		             enctype: 'multipart/form-data',
+		             url : "upload.jsp?com="+name.value, // 요기에
+		             type : 'POST', 
+		             data : formData2,
+		             processData: false,
+		             contentType: false,
+		             async: false,	
+		             success : function(data) {
+						
+		             }
+		         });
+		        self.close();
+		        opener.location.reload();
 			}
 
 		});
@@ -109,22 +135,26 @@
 					<td><textarea id="detail" name="detail" rows="10" cols="50"><%=rs.getString(5) %></textarea></td>
 				</tr>
 				<tr>
-					<td>사진</td>
-					<td><input type="file" value="파일 선택" id="picture" name="picture"/></td>
-				</tr>
-				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" name="memo" rows="3" cols="50"> <%=rs.getString(7) %></textarea></td>
 				</tr>
+			</table>
+		</fieldset>
+	</form>
+	
+	<form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
+			<table>
 				<tr>
-					<td colspan="2"><input type="button" id="confirm"
+					<td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString(6) %></td>
+				</tr>
+				<tr align="right">
+					<td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
 						value="확인">
 					</td>
 					<td><input type="hidden" name="activity_num" value="<%= activity_num %>"></td>
 				</tr>
 			</table>
-		</fieldset>
-	</form>
+		</form>
 	<%
 		}
 		rs.close();
