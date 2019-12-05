@@ -18,9 +18,6 @@
       var name = "award";
       window.open(url, name, option);
    }
-   function award(num){
-      window.open('awardShowDB.jsp?awd_num='+num, '', option);
-   }
    
    function showhide(num){
       if(document.getElementById(num).style.display=='block'){

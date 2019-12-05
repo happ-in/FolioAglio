@@ -28,6 +28,13 @@
 	function get_carr(num){
 		window.open("careerForm.jsp?carr_num="+num, '', option);
 	}
+   function showhide(num){
+	      if(document.getElementById(num).style.display=='block'){
+	         document.getElementById(num).style.display='none';
+	      }else{
+	         document.getElementById(num).style.display='block'; 
+	      }
+	   }
 </script>
 </head>
 <body>
