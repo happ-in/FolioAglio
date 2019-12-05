@@ -44,7 +44,7 @@
             alert('활동기간을 입력하세요 ')
             e_period.focus();
          }else {
-            var formData = $("#form1").serialize();
+            var formData = $("#form1").serialize().replace(/%/g, '%25');
                  var form = $('#form2')[0];
              var formData2 = new FormData(form);
       
@@ -60,6 +60,7 @@
                });
               $.ajax({
                    cache : false,
+                   contentType: "application/x-www-form-urlencoded; charset=utf-8",
                    enctype: 'multipart/form-data',
                    url : "upload.jsp?com="+name.value, // 요기에
                    type : 'POST', 
