@@ -30,6 +30,13 @@
 	function get_activity(num){
 		window.open("externalForm.jsp?activity_num="+num, '', option);
 	}
+	function showhide(num){
+	      if(document.getElementById(num).style.display=='block'){
+	         document.getElementById(num).style.display='none';
+	      }else{
+	         document.getElementById(num).style.display='block'; 
+	      }
+	   }
 </script>
 </head>
 <body>
@@ -67,7 +74,7 @@
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
 
-	String sql = "select group_name, activity_num from external_activities where id=?";
+	String sql = "select * from external_activities where id=?";
 	
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1,session_name);
@@ -78,7 +85,50 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString(1) %>" onclick="get_activity(<%=rs.getInt(2) %>)" class="field_button"></form></div>
+	<div class="field">
+		<input type="button" value="<%=rs.getString("group_name") %>" onclick="showhide(<%=rs.getInt("activity_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;" id = "<%=rs.getString("activity_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">구분</th>
+         <td><%=rs.getString("activity_radio")%></td>
+      </tr>
+      <tr>
+         <th scope="row">단체명</th>
+         <td><%=rs.getString("group_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">활동기간</th>
+         <td><%=rs.getString("activity_s_date")%> ~ <%=rs.getString("activity_e_date")%></td>
+      </tr>
+      <tr>
+         <th scope="row">상세설명</th>
+         <td><%=rs.getString("activity_detail")%></td>
+      </tr>
+      <tr>
+         <th scope="row">메모</th>
+         <td><%=rs.getString("activity_memo")%></td>
+      </tr>
+      <tr>
+         <th scope="row">사진</th>
+         <td><%=rs.getString("picture")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" onclick="get_activity(<%=rs.getInt("activity_num") %>)">
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("activity_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
+		</div>
 	
 	<%
 		
