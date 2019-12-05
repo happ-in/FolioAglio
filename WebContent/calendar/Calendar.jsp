@@ -112,9 +112,9 @@
     <%
     	for (i = 1; i <= 12; i++) {
     		if (i == realMonth) {%>
-    			<span class="month-color"><%=i%>월</span>
+    			<span class="month-color" ><%=i%>월</span>
     		<%} else {%>
-    			<a href = "Calendar.jsp?year=<%=y%>&amp;month=<%=i-1%>"><span><%=i%>월</span></a>
+    			<a href = "Calendar.jsp?year=<%=y%>&amp;month=<%=i-1%>" ><span style="color:#808080;"><%=i%>월</span></a>
     		<%}
     	}%>
     </div><!-- months -->
