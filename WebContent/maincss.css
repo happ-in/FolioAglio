@@ -23,8 +23,8 @@
    }
    .navbar ul li {
       display: table-cell;
-   	  width: 10%;
-   	  text-align: center;
+        width: 10%;
+        text-align: center;
    }
    .navbar_item{
       align-items : center;
@@ -59,76 +59,119 @@
    }
    .header_name {
       margin-right : 130px;
-   	  position : relative;
-   	  bottom: 40px;
+        position : relative;
+        bottom: 40px;
       font-family : Malgun Gothic;
       font-size : 100%;
       font-weight : bold;
       color : white;
    }
     .bodystyle{
-	   padding : 10px;
-	}
-	.idpic{
-	   width :105px; 
-	   height : 135px; 
+      padding : 10px;
+   }
+   .idpic{
+      width :105px; 
+      height : 135px; 
        border : 1px solid;
-	   margin-right : 10px; 
-	}
-	.field{		
-	   margin-top : 20px;
-	   align : center;
-	   padding : 10px;
-	   position: relative;
-	}
-	.field legend{
-	   font-family : Hanna;
-	   font-size : 26px;
-	}
-		   
+      margin-right : 10px; 
+   }
+   .field{      
+      margin-top : 20px;
+      align : center;
+      padding : 10px;
+      position: relative;
+   }
+   .field legend{
+      font-family : Hanna;
+      font-size : 26px;
+   }
+         
    .aa{
-   	  position : fixed;
-   	  right : 20px;
-   	  bottom : 20px;
+        position : fixed;
+        right : 20px;
+        bottom : 20px;
    }
    
-	
-	.field_button,
-	.field_button::after {
-	  -webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-	  -o-transition: all 0.3s;
-		transition: all 0.3s;
-	}
-	
-	.field_button {
-	
-	  background: none;
-	  border: 3px solid #fff;
-	  border-radius: 5px;
-	  color: #595959;
-	  display: block;
-	  font-size: 1.6em;
-	  font-weight: bold;
-	  left: 0; right: 0;
-  	  margin-left:auto; margin-right:auto;
-	  padding-left: 100px;
-	  padding-right: 100px;
-	  position: absolute;
-	  text-transform: uppercase;
-	}	
-	.field_button::before,
-	.field_button::after {
-	  background: #D9E5FF;
-	  content: '';
-	  position: absolute;
-	  z-index: -1;
-	}
-	
-	.field_button:hover {
-	  color: #A1A1A1;
-	}
-	
-	
-	   
-	   
+   
+   .field_button,
+   .field_button::after {
+     -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+     -o-transition: all 0.3s;
+      transition: all 0.3s;
+   }
+   
+   .field_button {
+   
+     background: none;
+     border: none;
+     border-radius: 5px;
+     color: #595959;
+     display: block;
+     font-size: 1.6em;
+     font-weight: bold;
+     left: 0; right: 0;
+       margin-left:auto; margin-right:auto;
+     padding-left: 100px;
+     padding-right: 100px;
+     position: absolute;
+     text-transform: uppercase;
+   }   
+   .field_button::before,
+   .field_button::after {
+     background: #D9E5FF;
+     content: '';
+     position: absolute;
+     z-index: -1;
+   }
+   
+   .field_button:hover {
+     color: #A1A1A1;
+   }
+   
+   
+   .type07 {
+   position : fixed;
+      right : 20px;
+      bottom : 50px;
+   width: 500px;
+    border-collapse: collapse;    
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    margin: 20px 10px;
+    background:white;
+   }
+   
+   .type07 thead {
+   text-align: center;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    background: #e7708d;
+   }
+   .type07 thead th {
+   text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+   }
+   .type07 tbody th {
+   text-align: center;
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #fcf1f4;
+   }
+   .type07 td {
+   background:white;
+   text-align: left;
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+   }
+   
+      
+      
