@@ -60,7 +60,6 @@
                });
               $.ajax({
                    cache : false,
-                   contentType: "application/x-www-form-urlencoded; charset=utf-8",
                    enctype: 'multipart/form-data',
                    url : "upload.jsp?com="+name.value, // 요기에
                    type : 'POST', 

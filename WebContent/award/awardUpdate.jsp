@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,18 +13,16 @@
 
 	<%
 	
-	
-	
 	if (session.getAttribute("signedUser") == null) {
         response.sendRedirect("../logout.jsp");
     }
 	
 	try{
 		Connection conn = DBUtil.getConn();
-		String awd_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
-		String awd_org = new String(request.getParameter("org").getBytes("ISO-8859-1"), "UTF-8");
-		String awd_result = new String(request.getParameter("result").getBytes("ISO-8859-1"), "UTF-8");
-		String awd_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+		String awd_name = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+		String awd_org = URLDecoder.decode(request.getParameter("org"), "UTF-8");
+		String awd_result = URLDecoder.decode(request.getParameter("result"), "UTF-8");
+		String awd_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 		int awd_num = Integer.parseInt(request.getParameter("awd_num"));
 		Object session_object=session.getAttribute("signedUser");
 		String session_name=(String)session_object;
