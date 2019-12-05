@@ -153,7 +153,7 @@
          		<li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
          		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
          		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
-         		<li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
+         		<li><a class="menuLink" href="../certification/certification.jsp">어학/자격증</a></li>
          		<li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
          		</ul>
    			</div>
