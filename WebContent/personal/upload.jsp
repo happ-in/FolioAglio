@@ -13,7 +13,7 @@
 </head>
 <body>
    <%
-   	  String directory = application.getRealPath("IMG"); //절대경로를 가져옴
+   	  String directory = application.getRealPath("personal/IMG"); //절대경로를 가져옴
    	  
       int maxSize = 1024 * 1024 * 100;
       String encoding = "UTF-8";
@@ -41,8 +41,9 @@
       //fileRealName=directory+"\\"+fileRealName;
       
       
-      new fileDAO().upload(fileName, "../IMG/"+fileRealName,session_name);
+      new fileDAO().upload(fileName, "IMG/"+fileRealName,session_name);
       out.write("파일명 : "+fileName+"<br>");
+      response.sendRedirect("personal.jsp");
    %>
    
 </body>
