@@ -36,7 +36,14 @@
 	function popup_class(num){
 		window.open('class.jsp?issue_num='+num, '', option);
 	}
-	
+	function showhide(num){
+	      if(document.getElementById(num).style.display=='block'){
+	         document.getElementById(num).style.display='none';
+	      }else{
+	         document.getElementById(num).style.display='block';
+	         
+	      }
+	   }	
 </script>
 </head>
 <body>
@@ -85,14 +92,84 @@
 		
 	%>
 	<div class="field">
-		<input type="button" value="<%=rs.getString("language_name") %>" onclick="language(<%=rs.getInt("issue_num") %>)" class="field_button">
+		<input type="button" value="<%=rs.getString("language_name") %>" onclick="showhide(<%=rs.getInt("issue_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;" id = "<%=rs.getString("issue_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">외국어명</th>
+         <td><%=rs.getString("language_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">어학종류</th>
+         <td><%=rs.getString("kind")%></td>
+      </tr>
+      <tr>
+         <th scope="row">수험번호</th>
+         <td><%=rs.getString("application_num")%></td>
+      </tr>
+      <tr>
+         <th scope="row">응시일자</th>
+         <td><%=rs.getString("test_date")%></td>
+      </tr>
+      <tr>
+         <th scope="row">취득점수</th>
+         <td><%=rs.getString("score")%></td>
+      </tr>
+      <tr>
+         <th scope="row">취득급수</th>
+         <td><%=rs.getString("score_name")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" >
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("issue_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
 	</div>
 	<%
 				}
 				else{
 	%>
 	<div class="field">
-		<input type="button" value="<%=rs.getString("classfication_name") %>" onclick="popup_class(<%=rs.getInt("issue_num") %>)" class="field_button"> 
+		<input type="button" value="<%=rs.getString("classfication_name") %>" onclick="showhide(<%=rs.getInt("issue_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;" id = "<%=rs.getString("issue_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">자격증명</th>
+         <td><%=rs.getString("classfication_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">발급기관</th>
+         <td><%=rs.getString("issue_org")%></td>
+      </tr>
+      <tr>
+         <th scope="row">취득일자</th>
+         <td><%=rs.getString("issue_date")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" >
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("issue_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table> 
 	</div>
 	
 	<%
