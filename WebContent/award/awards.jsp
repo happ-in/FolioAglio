@@ -108,7 +108,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="award(<%=rs.getString("award_num") %>);">
-            <input type="button" value="삭제" >
+            <a href = "awardDel.jsp?awd_num=<%=rs.getString("award_num") %>"><input type="button" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("award_num") %>);">
          </td>
          </tr>
