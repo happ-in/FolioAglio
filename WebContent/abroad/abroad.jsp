@@ -66,7 +66,7 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("country_name") %>"></form></div>
+	<div class="field"><form><input type="button" value="<%=rs.getString("country_name") %>" class="field_button"></form></div>
 	
 	<%
 		

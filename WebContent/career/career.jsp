@@ -69,7 +69,7 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(1) %>" onclick="get_carr(<%=rs.getString(2) %>)">
+		<input type="button" value="<%=rs.getString(1) %>" onclick="get_carr(<%=rs.getString(2) %>)" class="field_button">
 	</div>
 	
 	<%

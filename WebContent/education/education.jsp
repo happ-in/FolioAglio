@@ -116,7 +116,7 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_highschool(<%=rs.getInt(3) %>)">
+		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_highschool(<%=rs.getInt(3) %>)" class="field_button">
 	</div>
 	
 	<%		
@@ -125,7 +125,7 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(2) %>"  onClick="popup_collage(<%=rs.getInt(3) %>)">
+		<input type="button" value="<%=rs.getString(2) %>"  onClick="popup_collage(<%=rs.getInt(3) %>)" class="field_button">
 	</div>
 	
 	<%
@@ -134,7 +134,7 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_graduated(<%=rs.getInt(3) %>)">
+		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_graduated(<%=rs.getInt(3) %>)" class="field_button">
 	</div>
 	
 	<%

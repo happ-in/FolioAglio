@@ -85,14 +85,14 @@
 		
 	%>
 	<div class="field">
-		<input type="button" value="<%=rs.getString("language_name") %>" onclick="language(<%=rs.getInt("issue_num") %>)">
+		<input type="button" value="<%=rs.getString("language_name") %>" onclick="language(<%=rs.getInt("issue_num") %>)" class="field_button">
 	</div>
 	<%
 				}
 				else{
 	%>
 	<div class="field">
-		<input type="button" value="<%=rs.getString("classfication_name") %>" onclick="popup_class(<%=rs.getInt("issue_num") %>)"> 
+		<input type="button" value="<%=rs.getString("classfication_name") %>" onclick="popup_class(<%=rs.getInt("issue_num") %>)" class="field_button"> 
 	</div>
 	
 	<%

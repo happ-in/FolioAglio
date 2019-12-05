@@ -78,7 +78,7 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString(1) %>" onclick="get_activity(<%=rs.getInt(2) %>)"></form></div>
+	<div class="field"><form><input type="button" value="<%=rs.getString(1) %>" onclick="get_activity(<%=rs.getInt(2) %>)" class="field_button"></form></div>
 	
 	<%
 		
