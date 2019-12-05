@@ -33,20 +33,35 @@
 				alert('결과를 입력하세요 ')
 				result.focus();
 			}else {
-				//저장하는거 구현해야함
 				var formData = $("#form1").serialize();
-        	 	$.ajax({
-                 cache : false,
-                 url : "awardUpdate.jsp", // 요기에
-                 type : 'POST', 
-                 data : formData,
-                 async: false,
-                 success : function(data) {
+   	 		var form = $('#form2')[0];
+	    	var formData2 = new FormData(form);
+	
+	    	 $.ajax({
+	             cache : false,
+	             url : "awardUpdate.jsp", // 요기에
+	             type : 'POST', 
+	             data : formData,
+	             async: false,
+	             success : function(data) {
 					
-                 }
-             });
-				self.close();
-				opener.location.reload();
+	             }
+	         });
+	    	 $.ajax({
+	             cache : false,
+	             enctype: 'multipart/form-data',
+	             url : "upload.jsp?com="+name.value, // 요기에
+	             type : 'POST', 
+	             data : formData2,
+	             processData: false,
+	             contentType: false,
+	             async: false,	
+	             success : function(data) {
+					
+	             }
+	         });
+	        self.close();
+	        opener.location.reload();
 			}
 
 		});
@@ -82,6 +97,7 @@
 </head>
 <body>
 	<%
+
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
 	int num = Integer.parseInt(request.getParameter("awd_num")); 
@@ -115,22 +131,25 @@
 					<td><input type="text" id="result" name="result" value="<%=rs.getString("awd_result") %>"></td>
 				</tr>
 				<tr>
-					<td>첨부자료</td>
-					<td><input type="file" id="attachment" name="attachment" value="<%=rs.getString("awd_attachment") %>"></td>
-				</tr>
-				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" rows="3" name="memo" cols="50"><%=rs.getString("awd_memo") %></textarea></td>
-				</tr>
-				<tr align = "right">
-					<td colspan="2"><input type="button" id="confirm" class="button_css"
-						value="수정">
-					</td>
-					<td><input type="hidden" name="awd_num" value="<%=num %>"/></td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
+	<form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
+			<table>
+				<tr>
+					<td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString(6) %></td>
+				</tr>
+				<tr align="right">
+					<td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
+						value="확인">
+					</td>
+					<td><input type="hidden" name="activity_num" value="<%= num %>"></td>
+				</tr>
+			</table>
+		</form>
 	<%
 		}
 	} catch(SQLException e){

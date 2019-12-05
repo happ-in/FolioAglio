@@ -19,6 +19,10 @@
       window.open(url, name, option);
    }
    
+   function award(num){
+      window.open('awardForm.jsp?awd_num='+num, '', option);
+   }
+   
    function showhide(num){
       if(document.getElementById(num).style.display=='block'){
          document.getElementById(num).style.display='none';
@@ -95,7 +99,7 @@
       </tr>
       <tr>
          <th scope="row">첨부자료</th>
-         <td><%=rs.getString("awd_attachment")%></td>
+         <td><%=rs.getString("picture")%></td>
       </tr>
       <tr>
          <th scope="row">메모</th>

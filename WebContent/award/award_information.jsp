@@ -38,12 +38,11 @@
         		
         	 $.ajax({
                  cache : false,
-                 url : "careerAction.jsp", // 요기에
+                 url : "awardsAction.jsp", // 요기에
                  type : 'POST', 
                  data : formData,
                  async: false,
                  success : function(data) {
-					
                  }
              });
         	 $.ajax({

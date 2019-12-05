@@ -24,10 +24,9 @@
 		String abroad_s_date = new String(request.getParameter("s_period").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_g_date = new String(request.getParameter("e_period").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
-		String abroad_image = new String(request.getParameter("picture").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
 		
-		String sql = "insert into abroad(country_name, reason, abroad_language, abroad_s_date, abroad_g_date, abroad_detail, abroad_image, abroad_memo, id) values (?,?,?,?,?,?,?,?, ?);";
+		String sql = "insert into abroad(country_name, reason, abroad_language, abroad_s_date, abroad_g_date, abroad_detail, abroad_image, abroad_memo, id) values (?,?,?,?,?,?,?,?);";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, country_name);
@@ -36,9 +35,8 @@
 		pstmt.setString(4, abroad_s_date);
 		pstmt.setString(5, abroad_g_date);
 		pstmt.setString(6, abroad_detail);
-		pstmt.setString(7, abroad_image);
-		pstmt.setString(8, abroad_memo);
-		pstmt.setString(9, session_name);
+		pstmt.setString(7, abroad_memo);
+		pstmt.setString(8, session_name);
 		pstmt.executeUpdate();
 		
 		DBUtil.close(pstmt);
