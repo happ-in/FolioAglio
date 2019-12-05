@@ -60,15 +60,16 @@
 	Object session_object = session.getAttribute("signedUser");
 	String session_name = (String)session_object;
 	
-	Connection conn = DBUtil.getConn();
-	String sql = "select activity_radio, group_name, activity_s_date, activity_e_date, activity_detail, activity_image, activity_memo from external_activities where activity_num=? and where id=?";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setInt(1, activity_num);
-	pstmt.setString(1, session_name);
-	ResultSet rs = pstmt.executeQuery();
-	
-	if(rs.next()){
-	
+	try{
+		Connection conn = DBUtil.getConn();
+		String sql = "select activity_radio, group_name, activity_s_date, activity_e_date, activity_detail, activity_image, activity_memo from external_activities where activity_num=? and id=?;";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, activity_num);
+		pstmt.setString(2, session_name);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+		
 	%>
 	<form action="externalUpdate.jsp" method="post" id = "form1">
 		<fieldset>
@@ -125,11 +126,13 @@
 		</fieldset>
 	</form>
 	<%
+		}
+		rs.close();
+		pstmt.close();
+		conn.close();
+	} catch(SQLException e){
+		System.out.println(e.toString());
 	}
-	
-	rs.close();
-	pstmt.close();
-	conn.close();
 	%>
 </body>
 </html>
