@@ -2,8 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +15,15 @@
 	
 	try{
 		Connection conn = DBUtil.getConn();
-		String skill_radio = new String(request.getParameter("radio").getBytes("ISO-8859-1"), "UTF-8");
+		String skill_radio = URLDecoder.decode(request.getParameter("radio"), "UTF-8");
 		
 		if (skill_radio.equals("language")){
-			String language_name = new String(request.getParameter("language_name").getBytes("ISO-8859-1"), "UTF-8");
-			String kind = new String(request.getParameter("kind").getBytes("ISO-8859-1"), "UTF-8");
-			String application_num = new String(request.getParameter("application_number").getBytes("ISO-8859-1"), "UTF-8");
-			String test_date = new String(request.getParameter("test_date").getBytes("ISO-8859-1"), "UTF-8");
-			String score = new String(request.getParameter("score").getBytes("ISO-8859-1"), "UTF-8");
-			String score_name = new String(request.getParameter("score_name").getBytes("ISO-8859-1"), "UTF-8");
+			String language_name = URLDecoder.decode(request.getParameter("language_name"), "UTF-8");
+			String kind = URLDecoder.decode(request.getParameter("kind"), "UTF-8");
+			String application_num = URLDecoder.decode(request.getParameter("application_number"), "UTF-8");
+			String test_date = URLDecoder.decode(request.getParameter("test_date"), "UTF-8");
+			String score = URLDecoder.decode(request.getParameter("score"), "UTF-8");
+			String score_name = URLDecoder.decode(request.getParameter("score_name"), "UTF-8");
 			
 			String sql = "insert into skill(skill_radio, language_name, kind, application_num, test_date, score, score_name, id) values (?,?,?,?,?,?,?,?);";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -43,9 +42,9 @@
 			DBUtil.close(conn);
 		}
 		else {
-			String classfication_name = new String(request.getParameter("classfication_name").getBytes("ISO-8859-1"), "UTF-8");
-			String issue_org = new String(request.getParameter("issue_org").getBytes("ISO-8859-1"), "UTF-8");
-			String issue_date = new String(request.getParameter("issue_date").getBytes("ISO-8859-1"), "UTF-8");
+			String classfication_name = URLDecoder.decode(request.getParameter("classfication_name"), "UTF-8");
+			String issue_org = URLDecoder.decode(request.getParameter("issue_org"), "UTF-8");
+			String issue_date = URLDecoder.decode(request.getParameter("issue_date"), "UTF-8");
 			
 			String sql = "insert into skill(skill_radio, classfication_name, issue_org, issue_date, id) values (?,?,?,?,?);";
 			PreparedStatement pstmt = conn.prepareStatement(sql);

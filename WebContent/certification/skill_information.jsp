@@ -49,9 +49,22 @@
 				alert('응시일자를 입력하세요 ')
 				test_date.focus();
 			} else{
-				document.getElementById('form1').submit();
-				self.close();
-			}
+	        	 $.ajax({
+	                 cache : false,
+	                 enctype: 'multipart/form-data',
+	                 url : "upload.jsp?com="+name.value, // 요기에
+	                 type : 'POST', 
+	                 data : formData2,
+	                 processData: false,
+	                 contentType: false,
+	                 async: false,	
+	                 success : function(data) {
+						
+	                 }
+	             });
+	            self.close();
+	            opener.location.reload();
+	         }
 			
 		});
 		

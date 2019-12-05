@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
+<%@ page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -15,9 +16,9 @@
 	try{
 		Connection conn = DBUtil.getConn();
 		
-		String classfication_name = new String(request.getParameter("classfication_name").getBytes("ISO-8859-1"), "UTF-8");
-		String issue_org = new String(request.getParameter("issue_org").getBytes("ISO-8859-1"), "UTF-8");
-		String issue_date = new String(request.getParameter("issue_date").getBytes("ISO-8859-1"), "UTF-8");
+		String classfication_name = URLDecoder.decode(request.getParameter("classfication_name"), "UTF-8");
+		String issue_org = URLDecoder.decode(request.getParameter("issue_org"), "UTF-8");
+		String issue_date = URLDecoder.decode(request.getParameter("issue_date"), "UTF-8");
 		int num = Integer.parseInt(request.getParameter("issue_num"));
 		
 		String sql = "update skill set classfication_name=?, issue_org=?, issue_date=? where id=? and issue_num=? and skill_radio='classfication';";
