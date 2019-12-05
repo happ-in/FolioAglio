@@ -15,13 +15,15 @@
 <meta charset="utf-8">
 <title>수상경력</title>
 <script>
+	var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 	function popup_award(){
 		var url = "award_information.jsp";
 		var name = "award";
-		var option = "width = 600, height = 500, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
-	
+	function award(num){
+		window.open('awardForm.jsp?awd_num='+num, '', option);
+	}
 </script>
 </head>
 <body>
@@ -66,7 +68,9 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("awd_name") %>" class="field_button"></form></div>
+	<div class="field">
+		<input type="button" value="<%=rs.getString("awd_name") %>" class="field_button" onclick="award(<%=rs.getInt("award_num") %>)">
+	</div>
 	
 	<%
 		

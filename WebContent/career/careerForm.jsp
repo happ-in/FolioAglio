@@ -125,9 +125,9 @@
 					<td>메모</td>
 					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString(9) %></textarea></td>
 				</tr>
-				<tr>
+				<tr align="right">
 					<td colspan="2"><input type="button" id="confirm"
-						value="확인">
+						value="수정">
 					</td>
 					<td><input type="hidden" name="carr_num" value="<%=carr_num %>"/></td>
 				</tr>

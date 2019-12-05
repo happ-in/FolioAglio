@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Awards Insert</title>
 </head>
 <body>
@@ -17,8 +15,6 @@
 	
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
-	
-	System.out.println(session_name);
 	
 	if (session.getAttribute("signedUser") == null) {
         response.sendRedirect("../logout.jsp");
