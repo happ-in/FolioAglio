@@ -27,7 +27,7 @@
 		Object session_object=session.getAttribute("signedUser");
 		String session_name=(String)session_object;
 		
-		String sql = "insert into abroad(country_name, reason, abroad_language, abroad_s_date, abroad_g_date, abroad_detail, abroad_image, abroad_memo, id) values (?,?,?,?,?,?,?,?);";
+		String sql = "insert into abroad(country_name, reason, abroad_language, abroad_s_date, abroad_g_date, abroad_detail, abroad_memo, id) values (?,?,?,?,?,?,?,?);";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, country_name);

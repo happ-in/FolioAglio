@@ -34,35 +34,35 @@
 				alert('결과를 입력하세요 ')
 				result.focus();
 			}else {
-				//저장하는거 구현해야함
-				var formData = $("#form1").serialize();
-        		var form = $('#form2')[0];
-        		var formData2 = new FormData(form);
-        		
-        	 $.ajax({
-                 cache : false,
-                 url : "awardsAction.jsp", // 요기에
-                 type : 'POST', 
-                 data : formData,
-                 async: false,
-                 success : function(data) {
-                 }
-             });
-        	 $.ajax({
-                 cache : false,
-                 enctype: 'multipart/form-data',
-                 url : "upload.jsp?com="+name.value, // 요기에
-                 type : 'POST', 
-                 data : formData2,
-                 processData: false,
-                 contentType: false,
-                 async: false,	
-                 success : function(data) {
-					
-                 }
-             });
-            self.close();
-            opener.location.reload();
+	            var formData = $("#form1").serialize();
+                var form = $('#form2')[0];
+            var formData2 = new FormData(form);
+     
+             $.ajax({
+                  cache : false,
+                  url : "awardsAction.jsp", // 요기에
+                  type : 'POST',
+                  data : formData,
+                  async: false,
+                  success : function(data) {
+                 
+                  }
+              });
+             $.ajax({
+                  cache : false,
+                  enctype: 'multipart/form-data',
+                  url : "upload.jsp?com="+name.value, // 요기에
+                  type : 'POST', 
+                  data : formData2,
+                  processData: false,
+                  contentType: false,
+                  async: false,   
+                  success : function(data) {
+                 
+                  }
+              });
+             self.close();
+             opener.location.reload();
 			}
 
 		});
@@ -126,17 +126,17 @@
 		</fieldset>
 	</form>
 	
-	<form method="post" id = "form2" enctype="multipart/form-data" action="upload.jsp">
-               <table>
-               <tr>
-               <td><input type="file" value="사진 선택" accept="image/*" id="picture" name="picture"/></td>
-            	</tr>
-            <tr align = "right">
-               <td colspan="2"><input type="button" id="confirm" class="button_css" value="확인">
+      <form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
+         <table>
+            <tr>
+               <td><input type="file" value="파일 선택" accept="image/*" id="picture" name="picture"/></td>
+            </tr>
+            <tr align="right">
+               <td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
+                  value="확인">
                </td>
             </tr>
          </table>
-         
-         </form>
+      </form>
 </body>
 </html>
