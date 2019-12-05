@@ -10,9 +10,6 @@
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
   <style>
-   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
 
    </style>
 <meta charset="utf-8">
@@ -51,7 +48,7 @@
 		</div>
 	</header>
 
-		<div style="padding: 10px"></div>
+	<div style="padding: 10px"></div>
 	
 	<%
 
@@ -69,7 +66,7 @@
 	
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("awd_name") %>"></form></div>
+	<div class="field"><form><input type="button" value="<%=rs.getString("awd_name") %>" class="field_button"></form></div>
 	
 	<%
 		

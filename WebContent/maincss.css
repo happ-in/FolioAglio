@@ -1,3 +1,9 @@
+   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+   @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+
+
  body {
       font-family: Nanum Gothic;
    }
@@ -69,8 +75,7 @@
        border : 1px solid;
 	   margin-right : 10px; 
 	}
-	.field{
-	   border : 1px solid;
+	.field{		
 	   margin-top : 10px;
 	   align : center;
 	   padding : 10px;
@@ -79,24 +84,30 @@
 	   font-family : Hanna;
 	   font-size : 26px;
 	}
-	.field_line{
-   	padding : 10px;
-   }
-	   
+		   
    .aa{
    	  position : fixed;
    	  right : 20px;
    	  bottom : 20px;
    }
    
-    .field input{
+    .field_button {
 	   	display : inline-block;
 	   	font-family : Hanna;
 	   	padding : 10px;
 	   	text-align : center;
-	   	background : none;
 	   	border : 1px solid;
 	   	width : 30%;
+	   	left:0; 
+	   	right:0; 
+	   	margin-left:auto; 
+	   	margin-right:auto;
+	   	border-top-left-radius: 5px;
+	   	border-bottom-left-radius: 5px;
+	   	border-top-right-radius: 5px;
+	   	border-bottom-right-radius: 5px;
+	   	background-color: #D9E5FF;
+
    }
    
 
