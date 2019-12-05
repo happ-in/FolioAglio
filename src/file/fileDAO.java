@@ -33,19 +33,23 @@ public class fileDAO {
 
 	
 
-	public int upload(String fileName, String fileRealName, String session_name) {
-
-		String SQL = "update personal_information set id_image=? where id=?";
-
+	public int upload(String table, String fileRealName, String session_name, String com) {
+		
+		String SQL = "update personal_information set picture=? where id=?";
+		if(table.equals("carrier")) {	
+			SQL = "update carrier set picture=? where id=? and company_name=?";
+		}
 		try {
 
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 
-			pstmt.setString(1,  fileRealName);
+			//pstmt.setString(1,  table);
 
-			//pstmt.setString(2,  fileRealName);
+			pstmt.setString(1,  fileRealName);
 			
 			pstmt.setString(2,  session_name);
+			
+			pstmt.setString(3, com);
 
 			return pstmt.executeUpdate();
 

@@ -54,9 +54,35 @@
             alert('재직기간을 입력하세요 ')
             e_period.focus();
          }else {
-            //저장하는거 구현해야함
-            document.getElementById('form1').submit();
+        	 var formData = $("#form1").serialize();
+        	 var form = $('#form2')[0];
+        	 var formData2 = new FormData(form);
+
+        	 $.ajax({
+                 cache : false,
+                 url : "careerAction.jsp", // 요기에
+                 type : 'POST', 
+                 data : formData,
+                 async: false,
+                 success : function(data) {
+					
+                 }
+             });
+        	 $.ajax({
+                 cache : false,
+                 enctype: 'multipart/form-data',
+                 url : "upload.jsp?com="+name.value, // 요기에
+                 type : 'POST', 
+                 data : formData2,
+                 processData: false,
+                 contentType: false,
+                 async: false,	
+                 success : function(data) {
+					
+                 }
+             });
             self.close();
+            opener.location.reload();
          }
 
       });
@@ -118,7 +144,7 @@
                   $(function(){
                      $("#s_period").datepicker({dateFormat: "yy-mm-dd"});
                   });
-               </script> ~ 
+               </script>
                <input type="text" id="e_period" name="e_period" placeholder="날짜넣기">
                <script>
                   $(function(){
@@ -131,20 +157,24 @@
                <td><textarea id="detail" name="detail" rows="10" cols="50"></textarea></td>
             </tr>
             <tr>
-               <td>사진</td>
-               <td><input type="file" value="파일 선택" id="picture" name="picture"/></td>
-            </tr>
-            <tr>
                <td>메모</td>
                <td><textarea id="memo" name="memo" rows="3" cols="50"></textarea></td>
             </tr>
+            </table>
+     		 </fieldset>
+            </form>
+            
+            <form method="post" id = "form2" enctype="multipart/form-data" action="upload.jsp">
+               <table>
+               <tr>
+               <td><input type="file" value="사진 선택" accept="image/*" id="picture" name="picture"/></td>
+            	</tr>
             <tr align = "right">
-               <td colspan="2"><input type="button" id="confirm" class="button_css"
-                  value="확인">
+               <td colspan="2"><input type="button" id="confirm" class="button_css" value="확인">
                </td>
             </tr>
          </table>
-      </fieldset>
-   </form>
+         
+         </form>
 </body>
 </html>

@@ -22,11 +22,10 @@
 	String s_period = new String(request.getParameter("s_period").getBytes("ISO-8859-1"), "UTF-8");
 	String e_period = new String(request.getParameter("e_period").getBytes("ISO-8859-1"), "UTF-8");
 	String detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
-	String picture = new String(request.getParameter("picture").getBytes("ISO-8859-1"), "UTF-8");
 	String carrier_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
 	int carrier_num = Integer.parseInt(request.getParameter("carr_num"));
 	
-	String sql = "update carrier set company_name=?, position=?, work=?, salary=?, s_period=?, e_period=?, detail=?, picture=?, carrier_memo=? where carrier_num=? ;";
+	String sql = "update carrier set company_name=?, position=?, work=?, salary=?, s_period=?, e_period=?, detail=?, carrier_memo=? where carrier_num=? ;";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	
 	pstmt.setString(1, company_name);
@@ -36,9 +35,8 @@
 	pstmt.setString(5, s_period);
 	pstmt.setString(6, e_period);
 	pstmt.setString(7, detail);
-	pstmt.setString(8, picture);
-	pstmt.setString(9, carrier_memo);
-	pstmt.setInt(10, carrier_num);
+	pstmt.setString(8, carrier_memo);
+	pstmt.setInt(9, carrier_num);
 	pstmt.executeUpdate();
 	
 	DBUtil.close(pstmt);

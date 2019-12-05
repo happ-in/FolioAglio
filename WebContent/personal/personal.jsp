@@ -61,14 +61,14 @@
 	try {
 		Connection conn = DBUtil.getConn();
 		
-		String sql = "select id_image, name, birth, call_num, email from personal_information where id=?;";
+		String sql = "select picture, name, birth, call_num, email from personal_information where id=?;";
 	    PreparedStatement pstmt = conn.prepareStatement(sql);
 	    pstmt.setString(1,session_name);
 	    ResultSet rs = pstmt.executeQuery();
 
 		
 		while(rs.next()) {
-			id_pic = rs.getString("id_image");
+			id_pic = rs.getString("picture");
 			name = rs.getString("name");
 			birth = rs.getString("birth");
 			call_num = rs.getString("call_num");
@@ -120,7 +120,7 @@
 			
 			<tr><td>
 			<form method="post" enctype="multipart/form-data" action="upload.jsp">
-				<input type="file" name="filename">
+				<input type="file" name="filename" accept="image/*">
 				<input type="submit" value="업로드">
 			</form></td>
 			</tr>

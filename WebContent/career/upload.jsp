@@ -13,7 +13,7 @@
 </head>
 <body>
    <%
-   	  String directory = application.getRealPath("personal/IMG"); //절대경로를 가져옴
+   	  String directory = application.getRealPath("career/IMG"); //절대경로를 가져옴
    	  
       int maxSize = 1024 * 1024 * 100;
       String encoding = "UTF-8";
@@ -28,18 +28,18 @@
       MultipartRequest multipartRequest
       = new MultipartRequest(request, directory, maxSize, encoding);
       
-      Enumeration files = multipartRequest.getFileNames();
-      String file1 = (String)files.nextElement();
       
-      String fileName = multipartRequest.getOriginalFileName("filename");
-      String fileRealName = multipartRequest.getFilesystemName("filename");
+      String fileName = multipartRequest.getOriginalFileName("picture");
+      String fileRealName = multipartRequest.getFilesystemName("picture");
       
       Object session_object=session.getAttribute("signedUser");
       String session_name=(String)session_object;
       
-      new fileDAO().upload("personal_information", "IMG/"+fileRealName,session_name);
-      response.sendRedirect("personal.jsp");
+      String com = new String(request.getParameter("com").getBytes("ISO-8859-1"), "UTF-8");
+      
+      new fileDAO().upload("carrier", "IMG/"+fileRealName,session_name,com);
    %>
+   
    
 </body>
 </html>
