@@ -120,9 +120,10 @@
 	try{
 		Connection conn = DBUtil.getConn();
 		
-		String sql = "select * from abroad where id=?";
+		String sql = "select * from abroad where id=? and abroad_num=?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, session_name);
+		pstmt.setInt(2, num);
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(rs.next()){
@@ -165,7 +166,7 @@
 				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString("abroad_memo") %></textarea></td>
-					<td><input type="hidden" name="num" value="<%=rs.getInt("abroad_num") %>"></td>
+					<td><input type="hidden" name="num" value="<%=num%>"></td>
 				</tr>
 			</table>
 		</fieldset>

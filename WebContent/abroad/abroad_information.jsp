@@ -72,7 +72,7 @@
                  data : formData2,
                  processData: false,
                  contentType: false,
-                 async: false,	
+                 async: false,
                  success : function(data) {
 					
                  }
