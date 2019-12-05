@@ -63,8 +63,6 @@
 		</div>
 	</header>
 
-
-	<div style="padding: 10px"></div>
 	
 		
 	<%
@@ -122,7 +120,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="get_activity(<%=rs.getInt("activity_num") %>)">
-            <input type="button" value="삭제" >
+            <a href = "externalDel.jsp?ext_num=<%=rs.getString("activity_num") %>"><input type="button" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("activity_num") %>);">
          </td>
          </tr>
