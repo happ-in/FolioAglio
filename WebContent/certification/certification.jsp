@@ -34,7 +34,7 @@
 		window.open('language.jsp?issue_num='+num, '', option);
 	}
 	function popup_class(num){
-		window.open('class.jsp?issue_num'+num, '', option);
+		window.open('class.jsp?issue_num='+num, '', option);
 	}
 	
 </script>

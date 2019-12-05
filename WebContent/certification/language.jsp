@@ -1,11 +1,11 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <style>
 
@@ -50,16 +50,16 @@
 			var score_name = document.querySelector('#score_name');
 			
 			if (language_name.value == '') {
-				alert('¿Ü±¹¾î¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.');
+				alert('ì™¸êµ­ì–´ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.');
 				language_name.focus();
 			} else if (kind.value == '') {
-				alert('¾îÇĞ Á¾·ù¸¦ ÀÔ·ÂÇÏ¼¼¿ä ')
+				alert('ì–´í•™ ì¢…ë¥˜ë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
 				kind.focus();
 			} else if (application_number.value == '') {
-				alert('¼öÇè¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä ')
+				alert('ìˆ˜í—˜ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
 				application_number.focus();
 			} else if (test_date.value == '') {
-				alert('ÀÀ½ÃÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä ')
+				alert('ì‘ì‹œì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
 				test_date.focus();
 			} else{
 				document.getElementById('form1').submit();
@@ -67,6 +67,7 @@
 			}
 			
 		});
+	});
 </script>
 </head>
 <body>
@@ -88,23 +89,23 @@
 	%>
 	<form action="langUpdate.jsp" method="post" id="form1">
 		<fieldset>
-			<legend>¾îÇĞ</legend>
+			<legend>ì–´í•™</legend>
 			<table>
 				<tr>
-					<td>¿Ü±¹¾î¸í</td>
+					<td>ì™¸êµ­ì–´ëª…</td>
 					<td><input type="text" id="language_name" name="language_name" value="<%=rs.getString("language_name") %>"></td>
 				</tr>
 				<tr>
-					<td>¾îÇĞÁ¾·ù</td>
+					<td>ì–´í•™ì¢…ë¥˜</td>
 					<td><input type="text" id="kind" name="kind" value="<%=rs.getString("kind") %>"></td>
 				</tr>
 				<tr>
-					<td>¼öÇè¹øÈ£</td>
+					<td>ìˆ˜í—˜ë²ˆí˜¸</td>
 					<td><input type="text" id="application_number" name="application_number" value="<%=rs.getString("application_num") %>"></td>
 				</tr>
 				<tr>
-					<td>ÀÀ½ÃÀÏÀÚ</td>
-					<td><input type="text" id="test_date" name="test_date" placeholder="³¯Â¥³Ö±â" value="<%=rs.getString("test_date") %>">
+					<td>ì‘ì‹œì¼ì</td>
+					<td><input type="text" id="test_date" name="test_date" placeholder="ë‚ ì§œë„£ê¸°" value="<%=rs.getString("test_date") %>">
 					<script>
 						$(function(){
 							$("#test_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -112,16 +113,16 @@
 					</script></td>
 				</tr>
 				<tr>
-					<td>ÃëµæÁ¡¼ö</td>
+					<td>ì·¨ë“ì ìˆ˜</td>
 					<td><input type="text" id="score" name="score" value="<%=rs.getString("score") %>"></td>
 				</tr>
 				<tr>
-					<td>Ãëµæ±Ş¼ö</td>
+					<td>ì·¨ë“ê¸‰ìˆ˜</td>
 					<td><input type="text"  id="score_name" name="score_name" value="<%=rs.getString("score_name") %>"></td>
 				</tr>
 				<tr align = "right">
 					<td colspan="2"><input type="button" id="confirm" class="button_css"
-						value="¼öÁ¤">
+						value="ìˆ˜ì •">
 					</td>
 					<td><input type="hidden" name="issue_num" value="<%=rs.getInt("issue_num") %>"></td>
 				</tr>

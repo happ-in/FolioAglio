@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <script>
 	window.addEventListener('load', function() {
@@ -15,24 +17,78 @@
 			var issue_date = document.querySelector('#issue_date');
 			
 			if (classfication_name.value == '') {
-				alert('ÀÚ°İÁõ¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.');
+				alert('ìê²©ì¦ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.');
 				classfication_name.focus();
 			} else if (issue_org.value == '') {
-				alert('¹ß±Ş ±â°üÀ» ÀÔ·ÂÇÏ¼¼¿ä ')
+				alert('ë°œê¸‰ ê¸°ê´€ì„ ì…ë ¥í•˜ì„¸ìš” ')
 				issue_org.focus();
 			} else if (issue_date.value == '') {
-				alert('ÃëµæÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä ')
+				alert('ì·¨ë“ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš” ')
 				issue_date.focus();
 			} else{
 				document.getElementById('form1').submit();
 				self.close();
 			}
-		
 		});
 	});
 </script>
 </head>
 <body>
-certification
+	<%
+	String session_name = (String)session.getAttribute("signedUser");
+	int num = Integer.parseInt(request.getParameter("issue_num"));
+	
+	try{
+		Connection conn = DBUtil.getConn();
+		
+		String sql = "select * from skill where id=? and issue_num=?;";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, session_name);
+		pstmt.setInt(2, num);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+		
+	%>
+	
+	<form action="classUpdate.jsp" method="post" id="form1">
+		<fieldset>
+			<legend>ìê²©ì¦</legend>
+			<table>
+				<tr>
+					<td>ìê²©ì¦ëª…</td>
+					<td><input type="text" id="classfication_name" name="classfication_name" value="<%=rs.getString("classfication_name") %>"></td>
+				</tr>
+				<tr>
+					<td>ë°œê¸‰ê¸°ê´€</td>
+					<td><input type="text" id="issue_org" name="issue_org" value="<%=rs.getString("issue_org") %>"></td>
+				</tr>
+				<tr>
+					<td>ì·¨ë“ì¼ì</td>
+					<td><input type="text" id="issue_date" name="issue_date" placeholder="ë‚ ì§œë„£ê¸°" value="<%=rs.getString("issue_date") %>">
+					<script>
+						$(function(){
+							$("#issue_date").datepicker({dateFormat: "yy-mm-dd"});
+						});
+					</script></td>
+				</tr>
+				<tr align = "right">
+					<td colspan="2"><input type="button" id="confirm1" class="button_css"
+						value="ìˆ˜ì •">
+					</td>
+					<td><input type="hidden" name="issue_num" value="<%=rs.getInt("issue_num") %>"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	<%
+		}
+		rs.close();
+		pstmt.close();
+		conn.close();
+	} catch(SQLException e){
+		System.out.println(e.toString());
+	}
+	%>
 </body>
 </html>

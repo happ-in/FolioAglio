@@ -19,6 +19,7 @@ public class fileDAO {
 //			String url = "jdbc:mysql://localhost:3306/file?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8";
 //			String id = "root";
 //			String pw = "system";
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
 

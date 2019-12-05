@@ -47,7 +47,7 @@
 			String issue_org = new String(request.getParameter("issue_org").getBytes("ISO-8859-1"), "UTF-8");
 			String issue_date = new String(request.getParameter("issue_date").getBytes("ISO-8859-1"), "UTF-8");
 			
-			String sql = "insert into skill(skill_radoi, classfication_name, issue_org, issue_date, id) values (?,?,?,?,?);";
+			String sql = "insert into skill(skill_radio, classfication_name, issue_org, issue_date, id) values (?,?,?,?,?);";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, skill_radio);
 			pstmt.setString(2, classfication_name);
