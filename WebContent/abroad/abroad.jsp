@@ -77,7 +77,48 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString("country_name") %>" class="field_button" onclick="abroad(<%=rs.getString("abroad_num") %>)">
+		<input type="button" value="<%=rs.getString("country_name") %>" class="field_button" onclick="showhide(<%=rs.getString("abroad_num") %>)">
+		<table style="display:none; z-index:999;" id = "<%=rs.getString("abroad_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">체류국가</th>
+         <td><%=rs.getString("country_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">체류형태</th>
+         <td><%=rs.getString("reason")%></td>
+      </tr>
+      <tr>
+         <th scope="row">구사언어</th>
+         <td><%=rs.getString("abroad_language")%></td>
+      </tr>
+      <tr>
+         <th scope="row">체류기간</th>
+         <td><%=rs.getString("abroad_s_date")%> ~ <%=rs.getString("abroad_g_date")%></td>
+      </tr>
+      <tr>
+         <th scope="row">상세설명</th>
+         <td><%=rs.getString("abroad_detail")%></td>
+      </tr>
+      <tr>
+         <th scope="row">메모</th>
+         <td><%=rs.getString("abroad_memo")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" >
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("abroad_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
 	</div>
 	
 	<%
