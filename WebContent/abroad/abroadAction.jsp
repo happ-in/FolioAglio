@@ -13,8 +13,7 @@
 <body>
 
 	<%
-	String session_name = (String)session.getAttribute("signedUser");
-	
+
 	try{
 		Connection conn = DBUtil.getConn();
 		
@@ -25,6 +24,8 @@
 		String abroad_g_date = new String(request.getParameter("e_period").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
 		String abroad_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+		Object session_object=session.getAttribute("signedUser");
+		String session_name=(String)session_object;
 		
 		String sql = "insert into abroad(country_name, reason, abroad_language, abroad_s_date, abroad_g_date, abroad_detail, abroad_image, abroad_memo, id) values (?,?,?,?,?,?,?,?);";
 		PreparedStatement pstmt = conn.prepareStatement(sql);

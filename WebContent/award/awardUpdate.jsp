@@ -29,16 +29,15 @@
 		String awd_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
 		int awd_num = Integer.parseInt(request.getParameter("awd_num"));
 		
-		String sql = "update award set awd_name=?, awd_org=?, awd_result=?, awd_attachment=?, awd_memo=? where id=? and award_num=?;";
+		String sql = "update award set awd_name=?, awd_org=?, awd_result=?, awd_memo=? where id=? and award_num=?;";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, awd_name);
 		pstmt.setString(2, awd_org);
 		pstmt.setString(3, awd_result);
-		pstmt.setString(4, awd_attachment);
-		pstmt.setString(5, awd_memo);
-		pstmt.setString(6, session_name);
-		pstmt.setInt(7, awd_num);
+		pstmt.setString(4, awd_memo);
+		pstmt.setString(5, session_name);
+		pstmt.setInt(6, awd_num);
 		pstmt.executeUpdate();
 		
 		DBUtil.close(pstmt);
