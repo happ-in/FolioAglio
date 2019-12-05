@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <style>
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
@@ -104,19 +105,56 @@
    </style>
 <meta charset="utf-8">
 <title>경력</title>
+<%
+	Object session_object=session.getAttribute("signedUser");
+	//String session_name=(String)session_object;
+	String session_name="wook0805";
+	Connection conn = DBUtil.getConn();
+%>
 <script>
-   var option = "width = 600, height = 500, top = 100, left = 200, location = no";
-   function popup_career(){
-      var url = "career_information.jsp";
-      var name = "Carrier";   
-      window.open(url, name, option);
-   }
-   function get_carr(num){
-      window.open("careerForm.jsp?carr_num="+num, '', option);
-   }
-   function checkAward(){
-	   
-   }
+	var option = 'width=500, height=500';
+	function PI_Btn() {
+		window.open('','folio', option);
+		document.getElementById('PIForm').submit();
+	}
+	function eduBtn() {
+		window.open('','folio', option);
+		document.getElementById('eduForm').submit();
+	}
+	function carrBtn() {
+		window.open('','folio', option);
+		document.getElementById('carrForm').submit();
+	}
+	function abrdBtn() {
+		window.open('','folio', option);
+		document.getElementById('abrdForm').submit();
+	}
+	function EA_Btn() {
+		window.open('','folio', option);
+		document.getElementById('EAForm').submit();
+	}
+    function awdBtn() {
+    	window.open('','folio', option);
+		document.getElementById('awdForm').submit();
+	}
+    function skBtn() {
+    	window.open('','folio', option);
+		document.getElementById('skForm').submit();
+	}
+    function result() {
+    	var w = window.open("about:blank","_blank","width=600, height=700, top=0,left=0,scrollbars=no");
+		var formData = $("#PIForm,#eduForm,#carrForm,#abrdForm,#EAForm,#awdForm,#skForm").serialize();
+		$.ajax({
+			url : "FolioAction.jsp", // 요기에
+			type : 'POST',
+			data : formData,
+			async: false,
+			success : function(data) {
+				w.document.write(data);
+			}
+		});
+
+	}
 </script>
 </head>
 <body>
@@ -136,7 +174,7 @@
                <li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
                <li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
                <li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
-               <li><a class="menuLink" href="../certification/certification.jsp">자격증</a></li>
+               <li><a class="menuLink" href="../certification/certification.jsp">어학/자격증</a></li>
                <li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
                </ul>
             </div>
@@ -144,47 +182,124 @@
    </header>
 
    <div style="padding: 10px"></div>
-<%
-
-   Object session_object=session.getAttribute("signedUser");
-   String session_name=(String)session_object;
-   Connection conn = DBUtil.getConn();
-   String s_type = "";
-   
-   String sql = "select * from award where id = ?";
+   <% 
+   String sql = "select * from personal_information where id = ?";
    PreparedStatement pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
-   ResultSet rs = pstmt.executeQuery();
-   int i=0; int j=0;
-   String[][] context = new String[5][4];
-   
-   while(rs.next()) { %>
-   		j++;
-	   <input type="checkbox" id="award" value="<%=j%>"><%=rs.getString("awd_name")%>
-	   
-	
-	   <% int awd_chk = Integer.parseInt(request.getParameter("award"));
-	   if (awd_chk > 0){   
-		   context[i][0] = rs.getString("awd_org");
-		   context[i][1] = rs.getString("awd_result");
-		   context[i][2] = rs.getString("awd_attachment");
-		   context[i][3] = rs.getString("awd_memo");
-	   } else {
-		   context[i] = new String[4];
-	   } i++;
+   ResultSet rs = pstmt.executeQuery();%>
+   <form method="post" name="PIForm" id="PIForm" action="FolioAction.jsp" target="folio">
+	   <div>인적사항</div>
+		<%if(rs.next()) {%>
+	   		<input type="checkbox" name="PI" value="1">국적
+	   		<input type="checkbox" name="PI" value="2">성별
+	   		<input type="checkbox" name="PI" value="3">주소
+	   		<input type="checkbox" name="PI" value="4">git 주소
+	   		<input type="checkbox" name="PI" value="5">사진
+	   		<input type="checkbox" name="PI" value="6">메모
+		<%}
+		rs.close();
+		pstmt.close();
+		%>
+		<input type="button" value="미리보기" onclick="PI_Btn()">
+   </form>
+   <% 
+   sql = "select * from education where id = ?";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1,session_name);
+   rs = pstmt.executeQuery();%>
+   <form method="post" id="eduForm" action="FolioAction.jsp" target="folio">
+	   <div>학력</div>
+	   <%while(rs.next()) {%>
+		   <input type="checkbox" name="edu" value="<%=rs.getString("school_num")%>"><%=rs.getString("school_name")%>
+	   <%}
+	   rs.close();
+	   pstmt.close();
 	   %>
-	   
-	   <div><%=context[i][0]%></div>
-	   <div><%=context[i][1]%></div>
-	   <div><%=context[i][2]%></div>
-	   <div><%=context[i][3]%></div>
-   <%}
-   
-   rs.close();
-   conn.close();
-   pstmt.close();
-   %>   
-   
-   
+	   <input type="button" value="미리보기" onclick="eduBtn()">
+   </form>
+   <% 
+   sql = "select * from carrier where id = ?";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1,session_name);
+   rs = pstmt.executeQuery();%>
+   <form method="post" id="carrForm" action="FolioAction.jsp" target="folio">
+	   <div>경력</div>
+	   <%while(rs.next()) {%>
+		   <input type="checkbox" name="carr" value="<%=rs.getString("carrier_num")%>"><%=rs.getString("company_name")%>
+	   <%}
+	   rs.close();
+	   pstmt.close();
+	   %>
+	   <input type="button" value="미리보기" onclick="carrBtn()">
+   </form>
+   <% 
+   sql = "select * from abroad where id = ?";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1,session_name);
+   rs = pstmt.executeQuery();%>
+   <form method="post" id="abrdForm" action="FolioAction.jsp" target="folio">
+	   <div>해외경험</div>
+	   <%while(rs.next()) {%>
+		   <input type="checkbox" name="abrd" value="<%=rs.getString("abroad_num")%>"><%=rs.getString("country_name")%>
+	   <%}
+	   rs.close();
+	   pstmt.close();
+	   %>
+	   <input type="button" value="미리보기" onclick="abrdBtn()">
+   </form>
+   <% 
+   sql = "select * from external_activities where id = ?";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1,session_name);
+   rs = pstmt.executeQuery();%>
+   <form method="post" id="EAForm" action="FolioAction.jsp" target="folio">
+	   <div>대외활동</div>
+	   <%while(rs.next()) {%>
+		   <input type="checkbox" name="EA" value="<%=rs.getString("activity_num")%>"><%=rs.getString("group_name")%>
+	   <%}
+	   rs.close();
+	   pstmt.close();
+	   %>
+	   <input type="button" value="미리보기" onclick="EA_Btn()">
+   </form>
+   <% 
+   sql = "select * from award where id = ?";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1,session_name);
+   rs = pstmt.executeQuery();%>
+   <form method="post" id="awdForm" action="FolioAction.jsp" target="folio">
+	   <div>수상경력</div>
+	   <%while(rs.next()) {%>
+		   <input type="checkbox" name="award" value="<%=rs.getString("award_num")%>"><%=rs.getString("awd_name")%>
+	   <%}
+	   rs.close();
+	   pstmt.close();
+	   %>
+	   <input type="button" value="미리보기" onclick="awdBtn()">
+   </form>
+   <% 
+   sql = "select * from skill where id = ?";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1,session_name);
+   rs = pstmt.executeQuery();%>
+   <form method="post" id="skForm" action="FolioAction.jsp" target="folio">
+	   <div>어학/자격증</div>
+	   <%
+	   String div1 = "어학";
+	   String div2 = "자격증";
+	   while(rs.next()) {		   
+	   		if(div1.equals(rs.getString("skill_radio"))){%>
+		   		<input type="checkbox" name="skill" value="<%=rs.getString("issue_num")%>"><%=rs.getString("kind")%>
+		   	<%} else if(div2.equals(rs.getString("skill_radio"))){%>
+		   		<input type="checkbox" name="skill" value="<%=rs.getString("issue_num")%>"><%=rs.getString("classfication_name")%>
+	   		<%}
+	   }
+	   rs.close();
+	   pstmt.close();
+	   %>
+	   <input type="button" value="미리보기" onclick="skBtn()">
+   </form>
+   <button type="submit" onclick="result()">포트폴리오 생성</button>
+   <%conn.close();%>
 </body>
 </html>
