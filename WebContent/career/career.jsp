@@ -63,19 +63,67 @@
 
 	
 	<%
-	Connection conn = DBUtil.getConn();
-	String s_type = "";
+	Object session_object=session.getAttribute("signedUser");
+	   String session_name=(String)session_object;
+	   Connection conn = DBUtil.getConn();
+	   String s_type = "";
 	
-	String sql = "select company_name, carrier_num from carrier";
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery(sql);
+	String sql = "select * from carrier where id =?";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1,session_name);
+    ResultSet rs = pstmt.executeQuery();
 	
 	while(rs.next()) {
 	
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(1) %>" onclick="get_carr(<%=rs.getString(2) %>)" class="field_button">
+		<input type="button" value="<%=rs.getString("company_name") %>" onclick="showhide(<%=rs.getString("carrier_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;" id = "<%=rs.getString("carrier_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">회사명</th>
+         <td><%=rs.getString("company_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">직위</th>
+         <td><%=rs.getString("position")%></td>
+      </tr>
+      <tr>
+         <th scope="row">담당업무</th>
+         <td><%=rs.getString("work")%></td>
+      </tr>
+      <tr>
+         <th scope="row">연봉</th>
+         <td><%=rs.getString("salary")%></td>
+      </tr>
+      <tr>
+         <th scope="row">재직기간</th>
+         <td><%=rs.getString("s_period")%> ~ <%=rs.getString("e_period")%></td>
+      </tr>
+      <tr>
+         <th scope="row">상세설명</th>
+         <td><%=rs.getString("detail")%></td>
+      </tr>
+      <tr>
+         <th scope="row">메모</th>
+         <td><%=rs.getString("carrier_memo")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" >
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("carrier_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
 	</div>
 	
 	<%
@@ -83,8 +131,8 @@
 	}
 	
 	rs.close();
-	conn.close();
-	stmt.close();
+   conn.close();
+   pstmt.close();
 	%>
 	
 	<div>
