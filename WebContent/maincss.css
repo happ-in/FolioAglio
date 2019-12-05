@@ -81,11 +81,24 @@
       padding : 10px;
       position: relative;
    }
-   .field legend{
+      .field_info{      
+      border: 2px solid #B2CCFF;
+     border-radius: 10px;
+      margin-top : 20px;
+      align : center;
+      padding : 10px;
+      position: relative;
+   }
+   .field_info legend{
+      color : #636363;
       font-family : Hanna;
       font-size : 26px;
    }
-         
+   .field_info tr{
+   padding:10px;
+    font-family : Hanna;
+    font-size : 20px;
+    }      
    .aa{
         position : fixed;
         right : 20px;
@@ -172,6 +185,23 @@
     vertical-align: top;
     border-bottom: 1px solid #ccc;
    }
-   
-      
+
+	.button_css{
+	font-family : Hanna;
+	font-size : 16px;
+		border: 1px solid ;
+		background-color: #B2CCFF;
+		color: white;
+		font-wieght : bold;
+		padding: 5px 10px 5px 10px;
+		border-top-left-radius : 5px;
+		border-bottom-left-radius : 5px;
+		border-top-right-radius : 5px;
+		border-bottom-right-radius: 5px;
+	}
+	.button_css:hover{
+		color: #B2CCFF;
+		background-color: white;
+	}
+    
       

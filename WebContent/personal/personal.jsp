@@ -76,15 +76,15 @@
 		}
 	
 	%>
-	<fieldset class="field">
-		<legend>인적사항</legend>
+	<fieldset class="field_info">
+		<legend class="legend_css">인적사항</legend>
 		<table class="bodystyle">
 	<%
 		if("".equals(id_pic)){
 	%>
 			<tr>
 				<td rowspan="5" colspan="2" align="center">
-				<button class="idpic" style="background: none;">No Image</button></td>
+				<button class="idpic" style="background: none;" >No Image</button></td>
 			</tr>
 	<%
 		} else {
@@ -100,7 +100,7 @@
 				<td>이름</td>
 				<td> : </td>
 				<td><%=name %></td>
-				<td><button onClick="popup_personal_information()">수정</button></td>
+				<td><button onClick="popup_personal_information()" class="button_css">수정</button></td>
 			</tr>
 			<tr>
 				<td>생년월일 </td>
@@ -121,7 +121,7 @@
 			<tr><td>
 			<form method="post" enctype="multipart/form-data" action="upload.jsp">
 				<input type="file" name="filename" accept="image/*">
-				<input type="submit" value="업로드">
+				<input type="submit" class="button_css" value="업로드">
 			</form></td>
 			</tr>
 		</table>
