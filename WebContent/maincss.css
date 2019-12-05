@@ -106,7 +106,7 @@
      background: none;
      border: none;
      border-radius: 5px;
-     color: #595959;
+     color: #A1A1A1;
      display: block;
      font-size: 1.6em;
      font-weight: bold;
@@ -126,7 +126,7 @@
    }
    
    .field_button:hover {
-     color: #A1A1A1;
+     color: #595959;
    }
    
    
@@ -167,7 +167,7 @@
    .type07 td {
    background:white;
    text-align: left;
-    width: 350px;
+    width: 400px;
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
