@@ -14,7 +14,12 @@
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
   
    div{ display : block; }
-   
+      .add_folio{
+	    width : 150px;
+	    height : 250px;
+	    border : 0.5px dashed;
+	    background : none;
+   }
    .card {
    width: 150px;
    height:250px;

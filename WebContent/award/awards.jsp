@@ -13,11 +13,7 @@
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-   .field{
-   	padding : 10px;
-   }
 
-   
    </style>
 <meta charset="utf-8">
 <title>수상경력</title>

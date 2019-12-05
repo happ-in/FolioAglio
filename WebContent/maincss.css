@@ -72,11 +72,16 @@
 	.field{
 	   border : 1px solid;
 	   margin-top : 10px;
+	   align : center;
+	   padding : 10px;
 	}
 	.field legend{
 	   font-family : Hanna;
 	   font-size : 26px;
 	}
+	.field_line{
+   	padding : 10px;
+   }
 	   
    .aa{
    	  position : fixed;
@@ -94,11 +99,6 @@
 	   	width : 30%;
    }
    
-   .add_folio{
-	    width : 100px;
-	    height : 150px;
-	    border : 0.5px dashed;
-	    background : none;
-   }
+
    
 	   
