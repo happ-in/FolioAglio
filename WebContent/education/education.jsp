@@ -69,6 +69,14 @@
 	function popup_graduated(num){
 		window.open('graduated.jsp?school_num='+num, '', option);
 	}
+	function showhide(num){
+	      if(document.getElementById(num).style.display=='block'){
+	         document.getElementById(num).style.display='none';
+	      }else{
+	         document.getElementById(num).style.display='block';
+	         
+	      }
+	   }
 	
 </script>
 </head>
@@ -95,7 +103,6 @@
 		</div>
 	</header>
 
-	<div style="padding: 10px"></div>
 	
 	<%
 	String s_type = "";
@@ -104,19 +111,64 @@
 	try {
 		Connection conn = DBUtil.getConn();
 		
-		String sql = "select school_radio, school_name, school_num from education where id=? order by school_radio ;";
+		String sql = "select * from education where id=? order by school_radio ;";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,session_name);
 		ResultSet rs = pstmt.executeQuery();
 	
 		while(rs.next()) {
-			s_type = rs.getString(1);
+			s_type = rs.getString("school_radio");
 			
 			if(s_type.equals("1")){
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_highschool(<%=rs.getInt(3) %>)" class="field_button">
+		<input type="button" value="<%=rs.getString("school_name") %>" onClick="showhide(<%=rs.getInt("school_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;" id = "<%=rs.getString("school_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">구분</th>
+         <td>고등학교</td>
+      </tr>
+      <tr>
+         <th scope="row">학교명</th>
+         <td><%=rs.getString("school_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">학교 소재지</th>
+         <td><%=rs.getString("school_location")%></td>
+      </tr>
+      <tr>
+         <th scope="row">계열</th>
+         <td><%=rs.getString("division")%></td>
+      </tr>
+      <tr>
+         <th scope="row">일자</th>
+         <td><%=rs.getString("e_date")%> ~ <%=rs.getString("g_date")%></td>
+      </tr>
+      <tr>
+         <th scope="row">졸업여부</th>
+         <td><%=rs.getString("g_state")%></td>
+      </tr>
+      <tr>
+         <th scope="row">메모</th>
+         <td><%=rs.getString("edu_memo")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" onClick="popup_highschool(<%=rs.getInt("school_num") %>)">
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("school_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
 	</div>
 	
 	<%		
@@ -125,8 +177,77 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(2) %>"  onClick="popup_collage(<%=rs.getInt(3) %>)" class="field_button">
-	</div>
+		<input type="button" value="<%=rs.getString("school_name") %>"  onClick="showhide(<%=rs.getInt("school_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;height:350px;overflow-y:scroll;" id = "<%=rs.getString("school_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">구분</th>
+         <td>대학교</td>
+      </tr>
+      <tr>
+         <th scope="row">학교명</th>
+         <td><%=rs.getString("school_name")%></td>
+      </tr>
+      <tr>
+         <th scope="row">학교 소재지</th>
+         <td><%=rs.getString("school_location")%></td>
+      </tr>
+      <tr>
+         <th scope="row">계열</th>
+         <td><%=rs.getString("division")%></td>
+      </tr>
+      <tr>
+         <th scope="row">입학구분</th>
+         <td><%=rs.getString("e_state")%></td>
+      </tr>
+      <tr>
+         <th scope="row">일자</th>
+         <td><%=rs.getString("e_date")%> ~ <%=rs.getString("g_date")%></td>
+      </tr>
+      <tr>
+         <th scope="row">졸업여부</th>
+         <td><%=rs.getString("g_state")%></td>
+      </tr>
+      <tr>
+         <th scope="row">전공</th>
+         <td><%=rs.getString("major")%></td>
+      </tr>
+      <tr>
+         <th scope="row">학점</th>
+         <td><%=rs.getString("grade")%> / <%=rs.getString("total_grade")%></td>
+      </tr>
+      <tr>
+         <th scope="row">전공학점</th>
+         <td><%=rs.getString("major_grade")%> / <%=rs.getString("g_state")%></td>
+      </tr>
+      <tr>
+         <th scope="row">이수학점</th>
+         <td><%=rs.getString("classes")%></td>
+      </tr>
+      <tr>
+         <th scope="row">부전공 / 복수전공명</th>
+         <td><%=rs.getString("submajor")%></td>
+      </tr>
+      <tr>
+         <th scope="row">메모</th>
+         <td><%=rs.getString("edu_memo")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" onClick="popup_collage(<%=rs.getInt("school_num") %>)">
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("school_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
 	
 	<%
 			}
@@ -134,7 +255,56 @@
 	%>
 	
 	<div class="field">
-		<input type="button" value="<%=rs.getString(2) %>" onClick="popup_graduated(<%=rs.getInt(3) %>)" class="field_button">
+		<input type="button" value="<%=rs.getString("school_name") %>"  onClick="showhide(<%=rs.getInt("school_num") %>)" class="field_button">
+		<table style="display:none; z-index:999;height:350px;overflow-y:scroll;" id = "<%=rs.getString("school_num") %>"  class="type07">
+      <thead>
+      <tr>
+         <th scope="cols">항목</th>
+         <th scope="cols">내용</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         <th scope="row">구분</th>
+         <td>대학원</td>
+      </tr>
+      <tr>
+         <th scope="row">학교 소재지</th>
+         <td><%=rs.getString("school_location")%></td>
+      </tr>
+      <tr>
+         <th scope="row">계열</th>
+         <td><%=rs.getString("division")%></td>
+      </tr>
+      <tr>
+         <th scope="row">일자</th>
+         <td><%=rs.getString("e_date")%> ~ <%=rs.getString("g_date")%></td>
+      </tr>
+      <tr>
+         <th scope="row">졸업여부</th>
+         <td><%=rs.getString("g_state")%></td>
+      </tr>
+      <tr>
+         <th scope="row">전공</th>
+         <td><%=rs.getString("major")%></td>
+      </tr>
+      <tr>
+         <th scope="row">학점</th>
+         <td><%=rs.getString("grade")%> / <%=rs.getString("total_grade")%></td>
+      </tr>
+      <tr>
+         <th scope="row">메모</th>
+         <td><%=rs.getString("edu_memo")%></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align: center;"> 
+            <input type="button" value="수정" onClick="popup_graduated(<%=rs.getInt("school_num") %>)">
+            <input type="button" value="삭제" >
+            <input type="button" value="닫기" onclick="showhide(<%=rs.getString("school_num") %>);">
+         </td>
+         </tr>
+      </tbody>
+   </table>
 	</div>
 	
 	<%

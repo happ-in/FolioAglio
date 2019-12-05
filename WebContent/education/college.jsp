@@ -200,7 +200,7 @@
 					<td><input type="text" id="collage_classes" name="collage_classes" value="<%=rs.getString(12) %>"></td>
 				</tr>
 				<tr>
-					<td>부전공/ 복수전공 명</td>
+					<td>부전공 / 복수전공 명</td>
 					<td><input type="text" id="collage_submajor" name="collage_submajor" value="<%=rs.getString(13) %>"></td>
 				</tr>
 				<tr>
