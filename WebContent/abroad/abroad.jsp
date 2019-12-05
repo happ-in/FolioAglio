@@ -113,7 +113,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="abroad(<%=rs.getString("abroad_num") %>)">
-            <input type="button" value="삭제" >
+            <a href = "abroadDelete.jsp?ab_num=<%=rs.getString("abroad_num") %>"><input type="button" value="삭제" onclick="abroadDel(<%=rs.getString("abroad_num") %>)"></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("abroad_num") %>);">
          </td>
          </tr>
