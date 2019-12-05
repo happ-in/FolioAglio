@@ -19,10 +19,11 @@
 		Connection conn = DBUtil.getConn();
 		
 		
-		String sql = "delete from abroad where abroad_num=?;";		
+		String sql = "delete from abroad where id=? and abroad_num=?;";		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
-		pstmt.setInt(1, num);
+		pstmt.setString(1, session_name);
+		pstmt.setInt(2, num);
 		pstmt.executeUpdate();
 		
 		DBUtil.close(pstmt);
