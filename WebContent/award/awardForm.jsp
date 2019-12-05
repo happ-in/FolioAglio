@@ -136,7 +136,7 @@
 				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" rows="3" name="memo" cols="50"><%=rs.getString("awd_memo") %></textarea></td>
-					<td><input type="hidden" name="activity_num" value="<%= num %>"></td>
+					<td><input type="hidden" name="awd_num" value="<%= num %>"></td>
 				</tr>
 			</table>
 		</fieldset>
