@@ -61,8 +61,19 @@
 				alert('학점을 입력하세요 ')
 				graduated_grade.focus();
 			}else {
-				document.getElementById('form1').submit();
-				self.close();
+	        	 var formData = $("#form1").serialize();
+	        	 $.ajax({
+	                 cache : false,
+	                 url : "graduatedUpdate.jsp", // 요기에
+	                 type : 'POST', 
+	                 data : formData,
+	                 async: false,
+	                 success : function(data) {
+						
+	                 }
+	             });
+	        	 self.close();
+	        	 opener.location.reload();
 			}
 
 		});

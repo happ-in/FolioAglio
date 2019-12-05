@@ -1,3 +1,4 @@
+<%@ page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="file.DBUtil" %>
@@ -15,20 +16,20 @@
 	try{
 		Connection conn = DBUtil.getConn();
 		
-		String school_name = new String(request.getParameter("collage_name").getBytes("ISO-8859-1"), "UTF-8");
-		String school_location = new String(request.getParameter("collage_location").getBytes("ISO-8859-1"), "UTF-8");
-		String division = new String(request.getParameter("collage_division").getBytes("ISO-8859-1"), "UTF-8");
-		String e_state = new String(request.getParameter("collage_e_state").getBytes("ISO-8859-1"), "UTF-8");
-		String e_date = new String(request.getParameter("collage_e_date").getBytes("ISO-8859-1"), "UTF-8");
-		String g_date = new String(request.getParameter("collage_g_date").getBytes("ISO-8859-1"), "UTF-8");
-		String g_state = new String(request.getParameter("collage_g_state").getBytes("ISO-8859-1"), "UTF-8");
-		String major = new String(request.getParameter("collage_major").getBytes("ISO-8859-1"), "UTF-8");
-		String grade = new String(request.getParameter("collage_grade").getBytes("ISO-8859-1"), "UTF-8");
-		String total_grade = new String(request.getParameter("collage_total_grade").getBytes("ISO-8859-1"), "UTF-8");
-		String major_grade = new String(request.getParameter("collage_major_grade").getBytes("ISO-8859-1"), "UTF-8");
-		String classes = new String(request.getParameter("collage_classes").getBytes("ISO-8859-1"), "UTF-8");
-		String submajor = new String(request.getParameter("collage_submajor").getBytes("ISO-8859-1"), "UTF-8");
-		String edu_memo = new String(request.getParameter("collage_memo").getBytes("ISO-8859-1"), "UTF-8");
+		String school_name = URLDecoder.decode(request.getParameter("collage_name"), "UTF-8");
+		String school_location = URLDecoder.decode(request.getParameter("collage_location"), "UTF-8");
+		String division = URLDecoder.decode(request.getParameter("collage_division"), "UTF-8");
+		String e_state = URLDecoder.decode(request.getParameter("collage_e_state"), "UTF-8");
+		String e_date = URLDecoder.decode(request.getParameter("collage_e_date"), "UTF-8");
+		String g_date = URLDecoder.decode(request.getParameter("collage_g_date"), "UTF-8");
+		String g_state = URLDecoder.decode(request.getParameter("collage_g_state"), "UTF-8");
+		String major = URLDecoder.decode(request.getParameter("collage_major"), "UTF-8");
+		String grade = URLDecoder.decode(request.getParameter("collage_grade"), "UTF-8");
+		String total_grade = URLDecoder.decode(request.getParameter("collage_total_grade"), "UTF-8");
+		String major_grade = URLDecoder.decode(request.getParameter("collage_major_grade"), "UTF-8");
+		String classes = URLDecoder.decode(request.getParameter("collage_classes"), "UTF-8");
+		String submajor = URLDecoder.decode(request.getParameter("collage_submajor"), "UTF-8");
+		String edu_memo = URLDecoder.decode(request.getParameter("collage_memo"), "UTF-8");
 		int school_num = Integer.parseInt(request.getParameter("school_num"));
 		
 		String sql = "update education set school_name=?, school_location=?, division=?, e_state=?, e_date=?, g_date=?, g_state=?, major=?, grade=?, total_grade=?, major_grade=?, classes=?, submajor=?, edu_memo=? where school_radio='2' and school_num=? and id=?;";

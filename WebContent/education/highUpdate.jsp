@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
+<%@ page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -14,13 +15,13 @@
 	String session_name = (String)session_object;
 	
 	try{
-		String school_name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
-		String school_location = new String(request.getParameter("location").getBytes("ISO-8859-1"), "UTF-8");
-		String division = new String(request.getParameter("division").getBytes("ISO-8859-1"), "UTF-8");
-		String e_date = new String(request.getParameter("e_date").getBytes("ISO-8859-1"), "UTF-8");
-		String g_date = new String(request.getParameter("g_date").getBytes("ISO-8859-1"), "UTF-8");
-		String g_state = new String(request.getParameter("g_state").getBytes("ISO-8859-1"), "UTF-8");
-		String edu_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+		String school_name = URLDecoder.decode(request.getParameter("high_name"), "UTF-8");
+		String school_location = URLDecoder.decode(request.getParameter("high_location"), "UTF-8");
+		String division = URLDecoder.decode(request.getParameter("high_division"), "UTF-8");
+		String e_date = URLDecoder.decode(request.getParameter("high_e_date"), "UTF-8");
+		String g_date = URLDecoder.decode(request.getParameter("high_g_date"), "UTF-8");
+		String g_state = URLDecoder.decode(request.getParameter("high_g_state"), "UTF-8");
+		String edu_memo = URLDecoder.decode(request.getParameter("high_memo"), "UTF-8");
 		int school_num = Integer.parseInt(request.getParameter("school_num"));
 		
 		System.out.println(school_name);

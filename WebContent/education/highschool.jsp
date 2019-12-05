@@ -49,9 +49,21 @@
 				alert('졸업여부를 입력하세요 ');
 				g_state.focus();
 			}else {
-				document.getElementById('form1').submit();
-				self.close();
+				 var formData = $("#form1").serialize();
+	        	 $.ajax({
+	                 cache : false,
+	                 url : "highUpdate.jsp", // 요기에
+	                 type : 'POST', 
+	                 data : formData,
+	                 async: false,
+	                 success : function(data) {
+						
+	                 }
+	             });
+	        	 self.close();
+	        	 opener.location.reload();
 			}
+
 		});
 	});
 </script>

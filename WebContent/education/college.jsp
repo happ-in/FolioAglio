@@ -65,10 +65,21 @@
 				alert('전체 학점을 입력하세요 ')
 				collage_total_grade.focus();
 			}else {
-				document.getElementById('form1').submit();
-				self.close();
-			}
-	
+	        	 var formData = $("#form1").serialize();
+	        	 $.ajax({
+	                 cache : false,
+	                 url : "collegeUpdate.jsp", // 요기에
+	                 type : 'POST', 
+	                 data : formData,
+	                 async: false,
+	                 success : function(data) {
+						
+	                 }
+	             });
+	        	 self.close();
+	        	 opener.location.reload();
+	         }
+
 		});
 	});
 </script>

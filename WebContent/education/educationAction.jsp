@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,19 +16,19 @@
 	
 	try{
 		String radio = "";
-		String school_radio = new String(request.getParameter("radio").getBytes("ISO-8859-1"), "UTF-8");
+		String school_radio = URLDecoder.decode(request.getParameter("radio"), "UTF-8");
 		Object session_object = session.getAttribute("signedUser");
 		String session_name = (String)session_object;
 		
 		if (school_radio.equals("high")) { 
 			radio = "1";
-			String school_name = new String(request.getParameter("high_name").getBytes("ISO-8859-1"), "UTF-8");
-			String school_location = new String(request.getParameter("high_location").getBytes("ISO-8859-1"), "UTF-8");
-			String division = new String(request.getParameter("high_division").getBytes("ISO-8859-1"), "UTF-8");
-			String e_date = new String(request.getParameter("high_e_date").getBytes("ISO-8859-1"), "UTF-8");
-			String g_date = new String(request.getParameter("high_g_date").getBytes("ISO-8859-1"), "UTF-8");
-			String g_state = new String(request.getParameter("high_g_state").getBytes("ISO-8859-1"), "UTF-8");
-			String edu_memo = new String(request.getParameter("high_memo").getBytes("ISO-8859-1"), "UTF-8");
+			String school_name = URLDecoder.decode(request.getParameter("high_name"), "UTF-8");
+			String school_location = URLDecoder.decode(request.getParameter("high_location"), "UTF-8");
+			String division = URLDecoder.decode(request.getParameter("high_division"), "UTF-8");
+			String e_date = URLDecoder.decode(request.getParameter("high_e_date"), "UTF-8");
+			String g_date = URLDecoder.decode(request.getParameter("high_g_date"), "UTF-8");
+			String g_state = URLDecoder.decode(request.getParameter("high_g_state"), "UTF-8");
+			String edu_memo = URLDecoder.decode(request.getParameter("high_memo"), "UTF-8");
 			
 			String sql = "insert into education(school_radio, school_name, school_location, division, e_date, g_date, g_state, edu_memo, id) values (?,?,?,?,?,?,?,?,?);";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -47,20 +48,20 @@
 		}
 		else if (school_radio.equals("collage")) { 
 			radio = "2";
-			String school_name = new String(request.getParameter("collage_name").getBytes("ISO-8859-1"), "UTF-8");
-			String school_location = new String(request.getParameter("collage_location").getBytes("ISO-8859-1"), "UTF-8");
-			String division = new String(request.getParameter("collage_division").getBytes("ISO-8859-1"), "UTF-8");
-			String e_state = new String(request.getParameter("collage_e_state").getBytes("ISO-8859-1"), "UTF-8");
-			String e_date = new String(request.getParameter("collage_e_date").getBytes("ISO-8859-1"), "UTF-8");
-			String g_date = new String(request.getParameter("collage_g_date").getBytes("ISO-8859-1"), "UTF-8");
-			String g_state = new String(request.getParameter("collage_g_state").getBytes("ISO-8859-1"), "UTF-8");
-			String major = new String(request.getParameter("collage_major").getBytes("ISO-8859-1"), "UTF-8");
-			String grade = new String(request.getParameter("collage_grade").getBytes("ISO-8859-1"), "UTF-8");
-			String total_grade = new String(request.getParameter("collage_total_grade").getBytes("ISO-8859-1"), "UTF-8");
-			String major_grade = new String(request.getParameter("collage_major_grade").getBytes("ISO-8859-1"), "UTF-8");
-			String classes = new String(request.getParameter("collage_classes").getBytes("ISO-8859-1"), "UTF-8");
-			String submajor = new String(request.getParameter("collage_submajor").getBytes("ISO-8859-1"), "UTF-8");
-			String edu_memo = new String(request.getParameter("collage_memo").getBytes("ISO-8859-1"), "UTF-8");
+			String school_name = URLDecoder.decode(request.getParameter("collage_name"), "UTF-8");
+			String school_location = URLDecoder.decode(request.getParameter("collage_location"), "UTF-8");
+			String division = URLDecoder.decode(request.getParameter("collage_division"), "UTF-8");
+			String e_state = URLDecoder.decode(request.getParameter("collage_e_state"), "UTF-8");
+			String e_date = URLDecoder.decode(request.getParameter("collage_e_date"), "UTF-8");
+			String g_date = URLDecoder.decode(request.getParameter("collage_g_date"), "UTF-8");
+			String g_state = URLDecoder.decode(request.getParameter("collage_g_state"), "UTF-8");
+			String major = URLDecoder.decode(request.getParameter("collage_major"), "UTF-8");
+			String grade = URLDecoder.decode(request.getParameter("collage_grade"), "UTF-8");
+			String total_grade = URLDecoder.decode(request.getParameter("collage_total_grade"), "UTF-8");
+			String major_grade = URLDecoder.decode(request.getParameter("collage_major_grade"), "UTF-8");
+			String classes = URLDecoder.decode(request.getParameter("collage_classes"), "UTF-8");
+			String submajor = URLDecoder.decode(request.getParameter("collage_submajor"), "UTF-8");
+			String edu_memo = URLDecoder.decode(request.getParameter("collage_memo"), "UTF-8");
 			
 			String sql = "insert into education(school_radio, school_name, school_location, division, e_state, e_date, g_date, g_state, major, grade, total_grade, major_grade, classes, submajor, edu_memo, id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -87,16 +88,16 @@
 		}
 		else { 
 			radio = "3";
-			String school_name = new String(request.getParameter("graduated_name").getBytes("ISO-8859-1"), "UTF-8");
-			String school_location = new String(request.getParameter("graduated_location").getBytes("ISO-8859-1"), "UTF-8");
-			String division = new String(request.getParameter("graduated_division").getBytes("ISO-8859-1"), "UTF-8");
-			String e_date = new String(request.getParameter("graduated_e_date").getBytes("ISO-8859-1"), "UTF-8");
-			String g_date = new String(request.getParameter("graduated_g_date").getBytes("ISO-8859-1"), "UTF-8");
-			String g_state = new String(request.getParameter("graduated_g_state").getBytes("ISO-8859-1"), "UTF-8");
-			String major = new String(request.getParameter("graduated_major").getBytes("ISO-8859-1"), "UTF-8");
-			String grade = new String(request.getParameter("graduated_grade").getBytes("ISO-8859-1"), "UTF-8");
-			String total_grade = new String(request.getParameter("graduated_total_grade").getBytes("ISO-8859-1"), "UTF-8");
-			String edu_memo = new String(request.getParameter("graduated_memo").getBytes("ISO-8859-1"), "UTF-8");
+			String school_name = URLDecoder.decode(request.getParameter("graduated_name"), "UTF-8");
+			String school_location = URLDecoder.decode(request.getParameter("graduated_location"), "UTF-8");
+			String division = URLDecoder.decode(request.getParameter("graduated_division"), "UTF-8");
+			String e_date = URLDecoder.decode(request.getParameter("graduated_e_date"), "UTF-8");
+			String g_date = URLDecoder.decode(request.getParameter("graduated_g_date"), "UTF-8");
+			String g_state = URLDecoder.decode(request.getParameter("graduated_g_state"), "UTF-8");
+			String major = URLDecoder.decode(request.getParameter("graduated_major"), "UTF-8");
+			String grade = URLDecoder.decode(request.getParameter("graduated_grade"), "UTF-8");
+			String total_grade = URLDecoder.decode(request.getParameter("graduated_total_grade"), "UTF-8");
+			String edu_memo = URLDecoder.decode(request.getParameter("graduated_memo"), "UTF-8");
 
 			String sql = "insert into education(school_radio, school_name, school_location, division, e_date, g_date, g_state, major, grade, total_grade, edu_memo, id) values (?,?,?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
