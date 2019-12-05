@@ -30,8 +30,6 @@
 
 		String sql = "update education set school_name=?, school_location=?, division=?, e_date=?, g_date=?, g_state=?, major=?, grade=?, total_grade=?, edu_memo=? where school_radio='3' and id=? and school_num=?;";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-
-		System.out.println(school_name);
 		
 		pstmt.setString(1, school_name);
 		pstmt.setString(2, school_location);

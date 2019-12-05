@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	window.addEventListener('load', function() {
 		var confirm1 = document.querySelector('#confirm1');
@@ -89,7 +92,7 @@
 	<%
 	Connection conn = DBUtil.getConn();
 	int school_num = Integer.parseInt(request.getParameter("school_num"));
-	String session_name = (String)session.getAttribute("signedUser");;
+	String session_name = (String)session.getAttribute("signedUser");
 	
 	try {
 		String sql = "select school_name, school_location, division, e_state, e_date, g_date, g_state, major, grade, total_grade, major_grade, classes, submajor, edu_memo from education where school_num=? and id=?;";
@@ -116,7 +119,7 @@
 							<option <%if( rs.getString(2).equals("경기도"))  { out.print("selected"); }%>>경기도</option>
 							<option <%if( rs.getString(2).equals("경상남도"))  { out.print("selected"); }%>>경상남도</option>
 							<option <%if( rs.getString(2).equals("경상북도"))  { out.print("selected"); }%>>경상북도</option>
-							<option <%if( rs.getString(2).equals("광주광역시"))  { out.print("selected"); }%>ion>광주광역시</option>
+							<option <%if( rs.getString(2).equals("광주광역시"))  { out.print("selected"); }%>>광주광역시</option>
 							<option <%if( rs.getString(2).equals("대구광역시"))  { out.print("selected"); }%>>대구광역시</option>
 							<option <%if( rs.getString(2).equals("대전광역시"))  { out.print("selected"); }%>>대전광역시</option>
 							<option <%if( rs.getString(2).equals("부산광역시"))  { out.print("selected"); }%>>부산광역시</option>

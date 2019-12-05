@@ -15,13 +15,13 @@
 	String session_name = (String)session_object;
 	
 	try{
-		String school_name = URLDecoder.decode(request.getParameter("high_name"), "UTF-8");
-		String school_location = URLDecoder.decode(request.getParameter("high_location"), "UTF-8");
-		String division = URLDecoder.decode(request.getParameter("high_division"), "UTF-8");
-		String e_date = URLDecoder.decode(request.getParameter("high_e_date"), "UTF-8");
-		String g_date = URLDecoder.decode(request.getParameter("high_g_date"), "UTF-8");
-		String g_state = URLDecoder.decode(request.getParameter("high_g_state"), "UTF-8");
-		String edu_memo = URLDecoder.decode(request.getParameter("high_memo"), "UTF-8");
+		String school_name = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+		String school_location = URLDecoder.decode(request.getParameter("location"), "UTF-8");
+		String division = URLDecoder.decode(request.getParameter("division"), "UTF-8");
+		String e_date = URLDecoder.decode(request.getParameter("e_date"), "UTF-8");
+		String g_date = URLDecoder.decode(request.getParameter("g_date"), "UTF-8");
+		String g_state = URLDecoder.decode(request.getParameter("g_state"), "UTF-8");
+		String edu_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 		int school_num = Integer.parseInt(request.getParameter("school_num"));
 		
 		Connection conn = DBUtil.getConn();

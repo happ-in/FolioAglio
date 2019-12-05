@@ -54,6 +54,7 @@
 		pstmt.executeUpdate();
 		
 		pstmt.close();
+		conn.close();
 	} catch(SQLException e){
 		System.out.println(e.toString());
 	}
