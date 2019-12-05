@@ -23,12 +23,20 @@
 <meta charset="utf-8">
 <title>자격증</title>
 <script>
+	var option = "width = 600, height = 300, top = 100, left = 200, location = no";
+	
 	function popup_skill(){
 		var url = "skill_information.jsp";
 		var name = "Skill";
-		var option = "width = 600, height = 300, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
+	function language(num){
+		window.open('language.jsp?issue_num='+num, '', option);
+	}
+	function popup_class(num){
+		window.open('class.jsp?issue_num'+num, '', option);
+	}
+	
 </script>
 </head>
 <body>
@@ -57,26 +65,45 @@
 	<div style="padding: 10px"></div>
 	
 		<%
-	Connection conn = DBUtil.getConn();
-	String s_type = "";
-	
-	String sql = "select * from skill";
-	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery(sql);
-	
-	while(rs.next()) {
-	
+		String session_name = (String)session.getAttribute("signedUser");
+		
+		try{
+			Connection conn = DBUtil.getConn();
+			String s_type = "";
+			
+			String sql = "select * from skill where id=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, session_name);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+			
 	%>
 	
-	<div class="field"><form><input type="button" value="<%=rs.getString("classfication_name") %>"></form></div>
+	<%
+				if(rs.getString("language_name")!=null){
+		
+	%>
+	<div class="field">
+		<input type="button" value="<%=rs.getString("language_name") %>" onclick="language(<%=rs.getInt("issue_num") %>)">
+	</div>
+	<%
+				}
+				else{
+	%>
+	<div class="field">
+		<input type="button" value="<%=rs.getString("classfication_name") %>" onclick="popup_class(<%=rs.getInt("issue_num") %>)"> 
+	</div>
 	
 	<%
-		
-	}
-	
-	rs.close();
-	conn.close();
-	stmt.close();
+				}
+			}
+			rs.close();
+			conn.close();
+			pstmt.close();
+		} catch(SQLException e){
+			System.out.println(e.toString());
+		}
 	%>
 		
 	<div>
