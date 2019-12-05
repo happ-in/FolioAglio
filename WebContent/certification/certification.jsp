@@ -128,7 +128,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="language(<%=rs.getInt("issue_num") %>)">
-            <input type="button" value="삭제" >
+            <a href = "langDel.jsp?issue_num=<%=rs.getString("issue_num") %>"><input type="button" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("issue_num") %>);">
          </td>
          </tr>
@@ -164,7 +164,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="popup_class(<%=rs.getInt("issue_num") %>)">
-            <input type="button" value="삭제" >
+            <a href = "classDel.jsp?issue_num=<%=rs.getString("issue_num") %>"><input type="button" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("issue_num") %>);">
          </td>
          </tr>

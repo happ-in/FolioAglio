@@ -118,7 +118,7 @@
       <tr>
          <td colspan="2" style="text-align: center;"> 
             <input type="button" value="수정" onclick="get_carr(<%=rs.getString("carrier_num") %>)">
-            <input type="button" value="삭제" >
+            <a href = "careerDel.jsp?carr_num=<%=rs.getString("carrier_num") %>"><input type="button" value="삭제" ></a>
             <input type="button" value="닫기" onclick="showhide(<%=rs.getString("carrier_num") %>);">
          </td>
          </tr>
