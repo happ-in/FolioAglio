@@ -138,6 +138,7 @@
             <tr>
                <td>메모</td>
                <td><textarea id="memo" name="memo" rows="3" cols="50"> <%=rs.getString(7) %></textarea></td>
+               <td><input type="hidden" name="activity_num" value="<%= activity_num %>"></td>
             </tr>
          </table>
       </fieldset>
@@ -152,7 +153,6 @@
                <td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
                   value="확인">
                </td>
-               <td><input type="hidden" name="activity_num" value="<%= activity_num %>"></td>
             </tr>
          </table>
       </form>

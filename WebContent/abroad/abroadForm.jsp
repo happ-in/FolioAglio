@@ -50,7 +50,9 @@
 				alert('체류기간을 입력하세요 ')
 				e_period.focus();
 			}else {
-				var formData = $("#form1").serialize();
+				var formData = $("#form1").serialize().replace(/%/g, '%25');
+				  var form = $('#form2')[0];
+		             var formData2 = new FormData(form);
         	 	$.ajax({
                  cache : false,
                  url : "abroadUpdate.jsp", // 요기에
@@ -61,8 +63,22 @@
 					
                  }
              });
-				self.close();
-				opener.location.reload();
+        	 	$.ajax({
+                    cache : false,
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    enctype: 'multipart/form-data',
+                    url : "upload.jsp?com="+name.value, // 요기에
+                    type : 'POST', 
+                    data : formData2,
+                    processData: false,
+                    contentType: false,
+                    async: false,   
+                    success : function(data) {
+                   
+                    }
+                });
+               self.close();
+               opener.location.reload();
 			}
 
 		});
@@ -147,22 +163,26 @@
 					<td><textarea id="detail" name="detail" rows="10" cols="50"><%=rs.getString("abroad_detail") %></textarea></td>
 				</tr>
 				<tr>
-					<td>사진</td>
-					<td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString("abroad_image") %></td>
-				</tr>
-				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString("abroad_memo") %></textarea></td>
-				</tr>
-				<tr align="right">
-					<td colspan="2"><input type="button" id="confirm" class="button_css"
-						value="수정">
-					</td>
 					<td><input type="hidden" name="num" value="<%=rs.getInt("abroad_num") %>"></td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
+	
+	   <form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
+         <table>
+            <tr>
+               <td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString(6) %></td>
+            </tr>
+            <tr align="right">
+               <td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
+                  value="확인">
+               </td>
+            </tr>
+         </table>
+      </form>
 	<%
 		}
 	} catch(SQLException e){

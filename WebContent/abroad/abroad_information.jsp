@@ -50,7 +50,7 @@
 				e_period.focus();
 			}else {
 				//저장하는거 구현해야함
-				var formData = $("#form1").serialize();
+				var formData = $("#form1").serialize().replace(/%/g, '%25');
         		var form = $('#form2')[0];
         		var formData2 = new FormData(form);
         		

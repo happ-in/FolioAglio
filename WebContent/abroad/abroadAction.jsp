@@ -2,8 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +16,13 @@
 	try{
 		Connection conn = DBUtil.getConn();
 		
-		String country_name = new String(request.getParameter("country").getBytes("ISO-8859-1"), "UTF-8");
-		String reason = new String(request.getParameter("reason").getBytes("ISO-8859-1"), "UTF-8");
-		String abroad_language = new String(request.getParameter("language").getBytes("ISO-8859-1"), "UTF-8");
-		String abroad_s_date = new String(request.getParameter("s_period").getBytes("ISO-8859-1"), "UTF-8");
-		String abroad_g_date = new String(request.getParameter("e_period").getBytes("ISO-8859-1"), "UTF-8");
-		String abroad_detail = new String(request.getParameter("detail").getBytes("ISO-8859-1"), "UTF-8");
-		String abroad_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+		String country_name = URLDecoder.decode(request.getParameter("country"), "UTF-8");
+		String reason = URLDecoder.decode(request.getParameter("reason"), "UTF-8");
+		String abroad_language = URLDecoder.decode(request.getParameter("language"), "UTF-8");
+		String abroad_s_date = URLDecoder.decode(request.getParameter("s_period"), "UTF-8");
+		String abroad_g_date = URLDecoder.decode(request.getParameter("e_period"), "UTF-8");
+		String abroad_detail = URLDecoder.decode(request.getParameter("detail"), "UTF-8");
+		String abroad_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 		Object session_object=session.getAttribute("signedUser");
 		String session_name=(String)session_object;
 		
