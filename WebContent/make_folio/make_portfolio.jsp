@@ -109,7 +109,7 @@
 		<input type="button" value="미리보기" onclick="PI_Btn()">
    </form>
    <% 
-   sql = "select * from education where id = ?";
+   sql = "select * from education where id = ? order by school_radio";
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
