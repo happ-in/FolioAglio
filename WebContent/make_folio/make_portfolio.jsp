@@ -51,7 +51,7 @@
     	var w = window.open("about:blank","_blank","width=600, height=700, top=0,left=0,scrollbars=no");
 		var formData = $("#PIForm,#eduForm,#carrForm,#abrdForm,#EAForm,#awdForm,#skForm").serialize();
 		$.ajax({
-			url : "Folio2PDF.jsp", // 요기에
+			url : "FolioAction.jsp", // 요기에
 			type : 'POST',
 			data : formData,
 			async: false,
@@ -93,7 +93,7 @@
    PreparedStatement pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    ResultSet rs = pstmt.executeQuery();%>
-   <form method="post" name="PIForm" id="PIForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" name="PIForm" id="PIForm" action="FolioAction.jsp" target="folio">
 	   <div class="menu">인적사항</div>
 		<%if(rs.next()) {%>
 	   		<input type="checkbox" class="chk" name="PI" value="1">국적
@@ -113,7 +113,7 @@
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
-   <form method="post" id="eduForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" id="eduForm" action="FolioAction.jsp" target="folio">
 	   <div>학력</div>
 	   <%while(rs.next()) {%>
 		   <input type="checkbox" class="chk" name="edu" value="<%=rs.getString("school_num")%>"><%=rs.getString("school_name")%>
@@ -128,7 +128,7 @@
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
-   <form method="post" id="carrForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" id="carrForm" action="FolioAction.jsp" target="folio">
 	   <div>경력</div>
 	   <%while(rs.next()) {%>
 		   <input type="checkbox" class="chk" name="carr" value="<%=rs.getString("carrier_num")%>"><%=rs.getString("company_name")%>
@@ -143,7 +143,7 @@
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
-   <form method="post" id="abrdForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" id="abrdForm" action="FolioAction.jsp" target="folio">
 	   <div>해외경험</div>
 	   <%while(rs.next()) {%>
 		   <input type="checkbox" class="chk" name="abrd" value="<%=rs.getString("abroad_num")%>"><%=rs.getString("country_name")%>
@@ -158,7 +158,7 @@
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
-   <form method="post" id="EAForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" id="EAForm" action="FolioAction.jsp" target="folio">
 	   <div>대외활동</div>
 	   <%while(rs.next()) {%>
 		   <input type="checkbox" class="chk" name="EA" value="<%=rs.getString("activity_num")%>"><%=rs.getString("group_name")%>
@@ -173,7 +173,7 @@
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
-   <form method="post" id="awdForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" id="awdForm" action="FolioAction.jsp" target="folio">
 	   <div>수상경력</div>
 	   <%while(rs.next()) {%>
 		   <input type="checkbox" class="chk" name="award" value="<%=rs.getString("award_num")%>"><%=rs.getString("awd_name")%>
@@ -188,7 +188,7 @@
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
-   <form method="post" id="skForm" action="Folio2PDF.jsp" target="folio">
+   <form method="post" id="skForm" action="FolioAction.jsp" target="folio">
 	   <div>어학/자격증</div>
 	   <%
 	   String div1 = "어학";
