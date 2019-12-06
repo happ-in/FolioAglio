@@ -120,7 +120,7 @@
       </tr>
       <tr>
          <th scope="row">메모</th>
-         <td><%=rs.getString("carrier_memo")%></td>
+         <td><%=rs.getString("carrier_memo")%></td>	
       </tr>
       <tr>
          <td colspan="2" style="text-align: center;"> 

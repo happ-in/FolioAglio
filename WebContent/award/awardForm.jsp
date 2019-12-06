@@ -54,7 +54,7 @@
 	    	 $.ajax({
 	             cache : false,
 	             enctype: 'multipart/form-data',
-	             url : "upload.jsp?com="+name.value, // 요기에
+	             url : "upload.jsp?com="+(name.value).replace(/%/g, '%25'), // 요기에
 	             type : 'POST', 
 	             data : formData2,
 	             processData: false,
