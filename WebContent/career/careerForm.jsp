@@ -59,6 +59,8 @@
 			}else {
 				//저장하는거 구현해야함
 				var formData = $("#form1").serialize();
+				var form = $('#form2')[0];
+	             var formData2 = new FormData(form);
         	 $.ajax({
                  cache : false,
                  url : "careerUpdate.jsp", // 요기에
@@ -69,8 +71,22 @@
 					
                  }
              });
-				self.close();
-				opener.location.reload();
+        	 $.ajax({
+                 cache : false,
+                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                 enctype: 'multipart/form-data',
+                 url : "upload.jsp?com="+(name.value).replace(/%/g, '%25'), // 요기에
+                 type : 'POST', 
+                 data : formData2,
+                 processData: false,
+                 contentType: false,
+                 async: false,   
+                 success : function(data) {
+                
+                 }
+             });
+            self.close();
+            opener.location.reload();
 			}
 
 		});
