@@ -62,11 +62,14 @@
 				<%} else if(Integer.parseInt(PIArr[i])==3){%>
 					<div>주소 : <%=rs.getString("address")%></div>
 				<%} else if(Integer.parseInt(PIArr[i])==4){%>
-					<div>git 주소 : <%=rs.getString("git_address")%></div>
+					<%if(rs.getString("git_address")!=null){%>
+					<div>git 주소 : <%=rs.getString("git_address")%></div><%}%>
 				<%} else if(Integer.parseInt(PIArr[i])==5){%>
-					<div>사진 : <img src="<%=rs.getString("picture")%>"/></div>
+					<%if(rs.getString("picture")!=null){%>
+					<div>사진 : <img src="<%=rs.getString("picture")%>"/></div><%}%>
 				<%} else if(Integer.parseInt(PIArr[i])==6){%>
-					<div>메모 : <%=rs.getString("personal_memo")%></div>
+					<%if(rs.getString("personal_memo")!=null){%>
+					<div>메모 : <%=rs.getString("personal_memo")%></div><%}%>
 				<%}i++;
 			}
 		}
@@ -110,8 +113,10 @@
 					<div>전체학점 : <%=rs.getString("total_grade")%></div>
 					<div>전공학점 : <%=rs.getString("major_grade")%></div>
 					<div>이수학점 : <%=rs.getString("classes")%></div>
-					<div>복수전공, 부전공 : <%=rs.getString("submajor")%></div>
-					<div>메모 : <%=rs.getString("edu_memo")%></div>
+					<%if(rs.getString("submajor")!=null){%>
+					<div>복수전공, 부전공 : <%=rs.getString("submajor")%></div><%}%>
+					<%if(rs.getString("edu_memo")!=null){%>
+					<div>메모 : <%=rs.getString("edu_memo")%></div><%}%>
 					<div>-구분선-</div>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 3){%>
 					<div>대학원</div>
@@ -123,7 +128,9 @@
 					<div>졸업여부 : <%=rs.getString("g_state")%></div>
 					<div>전공 : <%=rs.getString("major")%></div>
 					<div>학점 : <%=rs.getString("grade")%></div>
-					<div>메모 : <%=rs.getString("edu_memo")%></div>
+					<div>전체학점 : <%=rs.getString("total_grade")%></div>
+					<%if(rs.getString("edu_memo")!=null){%>
+					<div>메모 : <%=rs.getString("edu_memo")%></div><%}%>
 					<div>-구분선-</div>
 				<%}
 			}i++;
@@ -146,9 +153,12 @@
 				<div>담당업무 : <%=rs.getString("work")%></div>
 				<div>연봉 : <%=rs.getString("salary")%></div>
 				<div>재직기간 : <%=rs.getString("s_period")%>~<%=rs.getString("e_period")%></div>
-				<div>상세설명 : <%=rs.getString("detail")%></div>
-				<div><img src="<%=rs.getString("picture")%>"/></div>
-				<div>메모 : <%=rs.getString("carrier_memo")%></div>
+				<%if(rs.getString("detail")!=null){%>
+				<div>상세설명 : <%=rs.getString("detail")%></div><%}%>
+				<%if(rs.getString("picture")!=null){%>
+				<div><img src="<%=rs.getString("picture")%>"/></div><%}%>
+				<%if(rs.getString("carrier_memo")!=null){%>
+				<div>메모 : <%=rs.getString("carrier_memo")%></div><%}%>
 				<div>-구분선-</div>
 			<%}
 			i++;
@@ -171,9 +181,12 @@
 				<div>구사언어 : <%=rs.getString("abroad_language")%></div>
 				<div>시작날짜 : <%=rs.getString("abroad_s_date")%></div>
 				<div>끝날짜 : <%=rs.getString("abroad_g_date")%></div>
-				<div>상세설명 : <%=rs.getString("abroad_detail")%></div>
-				<div><img src="<%=rs.getString("picture")%>"/></div>
-				<div>메모 : <%=rs.getString("abroad_memo")%></div>
+				<%if(rs.getString("abroad_detail")!=null){%>
+				<div>상세설명 : <%=rs.getString("abroad_detail")%></div><%}%>
+				<%if(rs.getString("picture")!=null){%>
+				<div><img src="<%=rs.getString("picture")%>"/></div><%}%>
+				<%if(rs.getString("abroad_memo")!=null){%>
+				<div>메모 : <%=rs.getString("abroad_memo")%></div><%}%>
 				<div>-구분선-</div>
 			<%}
 			i++;
@@ -195,9 +208,12 @@
 				<div>단체명 : <%=rs.getString("group_name")%></div>
 				<div>시작날짜 : <%=rs.getString("activity_s_date")%></div>
 				<div>끝날짜 : <%=rs.getString("activity_e_date")%></div>
-				<div>활동 상세 내용 : <%=rs.getString("activity_detail")%></div>
-				<div><img src="<%=rs.getString("picture")%>"/></div>
-				<div>메모 : <%=rs.getString("activity_memo")%></div>
+				<%if(rs.getString("activity_detail")!=null){%>
+				<div>활동 상세 내용 : <%=rs.getString("activity_detail")%></div><%}%>
+				<%if(rs.getString("picture")!=null){%>
+				<div><img src="<%=rs.getString("picture")%>"/></div><%}%>
+				<%if(rs.getString("activity_memo")!=null){%>
+				<div>메모 : <%=rs.getString("activity_memo")%></div><%}%>
 				<div>-구분선-</div>
 			<%}
 			i++;
@@ -218,8 +234,10 @@
 				<div>수상명 : <%=rs.getString("awd_name")%></div>
 				<div>주최 : <%=rs.getString("awd_org")%></div>
 				<div>결과 : <%=rs.getString("awd_result")%></div>
-				<div>상세 : <img src="<%=rs.getString("picture")%>"/></div>
-				<div>메모 : <%=rs.getString("awd_memo")%></div>
+				<%if(rs.getString("picture")!=null){%>
+				<div>상세 : <img src="<%=rs.getString("picture")%>"/></div><%}%>
+				<%if(rs.getString("awd_memo")!=null){%>
+				<div>메모 : <%=rs.getString("awd_memo")%></div><%}%>
 				<div>-구분선-</div>
 			<%}
 			i++;
@@ -244,8 +262,10 @@
 					<div>어학종류 : <%=rs.getString("kind")%></div>
 					<div>수험번호 : <%=rs.getString("application_num")%></div>
 					<div>응시일자 : <%=rs.getString("test_date")%></div>
-					<div>취득점수 : <%=rs.getString("score")%></div>
-					<div>취득급수 : <%=rs.getString("score_name")%></div>
+					<%if(rs.getString("score")!=null){%>
+					<div>취득점수 : <%=rs.getString("score")%></div><%}%>
+					<%if(rs.getString("score_name")!=null){%>
+					<div>취득급수 : <%=rs.getString("score_name")%></div><%}%>
 					<div>-구분선-</div>
 				<%} else if(div2.equals(rs.getString("skill_radio"))){%>
 					<div>자격증</div>
