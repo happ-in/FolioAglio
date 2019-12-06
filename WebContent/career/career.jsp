@@ -115,7 +115,7 @@
          <td><%=rs.getString("detail")%></td>
       </tr>
       <tr>
-         <th scope="row">첨부자료</th>
+         <th scope="row">사진</th>
          <td><image src="<%=rs.getString("picture")%>" width=50px heigh=50px></td>
       </tr>
       <tr>
