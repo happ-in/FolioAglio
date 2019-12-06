@@ -2,8 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="file.DBUtil" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +14,16 @@
 	<%
 	Connection conn = DBUtil.getConn();
 		
-	String country = new String(request.getParameter("country").getBytes("ISO-8859-1"), "UTF-8");
-	String birth = new String(request.getParameter("birth").getBytes("ISO-8859-1"), "UTF-8");
-	String name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
-	String en_name = new String(request.getParameter("en_name").getBytes("ISO-8859-1"), "UTF-8");
-	String sex = new String(request.getParameter("gender").getBytes("ISO-8859-1"), "UTF-8");
-	String email = new String(request.getParameter("email").getBytes("ISO-8859-1"), "UTF-8");
-	String call_num = new String(request.getParameter("number").getBytes("ISO-8859-1"), "UTF-8");
-	String address = new String(request.getParameter("address").getBytes("ISO-8859-1"), "UTF-8");
-	String git_address = new String(request.getParameter("git_address").getBytes("ISO-8859-1"), "UTF-8");
-	String personal_memo = new String(request.getParameter("memo").getBytes("ISO-8859-1"), "UTF-8");
+	String country = URLDecoder.decode(request.getParameter("country"), "UTF-8");
+	String birth = URLDecoder.decode(request.getParameter("birth"), "UTF-8");
+	String name = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+	String en_name = URLDecoder.decode(request.getParameter("en_name"), "UTF-8");
+	String sex = URLDecoder.decode(request.getParameter("gender"), "UTF-8");
+	String email = URLDecoder.decode(request.getParameter("email"), "UTF-8");
+	String call_num = URLDecoder.decode(request.getParameter("number"), "UTF-8");
+	String address = URLDecoder.decode(request.getParameter("address"), "UTF-8");
+	String git_address = URLDecoder.decode(request.getParameter("git_address"), "UTF-8");
+	String personal_memo = URLDecoder.decode(request.getParameter("memo"), "UTF-8");
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
 	

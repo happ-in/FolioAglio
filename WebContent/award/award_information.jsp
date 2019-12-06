@@ -35,9 +35,9 @@
 				alert('결과를 입력하세요 ')
 				result.focus();
 			}else {
-	            var formData = $("#form1").serialize();
+	            var formData = $("#form1").serialize().replace(/%/g, '%25');
                 var form = $('#form2')[0];
-            var formData2 = new FormData(form);
+           		 var formData2 = new FormData(form);
      
              $.ajax({
                   cache : false,

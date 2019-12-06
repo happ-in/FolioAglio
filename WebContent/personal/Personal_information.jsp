@@ -70,11 +70,11 @@
             number.focus();
             //주소가 입력되지 않았을시
          } else if (address.value == '') {
-            alert('전화번호를 입력하세요 ')
+            alert('주소를 입력하세요 ')
             address.focus();
          }else {
             //저장하는거 구현해야함
-            var formData = $("#form1").serialize();
+            var formData = $("#form1").serialize().replace(/%/g, '%25');
             $.ajax({
                 cache : false,
                 url : "personalAction.jsp", // 요기에

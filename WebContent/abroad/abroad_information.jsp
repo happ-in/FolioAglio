@@ -136,6 +136,7 @@
 	
 	<form method="post" id = "form2" enctype="multipart/form-data" action="upload.jsp">
                <table>
+               <tr>
                <td><input type="file" value="사진 선택" accept="image/*" id="picture" name="picture"/></td>
             	</tr>
             
