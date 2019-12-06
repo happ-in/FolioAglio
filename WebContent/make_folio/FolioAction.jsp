@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="js2pdf.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -14,8 +15,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <title>Folio2PDF</title>
+<script>
+	function skqnfskqnf(what){
+	   if(what!=null || what!="") {return false; }
+	   else { }
+	}
+</script>
 </head>
 <body>
+<%!   public boolean hidden(String str){
+         if(str == null){
+            return false;
+         }
+         else if(str.equals("")){
+            return false;
+         } else
+            return true;
+    } %>
 	<%
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
@@ -43,95 +59,105 @@
 	if(skNumArr != null)
 		sklen = skNumArr.length;
 
-	String sql = "select * from personal_information where id=?";
+	String sql = "select * from personal_information where id=?;";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1,session_name);
 	ResultSet rs = pstmt.executeQuery();
 	if(rs.next()){%>
-		<div>이름 : <%=rs.getString("name")%></div>
-		<div>영문명 : <%=rs.getString("en_name")%></div>
-		<div>생년월일 : <%=rs.getString("birth")%></div>
-		<div>이메일 : <%=rs.getString("email")%></div>
-		<div>전화번호 : <%=rs.getString("call_num")%></div>
+		<p align="center" class ="main_title">인적사항</p>
+		<table class="type07"><tbody>
+		<tr><th scope="row">이름 </th><td> <%=rs.getString("name")%></td></tr>
+		<tr><th scope="row">영문명 </th><td> <%=rs.getString("en_name")%></td></tr>
+		<tr><th scope="row">생년월일 </th><td> <%=rs.getString("birth")%></td></tr>
+		<tr><th scope="row">이메일 </th><td> <%=rs.getString("email")%></td></tr>
+		<tr><th scope="row">전화번호 </th><td> <%=rs.getString("call_num")%></td></tr>
 		<%if(PIlen > 0){
 			while(i < PIlen){
-				if(Integer.parseInt(PIArr[i])==1){%>
-					<div>국적 : <%=rs.getString("country")%></div>
-				<%} else if(Integer.parseInt(PIArr[i])==2){%>
-					<div>성별 : <%=rs.getString("sex")%></div>
-				<%} else if(Integer.parseInt(PIArr[i])==3){%>
-					<div>주소 : <%=rs.getString("address")%></div>
-				<%} else if(Integer.parseInt(PIArr[i])==4){%>
-					<%if(rs.getString("git_address")!=null){%>
-					<div>git 주소 : <%=rs.getString("git_address")%></div><%}%>
-				<%} else if(Integer.parseInt(PIArr[i])==5){%>
-					<%if(rs.getString("picture")!=null){%>
-					<div>사진 : <img src="<%=rs.getString("picture")%>"/></div><%}%>
-				<%} else if(Integer.parseInt(PIArr[i])==6){%>
-					<%if(rs.getString("personal_memo")!=null){%>
-					<div>메모 : <%=rs.getString("personal_memo")%></div><%}%>
-				<%}i++;
-			}
-		}
+	            if(Integer.parseInt(PIArr[i])==1){%>
+	               <tr><th scope="row">국적 </th><td> <%=rs.getString("country")%></td></tr>
+	            <%} else if(Integer.parseInt(PIArr[i])==2){%>
+	               <tr><th scope="row">성별 </th><td> <%=rs.getString("sex")%></td></tr>
+	            <%} else if(Integer.parseInt(PIArr[i])==3){%>
+	               <tr><th scope="row">주소  </th><td> <%=rs.getString("address")%></td></tr>
+	            <%} else if(Integer.parseInt(PIArr[i])==4){%>
+	               <%if(hidden(rs.getString("git_address"))){%>
+	               <tr><th scope="row">git 주소  </th><td> <%=rs.getString("git_address")%></td></tr><%}%>
+	            <%} else if(Integer.parseInt(PIArr[i])==5){%>
+	               <%if(hidden(rs.getString("picture"))){%>
+	               <tr><th scope="row">사진  </th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+	            <%} else if(Integer.parseInt(PIArr[i])==6){%>
+	               <%if(hidden(rs.getString("personal_memo"))){%>
+	               <tr><th scope="row">메모  </th><td> <%=rs.getString("personal_memo")%></td></tr><%}%>
+	            <%}i++;
+	         }
+		}%>
+		</tbody></table>
+	<%
 	}i=0;
 	rs.close();
 	pstmt.close();
 	%>
 	
-	<div>-구분선-</div>
+	<p style={padding:10px;}>
 
 	<%
 	if(edulen > 0){
-		sql = "select * from education where school_num=?";
+		sql = "select * from education where school_num=?;";
 		pstmt = conn.prepareStatement(sql);
-	
+		%><p align="center" class ="main_title">학력</p><%
 		while(i < edulen){
 			pstmt.setInt(1, Integer.parseInt(eduNumArr[i]));
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
 				if(Integer.parseInt(rs.getString("school_radio")) == 1){%>
-					<div>고등학교</div>
-					<div>학교명 : <%=rs.getString("school_name")%></div>
-					<div>학교소재지 : <%=rs.getString("school_location")%></div>
-					<div>계열 : <%=rs.getString("division")%></div>
-					<div>입학일자 : <%=rs.getString("e_date")%></div>
-					<div>졸업일자 : <%=rs.getString("g_date")%></div>
-					<div>졸업여부 : <%=rs.getString("g_state")%></div>
-					<div>-구분선-</div>
+				<p class="title">     고등학교</p>
+				<table class="type07"><tbody>
+					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
+					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
+					<tr><th scope="row">계열 </th><td> <%=rs.getString("division")%></td></tr>
+					<tr><th scope="row">입학일자 </th><td> <%=rs.getString("e_date")%></td></tr>
+					<tr><th scope="row">졸업일자 </th><td> <%=rs.getString("g_date")%></td></tr>
+					<tr><th scope="row">졸업여부 </th><td> <%=rs.getString("g_state")%></td></tr>
+					<p style={padding:10px;}>
+					</tbody></table>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 2){%>
-					<div>대학교</div>
-					<div>학교명 : <%=rs.getString("school_name")%></div>
-					<div>학교소재지 : <%=rs.getString("school_location")%></div>
-					<div>계열 : <%=rs.getString("division")%></div>
-					<div>입학구분 : <%=rs.getString("e_state")%></div>
-					<div>입학일자 : <%=rs.getString("e_date")%></div>
-					<div>졸업일자 : <%=rs.getString("g_date")%></div>
-					<div>졸업여부 : <%=rs.getString("g_state")%></div>
-					<div>전공 : <%=rs.getString("major")%></div>
-					<div>학점 : <%=rs.getString("grade")%></div>
-					<div>전체학점 : <%=rs.getString("total_grade")%></div>
-					<div>전공학점 : <%=rs.getString("major_grade")%></div>
-					<div>이수학점 : <%=rs.getString("classes")%></div>
-					<%if(rs.getString("submajor")!=null){%>
-					<div>복수전공, 부전공 : <%=rs.getString("submajor")%></div><%}%>
-					<%if(rs.getString("edu_memo")!=null){%>
-					<div>메모 : <%=rs.getString("edu_memo")%></div><%}%>
-					<div>-구분선-</div>
+				<p class="title">     대학교</p>
+				<table class="type07"><tbody>
+					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
+					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
+					<tr><th scope="row">계열 </th><td> <%=rs.getString("division")%></td></tr>
+					<tr><th scope="row">입학구분 </th><td> <%=rs.getString("e_state")%></td></tr>
+					<tr><th scope="row">입학일자 </th><td> <%=rs.getString("e_date")%></td></tr>
+					<tr><th scope="row">졸업일자 </th><td> <%=rs.getString("g_date")%></td></tr>
+					<tr><th scope="row">졸업여부 </th><td> <%=rs.getString("g_state")%></td></tr>
+					<tr><th scope="row">전공 </th><td> <%=rs.getString("major")%></td></tr>
+					<tr><th scope="row">학점 </th><td> <%=rs.getString("grade")%></td></tr>
+					<tr><th scope="row">전체학점 </th><td> <%=rs.getString("total_grade")%></td></tr>
+					<tr><th scope="row">전공학점 </th><td> <%=rs.getString("major_grade")%></td></tr>
+					<tr><th scope="row">이수학점 </th><td> <%=rs.getString("classes")%></td></tr>
+					<%if(hidden(rs.getString("submajor"))){%>
+					<tr><th scope="row">복수전공, 부전공 </th><td> <%=rs.getString("submajor")%></td></tr><%}%>
+					<%if(hidden(rs.getString("edu_memo"))){%>
+					<tr><th scope="row">메모 </th><td> <%=rs.getString("edu_memo")%></td></tr><%}%>
+					</tbody></table>
+					<p style={padding:10px;}>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 3){%>
-					<div>대학원</div>
-					<div>학교명 : <%=rs.getString("school_name")%></div>
-					<div>학교소재지 : <%=rs.getString("school_location")%></div>
-					<div>계열 : <%=rs.getString("division")%></div>
-					<div>입학일자 : <%=rs.getString("e_date")%></div>
-					<div>졸업일자 : <%=rs.getString("g_date")%></div>
-					<div>졸업여부 : <%=rs.getString("g_state")%></div>
-					<div>전공 : <%=rs.getString("major")%></div>
-					<div>학점 : <%=rs.getString("grade")%></div>
-					<div>전체학점 : <%=rs.getString("total_grade")%></div>
-					<%if(rs.getString("edu_memo")!=null){%>
-					<div>메모 : <%=rs.getString("edu_memo")%></div><%}%>
-					<div>-구분선-</div>
+				<p class="title">     대학원</p>
+				<table class="type07"><tbody>
+					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
+					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
+					<tr><th scope="row">계열 </th><td> <%=rs.getString("division")%></td></tr>
+					<tr><th scope="row">입학일자 </th><td> <%=rs.getString("e_date")%></td></tr>
+					<tr><th scope="row">졸업일자 </th><td> <%=rs.getString("g_date")%></td></tr>
+					<tr><th scope="row">졸업여부 </th><td> <%=rs.getString("g_state")%></td></tr>
+					<tr><th scope="row">전공 </th><td> <%=rs.getString("major")%></td></tr>
+					<tr><th scope="row">학점 </th><td> <%=rs.getString("grade")%></td></tr>
+					<tr><th scope="row">전체학점 </th><td> <%=rs.getString("total_grade")%></td></tr>
+					<%if(hidden(rs.getString("edu_memo"))){%>
+					<tr><th scope="row">메모 </th><td> <%=rs.getString("edu_memo")%></td></tr><%}%>
+					<p style={padding:10px;}>
+					</tbody></table>
 				<%}
 			}i++;
 		}
@@ -140,26 +166,28 @@
 	}i=0;
 	
 	if(carrlen > 0){
-		sql = "select * from carrier where carrier_num=?";
+		sql = "select * from carrier where carrier_num=?;";
 		pstmt = conn.prepareStatement(sql);
-	
+		%><p align="center" class ="main_title">경력</p><%
 		while(i < carrlen){
 			pstmt.setInt(1, Integer.parseInt(carrNumArr[i]));
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
-				<div>회사명 : <%=rs.getString("company_name")%></div>
-				<div>직위 : <%=rs.getString("position")%></div>
-				<div>담당업무 : <%=rs.getString("work")%></div>
-				<div>연봉 : <%=rs.getString("salary")%></div>
-				<div>재직기간 : <%=rs.getString("s_period")%>~<%=rs.getString("e_period")%></div>
-				<%if(rs.getString("detail")!=null){%>
-				<div>상세설명 : <%=rs.getString("detail")%></div><%}%>
-				<%if(rs.getString("picture")!=null){%>
-				<div><img src="<%=rs.getString("picture")%>"/></div><%}%>
-				<%if(rs.getString("carrier_memo")!=null){%>
-				<div>메모 : <%=rs.getString("carrier_memo")%></div><%}%>
-				<div>-구분선-</div>
+			<table class="type07"><tbody>
+				<tr><th scope="row">회사명 </th><td> <%=rs.getString("company_name")%></td></tr>
+				<tr><th scope="row">직위 </th><td> <%=rs.getString("position")%></td></tr>
+				<tr><th scope="row">담당업무 </th><td> <%=rs.getString("work")%></td></tr>
+				<tr><th scope="row">연봉 </th><td> <%=rs.getString("salary")%></td></tr>
+				<tr><th scope="row">재직기간 </th><td> <%=rs.getString("s_period")%>~<%=rs.getString("e_period")%></td></tr>
+				<%if(hidden(rs.getString("detail"))){%>
+				<tr><th scope="row">상세설명 </th><td> <%=rs.getString("detail")%></td></tr><%}%>
+				<%if(hidden(rs.getString("picture"))){%>
+				<tr><th scope="row">사진</th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<%if(hidden(rs.getString("carrier_memo"))){%>
+				<tr><th scope="row">메모 </th><td> <%=rs.getString("carrier_memo")%></td></tr><%}%>
+				</tbody></table>
+				<p style={padding:10px;}>
 			<%}
 			i++;
 		}
@@ -168,26 +196,30 @@
 	}i=0;
 	
 	if(abrdlen > 0){
-		sql = "select * from abroad where abroad_num=?";
+		sql = "select * from abroad where abroad_num=?;";
 		pstmt = conn.prepareStatement(sql);
-	
+	%><p align="center" class ="main_title">해외경험</p><%
 		while(i < abrdlen){
 			pstmt.setInt(1, Integer.parseInt(abrdNumArr[i]));
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
-				<div>체류국가 : <%=rs.getString("country_name")%></div>
-				<div>체류형태 : <%=rs.getString("reason")%></div>
-				<div>구사언어 : <%=rs.getString("abroad_language")%></div>
-				<div>시작날짜 : <%=rs.getString("abroad_s_date")%></div>
-				<div>끝날짜 : <%=rs.getString("abroad_g_date")%></div>
-				<%if(rs.getString("abroad_detail")!=null){%>
-				<div>상세설명 : <%=rs.getString("abroad_detail")%></div><%}%>
-				<%if(rs.getString("picture")!=null){%>
-				<div><img src="<%=rs.getString("picture")%>"/></div><%}%>
-				<%if(rs.getString("abroad_memo")!=null){%>
-				<div>메모 : <%=rs.getString("abroad_memo")%></div><%}%>
-				<div>-구분선-</div>
+			<table class="type07"><tbody>
+			<tbody>
+				<tr><th scope="row">체류국가 </th><td> <%=rs.getString("country_name")%></td></tr>
+				<tr><th scope="row">체류형태 </th><td> <%=rs.getString("reason")%></td></tr>
+				<tr><th scope="row">구사언어 </th><td> <%=rs.getString("abroad_language")%></td></tr>
+				<tr><th scope="row">시작날짜 </th><td> <%=rs.getString("abroad_s_date")%></td></tr>
+				<tr><th scope="row">끝날짜 </th><td> <%=rs.getString("abroad_g_date")%></td></tr>
+				<%if(hidden(rs.getString("abroad_detail"))){%>
+				<tr><th scope="row">상세설명 </th><td> <%=rs.getString("abroad_detail")%></td></tr><%}%>
+				<%if(hidden(rs.getString("picture"))){%>
+				<tr><th scope="row">사진</th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<%if(hidden(rs.getString("abroad_memo"))){%>
+				<tr><th scope="row">메모 </th><td> <%=rs.getString("abroad_memo")%></td></tr><%}%>
+				</tbody>
+				</tbody></table>
+				<p style={padding:10px;}>
 			<%}
 			i++;
 		}
@@ -196,25 +228,27 @@
 	}i=0;
 	
 	if(EAlen > 0){
-		sql = "select * from external_activities where activity_num=?";
+		sql = "select * from external_activities where activity_num=?;";
 		pstmt = conn.prepareStatement(sql);
-	
+		%><p align="center" class ="main_title">대외활동</p><%
 		while(i < EAlen){
 			pstmt.setInt(1, Integer.parseInt(EANumArr[i]));
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
-				<div>구분 : <%=rs.getString("activity_radio")%></div>
-				<div>단체명 : <%=rs.getString("group_name")%></div>
-				<div>시작날짜 : <%=rs.getString("activity_s_date")%></div>
-				<div>끝날짜 : <%=rs.getString("activity_e_date")%></div>
-				<%if(rs.getString("activity_detail")!=null){%>
-				<div>활동 상세 내용 : <%=rs.getString("activity_detail")%></div><%}%>
-				<%if(rs.getString("picture")!=null){%>
-				<div><img src="<%=rs.getString("picture")%>"/></div><%}%>
-				<%if(rs.getString("activity_memo")!=null){%>
-				<div>메모 : <%=rs.getString("activity_memo")%></div><%}%>
-				<div>-구분선-</div>
+			<table class="type07"><tbody>
+				<tr><th scope="row">구분 </th><td> <%=rs.getString("activity_radio")%></td></tr>
+				<tr><th scope="row">단체명 </th><td> <%=rs.getString("group_name")%></td></tr>
+				<tr><th scope="row">시작날짜 </th><td> <%=rs.getString("activity_s_date")%></td></tr>
+				<tr><th scope="row">끝날짜 </th><td> <%=rs.getString("activity_e_date")%></td></tr>
+				<%if(hidden(rs.getString("activity_detail"))){%>
+				<tr><th scope="row">활동 상세 내용 </th><td> <%=rs.getString("activity_detail")%></td></tr><%}%>
+				<%if(hidden(rs.getString("picture"))){%>
+				<tr><th scope="row">사진</th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<%if(hidden(rs.getString("activity_memo"))){%>
+				<tr><th scope="row">메모 </th><td> <%=rs.getString("activity_memo")%></td></tr><%}%>
+				</tbody></table>
+				<p style={padding:10px;}>
 			<%}
 			i++;
 		}
@@ -223,22 +257,24 @@
 	}i=0;
 	
 	if(awdlen > 0){
-		sql = "select * from award where award_num=?";
+		sql = "select * from award where award_num=?;";
 		pstmt = conn.prepareStatement(sql);
-	
+		%><p align="center" class ="main_title">수상 경력</p><%
 		while(i < awdlen){
 			pstmt.setInt(1, Integer.parseInt(awdNumArr[i]));
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
-				<div>수상명 : <%=rs.getString("awd_name")%></div>
-				<div>주최 : <%=rs.getString("awd_org")%></div>
-				<div>결과 : <%=rs.getString("awd_result")%></div>
-				<%if(rs.getString("picture")!=null){%>
-				<div>상세 : <img src="<%=rs.getString("picture")%>"/></div><%}%>
-				<%if(rs.getString("awd_memo")!=null){%>
-				<div>메모 : <%=rs.getString("awd_memo")%></div><%}%>
-				<div>-구분선-</div>
+			<table class="type07"><tbody>
+				<tr><th scope="row">수상명 </th><td> <%=rs.getString("awd_name")%></td></tr>
+				<tr><th scope="row">주최 </th><td> <%=rs.getString("awd_org")%></td></tr>
+				<tr><th scope="row">결과 </th><td> <%=rs.getString("awd_result")%></td></tr>
+				<%if(hidden(rs.getString("picture"))){%>
+				<tr><th scope="row">사진 </th><td> <img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<%if(hidden(rs.getString("awd_memo"))){%>
+				<tr><th scope="row">메모 </th><td> <%=rs.getString("awd_memo")%></td></tr><%}%>
+				</tbody></table>
+				<p style={padding:10px;}>
 			<%}
 			i++;
 		}
@@ -247,9 +283,9 @@
 	}i=0;
 	
 	if(sklen > 0){
-		sql = "select * from skill where issue_num=?";
+		sql = "select * from skill where issue_num=?;";
 		pstmt = conn.prepareStatement(sql);
-	
+		%><p align="center" class ="main_title">어학/자격증</p><%
 		while(i < sklen){
 			pstmt.setInt(1, Integer.parseInt(skNumArr[i]));
 			rs = pstmt.executeQuery();
@@ -257,22 +293,26 @@
 			String div2 = "자격증";
 			if(rs.next()){
 				if(div1.equals(rs.getString("skill_radio"))){%>
-					<div>어학</div>
-					<div>외국어명 : <%=rs.getString("language_name")%></div>
-					<div>어학종류 : <%=rs.getString("kind")%></div>
-					<div>수험번호 : <%=rs.getString("application_num")%></div>
-					<div>응시일자 : <%=rs.getString("test_date")%></div>
-					<%if(rs.getString("score")!=null){%>
-					<div>취득점수 : <%=rs.getString("score")%></div><%}%>
-					<%if(rs.getString("score_name")!=null){%>
-					<div>취득급수 : <%=rs.getString("score_name")%></div><%}%>
-					<div>-구분선-</div>
+				<p class="title">   어학</p>
+				<table class="type07"><tbody>
+					<tr><th scope="row">외국어명 </th><td> <%=rs.getString("language_name")%></td></tr>
+					<tr><th scope="row">어학종류 </th><td> <%=rs.getString("kind")%></td></tr>
+					<tr><th scope="row">수험번호 </th><td> <%=rs.getString("application_num")%></td></tr>
+					<tr><th scope="row">응시일자 </th><td> <%=rs.getString("test_date")%></td></tr>
+					<%if(hidden(rs.getString("score"))){%>
+					<tr><th scope="row">취득점수 </th><td> <%=rs.getString("score")%></td></tr><%}%>
+					<%if(hidden(rs.getString("score_name"))){%>
+					<tr><th scope="row">취득급수 </th><td> <%=rs.getString("score_name")%></td></tr><%}%>
+					<p style={padding:10px;}>
+					</tbody></table>
 				<%} else if(div2.equals(rs.getString("skill_radio"))){%>
-					<div>자격증</div>
-					<div>자격증명 : <%=rs.getString("classfication_name")%></div>
-					<div>발급기관 : <%=rs.getString("issue_org")%></div>
-					<div>취득일자 : <%=rs.getString("issue_date")%></div>
-					<div>-구분선-</div>
+				<p class="title">   자격증</p>
+				<table class="type07"><tbody>
+					<tr><th scope="row">자격증명 </th><td> <%=rs.getString("classfication_name")%></td></tr>
+					<tr><th scope="row">발급기관 </th><td> <%=rs.getString("issue_org")%></td></tr>
+					<tr><th scope="row">취득일자 </th><td> <%=rs.getString("issue_date")%></td></tr>
+					</tbody></table>
+					<p style={padding:10px;}>
 				<%}
 			}i++;
 		}
@@ -280,6 +320,7 @@
 		pstmt.close();
 	}i=0;
 	conn.close();%>
+
 	<script>
       function fnSaveAsPdf() {
         html2canvas(document.body).then(function(canvas) {
@@ -312,6 +353,10 @@
       }
       
     </script>
-    <button onclick="fnSaveAsPdf();">Save PDF</button>
+    <div align="center">
+    	<img align="center" src="../image/name.png" style="width:340px; height:100px;"><br>
+    <button onclick="fnSaveAsPdf();" class="button_css">Save PDF</button>
+    </div>
+   
 </body>
 </html>
