@@ -118,7 +118,7 @@
       </tr>
       <tr>
          <th scope="row">사진</th>
-         <td><%=rs.getString("picture")%></td>
+         <td><image src="<%=rs.getString("picture")%>" width=50px heigh=50px></td>
       </tr>
       <tr>
          <td colspan="2" style="text-align: center;"> 

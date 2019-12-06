@@ -110,6 +110,10 @@
          <td><%=rs.getString("abroad_detail")%></td>
       </tr>
       <tr>
+         <th scope="row">사진</th>
+         <td><image src="<%=rs.getString("picture")%>" width=50px heigh=50px></td>
+      </tr>
+      <tr>
          <th scope="row">메모</th>
          <td><%=rs.getString("abroad_memo")%></td>
       </tr>
