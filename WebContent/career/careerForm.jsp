@@ -130,22 +130,26 @@
 					<td><textarea id="detail" name="detail" rows="10" cols="50"> <%=rs.getString(7) %></textarea></td>
 				</tr>
 				<tr>
-					<td>사진</td>
-					<td><input type="file" value="파일 선택" id="picture" name="picture" value="<%=rs.getString(8) %>"/></td>
-				</tr>
-				<tr>
 					<td>메모</td>
 					<td><textarea id="memo" name="memo" rows="3" cols="50"><%=rs.getString(9) %></textarea></td>
 				</tr>
-				<tr align="right">
-					<td colspan="2"><input type="button" id="confirm" class="button_css"
-						value="수정">
+								<tr align="right">
+					<td colspan="2"><input type="button" id="confirm" name="confirm" class="button_css"
+						value="확인">
 					</td>
-					<td><input type="hidden" name="carr_num" value="<%=carr_num %>"/></td>
+					<td><input type="hidden" name="carr_num" value="<%=carr_num%>"></td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
+	<form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
+			<table>
+				<tr>
+					<td><input type="file" value="파일 선택" id="picture" name="picture" value="<%=rs.getString(8) %>"/></td>
+				</tr>
+				
+			</table>
+		</form>
 	<%
 	}
 	rs.close();

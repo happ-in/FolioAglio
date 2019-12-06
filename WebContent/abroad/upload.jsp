@@ -5,6 +5,7 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
       Object session_object=session.getAttribute("signedUser");
       String session_name=(String)session_object;
       
-      String com = new String(request.getParameter("com").getBytes("ISO-8859-1"), "UTF-8");
+      String com = URLDecoder.decode(request.getParameter("com"), "UTF-8");
       
       new fileDAO().upload("abroad", "IMG/"+fileRealName, session_name, com);
    %>

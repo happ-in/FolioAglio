@@ -124,7 +124,7 @@
 	<form method="post" id="form2" enctype="multipart/form-data" action="upload.jsp">
 			<table>
 				<tr>
-					<td><input type="file" value="파일 선택" id="picture" name="picture"/><%=rs.getString(6) %></td>
+					<td><input type="file" value="파일 선택" id="picture" name="picture" value="<%=rs.getString("picture") %>"/></td>
 				</tr>
 				
 			</table>
