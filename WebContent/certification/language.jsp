@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="../maincss.css">
 <meta charset="utf-8">
 <title>Insert title here</title>
@@ -37,9 +40,20 @@
 				alert('응시일자를 입력하세요 ')
 				test_date.focus();
 			} else{
-				document.getElementById('form1').submit();
-				self.close();
-			}
+				var formData = $("#form1").serialize();
+	        	 $.ajax({
+	                 cache : false,
+	                 url : "langUpdate.jsp", // 요기에
+	                 type : 'POST', 
+	                 data : formData,
+	                 async: false,	
+	                 success : function(data) {
+						
+	                 }
+	             });
+	            self.close();
+	            opener.location.reload();
+	         }
 			
 		});
 	});

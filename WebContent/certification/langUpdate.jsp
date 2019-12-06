@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
+<%@ page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -15,12 +16,12 @@
 	try{
 		Connection conn = DBUtil.getConn();
 		
-		String language_name = new String(request.getParameter("language_name").getBytes("ISO-8859-1"), "UTF-8");
-		String kind = new String(request.getParameter("kind").getBytes("ISO-8859-1"), "UTF-8");
-		String application_num = new String(request.getParameter("application_number").getBytes("ISO-8859-1"), "UTF-8");
-		String test_date = new String(request.getParameter("test_date").getBytes("ISO-8859-1"), "UTF-8");
-		String score = new String(request.getParameter("score").getBytes("ISO-8859-1"), "UTF-8");
-		String score_name = new String(request.getParameter("score_name").getBytes("ISO-8859-1"), "UTF-8");
+		String language_name = URLDecoder.decode(request.getParameter("language_name"), "UTF-8");
+		String kind = URLDecoder.decode(request.getParameter("kind"), "UTF-8");
+		String application_num = URLDecoder.decode(request.getParameter("application_number"), "UTF-8");
+		String test_date = URLDecoder.decode(request.getParameter("test_date"), "UTF-8");
+		String score = URLDecoder.decode(request.getParameter("score"), "UTF-8");
+		String score_name = URLDecoder.decode(request.getParameter("score_name"), "UTF-8");
 		int num = Integer.parseInt(request.getParameter("issue_num"));
 		
 		String sql = "update skill set language_name=?, kind=?, application_num=?, test_date=?, score=?, score_name=? where id=? and issue_num=? and skill_radio='language';";
