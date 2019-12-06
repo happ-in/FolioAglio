@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="../maincss.css">
-<link rel="stylesheet" href="../make_PF.css">
+<link rel="stylesheet" href="makePF.css">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <meta charset="utf-8">
 <title>경력</title>
@@ -86,8 +86,10 @@
             </div>
       </div>
    </header>
-
-   <div style="padding: 10px"></div>
+<p align="right">
+<input type="checkbox" value="전체선택" class="check-all"><label class="letter">전체선택</label>
+<button  type="submit" onclick="result()" class="button_css">포트폴리오 생성</button></p>
+  
    <% 
    String sql = "select * from personal_information where id = ?";
    PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -96,32 +98,32 @@
    <form method="post" name="PIForm" id="PIForm" action="FolioAction.jsp" target="folio">
 	   <div class="menu">인적사항</div>
 		<%if(rs.next()) {%>
-	   		<input type="checkbox" class="chk" name="PI" value="1">국적
-	   		<input type="checkbox" class="chk" name="PI" value="2">성별
-	   		<input type="checkbox" class="chk" name="PI" value="3">주소
-	   		<input type="checkbox" class="chk" name="PI" value="4">git 주소
-	   		<input type="checkbox" class="chk" name="PI" value="5">사진
-	   		<input type="checkbox" class="chk" name="PI" value="6">메모
+	   		<input type="checkbox" class="chk" name="PI" value="1"><label class="letter">국적</label>
+	   		<input type="checkbox" class="chk" name="PI" value="2"><label class="letter">성별</label>
+	   		<input type="checkbox" class="chk" name="PI" value="3"><label class="letter">주소</label>
+	   		<input type="checkbox" class="chk" name="PI" value="4"><label class="letter">git 주소</label>
+	   		<input type="checkbox" class="chk" name="PI" value="5"><label class="letter">사진</label>
+	   		<input type="checkbox" class="chk" name="PI" value="6"><label class="letter">메모</label>
 		<%}
 		rs.close();
 		pstmt.close();
 		%>
-		<input type="button" value="미리보기" onclick="PI_Btn()">
+		<input type="button" class="btn" value="미리보기" onclick="PI_Btn()">
    </form>
    <% 
-   sql = "select * from education where id = ? order by school_radio";
+   sql = "select * from education where id = ?";
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
    <form method="post" id="eduForm" action="FolioAction.jsp" target="folio">
-	   <div>학력</div>
+	   <div class="menu">학력</div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="edu" value="<%=rs.getString("school_num")%>"><%=rs.getString("school_name")%>
+		   <input type="checkbox" class="chk" name="edu" value="<%=rs.getString("school_num")%>"><label class="letter"><%=rs.getString("school_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
 	   %>
-	   <input type="button" value="미리보기" onclick="eduBtn()">
+	   <input type="button" class="btn" value="미리보기" onclick="eduBtn()">
    </form>
    <% 
    sql = "select * from carrier where id = ?";
@@ -129,14 +131,14 @@
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
    <form method="post" id="carrForm" action="FolioAction.jsp" target="folio">
-	   <div>경력</div>
+	   <div class="menu">경력</div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="carr" value="<%=rs.getString("carrier_num")%>"><%=rs.getString("company_name")%>
+		   <input type="checkbox" class="chk" name="carr" value="<%=rs.getString("carrier_num")%>"><label class="letter"><%=rs.getString("company_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
 	   %>
-	   <input type="button" value="미리보기" onclick="carrBtn()">
+	   <input type="button" class="btn" value="미리보기" onclick="carrBtn()">
    </form>
    <% 
    sql = "select * from abroad where id = ?";
@@ -144,14 +146,14 @@
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
    <form method="post" id="abrdForm" action="FolioAction.jsp" target="folio">
-	   <div>해외경험</div>
+	   <div class="menu">해외경험</div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="abrd" value="<%=rs.getString("abroad_num")%>"><%=rs.getString("country_name")%>
+		   <input type="checkbox" class="chk" name="abrd" value="<%=rs.getString("abroad_num")%>"><label class="letter"><%=rs.getString("country_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
 	   %>
-	   <input type="button" value="미리보기" onclick="abrdBtn()">
+	   <input type="button" class="btn" value="미리보기" onclick="abrdBtn()">
    </form>
    <% 
    sql = "select * from external_activities where id = ?";
@@ -159,14 +161,14 @@
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
    <form method="post" id="EAForm" action="FolioAction.jsp" target="folio">
-	   <div>대외활동</div>
+	   <div class="menu">대외활동</div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="EA" value="<%=rs.getString("activity_num")%>"><%=rs.getString("group_name")%>
+		   <input type="checkbox" class="chk" name="EA" value="<%=rs.getString("activity_num")%>"><label class="letter"><%=rs.getString("group_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
 	   %>
-	   <input type="button" value="미리보기" onclick="EA_Btn()">
+	   <input type="button" class="btn" value="미리보기" onclick="EA_Btn()">
    </form>
    <% 
    sql = "select * from award where id = ?";
@@ -174,14 +176,14 @@
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
    <form method="post" id="awdForm" action="FolioAction.jsp" target="folio">
-	   <div>수상경력</div>
+	   <div class="menu">수상경력</div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="award" value="<%=rs.getString("award_num")%>"><%=rs.getString("awd_name")%>
+		   <input type="checkbox" class="chk" name="award" value="<%=rs.getString("award_num")%>"><label class="letter"><%=rs.getString("awd_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
 	   %>
-	   <input type="button" value="미리보기" onclick="awdBtn()">
+	   <input type="button" class="btn" value="미리보기" onclick="awdBtn()">
    </form>
    <% 
    sql = "select * from skill where id = ?";
@@ -189,25 +191,26 @@
    pstmt.setString(1,session_name);
    rs = pstmt.executeQuery();%>
    <form method="post" id="skForm" action="FolioAction.jsp" target="folio">
-	   <div>어학/자격증</div>
+	   <div class="menu">어학/자격증</div>
 	   <%
 	   String div1 = "어학";
 	   String div2 = "자격증";
 	   while(rs.next()) {		   
 	   		if(div1.equals(rs.getString("skill_radio"))){%>
-		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><%=rs.getString("kind")%>
+		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("kind")%></label>
 		   	<%} else if(div2.equals(rs.getString("skill_radio"))){%>
-		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><%=rs.getString("classfication_name")%>
+		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("classfication_name")%></label>
 	   		<%}
 	   }
 	   rs.close();
 	   pstmt.close();
 	   %>
-	   <input type="button" value="미리보기" onclick="skBtn()" class="chk">
+	   <input type="button" class="btn" value="미리보기" onclick="skBtn()">
    </form>
-   <input type="checkbox" value="전체선택" class="check-all">전체선택
-   <button type="submit" onclick="result()">포트폴리오 생성</button>
-   <%conn.close();%>
+   <p style="padding:20px;"></p>
+
+   
+    <%conn.close();%>
     <script>
       $( document ).ready( function() {
         $( '.check-all' ).click( function() {
