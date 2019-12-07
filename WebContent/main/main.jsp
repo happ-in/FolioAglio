@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="file.DBUtil" %>
+<%@page import="java.util.Calendar"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -230,17 +231,24 @@
 		</div>
 	
 	<%
+	Calendar Tday = Calendar.getInstance();
+	int y = Tday.get(Calendar.YEAR);
+	int m = Tday.get(Calendar.MONTH);
+	int d = Tday.get(Calendar.DATE);
+	String[] date = new String[3];
+
 	Connection conn = DBUtil.getConn();
 	Object session_object=session.getAttribute("signedUser");
 	String session_name=(String)session_object;
-	
-	String sql = "select sch_num, sch_name from scheduler where id = ?;";
+
+	String sql = "select sch_num, sch_name, sch_date from scheduler where id = ? order by sch_date, sch_time;";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, session_name);
 	ResultSet rs = pstmt.executeQuery();
 	
 	while(rs.next()){
-	
+		date = rs.getString("sch_date").split("-");
+		if (Integer.parseInt(date[0]) >= y && Integer.parseInt(date[1]) >= m && Integer.parseInt(date[2]) >= d){
 	%>
 	
 		<div style="margin-bottom: 10px;">
@@ -248,6 +256,7 @@
 		</div>
 		
 	<%
+		}
 	}
 	rs.close();
 	conn.close();
