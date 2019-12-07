@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="../maincss.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" initial-scale ="1">
-<link rel="stylesheet" href="css/bootstrap.css">
 <meta charset="utf-8">
 <title>수상경력</title>
 <script>

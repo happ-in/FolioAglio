@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="../maincss.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
-<link rel="stylesheet" href="css/bootstrap.css">
 <title>일정 추가</title>
 <script>
    window.addEventListener('load', function() {
