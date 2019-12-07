@@ -295,7 +295,7 @@
 			pstmt.setInt(1, Integer.parseInt(skNumArr[i]));
 			rs = pstmt.executeQuery();
 			String div1 = "language";
-			String div2 = "classification";
+			String div2 = "classfication";
 			if(rs.next()){
 				if(div1.equals(rs.getString("skill_radio"))){%>
 				<p class="title">   어학</p>
