@@ -94,19 +94,19 @@
    ResultSet rs = pstmt.executeQuery();%>
    <form method="post" name="PIForm" id="PIForm" action="FolioAction.jsp" target="folio">
 	   <div style="padding-bottom:20px; padding-top:20px;">
-	   <h class="menu">인적사항</h> <input type="button" class="btn" value="미리보기" onclick="PI_Btn()">
+	   <label for="pi" class="menu" title="인적사항 전체선택" style="cursor:pointer"><input type="checkbox" id="pi" class="m1" style="display:none">인적사항</label> <input type="button" class="btn" value="미리보기" onclick="PI_Btn()"/>
 	   <span style="float:right;">
 <input type="checkbox" value="전체선택" class="check-all"> <label class="letter1">전체선택</label>
 <button type="button" onclick="result()" class="button_css1">포트폴리오 생성</button></span>
 
 	   </div>
 		<%if(rs.next()) {%>
-	   		<input type="checkbox" class="chk" name="PI" value="1"><label class="letter">국적</label>
-	   		<input type="checkbox" class="chk" name="PI" value="2"><label class="letter">성별</label>
-	   		<input type="checkbox" class="chk" name="PI" value="3"><label class="letter">주소</label>
-	   		<input type="checkbox" class="chk" name="PI" value="4"><label class="letter">git 주소</label>
-	   		<input type="checkbox" class="chk" name="PI" value="5"><label class="letter">사진</label>
-	   		<input type="checkbox" class="chk" name="PI" value="6"><label class="letter">메모</label>
+	   		<input type="checkbox" class="chk1" name="PI" value="1"><label class="letter">국적</label>
+	   		<input type="checkbox" class="chk1" name="PI" value="2"><label class="letter">성별</label>
+	   		<input type="checkbox" class="chk1" name="PI" value="3"><label class="letter">주소</label>
+	   		<input type="checkbox" class="chk1" name="PI" value="4"><label class="letter">git 주소</label>
+	   		<input type="checkbox" class="chk1" name="PI" value="5"><label class="letter">사진</label>
+	   		<input type="checkbox" class="chk1" name="PI" value="6"><label class="letter">메모</label>
 		<%}
 		rs.close();
 		pstmt.close();
@@ -120,9 +120,9 @@
    rs = pstmt.executeQuery();%>
    <form method="post" id="eduForm" action="FolioAction.jsp" target="folio">
 	   <div style="padding-bottom:20px; padding-top:30px;">
-	   <h class="menu">학력</h><input type="button" class="btn" value="미리보기" onclick="eduBtn()"></div>
+	   <label for="ED" class="menu" title="학력 전체선택" style="cursor:pointer"><input type="checkbox" id="ED" class="m2" style="display:none">학력</label> <input type="button" class="btn" value="미리보기" onclick="eduBtn()"></div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="edu" value="<%=rs.getString("school_num")%>"><label class="letter"><%=rs.getString("school_name")%></label>
+		   <input type="checkbox" class="chk2" name="edu" value="<%=rs.getString("school_num")%>"><label class="letter"><%=rs.getString("school_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
@@ -136,9 +136,9 @@
    rs = pstmt.executeQuery();%>
    <form method="post" id="carrForm" action="FolioAction.jsp" target="folio">
 	   <div style="padding-bottom:20px; padding-top:30px;">
-	   <h class="menu">경력</h><input type="button" class="btn" value="미리보기" onclick="carrBtn()"></div>
+	   <label for="CA" class="menu" title="경력 전체선택" style="cursor:pointer"><input type="checkbox" id="CA" class="m3" style="display:none">경력</label> <input type="button" class="btn" value="미리보기" onclick="carrBtn()"></div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="carr" value="<%=rs.getString("carrier_num")%>"><label class="letter"><%=rs.getString("company_name")%></label>
+		   <input type="checkbox" class="chk3" name="carr" value="<%=rs.getString("carrier_num")%>"><label class="letter"><%=rs.getString("company_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
@@ -152,9 +152,9 @@
    rs = pstmt.executeQuery();%>
    <form method="post" id="abrdForm" action="FolioAction.jsp" target="folio">
 	   <div style="padding-bottom:20px; padding-top:30px;">
-	   <h class="menu">해외경험</h> <input type="button" class="btn" value="미리보기" onclick="abrdBtn()"></div>
+	   <label for="AB" class="menu" title="해외경험 전체선택" style="cursor:pointer"><input type="checkbox" id="AB" class="m4" style="display:none">해외경험</label> <input type="button" class="btn" value="미리보기" onclick="abrdBtn()"></div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="abrd" value="<%=rs.getString("abroad_num")%>"><label class="letter"><%=rs.getString("country_name")%></label>
+		   <input type="checkbox" class="chk4" name="abrd" value="<%=rs.getString("abroad_num")%>"><label class="letter"><%=rs.getString("country_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
@@ -168,10 +168,10 @@
    rs = pstmt.executeQuery();%>
    <form method="post" id="EAForm" action="FolioAction.jsp" target="folio">
 	   <div style="padding-bottom:20px; padding-top:30px;">
-	   <h class="menu">대외활동</h> <input type="button" class="btn" value="미리보기" onclick="EA_Btn()">
+	   <label for="ea" class="menu" title="대외활동 전체선택" style="cursor:pointer"><input type="checkbox" id="ea" class="m5" style="display:none">대외활동</label> <input type="button" class="btn" value="미리보기" onclick="EA_Btn()">
 	   </div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="EA" value="<%=rs.getString("activity_num")%>"><label class="letter"><%=rs.getString("group_name")%></label>
+		   <input type="checkbox" class="chk5" name="EA" value="<%=rs.getString("activity_num")%>"><label class="letter"><%=rs.getString("group_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
@@ -185,9 +185,9 @@
    rs = pstmt.executeQuery();%>
    <form method="post" id="awdForm" action="FolioAction.jsp" target="folio">
 	   <div style="padding-bottom:20px; padding-top:30px;">
-	   <h class="menu">수상경력</h>  <input type="button" class="btn" value="미리보기" onclick="awdBtn()"></div>
+	   <label for="AW" class="menu" title="수상경력 전체선택" style="cursor:pointer"><input type="checkbox" id="AW" class="m6" style="display:none">수상경력</label>  <input type="button" class="btn" value="미리보기" onclick="awdBtn()"></div>
 	   <%while(rs.next()) {%>
-		   <input type="checkbox" class="chk" name="award" value="<%=rs.getString("award_num")%>"><label class="letter"><%=rs.getString("awd_name")%></label>
+		   <input type="checkbox" class="chk6" name="award" value="<%=rs.getString("award_num")%>"><label class="letter"><%=rs.getString("awd_name")%></label>
 	   <%}
 	   rs.close();
 	   pstmt.close();
@@ -201,7 +201,7 @@
    rs = pstmt.executeQuery();%>
    <form method="post" id="skForm" action="FolioAction.jsp" target="folio">
    <div style="padding-bottom:20px; padding-top:30px;">
-    <h class="menu">어학/자격증</h> <input type="button" class="btn" value="미리보기" onclick="skBtn()">
+    <label for="SK" class="menu" title="어학/자격증 전체선택" style="cursor:pointer"><input type="checkbox" id="SK" class="m7" style="display:none">어학/자격증</label> <input type="button" class="btn" value="미리보기" onclick="skBtn()">
    </div>
 	  
 	   <%
@@ -209,9 +209,9 @@
 	   String div2 = "classfication";
 	   while(rs.next()) {		   
 	   		if(div1.equals(rs.getString("skill_radio"))){%>
-		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("kind")%></label>
+		   		<input type="checkbox" class="chk7" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("kind")%></label>
 		   	<%} else if(div2.equals(rs.getString("skill_radio"))){%>
-		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("classfication_name")%></label>
+		   		<input type="checkbox" class="chk7" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("classfication_name")%></label>
 	   		<%}
 	   }
 	   rs.close();
@@ -226,8 +226,35 @@
     <script>
       $( document ).ready( function() {
         $( '.check-all' ).click( function() {
-          $( '.chk' ).prop( 'checked', this.checked );
+          $( '.chk1' ).prop( 'checked', this.checked );
+          $( '.chk2' ).prop( 'checked', this.checked );
+          $( '.chk3' ).prop( 'checked', this.checked );
+          $( '.chk4' ).prop( 'checked', this.checked );
+          $( '.chk5' ).prop( 'checked', this.checked );
+          $( '.chk6' ).prop( 'checked', this.checked );
+          $( '.chk7' ).prop( 'checked', this.checked );
         } );
+        $( '.m1' ).click( function() {
+            $( '.chk1' ).prop( 'checked', this.checked );
+          } );
+        $( '.m2' ).click( function() {
+            $( '.chk2' ).prop( 'checked', this.checked );
+          } );
+        $( '.m3' ).click( function() {
+            $( '.chk3' ).prop( 'checked', this.checked );
+          } );
+        $( '.m4' ).click( function() {
+            $( '.chk4' ).prop( 'checked', this.checked );
+          } );
+        $( '.m5' ).click( function() {
+            $( '.chk5' ).prop( 'checked', this.checked );
+          } );
+        $( '.m6' ).click( function() {
+            $( '.chk6' ).prop( 'checked', this.checked );
+          } );
+        $( '.m7' ).click( function() {
+            $( '.chk7' ).prop( 'checked', this.checked );
+          } );
       } );
     </script>
 </body>
