@@ -358,10 +358,11 @@
       }
       
     </script>
-    <div align="center">
-    	<img align="center" src="../image/name.png" style="width:340px; height:100px;"><br>
-    <button onclick="fnSaveAsPdf();" class="button_css">Save PDF</button>
+    <div align="right"  style="margin-right:20px;">
+    	<img align="center" src="../image/name1.png" style="width:120px; height:40px;"><br>
     </div>
-   
+    <div align="center">
+    <button align="center" onclick="fnSaveAsPdf();" class="button_css">Save PDF</button>
+   </div>
 </body>
 </html>
