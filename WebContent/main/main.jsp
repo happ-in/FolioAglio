@@ -12,6 +12,8 @@
  <style>
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+   
+   
   
    div{ display : block; }
       .add_folio{
