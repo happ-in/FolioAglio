@@ -59,6 +59,7 @@
 				w.document.write(data);
 			}
 		});
+
 	}
 </script>
 </head>
@@ -96,8 +97,8 @@
 	   <h class="menu">인적사항</h> <input type="button" class="btn" value="미리보기" onclick="PI_Btn()">
 	   <span style="float:right;">
 <input type="checkbox" value="전체선택" class="check-all"> <label class="letter1">전체선택</label>
-<button  type="button" onclick="result()" class="button_css1">포트폴리오 생성</button></span>
-  
+<button type="button" onclick="result()" class="button_css1">포트폴리오 생성</button></span>
+
 	   </div>
 		<%if(rs.next()) {%>
 	   		<input type="checkbox" class="chk" name="PI" value="1"><label class="letter">국적</label>
