@@ -62,9 +62,13 @@
 
 	}
 </script>
+<%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
+    if (session.getAttribute("signedUser") == null) {
+        response.sendRedirect("../logout.jsp");
+    }
+%>
 </head>
 <body>
-
       <div align = center>
        <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
       <a role="button" href="../main/main.jsp"><img src="../image/name.png"  width = "340" height="100" ></a>
@@ -193,8 +197,8 @@
    <form method="post" id="skForm" action="FolioAction.jsp" target="folio">
 	   <div class="menu">어학/자격증</div>
 	   <%
-	   String div1 = "어학";
-	   String div2 = "자격증";
+	   String div1 = "language";
+	   String div2 = "classfication";
 	   while(rs.next()) {		   
 	   		if(div1.equals(rs.getString("skill_radio"))){%>
 		   		<input type="checkbox" class="chk" name="skill" value="<%=rs.getString("issue_num")%>"><label class="letter"><%=rs.getString("kind")%></label>
