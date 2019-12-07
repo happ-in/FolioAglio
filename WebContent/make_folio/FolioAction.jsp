@@ -15,6 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <title>Folio2PDF</title>
+<style>
+   @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+</style>
 <script>
 	function skqnfskqnf(what){
 	   if(what!=null || what!="") {return false; }
@@ -63,7 +66,11 @@
 	String[] skNumArr = request.getParameterValues("skill");
 	if(skNumArr != null)
 		sklen = skNumArr.length;
+%>
 
+<p align="center" style="font-family:'Jeju Gothic'; font-size:80px;">PORTFOLIO</p>
+
+<%
 	String sql = "select * from personal_information where id=?;";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1,session_name);
@@ -89,7 +96,7 @@
 	               <tr><th scope="row">git 주소  </th><td> <%=rs.getString("git_address")%></td></tr><%}%>
 	            <%} else if(Integer.parseInt(PIArr[i])==5){%>
 	               <%if(hidden(rs.getString("picture"))){%>
-	               <tr><th scope="row">사진  </th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+	               <tr><th scope="row">사진  </th><td><img src="../personal/<%=rs.getString("picture")%>"/></td></tr><%}%>
 	            <%} else if(Integer.parseInt(PIArr[i])==6){%>
 	               <%if(hidden(rs.getString("personal_memo"))){%>
 	               <tr><th scope="row">메모  </th><td> <%=rs.getString("personal_memo")%></td></tr><%}%>
@@ -188,7 +195,7 @@
 				<%if(hidden(rs.getString("detail"))){%>
 				<tr><th scope="row">상세설명 </th><td> <%=rs.getString("detail")%></td></tr><%}%>
 				<%if(hidden(rs.getString("picture"))){%>
-				<tr><th scope="row">사진</th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<tr><th scope="row">사진</th><td><img src="../career/<%=rs.getString("picture")%>"/></td></tr><%}%>
 				<%if(hidden(rs.getString("carrier_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("carrier_memo")%></td></tr><%}%>
 				</tbody></table>
@@ -219,7 +226,7 @@
 				<%if(hidden(rs.getString("abroad_detail"))){%>
 				<tr><th scope="row">상세설명 </th><td> <%=rs.getString("abroad_detail")%></td></tr><%}%>
 				<%if(hidden(rs.getString("picture"))){%>
-				<tr><th scope="row">사진</th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<tr><th scope="row">사진</th><td><img src="../abroad/<%=rs.getString("picture")%>"/></td></tr><%}%>
 				<%if(hidden(rs.getString("abroad_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("abroad_memo")%></td></tr><%}%>
 				</tbody>
@@ -249,7 +256,7 @@
 				<%if(hidden(rs.getString("activity_detail"))){%>
 				<tr><th scope="row">활동 상세 내용 </th><td> <%=rs.getString("activity_detail")%></td></tr><%}%>
 				<%if(hidden(rs.getString("picture"))){%>
-				<tr><th scope="row">사진</th><td><img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<tr><th scope="row">사진</th><td><img src="../external_activity/<%=rs.getString("picture")%>"/></td></tr><%}%>
 				<%if(hidden(rs.getString("activity_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("activity_memo")%></td></tr><%}%>
 				</tbody></table>
@@ -275,7 +282,7 @@
 				<tr><th scope="row">주최 </th><td> <%=rs.getString("awd_org")%></td></tr>
 				<tr><th scope="row">결과 </th><td> <%=rs.getString("awd_result")%></td></tr>
 				<%if(hidden(rs.getString("picture"))){%>
-				<tr><th scope="row">사진 </th><td> <img src="<%=rs.getString("picture")%>"/></td></tr><%}%>
+				<tr><th scope="row">사진 </th><td> <img src="../award/<%=rs.getString("picture")%>"/></td></tr><%}%>
 				<%if(hidden(rs.getString("awd_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("awd_memo")%></td></tr><%}%>
 				</tbody></table>
@@ -352,16 +359,30 @@
             heightLeft -= pageHeight;
           }
           
-          doc.save('sample_A4.pdf');
+          var blob = doc.output('blob');
+
+          var formData = new FormData();
+          formData.append('pdf', blob);
+
+          $.ajax('/upload.php',
+          {
+              method: 'POST',
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function(data){alert(data);},
+              error: function(data){console.log(data)}
+          });
           alert("완료!");
         });
       }
       
     </script>
-    <div align="center">
-    	<img align="center" src="../image/name.png" style="width:340px; height:100px;"><br>
-    <button onclick="fnSaveAsPdf();" class="button_css">Save PDF</button>
+    <div align="right"  style="margin-right:20px;">
+    	<img align="center" src="../image/name1.png" style="width:120px; height:40px;"><br>
     </div>
-   
+    <div align="center">
+    <button align="center" onclick="fnSaveAsPdf();" class="button_css">Save PDF</button>
+   </div>
 </body>
 </html>
