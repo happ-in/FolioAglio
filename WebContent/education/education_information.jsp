@@ -283,7 +283,7 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="text" id="high_e_date" name="high_e_date" placeholder="날짜넣기">
+					<td><input type="text" id="high_e_date" name="high_e_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#high_e_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -292,7 +292,7 @@
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="text" id="high_g_date" name="high_g_date" placeholder="날짜넣기">
+					<td><input type="text" id="high_g_date" name="high_g_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#high_g_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -369,7 +369,7 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="text" id="collage_e_date" name="collage_e_date" placeholder="날짜넣기">
+					<td><input type="text" id="collage_e_date" name="collage_e_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#collage_e_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -378,7 +378,7 @@
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="text" id="collage_g_date" name="collage_g_date" placeholder="날짜넣기">
+					<td><input type="text" id="collage_g_date" name="collage_g_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#collage_g_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -482,7 +482,7 @@
 				</tr>
 				<tr>
 					<td>입학일자</td>
-					<td><input type="text" id="graduated_e_date" name="graduated_e_date" placeholder="날짜넣기">
+					<td><input type="text" id="graduated_e_date" name="graduated_e_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#graduated_e_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -491,7 +491,7 @@
 				</tr>
 				<tr>
 					<td>졸업일자</td>
-					<td><input type="text" id="graduated_g_date" name="graduated_g_date" placeholder="날짜넣기">
+					<td><input type="text" id="graduated_g_date" name="graduated_g_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#graduated_g_date").datepicker({dateFormat: "yy-mm-dd"});

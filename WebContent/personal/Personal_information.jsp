@@ -118,7 +118,7 @@
             </tr>
             <tr>
                <td>생년월일</td>
-               <td><input type="text" id="birth" name="birth" placeholder="날짜넣기" value="<%=rs.getString(2)%>">
+               <td><input type="text" id="birth" name="birth" placeholder="0000-00-00" value="<%=rs.getString(2)%>">
                <script>
                   $(function(){
                      $("#birth").datepicker({dateFormat: "yy-mm-dd"});

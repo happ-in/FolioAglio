@@ -132,7 +132,7 @@
 				</tr>
 				<tr>
 					<td>응시일자</td>
-					<td><input type="text" id="test_date" name="test_date" placeholder="날짜넣기">
+					<td><input type="text" id="test_date" name="test_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#test_date").datepicker({dateFormat: "yy-mm-dd"});
@@ -164,7 +164,7 @@
 				</tr>
 				<tr>
 					<td>취득일자</td>
-					<td><input type="text" id="issue_date" name="issue_date" placeholder="날짜넣기">
+					<td><input type="text" id="issue_date" name="issue_date" placeholder="0000-00-00">
 					<script>
 						$(function(){
 							$("#issue_date").datepicker({dateFormat: "yy-mm-dd"});

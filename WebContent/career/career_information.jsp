@@ -114,13 +114,13 @@
             </tr>
             <tr>
                <td>재직기간</td>
-               <td><input type="text" id="s_period" name="s_period" placeholder="날짜넣기">
+               <td><input type="text" id="s_period" name="s_period" placeholder="0000-00-00">
                <script>
                   $(function(){
                      $("#s_period").datepicker({dateFormat: "yy-mm-dd"});
                   });
                </script>
-               <input type="text" id="e_period" name="e_period" placeholder="날짜넣기">
+               <input type="text" id="e_period" name="e_period" placeholder="0000-00-00">
                <script>
                   $(function(){
                      $("#e_period").datepicker({dateFormat: "yy-mm-dd"});

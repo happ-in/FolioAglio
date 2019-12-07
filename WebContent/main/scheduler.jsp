@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link rel="stylesheet" type="text/css" href="../maincss.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -87,37 +87,11 @@
    }
 
 </script>
-<style>
 
-	fieldset{
-		background-color: white;
-		
-	}
-	legend{
-		background-color: white;
-		font-wieght : bold;
-		font-size: x-large;
-	}
-	.button_css{
-		border: 1px solid ;
-		background-color: white;
-		color: black;
-		font-wieght : bold;
-		padding: 5px;
-		border-top-left-radius : 5px;
-		border-bottom-left-radius : 5px;
-		border-top-right-radius : 5px;
-		border-bottom-right-radius: 5px;
-	}
-	.button_css:hover{
-		color: white;
-		background-color: #B2CCFF;
-	}
-</style>
 </head>
 <body>
    <form action="schedulerAction.jsp" method="post" id = "form1">
-      <fieldset>
+		<fieldset class="field_info">
          <legend>일정 추가</legend>
          <table>
             <tr>
@@ -126,7 +100,7 @@
             </tr>
             <tr>
                <td>날짜</td>
-               <td><input type="text" id="date" name="date" placeholder="날짜넣기">
+               <td><input type="text" id="date" name="date" placeholder="0000-00-00">
                <script>
                   $(function(){
                      $("#date").datepicker({ dateFormat:'yy-mm-dd'});
