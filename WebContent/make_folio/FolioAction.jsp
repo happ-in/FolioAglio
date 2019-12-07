@@ -310,8 +310,8 @@
 			String div2 = "classfication";
 			if(rs.next()){
 				if(div1.equals(rs.getString("skill_radio"))){%>
-				<p class="title">   어학</p>
 				<div align="center">
+				<p class="title">   어학</p>
 				<table class="type07"><tbody>
 					<tr><th scope="row">외국어명 </th><td> <%=rs.getString("language_name")%></td></tr>
 					<tr><th scope="row">어학종류 </th><td> <%=rs.getString("kind")%></td></tr>
@@ -345,8 +345,8 @@
       function fnSaveAsPdf() {
         html2canvas(document.querySelector("#pdf")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
-          var imgWidth = 210;
-          var pageHeight = 295;
+          var imgWidth = 1100;
+          var pageHeight = 900;
           var imgHeight = canvas.height * imgWidth / canvas.width;
           var heightLeft = imgHeight;
           var doc = new jsPDF('p', 'mm');
