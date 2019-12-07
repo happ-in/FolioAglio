@@ -15,6 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale ="1">
 <title>Folio2PDF</title>
+<style>
+   @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+</style>
 <script>
 	function skqnfskqnf(what){
 	   if(what!=null || what!="") {return false; }
@@ -63,7 +66,11 @@
 	String[] skNumArr = request.getParameterValues("skill");
 	if(skNumArr != null)
 		sklen = skNumArr.length;
+%>
 
+<p align="center" style="font-family:'Jeju Gothic'; font-size:80px;">PORTFOLIO</p>
+
+<%
 	String sql = "select * from personal_information where id=?;";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1,session_name);
