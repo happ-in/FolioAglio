@@ -30,7 +30,6 @@
 function fnSaveAsPdf() {
     html2canvas(document.body).then(function(canvas){
             var imgData = canvas.toDataURL('image/png');
-
         	$.ajax({
 
         		  type: "POST",
@@ -46,7 +45,7 @@ function fnSaveAsPdf() {
         		  alert('선택영역을 서버의 이미지 파일에 저장했습니다'); 
 
         		});
-           
+           	
             var imgWidth = 300;
             var pageHeight = imgWidth/1.414; // 한페이지의 길이
 
@@ -74,19 +73,6 @@ function fnSaveAsPdf() {
             var formData = new FormData();
             formData.append('pdf', blob);
 
-            $.ajax('/upload.php', {
-               method : 'POST',
-               data : formData,
-               processData : false,
-               contentType : false,
-               success : function(data) {
-                  alert(data);
-               },
-               error : function(data) {
-                  console.log(data)
-               }
-            });
-            alert("완료!");
       });
 }
 </script>   

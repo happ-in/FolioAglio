@@ -140,6 +140,8 @@
 %>
 </head>
 <body>
+
+   
 	<div align = center>
 	    <a href="../logout.jsp"><button class = "logout" style="float: right;">·Î±×¾Æ¿ô</button></a>
 		<a role="button" href="../main/main.jsp"><img src="../image/name.png" style="width:340px; height:100px;" ></a>
@@ -174,7 +176,7 @@
 				style="background-image: url(https://images.unsplash.com/photo-1493847242172-d46053a1f671?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=9f91dd5d50f16ba80af53a62d4caf2ce&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60);">
 				<div class="overlay">
 					<div class="overlay-content">
-						<a href="#!">Download</a>
+						<a href="../IMG/test.png">Download</a>
 					</div>
 				</div>
 			</div>

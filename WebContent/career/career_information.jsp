@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.sql.*" %>
+<%@ page import="file.DBUtil"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,6 +93,23 @@
 
 </head>
 <body>
+
+<%
+	String title = "";
+   Object session_object=session.getAttribute("signedUser");
+   String session_name=(String)session_object;
+   Connection conn = DBUtil.getConn();
+   
+   String sql = "select * from folio where id = ?";
+   PreparedStatement pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1,session_name);
+    ResultSet rs = pstmt.executeQuery();
+    while(rs.next()) {
+		title = rs.getString("title");
+	}
+
+   %>
+   <img src="<%=title %>">
    <form action="careerAction.jsp" method="post" id = "form1">
       <fieldset class="field_info">
          <legend>경력</legend>
