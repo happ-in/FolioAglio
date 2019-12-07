@@ -24,31 +24,49 @@
          var time = document.querySelector('#time');
       
          // 전체 검사
-         // 체류국가가 입력되지 않았을시
          if (name.value == '') {
             alert('일정명을 입력하세요.');
             name.focus();
-            // 체류형태가 입력되지 않았을시
          } else if (date.value == '') {
             alert('날짜를 입력하세요.');
             date.focus();
-            // 구사언어가 입력되지 않았을시
          }else {
-            //저장하는거 구현해야함
-            form1.action = "schedulerUpdate.jsp";
+        	 $.ajax({    //ajax함수 안에 객체의 형태로 실행명령을 넣는다. 
+		         url:"schedulerUpdate.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
+		         type:'post',
+		         data:{
+                      id: document.getElementById("form1").value,  
+               },
+		  success : function(){ 
+			  self.close();
+	            opener.location.reload();
+			} 
+		    });
+            /*form1.action = "schedulerUpdate.jsp";
             document.getElementById('form1').submit();
             self.close();
-            opener.location.reload();
+            opener.location.reload();*/
          }
 
       });
       var dlt = document.querySelector('#delete');
       
       dlt.addEventListener('click', function() {
-    	  form1.action = "schedulerDelete.jsp";
+    	  $.ajax({    //ajax함수 안에 객체의 형태로 실행명령을 넣는다. 
+		         url:"schedulerDelete.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
+		         type:'post',
+		         data:{
+                   id: document.getElementById("form1").value,  
+            },
+		  success : function(){ 
+			  self.close();
+	            opener.location.reload();
+			} 
+		    });
+    	  /*form1.action = "schedulerDelete.jsp";
           document.getElementById('form1').submit();
           self.close();
-          opener.location.reload();
+          opener.location.reload();*/
       });
    });
    

@@ -294,8 +294,8 @@
 		while(i < sklen){
 			pstmt.setInt(1, Integer.parseInt(skNumArr[i]));
 			rs = pstmt.executeQuery();
-			String div1 = "어학";
-			String div2 = "자격증";
+			String div1 = "language";
+			String div2 = "classification";
 			if(rs.next()){
 				if(div1.equals(rs.getString("skill_radio"))){%>
 				<p class="title">   어학</p>
