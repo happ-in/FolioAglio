@@ -96,7 +96,7 @@
 	   <div style="padding-bottom:20px; padding-top:20px;">
 	   <label for="pi" class="menu" title="인적사항 전체선택" style="cursor:pointer"><input type="checkbox" id="pi" class="m1" style="display:none">인적사항</label> <input type="button" class="btn" value="미리보기" onclick="PI_Btn()"/>
 	   <span style="float:right;">
-<input type="checkbox" value="전체선택" class="check-all"> <label class="letter1">전체선택</label>
+<label for="total" class="letter1" style="cursor:pointer"><input type="checkbox" id="total" class="check-all">전체선택</label>
 <button type="button" onclick="result()" class="button_css1">포트폴리오 생성</button></span>
 
 	   </div>
