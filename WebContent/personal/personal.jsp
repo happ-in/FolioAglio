@@ -120,7 +120,7 @@
 			
 			<tr><td>
 			<form method="post" enctype="multipart/form-data" action="upload.jsp">
-				<input type="file" name="filename" accept="image/*">
+				<input type="file" name="filename" accept="image/*" >
 				<input type="submit" class="button_css" value="업로드">
 			</form></td>
 			</tr>

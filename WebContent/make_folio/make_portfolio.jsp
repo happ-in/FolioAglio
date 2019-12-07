@@ -59,7 +59,6 @@
 				w.document.write(data);
 			}
 		});
-
 	}
 </script>
 </head>
