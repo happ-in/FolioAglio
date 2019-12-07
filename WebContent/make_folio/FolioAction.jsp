@@ -121,7 +121,7 @@
 			if(rs.next()){
 				if(Integer.parseInt(rs.getString("school_radio")) == 1){%>
 				<div align="center">
-				<p class="title">     고등학교</p>
+				<p class="title">고등학교</p>
 				<table class="type07"><tbody>
 					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
 					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
@@ -132,8 +132,8 @@
 					<p style={padding:10px;}>
 					</tbody></table></div>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 2){%>
-				<p class="title">     대학교</p>
 				<div align="center">
+				<p class="title">대학교</p>
 				<table class="type07"><tbody>
 					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
 					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
@@ -154,8 +154,8 @@
 					</tbody></table></div>
 					<p style={padding:10px;}>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 3){%>
-				<p class="title">     대학원</p>
 				<div align="center">
+				<p class="title">대학원</p>
 				<table class="type07"><tbody>
 					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
 					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
