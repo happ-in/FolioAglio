@@ -33,7 +33,7 @@
          }else {
         	 var formData = $("#form1").serialize();
         	 $.ajax({    //ajax함수 안에 객체의 형태로 실행명령을 넣는다. 
-		         url: "schedulerUpdate.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
+		         url: "../main/schedulerUpdate.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
 		         type: 'post',
 		         data: formData,
 		         async: false,
