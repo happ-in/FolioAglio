@@ -48,7 +48,7 @@
 		document.getElementById('skForm').submit();
 	}
     function result() {
-    	var w = window.open("about:blank","_blank","width=600, height=700, top=0,left=0,scrollbars=no");
+    	var w = window.open("about:blank","_blank","width=800, height=1100, top=0,left=0,scrollbars=no");
 		var formData = $("#PIForm,#eduForm,#carrForm,#abrdForm,#EAForm,#awdForm,#skForm").serialize();
 		$.ajax({
 			url : "FolioAction.jsp", // 요기에
