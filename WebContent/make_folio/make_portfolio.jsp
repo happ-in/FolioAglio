@@ -129,7 +129,7 @@
 	   %>
 	   
    </form>
-   <% 
+   <%
    sql = "select * from carrier where id = ?";
    pstmt = conn.prepareStatement(sql);
    pstmt.setString(1,session_name);
