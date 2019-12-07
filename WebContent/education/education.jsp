@@ -51,7 +51,7 @@
 <meta charset="EUC-KR">
 <title>학적</title>
 <script>
-	var option = "width = 600, height = 500, top = 100, left = 200, location = no";
+	var option = "width = 500, height = 400, top = 100, left = 200, location = no";
 	
 	function popup_education(){
 		var url = "education_information.jsp";
