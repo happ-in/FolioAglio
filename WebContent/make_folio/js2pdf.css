@@ -82,6 +82,10 @@
 		color: white;
 		background-color: #09789d;
 	}
-	img{
-	  filter: grayscale(100%);
-	}
+	.img_gray{
+    filter: grayscale(100%);
+    width: 120;
+    height:40;
+  }
+  
+  

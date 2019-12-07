@@ -17,13 +17,8 @@
 <title>Folio2PDF</title>
 <style>
    @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+   
 </style>
-<script>
-	function skqnfskqnf(what){
-	   if(what!=null || what!="") {return false; }
-	   else { }
-	}
-</script>
 <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
     if (session.getAttribute("signedUser") == null) {
         response.sendRedirect("../logout.jsp");
@@ -31,6 +26,7 @@
 %>
 </head>
 <body>
+<div id="pdf" name = "pdf">
 <%!   public boolean hidden(String str){
          if(str == null){
             return false;
@@ -77,6 +73,7 @@
 	ResultSet rs = pstmt.executeQuery();
 	if(rs.next()){%>
 		<p align="center" class ="main_title">인적사항</p>
+		<div align="center">
 		<table class="type07"><tbody>
 		<tr><th scope="row">이름 </th><td> <%=rs.getString("name")%></td></tr>
 		<tr><th scope="row">영문명 </th><td> <%=rs.getString("en_name")%></td></tr>
@@ -103,7 +100,7 @@
 	            <%}i++;
 	         }
 		}%>
-		</tbody></table>
+		</tbody></table></div>
 	<%
 	}i=0;
 	rs.close();
@@ -123,6 +120,7 @@
 			
 			if(rs.next()){
 				if(Integer.parseInt(rs.getString("school_radio")) == 1){%>
+				<div align="center">
 				<p class="title">     고등학교</p>
 				<table class="type07"><tbody>
 					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
@@ -132,9 +130,10 @@
 					<tr><th scope="row">졸업일자 </th><td> <%=rs.getString("g_date")%></td></tr>
 					<tr><th scope="row">졸업여부 </th><td> <%=rs.getString("g_state")%></td></tr>
 					<p style={padding:10px;}>
-					</tbody></table>
+					</tbody></table></div>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 2){%>
 				<p class="title">     대학교</p>
+				<div align="center">
 				<table class="type07"><tbody>
 					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
 					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
@@ -152,10 +151,11 @@
 					<tr><th scope="row">복수전공, 부전공 </th><td> <%=rs.getString("submajor")%></td></tr><%}%>
 					<%if(hidden(rs.getString("edu_memo"))){%>
 					<tr><th scope="row">메모 </th><td> <%=rs.getString("edu_memo")%></td></tr><%}%>
-					</tbody></table>
+					</tbody></table></div>
 					<p style={padding:10px;}>
 				<%} else if(Integer.parseInt(rs.getString("school_radio")) == 3){%>
 				<p class="title">     대학원</p>
+				<div align="center">
 				<table class="type07"><tbody>
 					<tr><th scope="row">학교명 </th><td> <%=rs.getString("school_name")%></td></tr>
 					<tr><th scope="row">학교소재지 </th><td> <%=rs.getString("school_location")%></td></tr>
@@ -169,7 +169,7 @@
 					<%if(hidden(rs.getString("edu_memo"))){%>
 					<tr><th scope="row">메모 </th><td> <%=rs.getString("edu_memo")%></td></tr><%}%>
 					<p style={padding:10px;}>
-					</tbody></table>
+					</tbody></table></div>
 				<%}
 			}i++;
 		}
@@ -186,6 +186,7 @@
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
+			<div align="center">
 			<table class="type07"><tbody>
 				<tr><th scope="row">회사명 </th><td> <%=rs.getString("company_name")%></td></tr>
 				<tr><th scope="row">직위 </th><td> <%=rs.getString("position")%></td></tr>
@@ -199,6 +200,7 @@
 				<%if(hidden(rs.getString("carrier_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("carrier_memo")%></td></tr><%}%>
 				</tbody></table>
+				</div>
 				<p style={padding:10px;}>
 			<%}
 			i++;
@@ -216,6 +218,7 @@
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
+			<div align="center">
 			<table class="type07"><tbody>
 			<tbody>
 				<tr><th scope="row">체류국가 </th><td> <%=rs.getString("country_name")%></td></tr>
@@ -230,7 +233,7 @@
 				<%if(hidden(rs.getString("abroad_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("abroad_memo")%></td></tr><%}%>
 				</tbody>
-				</tbody></table>
+				</tbody></table></div>
 				<p style={padding:10px;}>
 			<%}
 			i++;
@@ -248,6 +251,7 @@
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
+			<div align="center">
 			<table class="type07"><tbody>
 				<tr><th scope="row">구분 </th><td> <%=rs.getString("activity_radio")%></td></tr>
 				<tr><th scope="row">단체명 </th><td> <%=rs.getString("group_name")%></td></tr>
@@ -259,7 +263,7 @@
 				<tr><th scope="row">사진</th><td><img src="../external_activity/<%=rs.getString("picture")%>"/></td></tr><%}%>
 				<%if(hidden(rs.getString("activity_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("activity_memo")%></td></tr><%}%>
-				</tbody></table>
+				</tbody></table></div>
 				<p style={padding:10px;}>
 			<%}
 			i++;
@@ -277,6 +281,7 @@
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){%>
+			<div align="center">
 			<table class="type07"><tbody>
 				<tr><th scope="row">수상명 </th><td> <%=rs.getString("awd_name")%></td></tr>
 				<tr><th scope="row">주최 </th><td> <%=rs.getString("awd_org")%></td></tr>
@@ -285,7 +290,7 @@
 				<tr><th scope="row">사진 </th><td> <img src="../award/<%=rs.getString("picture")%>"/></td></tr><%}%>
 				<%if(hidden(rs.getString("awd_memo"))){%>
 				<tr><th scope="row">메모 </th><td> <%=rs.getString("awd_memo")%></td></tr><%}%>
-				</tbody></table>
+				</tbody></table></div>
 				<p style={padding:10px;}>
 			<%}
 			i++;
@@ -306,6 +311,7 @@
 			if(rs.next()){
 				if(div1.equals(rs.getString("skill_radio"))){%>
 				<p class="title">   어학</p>
+				<div align="center">
 				<table class="type07"><tbody>
 					<tr><th scope="row">외국어명 </th><td> <%=rs.getString("language_name")%></td></tr>
 					<tr><th scope="row">어학종류 </th><td> <%=rs.getString("kind")%></td></tr>
@@ -316,14 +322,16 @@
 					<%if(hidden(rs.getString("score_name"))){%>
 					<tr><th scope="row">취득급수 </th><td> <%=rs.getString("score_name")%></td></tr><%}%>
 					<p style={padding:10px;}>
-					</tbody></table>
+					</tbody></table></div>
 				<%} else if(div2.equals(rs.getString("skill_radio"))){%>
+				<div align="center">
 				<p class="title">   자격증</p>
 				<table class="type07"><tbody>
 					<tr><th scope="row">자격증명 </th><td> <%=rs.getString("classfication_name")%></td></tr>
 					<tr><th scope="row">발급기관 </th><td> <%=rs.getString("issue_org")%></td></tr>
 					<tr><th scope="row">취득일자 </th><td> <%=rs.getString("issue_date")%></td></tr>
 					</tbody></table>
+					</div>
 					<p style={padding:10px;}>
 				<%}
 			}i++;
@@ -335,30 +343,24 @@
 
 	<script>
       function fnSaveAsPdf() {
-        html2canvas(document.body).then(function(canvas) {
+        html2canvas(document.querySelector("#pdf")).then(function(canvas) {
           var imgData = canvas.toDataURL('image/png');
           var imgWidth = 210;
-          var pageHeight = imgWidth * 1.414;
+          var pageHeight = 295;
           var imgHeight = canvas.height * imgWidth / canvas.width;
-          var position = 0;
           var heightLeft = imgHeight;
-          var doc = new jsPDF({
-             'orientation': 'p',
-             'unit': 'mm',
-             'format': 'a4'
-          });
-          // 첫 페이지 출력
-          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-           
-          // 한 페이지 이상일 경우 루프 돌면서 출력
-          while (heightLeft >= 20) {
-            position = heightLeft - imgHeight;
-            doc.addPage();
-            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-          }
+          var doc = new jsPDF('p', 'mm');
+          var position = 0;
           
+          doc.addImage(imgData, 'PNG', 0, position, imgWidth, pageHeight);
+          heightLeft -= pageHeight;
+          while (heightLeft >= 0) { 
+        	  position = heightLeft - pageHeight;
+        	  doc.addPage();
+        	  doc.addImage(imgData, 'PNG', 0, position, imgWidth, pageHeight);
+        	  heightLeft -= pageHeight; }
+
+          doc.save('sample_A4.pdf');
           var blob = doc.output('blob');
 
           var formData = new FormData();
@@ -379,7 +381,8 @@
       
     </script>
     <div align="right"  style="margin-right:20px;">
-    	<img align="center" src="../image/name1.png" style="width:120px; height:40px;"><br>
+    	<img align="center" src="../image/name1.png" class="img_gray"><br>
+    </div>
     </div>
     <div align="center">
     <button align="center" onclick="fnSaveAsPdf();" class="button_css">Save PDF</button>
