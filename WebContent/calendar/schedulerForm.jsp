@@ -31,42 +31,34 @@
             alert('날짜를 입력하세요.');
             date.focus();
          }else {
+        	 var formData = $("#form1").serialize();
         	 $.ajax({    //ajax함수 안에 객체의 형태로 실행명령을 넣는다. 
-		         url:"schedulerUpdate.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
-		         type:'post',
-		         data:{
-                      id: document.getElementById("form1").value,  
-               },
-		  success : function(){ 
-			  self.close();
-	            opener.location.reload();
-			} 
+		         url: "schedulerUpdate.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
+		         type: 'post',
+		         data: formData,
+		         async: false,
+		  		 success : function(){ 
+			  	 self.close();
+	             opener.location.reload();
+				} 
 		    });
-            /*form1.action = "schedulerUpdate.jsp";
-            document.getElementById('form1').submit();
-            self.close();
-            opener.location.reload();*/
          }
 
       });
       var dlt = document.querySelector('#delete');
       
       dlt.addEventListener('click', function() {
+    	  var formData = $("#form1").serialize();
     	  $.ajax({    //ajax함수 안에 객체의 형태로 실행명령을 넣는다. 
 		         url:"schedulerDelete.jsp",  //가져오고자하는 서버페이지 주소를 넣는다.
-		         type:'post',
-		         data:{
-                   id: document.getElementById("form1").value,  
-            },
-		  success : function(){ 
-			  self.close();
-	            opener.location.reload();
-			} 
+		         type: 'post',
+		         data: formData,
+		         async: false,
+		 		 success : function(){ 
+			  	 self.close();
+	             opener.location.reload();
+				} 
 		    });
-    	  /*form1.action = "schedulerDelete.jsp";
-          document.getElementById('form1').submit();
-          self.close();
-          opener.location.reload();*/
       });
    });
    
