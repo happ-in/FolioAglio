@@ -18,7 +18,7 @@
 	Connection conn = DBUtil.getConn();
 %>
 <script>
-	var option = 'width=500, height=500';
+	var option = 'width=1100, height=screen.availHeight';
 	function PI_Btn() {
 		window.open('','folio', option);
 		document.getElementById('PIForm').submit();
@@ -48,7 +48,7 @@
 		document.getElementById('skForm').submit();
 	}
     function result() {
-    	var w = window.open("about:blank","_blank","width=1100, height=900, top=0,left=0,scrollbars=no");
+    	var w = window.open("about:blank","_blank","width=1100, height=screen.availHeight, top=0,left=0,scrollbars=no");
 		var formData = $("#PIForm,#eduForm,#carrForm,#abrdForm,#EAForm,#awdForm,#skForm").serialize();
 		$.ajax({
 			url : "FolioAction.jsp", // 요기에

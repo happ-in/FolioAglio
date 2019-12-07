@@ -21,7 +21,7 @@
 <meta charset="utf-8">
 <title>자격증</title>
 <script>
-   var option = "width = 300, height = 300, top = 100, left = 200, location = no";
+   var option = "width = 400, height = 400, top = 100, left = 200, location = no";
    
    function alart_del(){
       alert("삭제되었습니다.");
