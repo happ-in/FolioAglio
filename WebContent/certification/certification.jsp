@@ -95,7 +95,7 @@
       
    %>
    <div class="field">
-      <input type="button" value="<%=rs.getString("language_name") %>" onclick="showhide(<%=rs.getInt("issue_num") %>)" class="field_button">
+      <input type="button" value="<%=rs.getString("kind") %>" onclick="showhide(<%=rs.getInt("issue_num") %>)" class="field_button">
       <table style="display:none; z-index:999;" id="<%=rs.getInt("issue_num") %>" class="type07">
          <thead>
             <tr>
