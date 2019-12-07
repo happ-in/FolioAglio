@@ -354,6 +354,7 @@
           
           doc.addImage(imgData, 'PNG', 0, position, imgWidth, pageHeight);
           heightLeft -= pageHeight;
+          
           while (heightLeft >= 0) { 
         	  position = heightLeft - pageHeight;
         	  doc.addPage();

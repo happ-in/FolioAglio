@@ -84,8 +84,8 @@
 	}
 	.img_gray{
     filter: grayscale(100%);
-    width: 120;
-    height:40;
+    width: 120px;
+    height:40px;
   }
   
   
