@@ -20,7 +20,6 @@
 		    	}
 	    	else {
 	    		document.getElementById('form1').submit();
-	    		self.close();
 	      	}
 	    });
 	    

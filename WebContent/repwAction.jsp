@@ -30,6 +30,11 @@
 			
 			pstmt.close();
 			conn.close();
+			%>
+			
+			<script>window.close();</script>
+			
+			<%
 			
 		} catch(SQLException e){
 			System.out.println(e.toString());

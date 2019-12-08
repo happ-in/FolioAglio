@@ -11,7 +11,7 @@
 <body>
 	<%
 	String userID = request.getParameter("userID");
-	String userName = request.getParameter("userName");
+	String userName = new String(request.getParameter("userName").getBytes("ISO-8859-1"), "UTF-8");
 	String userEmail = request.getParameter("userEmail");
 	
 	
