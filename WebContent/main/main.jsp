@@ -22,6 +22,7 @@
        border : 0.5px dashed;
        background : none;
    }
+   button{border:0;outline:0}
    .card {
    width: 150px;
    height:250px;
@@ -42,8 +43,8 @@
       rgba(0, 0, 0, 0.25);
 }
 .card:hover .card-content, .card.hover .card-content {
-   box-shadow: inset 0 3px 0 0 #ccb65e;
-   border-color: #ccb65e;
+   box-shadow: inset 0 3px 0 0 #8a8a8a;
+   border-color: #8a8a8a;
 }
 .card:hover .card-img .overlay, .card.hover .card-img .overlay {
    background-color: rgba(25, 29, 38, 0.85);
@@ -70,7 +71,7 @@
    opacity: 0;
 }
 .card-img .overlay .overlay-content {
-   line-height: 154px;
+   padding-top: 40px;
    width: 100%;
    text-align: center;
    color: #fff;
@@ -97,15 +98,10 @@
    cursor: pointer;
    text-decoration: none;
 }
-.card-img .overlay .overlay-content a:hover, .card-img .overlay .overlay-content a.hover
-   {
-   background: #ccb65e;
-   border-color: #ccb65e;
-}
 .card-img .overlay .overlay-content button:hover, .card-img .overlay .overlay-content button.hover
    {
-   background: #ccb65e;
-   border-color: #ccb65e;
+   background: #8a8a8a;
+   border-color: #8a8a8a;
 }
 .card-content {
    width: 100%;
@@ -153,6 +149,7 @@
    </style>
 <meta charset="utf-8">
 <title>Folio Aglio</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
    var option = "width = 500, height = 400, top = 100, left = 200, location = no";
    
@@ -167,7 +164,17 @@
    function download($num,$name){
       //var num = document.querySelector('#num').value;
       var openWin=window.open("download.jsp?num="+$num+'&name='+encodeURIComponent($name), '_blank',"width = 1100, height=screen.availHeight");
-
+   }
+   function delete1($num,$title){
+         $.ajax({
+                cache : false,
+                url : "delete.jsp?num="+$num+'&title='+encodeURIComponent($title),
+                 type : 'POST', 
+                async: false,
+                  success : function(data) {
+                     self.location.reload();
+                       }
+                   });
    }
 </script>
 <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
@@ -226,7 +233,9 @@
             style="background-image: url(../image/logo.png)">
             <div class="overlay">
                <div class="overlay-content">
-                  <button onclick="download('<%=num%>','<%=rs.getString("title") %>')">Download</button>
+                  <button style = "margin-bottom:10px"onclick="download('<%=num%>','<%=rs.getString("title") %>')">Download</button>
+                  <button style = "margin-bottom:10px" onclick="delete1('<%=num%>','<%=rs.getString("title") %>')">Delete</button>
+                  
                </div>
             </div>   
          </div>
