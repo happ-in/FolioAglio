@@ -3,28 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
-	body {
-		display : block;
-		align : center;
-	}
-	div {
-		padding : 5px;
-	}
-	
-	</style>
+<link rel="stylesheet" type="text/css" href="maincss.css">
 <meta charset="utf-8">
 <title>Forgot PassWord</title>
 </head>
 <body>
 	<form>
-		<div>	
-			<input type="text" tabindex="1" placeholder="ID를 입력하세요">
+		<div align="center">
+		<h2 class="pw_h">비밀번호 찾기</h2>
+			<table>
+			<tr>
+				<td class="pw_i">아이디</td>
+				<td> : <input type="text" id="userID" name="userID" placeholder="ID를 입력하세요."></td>
+			</tr>
+			<tr>
+				<td class="pw_i">이름</td>
+				<td> : <input type="text" tabindex="2" placeholder="이름을 입력하세요."></td>
+			</tr>
+			<tr>
+				<td class="pw_i">이메일</td>
+				<td> : <input type="text" tabindex="2" placeholder="이메일을 입력하세요."></td>
+			</tr>
+			</table>
+			<p style="padding:2px;"></p>
+			<input class="button_css" type="submit" value="비밀번호찾기">
 		</div>
-		<div>
-			<input type="text" tabindex="2" placeholder="이름을 입력하세요.">
-		</div>
-		<input type="submit" value="비밀번호찾기">
 	</form>
 
 </body>

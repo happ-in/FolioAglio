@@ -1,6 +1,6 @@
    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
+ @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 
 
@@ -212,11 +212,11 @@
 	}
 
 	.button_css{
-	font-family : Hanna;
-	font-size : 16px;
-		border: 1px solid ;
-		background-color: #B2CCFF;
-		color: white;
+		font-family : Hanna;
+		font-size : 16px;
+		border: 2px solid ;
+		color: #B2CCFF;
+		background-color: white;
 		font-wieght : bold;
 		padding: 5px 10px 5px 10px;
 		border-top-left-radius : 5px;
@@ -225,8 +225,15 @@
 		border-bottom-right-radius: 5px;
 	}
 	.button_css:hover{
-		color: #B2CCFF;
-		background-color: white;
+		background-color: #B2CCFF;
+		color: white;
+		
 	}
-    
+    .pw_h{
+    font-family: 'Jeju Gothic';
+    }
+    .pw_i{
+    font-family: 'Jeju Gothic';
+    }
+   
       
