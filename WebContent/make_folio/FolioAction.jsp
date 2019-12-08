@@ -27,25 +27,55 @@
    }
 %>
 <script>
+function fnSaveAsSave(){
+   if(!document.querySelector('#title').value){
+      alert("이름을 지정해 주세요.")
+      $("#title").focus();
+      return false;
+   }
+   html2canvas(document.body).then(function(canvas){
+        var imgData = canvas.toDataURL('image/png');
+
+       $.ajax({
+
+            type: "POST",
+
+            url: "makeImgFile.jsp",
+
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+
+            data: { "imgUrl": imgData, 
+                  "name":"/"+document.querySelector('#title').value}
+
+          }).success(function() {
+
+            alert('pdf파일을 서버에 저장하였습니다.'); 
+            opener.location.href="/main/main.jsp"
+            self.close();
+          });
+       
+       $.ajax({
+
+          type: "POST",
+
+          url: "upload.jsp",
+
+          data: {"name":"/"+document.querySelector('#title').value.replace(/%/g, '%25'),
+             "title":document.querySelector('#title').value.replace(/%/g, '%25')}
+
+        }).success(function() {
+           
+        });
+  });
+}
 function fnSaveAsPdf() {
     html2canvas(document.body).then(function(canvas){
+       if(!document.querySelector('#title').value){
+          alert("이름을 지정해 주세요.")
+          $("#title").focus();
+          return false;
+       }
             var imgData = canvas.toDataURL('image/png');
-        	$.ajax({
-
-        		  type: "POST",
-
-        		  url: "makeImgFile.jsp",
-
-        		  contentType: "application/x-www-form-urlencoded; charset=utf-8",
-
-        		  data: { "imgUrl": imgData }
-
-        		}).success(function() {
-
-        		  alert('선택영역을 서버의 이미지 파일에 저장했습니다'); 
-
-        		});
-           	
             var imgWidth = 300;
             var pageHeight = imgWidth/1.414; // 한페이지의 길이
 
@@ -67,12 +97,7 @@ function fnSaveAsPdf() {
                doc.addImage(imgData, 'PNG', 0, position,imgWidth, imgHeight);
                heightLeft -= pageHeight;
             }
-            doc.save('sample_A4.pdf');
-            var blob = doc.output('blob');
-
-            var formData = new FormData();
-            formData.append('pdf', blob);
-
+            doc.save(document.querySelector('#title').value+'.pdf');
       });
 }
 </script>   
@@ -813,7 +838,9 @@ function fnSaveAsPdf() {
          <img align="center" src="../image/name1.png" class="img_gray"><br>
       </div>
    <div align="center" data-html2canvas-ignore="true">
-      <button align="center" onclick="fnSaveAsPdf()" class="button_css">SavePDF</button>
+         <input type=text id=title name=title placeholder="저장할 파일명" >
+        <button align="center" onclick="fnSaveAsSave()" class="button_css">Save</button>
+      <button align="center" onclick="fnSaveAsPdf()" class="button_css">PDF</button>
    </div>
 
 </body>

@@ -1,6 +1,10 @@
       @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
    
+   img{
+       width:180px;
+       height:180px;
+   }
    .type07 {
    width:550px;
     border-collapse: collapse;    

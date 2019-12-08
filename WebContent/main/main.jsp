@@ -17,10 +17,10 @@
   
    div{ display : block; }
       .add_folio{
-	    width : 150px;
-	    height : 250px;
-	    border : 0.5px dashed;
-	    background : none;
+       width : 150px;
+       height : 250px;
+       border : 0.5px dashed;
+       background : none;
    }
    .card {
    width: 150px;
@@ -86,7 +86,23 @@
    cursor: pointer;
    text-decoration: none;
 }
+.card-img .overlay .overlay-content button {
+   color: #fff;
+   padding: 0 2rem;
+   display: inline-block;
+   border: 1px solid rgba(255, 255, 255, 0.4);
+   height: 40px;
+   line-height: 40px;
+   border-radius: 20px;
+   cursor: pointer;
+   text-decoration: none;
+}
 .card-img .overlay .overlay-content a:hover, .card-img .overlay .overlay-content a.hover
+   {
+   background: #ccb65e;
+   border-color: #ccb65e;
+}
+.card-img .overlay .overlay-content button:hover, .card-img .overlay .overlay-content button.hover
    {
    background: #ccb65e;
    border-color: #ccb65e;
@@ -117,21 +133,42 @@
    text-overflow: ellipsis;
    color: rgba(32, 41, 28, 0.8);
 }
+.card-content button {
+   text-decoration: none;
+   color: #202927;
+}
+.card-content h2, .card-content button h2 {
+   font-size: 1rem;
+   font-weight: 500;
+}
+.card-content p, .card-content button p {
+   font-size: .8rem;
+   font-weight: 400;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   color: rgba(32, 41, 28, 0.8);
+}
    
    </style>
 <meta charset="utf-8">
 <title>Folio Aglio</title>
 <script type="text/javascript">
-	var option = "width = 500, height = 400, top = 100, left = 200, location = no";
-	
-	function popup_sch(){
-		var obj=window.open("scheduler.jsp", '', option);
-	}
-	
-	function get_sch(sch_num){
-		window.open("schedulerForm.jsp?sch_num="+sch_num, '', option);
-	}
-	
+   var option = "width = 500, height = 400, top = 100, left = 200, location = no";
+   
+   function popup_sch(){
+      var obj=window.open("scheduler.jsp", '', option);
+   }
+   
+   function get_sch(sch_num){
+      window.open("schedulerForm.jsp?sch_num="+sch_num, '', option);
+   }
+   
+   function download($num,$name){
+      //var num = document.querySelector('#num').value;
+      var openWin=window.open("download.jsp?num="+$num+'&name='+encodeURIComponent($name), '_blank',"width = 1100, height=screen.availHeight");
+
+   }
 </script>
 <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
     if (session.getAttribute("signedUser") == null) {
@@ -141,132 +178,110 @@
 </head>
 <body>
 
+   <div align = center>
+       <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
+      <a role="button" href="../main/main.jsp"><img src="../image/name.png" style="width:340px; height:100px;" ></a>
+      
+   </div>
+   <header>
+      <div class="navbar container">
+            <div class="navbar_item">
+            <ul>
+               <li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
+               <li><a class="menuLink" href="../education/education.jsp">학력</a></li>
+               <li><a class="menuLink" href="../career/career.jsp">경력</a></li>
+               <li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
+               <li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
+               <li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
+               <li><a class="menuLink" href="../certification/certification.jsp">어학/자격증</a></li>
+               <li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
+               </ul>
+            </div>
+      </div>
+   </header>
    
-	<div align = center>
-	    <a href="../logout.jsp"><button class = "logout" style="float: right;">로그아웃</button></a>
-		<a role="button" href="../main/main.jsp"><img src="../image/name.png" style="width:340px; height:100px;" ></a>
-		
-	</div>
-	<header>
-		<div class="navbar container">
-   			<div class="navbar_item">
-      		<ul>
-	      		<li><a class="menuLink" href="../personal/personal.jsp">인적</a></li>
-         		<li><a class="menuLink" href="../education/education.jsp">학력</a></li>
-         		<li><a class="menuLink" href="../career/career.jsp">경력</a></li>
-         		<li><a class="menuLink" href="../abroad/abroad.jsp">해외경험</a></li>
-         		<li><a class="menuLink" href="../external_activity/external_activity.jsp">대외활동</a></li>
-         		<li><a class="menuLink" href="../award/awards.jsp">수상경력</a></li>
-         		<li><a class="menuLink" href="../certification/certification.jsp">어학/자격증</a></li>
-         		<li><a class="menuLink" href="../calendar/Calendar.jsp">캘린더</a></li>
-         		</ul>
-   			</div>
-		</div>
-	</header>
-	
 
-	<div class="container" style="margin-top: 25px; margin-left: 15px">
-		<h3>
-			Portfolio_List <small style="">Download</small>
-		</h3>
-	</div>
-	<div class="container" style="margin-left: 15px">
-		<div class="card">
-			<div class="card-img"
-				style="background-image: url(https://images.unsplash.com/photo-1493847242172-d46053a1f671?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=9f91dd5d50f16ba80af53a62d4caf2ce&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60);">
-				<div class="overlay">
-					<div class="overlay-content">
-						<a href="../IMG/test.png">Download</a>
-					</div>
-				</div>
-			</div>
-			<div class="card-content">
-				<a href="#!">
-					<h2>SK지원용</h2>
-					<p>Portfolio_List test</p>
-				</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-img"
-				style="background-image: url(https://images.unsplash.com/photo-1491374812364-00028bbe7d2f?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=a22e4862c36c552e726815949fbcb41a&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60);">
-				<div class="overlay">
-					<div class="overlay-content">
-						<a href="#!">Download</a>
-					</div>
-				</div>
-			</div>
-			<div class="card-content">
-				<a href="#!">
-					<h2>KT지원용</h2>
-					<p>Portfolio_List test</p>
-				</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-img"
-				style="background-image: url(https://images.unsplash.com/photo-1519176336903-04be58a477d2?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=eda05ddcb3154f39fd8ce88fdd44f531&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60);">
-				<div class="overlay">
-					<div class="overlay-content">
-						<a href="#!">Download</a>
-					</div>
-				</div>
-			</div>
-			<div class="card-content">
-				<a href="#!">
-					<h2>삼성지원용</h2>
-					<p>Portfolio_List test</p>
-				</a>
-			</div>
-		</div>
-		<div class="card">
-			<button onclick = "location.href='../make_folio/make_portfolio.jsp'" class="add_folio">┼</button>
-		</div>
-	</div>
-	<hr class="container" />
-	
-	
-	<div style="border: 0.35px solid #636363; border-radius: 20px 20px 20px 20px; text-align:center;">
-		<div>
-			<h3 style="display: inline-block; padding: 0 0.5rem; border-bottom: 0.0625rem solid #E9ECF3;">주요사항</h3>
-		</div>
-	
-	<%
-	Calendar Tday = Calendar.getInstance();
-	int y = Tday.get(Calendar.YEAR);
-	int m = Tday.get(Calendar.MONTH);
-	int d = Tday.get(Calendar.DATE);
-	String[] date = new String[3];
+   <div class="container" style="margin-top: 25px; margin-left: 15px">
+      <h3>
+         Portfolio_List <small style="">Download</small>
+      </h3>
+   </div>
+   <div class="container" style="margin-left: 15px">
+   <%
+   Connection conn = DBUtil.getConn();
+   Object session_object=session.getAttribute("signedUser");
+   String session_name=(String)session_object;
+   int tmp=0;
+   String sql = "select * from folio where id = ?;";
+   PreparedStatement pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1, session_name);
+   ResultSet rs = pstmt.executeQuery();
 
-	Connection conn = DBUtil.getConn();
-	Object session_object=session.getAttribute("signedUser");
-	String session_name=(String)session_object;
+   while(rs.next()){
+      String num = rs.getString("url");
 
-	String sql = "select sch_num, sch_name, sch_date from scheduler where id = ? order by sch_date, sch_time;";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, session_name);
-	ResultSet rs = pstmt.executeQuery();
-	
-	while(rs.next()){
-		date = rs.getString("sch_date").split("-");
-		if (Integer.parseInt(date[0]) >= y && Integer.parseInt(date[1]) >= m && Integer.parseInt(date[2]) >= d){
-	%>
-	
-		<div style="margin-bottom: 10px;">
-			<a style="cursor: pointer;" onclick="get_sch(<%=rs.getInt("sch_num") %>)"><%=rs.getString("sch_name") %></a>
-		</div>
-		
-	<%
-		}
-	}
-	rs.close();
-	conn.close();
-	pstmt.close();
-	%>
+   %>
+      <div class="card">
+         <div class="card-img"
+            style="background-image: url(../image/logo.png)">
+            <div class="overlay">
+               <div class="overlay-content">
+                  <button onclick="download('<%=num%>','<%=rs.getString("title") %>')">Download</button>
+               </div>
+            </div>   
+         </div>
+         <div class="card-content">
+            <a href="#!">
+               <h2><%=rs.getString("title") %></h2>
+               <p>Folio_Aglio</p>
+            </a>
+         </div>
+      </div>
+      <%}%>
+      <div class="card">
+         <button onclick = "location.href='../make_folio/make_portfolio.jsp'" class="add_folio">┼</button>
+      </div>
+   </div>
+   <hr class="container" />
+   
+   
+   <div style="border: 0.35px solid #636363; border-radius: 20px 20px 20px 20px; text-align:center;">
+      <div>
+         <h3 style="display: inline-block; padding: 0 0.5rem; border-bottom: 0.0625rem solid #E9ECF3;">주요사항</h3>
+      </div>
+   
+   <%
+   Calendar Tday = Calendar.getInstance();
+   int y = Tday.get(Calendar.YEAR);
+   int m = Tday.get(Calendar.MONTH);
+   int d = Tday.get(Calendar.DATE);
+   String[] date = new String[3];
 
-		<div>
-			<h5 style="cursor: pointer;" onclick="popup_sch()">일정 등록하기</h5>
-		</div>
-	</div>
+   sql = "select sch_num, sch_name, sch_date from scheduler where id = ? order by sch_date, sch_time;";
+   pstmt = conn.prepareStatement(sql);
+   pstmt.setString(1, session_name);
+   rs = pstmt.executeQuery();
+   
+   while(rs.next()){
+      date = rs.getString("sch_date").split("-");
+      if (Integer.parseInt(date[0]) >= y && Integer.parseInt(date[1]) >= m && Integer.parseInt(date[2]) >= d){
+   %>
+   
+      <div style="margin-bottom: 10px;">
+         <a style="cursor: pointer;" onclick="get_sch(<%=rs.getInt("sch_num") %>)"><%=rs.getString("sch_name") %></a>
+      </div>
+      
+   <%
+      }
+   }
+   rs.close();
+   conn.close();
+   pstmt.close();
+   %>
+
+      <div>
+         <h5 style="cursor: pointer;" onclick="popup_sch()">일정 등록하기</h5>
+      </div>
+   </div>
 </body>
 </html>
