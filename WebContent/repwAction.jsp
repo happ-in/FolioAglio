@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%
-		String userID = request.getParameter("id");
+		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
 		String userRPW = request.getParameter("userRPW");
 		

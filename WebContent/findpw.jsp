@@ -8,7 +8,7 @@
 <title>Forgot PassWord</title>
 </head>
 <body>
-	<form>
+	<form action="pwAction.jsp" method="post">
 		<div align="center">
 		<h2 class="pw_h">비밀번호 찾기</h2>
 			<table>
@@ -18,11 +18,11 @@
 			</tr>
 			<tr>
 				<td class="pw_i">이름</td>
-				<td> : <input type="text" tabindex="2" placeholder="이름을 입력하세요."></td>
+				<td> : <input type="text" id="userName" name="userName" tabindex="2" placeholder="이름을 입력하세요."></td>
 			</tr>
 			<tr>
 				<td class="pw_i">이메일</td>
-				<td> : <input type="text" tabindex="2" placeholder="이메일을 입력하세요."></td>
+				<td> : <input type="text" id="userEmail" name="userEmail" tabindex="2" placeholder="이메일을 입력하세요."></td>
 			</tr>
 			</table>
 			<p style="padding:2px;"></p>

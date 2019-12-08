@@ -14,19 +14,25 @@
 	String userName = request.getParameter("userName");
 	String userEmail = request.getParameter("userEmail");
 	
+	
 	Connection conn = DBUtil.getConn();
 	
 	try {
-		String sql = "select id, name, email from personal_information";
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
+		String sql = "select name, email from personal_information where id=?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, userID);
+		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()){
-			if (rs.getString(1).equals(userID) && rs.getString(2).equals(userName) && rs.getString(3).equals(userEmail)){
-				response.sendRedirect("sssssssssss.jsp?id=?"+userID);
+			if (rs.getString(1).equals(userName) && rs.getString(2).equals(userEmail)){
+				response.sendRedirect("repw.jsp?userID="+userID);
 			}
 			else{
-				out.write("alert('존재하지 않는 ID이거나 이름, 이메일이 틀렸습니다.')");
+				%> <script>
+				alert("존재하지 않는 ID이거나 이름 또는 이메일이 틀렸습니다.");
+				location.href="findpw.jsp";
+					</script>
+				<%
 			}
 		}
 		

@@ -271,7 +271,7 @@ h1, h2 {
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="text-center">
-                                       <a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                       <a href="findpw.jsp" onclick="window.open(this.href,'','width=400,height=300,resizable=no,scrollbars=no');return false;" target="_blank" tabindex="5" class="forgot-password">Forgot Password?</a>
                                     </div>
                                  </div>
                               </div>
