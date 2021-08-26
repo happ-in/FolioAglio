@@ -7,7 +7,6 @@ Portfolio의 folio와 Paas-ta의 발음에서 쉽게 연상되는 음식 파스�
   <img src="https://contrib.rocks/image?repo=happ-in/FolioAglio" />
 </a>
 
-Made with [contributors-img](https://contrib.rocks).
 <br><br>
 
 #### 개요
