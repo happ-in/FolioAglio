@@ -3,7 +3,11 @@ Portfolio의 folio와 Paas-ta의 발음에서 쉽게 연상되는 음식 파스�
 <br><br>
 
 #### 팀원
-권연욱, 박혜빈, 전인엽, 전혜선
+<a href="https://github.com/happ-in/FolioAglio/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=happ-in/FolioAglio" />
+</a>
+
+Made with [contributors-img](https://contrib.rocks).
 <br><br>
 
 #### 개요
